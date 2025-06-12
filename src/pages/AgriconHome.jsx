@@ -4,6 +4,7 @@ import { GiCancel } from "react-icons/gi";
 import { MdLocationSearching } from "react-icons/md";
 import { assets } from "../assets/assets";
 
+
 const AgriconHome = () => {
   const [open, setOpen] = useState(false);
   console.log(open);
@@ -15,19 +16,19 @@ const AgriconHome = () => {
         <div>
           <ul className="hidden sm:flex gap-5 lg:gap-10 text-xs font-semibold items-center">
             <li className="hover:border-b-2 border-green-800 pb-1 text-[16px]">
-              <a href="#">Home</a>
+              <a href="/">Home</a>
             </li>
             <li className="hover:border-b-2 border-green-800 pb-1 text-[16px]">
-              <a href="#">About Us</a>
+              <a href="&">About Us</a>
             </li>
             <li className="hover:border-b-2 border-green-800 pb-1 text-[16px]">
               <a href="#">Solution</a>
             </li>
             <li className="hover:border-b-2 border-green-800 pb-1 text-[16px]">
-              <a href="#">Log In</a>
+              <a href="/login">Log In</a>
             </li>
             <li className="bg-[#02402D] px-3 py-2 text-white text-[16px] rounded-sm">
-              <a href="#">Sign Up</a>
+              <a href="/roles">Sign Up</a>
             </li>
           </ul>
         </div>

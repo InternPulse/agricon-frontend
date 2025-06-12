@@ -1,5 +1,7 @@
 import React from "react";
 import "./SignupLanding.css";
+import { Link } from "react-router-dom";
+import { assets } from "../assets/assets";
 
 const SignupLanding = () => {
   return (
@@ -7,12 +9,12 @@ const SignupLanding = () => {
       {/* Left Section */}
       <div className="signup-landing-left">
         <div className="signup-landing-left-inner">
-<img className="signup-landing-logo" src="/agrion-logo.png" alt="agrion" />
-<img
-  className="signup-landing-image"
-  src="/find_nearby_infrastructure_discover_dryers_cold_rooms.png"
-  alt="Find Nearby Infrastructure"
-/>
+          <img className="signup-landing-logo" src={assets.agriconLogo} alt="agrion" />
+          <img
+            className="signup-landing-image"
+            src={assets.authImage}
+            alt="Find Nearby Infrastructure"
+          />
           <div className="signup-landing-caption">
             <div className="signup-landing-title">Find Nearby Infrastructure</div>
             <div className="signup-landing-subtitle">
@@ -32,25 +34,25 @@ const SignupLanding = () => {
         <div className="signup-landing-signup-title">Sign up</div>
         <div className="signup-landing-cards">
           <div className="signup-landing-card">
-            <div>
+            <Link to='/signup'>
               <div className="signup-landing-card-title">
                 AgriCon for Farmers
               </div>
               <div className="signup-landing-card-desc">
                 Book cold rooms, dryers, and processing units
               </div>
-            </div>
+            </Link>
             <span className="signup-landing-card-arrow">&#8250;</span>
           </div>
           <div className="signup-landing-card">
-            <div>
+            <Link to='/signup'>
               <div className="signup-landing-card-title">
                 AgriCon for Facility Owners
               </div>
               <div className="signup-landing-card-desc">
                 Create and manage bookings online.
               </div>
-            </div>
+            </Link>
             <span className="signup-landing-card-arrow">&#8250;</span>
           </div>
         </div>
