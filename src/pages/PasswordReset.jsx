@@ -1,5 +1,5 @@
 import {assets} from '../assets/assets'
-import Form from '../components/form';
+import ResetPasswordForm from '../components/ResetPasswordForm';
 
 function PasswordReset(){
     return (
@@ -20,7 +20,7 @@ function PasswordReset(){
                         </div>
                     </div>
                 </div>
-                <Form />
+                <ResetPasswordForm />
             </div>       
         </div>
     )

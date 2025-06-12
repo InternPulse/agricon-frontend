@@ -1,6 +1,6 @@
 
 
-function Form() {
+function ResetPasswordForm() {
     
     return (
         <div className='lg:flex items-center justify-center w-full'>
@@ -52,4 +52,4 @@ function Form() {
     )
 }
 
-export default Form;
+export default ResetPasswordForm;
