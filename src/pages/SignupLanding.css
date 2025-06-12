@@ -1,0 +1,162 @@
+.signup-landing-root {
+  width: 100vw;
+  height: 100vh;
+  min-width: 1440px;
+  min-height: 1024px;
+  background: #f9fafb;
+  font-family: 'Inter', sans-serif;
+  position: relative;
+}
+
+/* Left Panel */
+.signup-landing-left {
+  position: absolute;
+  left: 128px;
+  top: 128px;
+  width: 575px;
+  height: 768px;
+  background: #f0f2f5;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.signup-landing-left-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 441px;
+  gap: 36px;
+}
+
+.signup-landing-logo {
+  width: 138px;
+  height: 64px;
+  object-fit: contain;
+}
+
+.signup-landing-image {
+  width: 441px;
+  height: 397px;
+  border-radius: 8px;
+  object-fit: cover;
+  background: #e0e0e0;
+}
+
+.signup-landing-caption {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  width: 415px;
+  height: 44px;
+}
+
+.signup-landing-title {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 20px;
+  color: #010E0A;
+  text-align: center;
+}
+
+.signup-landing-subtitle {
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+  color: #010E0A;
+  text-align: center;
+}
+
+.signup-landing-progress {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  width: 441px;
+  height: 4px;
+  margin-top: 12px;
+}
+
+.signup-landing-progress-bar {
+  width: 82px;
+  height: 4px;
+  background: #A7E0CF;
+  border-radius: 2px;
+}
+
+.signup-landing-progress-bar.active {
+  background: #010E0A;
+}
+
+/* Right Panel */
+.signup-landing-right {
+  position: absolute;
+  left: 736px;
+  top: 329px;
+  width: 576px;
+  height: 365px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 44px;
+}
+
+.signup-landing-signup-title {
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 39px;
+  color: #000;
+  width: 576px;
+  height: 39px;
+  text-align: center;
+}
+
+.signup-landing-cards {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 36px;
+  width: 576px;
+}
+
+.signup-landing-card {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 36px 45px;
+  width: 576px;
+  height: 123px;
+  background: #fff;
+  border: 2px solid #f0f2f5;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: border 0.2s;
+}
+
+.signup-landing-card:hover {
+  border: 2px solid #010E0A;
+}
+
+.signup-landing-card-title {
+  font-size: 20px;
+  font-weight: 500;
+  color: #000;
+  margin-bottom: 8px;
+}
+
+.signup-landing-card-desc {
+  font-size: 16px;
+  font-weight: 400;
+  color: #000;
+}
+
+.signup-landing-card-arrow {
+  font-size: 24px;
+  color: #000;
+  margin-left: 24px;
+}
