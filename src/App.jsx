@@ -1,5 +1,6 @@
 import { Routes, Route } from 'react-router-dom'
 import PasswordReset from './pages/PasswordReset';
+import Form from './components/form';
 
 
 function App() {
