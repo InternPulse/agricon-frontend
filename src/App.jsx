@@ -2,7 +2,7 @@ import { Routes, Route } from 'react-router-dom'
 import AgriconHome from './pages/AgriconHome'
 import SignupLanding from './pages/SignupLanding'
 import PasswordReset from './pages/PasswordReset'
-import OTP from "./page/OTP";
+import OTP from "./pages/OTP";
 
 
 function App() {
