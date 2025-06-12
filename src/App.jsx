@@ -1,6 +1,7 @@
 import { Routes, Route } from 'react-router-dom'
 import AgriconHome from './pages/AgriconHome'
 import SignupLanding from './pages/SignupLanding'
+import PasswordReset from './pages/PasswordReset'
 
 function App() {
   
@@ -9,6 +10,7 @@ function App() {
     <Routes>
         <Route path='/' element={<AgriconHome />}/>
         <Route path='/roles' element={<SignupLanding />}/>
+        <Route path='/reset-password' element={<PasswordReset />}/>
     </Routes>
   )
 }
