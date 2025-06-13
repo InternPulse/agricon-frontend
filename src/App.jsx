@@ -6,6 +6,7 @@ import OTP from "./pages/OTP";
 import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
 import ForgotPassword from './pages/ForgotPassword';
+import ResetPassword from './pages/ResetPassword'
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path='/login' element={<Login />}/>
         <Route path='/forgot-password' element={<ForgotPassword />}/>
         <Route path='/reset-password' element={<PasswordReset />}/>
+        <Route path='/reset-success' element={<ResetPassword />}/>
         <Route path='/otp' element={<OTP />}/>
     </Routes>
   )
