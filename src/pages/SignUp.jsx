@@ -5,27 +5,36 @@ import Credentials from "../components/Credentials";
 
 export default function SignUp() {
   return (
-    <div className="flex justify-between p-32">
-      <div className="flex flex-col py-[4.7rem] px-[4.2rem] items-center max-w-[575px] bg-[#F0F2F5]">
-        <img
-          className="w-full max-w-[138.08px] mb-[2.3rem]"
-          src={agriconLogo}
-          alt="Agricon Logo"
-        />
-        <img
-          className="w-full max-w-[441px] mb-[2.3rem]"
-          src={authImage}
-          alt="Sign up image"
-        />
-        <p className="font-Inter mb-2 font-semibold text-[#010E0A]">
-          Find Nearby Infrastructure
-        </p>
-        <p className="font-Inter mb-9 text-[#010E0A] text-xs">
-          Discover dryers, cold rooms, and processing units close to your farm.
-        </p>
-        <Carousels />
+    <div className="grid lg:grid-cols-2 mb-10 gap-12 lg:gap-20 p-10 sm:p-18 lg:p-24 xl:p-30 lg:mb-0">
+      <div className="order-2 lg:order-1 hidden lg:inline-block">
+        <div className="flex flex-col py-[4.7rem] px-[4.2rem] items-center justify-center h-full bg-[#F0F2F5]">
+          <img
+            className="hidden lg:block w-auto mb-[2.3rem]"
+            src={agriconLogo}
+            alt="Agricon Logo"
+          />
+          <img
+            className="w-full max-w-[441px] mb-[2.3rem]"
+            src={authImage}
+            alt="Sign up image"
+          />
+          <p className="font-Inter mb-2 text-xl font-semibold text-[#010E0A]">
+            Find Nearby Infrastructure
+          </p>
+          <p className="font-Inter mb-9 text-[#010E0A] text-sm">
+            Discover dryers, cold rooms, and processing units close to your
+            farm.
+          </p>
+          <Carousels />
+        </div>
       </div>
-      <Credentials />
+
+      <div className="flex justify-center mb-0 lg:hidden lg:mb-8">
+        <img className="hidden w-[120px]" src={agriconLogo} alt="Agricon Logo" />
+      </div>
+      <div className="order-1 lg:order-2">
+        <Credentials />
+      </div>
     </div>
   );
 }
