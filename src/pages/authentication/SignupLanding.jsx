@@ -1,7 +1,7 @@
 import React from "react";
 import "./SignupLanding.css";
 import { Link } from "react-router-dom";
-import { assets } from "../assets/assets";
+import { assets } from "../../assets/assets";
 
 const SignupLanding = () => {
   return (

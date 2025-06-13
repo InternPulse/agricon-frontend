@@ -1,5 +1,5 @@
 import React from 'react'
-import arrowBack from "../assets/arrowBack.png"
+import arrowBack from "../../assets/arrowBack.png"
 import { Link } from 'react-router-dom'
 
 export default function Form() {

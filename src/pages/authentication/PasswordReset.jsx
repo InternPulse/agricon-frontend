@@ -1,5 +1,5 @@
-import {assets} from '../assets/assets'
-import ResetPasswordForm from '../components/ResetPasswordForm';
+import {assets} from '../../assets/assets'
+import ResetPasswordForm from '../../components/authentication/ResetPasswordForm';
 
 function PasswordReset(){
     return (

@@ -1,6 +1,6 @@
 import React from "react";
-import agriconlogo from "../assets/agriconLogo.png";
-import authImage from "../assets/authimage.png";
+import agriconlogo from "../../assets/agriconLogo.png";
+import authImage from "../../assets/authimage.png";
 
 
 const ResetPassword = () => {

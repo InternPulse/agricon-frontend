@@ -1,7 +1,7 @@
-import authImage from "../assets/authImage.png";
-import agriconLogo from "../assets/agriconLogo.png";
-import Carousels from "../components/Carousels";
-import Credentials from "../components/Credentials";
+import authImage from "../../assets/authImage.png";
+import agriconLogo from "../../assets/agriconLogo.png";
+import Carousels from "../../components/authentication/Carousels";
+import Credentials from "../../components/authentication/Credentials";
 
 export default function SignUp() {
   return (

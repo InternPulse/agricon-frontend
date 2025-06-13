@@ -1,12 +1,12 @@
 import { Routes, Route } from 'react-router-dom'
-import AgriconHome from './pages/AgriconHome'
-import SignupLanding from './pages/SignupLanding'
-import PasswordReset from './pages/PasswordReset'
-import OTP from "./pages/OTP";
-import SignUp from "./pages/SignUp";
-import Login from "./pages/Login";
-import ForgotPassword from './pages/ForgotPassword';
-import ResetPassword from './pages/ResetPassword'
+import AgriconHome from './pages/landingPage/AgriconHome'
+import SignupLanding from './pages/authentication/SignupLanding'
+import PasswordReset from './pages/authentication/PasswordReset'
+import OTP from "./pages/authentication/OTP";
+import SignUp from "./pages/authentication/SignUp";
+import Login from "./pages/authentication/Login";
+import ForgotPassword from './pages/authentication/ForgotPassword';
+import ResetPassword from './pages/authentication/ResetPassword'
 
 function App() {
   return (
