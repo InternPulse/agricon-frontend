@@ -1,17 +1,20 @@
+
+
 import React from "react";
 import "./SignupLanding.css";
 import { Link } from "react-router-dom";
 import { assets } from "../../assets/assets";
+import logo from "../../assets/agriconLogo.png"
 
 const SignupLanding = () => {
   return (
-    <div className="signup-landing-root">
+    <div className="md:w-full grid lg:flex items-center gap-6 justify-center py-6 bg-gray-100">
       {/* Left Section */}
-      <div className="signup-landing-left">
-        <div className="signup-landing-left-inner">
-          <img className="signup-landing-logo" src={assets.agriconLogo} alt="agrion" />
+      <div>
+        <div className="grid bg-[#F0F2F5] p-4 rounded gap-4 items-center justify-items-center">
+          <img className="" src={logo} alt="agrion" />
           <img
-            className="signup-landing-image"
+            className="signup-landing-image w-66 md:w-96 h-auto rounded-lg shadow-lg"
             src={assets.authImage}
             alt="Find Nearby Infrastructure"
           />
@@ -22,15 +25,15 @@ const SignupLanding = () => {
             </div>
           </div>
           <div className="signup-landing-progress">
-            <div className="signup-landing-progress-bar active" />
-            <div className="signup-landing-progress-bar" />
-            <div className="signup-landing-progress-bar" />
-            <div className="signup-landing-progress-bar" />
+            <div className="signup-landing-progress-bar active w-8 md:w-10 lg:w-16" />
+            <div className="signup-landing-progress-bar w-8 md:w-10 lg:w-16" />
+            <div className="signup-landing-progress-bar w-8 md:w-10 lg:w-16" />
+            <div className="signup-landing-progress-bar w-8 md:w-10 lg:w-16" />
           </div>
         </div>
       </div>
       {/* Right Section */}
-      <div className="signup-landing-right">
+      <div className="grid gap-4 items-center justify-center">
         <div className="signup-landing-signup-title">Sign up</div>
         <div className="signup-landing-cards">
           <div className="signup-landing-card">

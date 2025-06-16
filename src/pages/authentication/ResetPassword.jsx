@@ -25,7 +25,7 @@ const ResetPassword = () => {
           <p className="text-center text-gray-800 text-lg mb-6">
             You have successfully<br />reset your password!
           </p>
-          <button className="bg-green-900 hover:bg-green-800 text-white text-sm py-2 px-25 rounded-md">
+          <button className="bg-green-900 hover:bg-green-800 text-white text-sm py-2 px-16 md:px-25 rounded-md">
             Log In
           </button>
         </div>

@@ -4,7 +4,7 @@ import { assets } from "../../assets/assets";
 const Login = () => {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 p-6">
-      <div className="bg-white rounded-xl shadow-md w-full max-w-6xl grid md:grid-cols-2">
+      <div className="bg-white rounded-xl shadow-md w-full max-w-6xl grid md:grid-cols-2 md:gap-2">
         
         <div className="flex flex-col items-center justify-center px-4 py-8 md:p-10 space-y-6 bg-[#F0F2F5]">
           <img src={assets.agriconLogo} alt="agriCon" className="w-32 mb-6" />
@@ -26,7 +26,7 @@ const Login = () => {
         </div>
 
         
-        <div className="flex flex-col items-center justify-center px-4 py-8 md:p-10 space-y-6">
+        <div className="flex flex-col items-center justify-center lg:px-4 lg:py-8 md:p-10 space-y-6">
           <div className="  "> 
             <h2 className="text-2xl font-bold text-gray-900 mb-4 ">Log In</h2>
             <p className="text-sm text-gray-600 mt-1">Welcome back!</p>
