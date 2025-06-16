@@ -29,10 +29,10 @@ export default function SignUp() {
         </div>
       </div>
 
-      <div className="flex justify-center mb-0 lg:hidden lg:mb-8">
+      <div className=" flex justify-center mb-0 lg:hidden lg:mb-8">
         <img className="hidden w-[120px]" src={agriconLogo} alt="Agricon Logo" />
       </div>
-      <div className="order-1 lg:order-2">
+      <div className=" order-1 lg:order-2">
         <Credentials />
       </div>
     </div>

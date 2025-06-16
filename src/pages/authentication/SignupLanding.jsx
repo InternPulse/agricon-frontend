@@ -8,10 +8,10 @@ import logo from "../../assets/agriconLogo.png"
 
 const SignupLanding = () => {
   return (
-    <div className="md:w-full grid lg:flex items-center gap-6 justify-center py-6 bg-gray-100">
+    <div className="lg:w-full grid lg:flex items-center gap-6 justify-center py-6 bg-gray-100">
       {/* Left Section */}
       <div>
-        <div className="grid bg-[#F0F2F5] p-4 rounded gap-4 items-center justify-items-center">
+        <div className="hidden lg:grid bg-[#F0F2F5] p-4 rounded gap-4 items-center justify-items-center">
           <img className="" src={logo} alt="agrion" />
           <img
             className="signup-landing-image w-66 md:w-96 h-auto rounded-lg shadow-lg"

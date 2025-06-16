@@ -11,10 +11,10 @@ const OTP = () => {
     return (
         <div className='flex md:justify-center lg:inter bg-[#fcfeff] md:h-[100vh] '>
 
-            <div className='grid md:grid-cols-2 md:gap-4 lg:gap-10 py-10  place-items-center '>
+            <div className='lg:grid lg:grid-cols-2 lg:gap-10 py-10  lg:place-items-center '>
 
                 {/* agrio */}
-                <div className='w-96 md:w-86 lg:w-[450px] p-6 h-[550px] flex flex-col gap-3 md:justify-center items-center  bg-[#F0F2F5]'>
+                <div className='w-96 md:w-86 lg:w-[450px] p-6 h-[550px] hidden lg:flex lg:flex-col lg:gap-3 lg:justify-center lg:items-center  bg-[#F0F2F5]'>
                     <img src={assets.agriconLogo} alt="" width={120} height={63} />
                     <img src={assets.authImage} className='h-[350px] rounded-md' alt="" width={441} height={297} />
 
