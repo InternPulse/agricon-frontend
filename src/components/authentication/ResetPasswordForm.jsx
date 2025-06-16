@@ -6,7 +6,7 @@ function ResetPasswordForm() {
         <div className='lg:flex items-center justify-center w-full'>
             <div className='space-y-10'>
                 <div className='text-center  lg:w-[150%]'>
-                    <h2 className='font-bold text-2xl'>Forgot Password</h2>
+                    <h2 className='font-bold text-2xl'>Reset Password</h2>
                     <p>No worries, we’ll send you a reset link.</p>
                 </div>
                 <form>
@@ -21,7 +21,7 @@ function ResetPasswordForm() {
                             className="w-full px-3 py-2 h-13 rounded focus:outline-none border border-gray-300 lg:w-[150%]"
                             type="New password"
                             name=""
-                            placeholder="Email"
+                            placeholder="New password"
                             required
                         />
                     </div>
