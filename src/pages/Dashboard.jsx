@@ -13,7 +13,7 @@ import {
   Tooltip,
   Legend,
 } from "recharts";
-import TotalViewPerformanceCard from "../Components/performance";
+import TotalViewPerformanceCard from "../components/performance";
 
 const ChevronDownIcon = (props) => (
   <svg
@@ -184,7 +184,7 @@ const CustomPieChartTooltip = ({ active, payload }) => {
 };
 
 // --- Main Dashboard Component ---
-export default function FacilityOwnerDashboard() {
+export default function Dashboard() {
   return (
     <div
       className="flex min-h-screen bg-gray-100 font-sans"

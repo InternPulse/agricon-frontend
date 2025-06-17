@@ -1,10 +1,11 @@
-import agriconLogo from './agriconLogo.png'
-import authImage from './authImage.png'
-import otp from './otp.png'
-
+import agriconLogo from "./agriconLogo.png";
+import agriconLogo2 from "./agriconLogo.svg";
+import authImage from "./authImage.png";
+import otp from "./otp.png";
 
 export const assets = {
-    agriconLogo,
-    authImage,
-    otp,
-}
+  agriconLogo,
+  agriconLogo2,
+  authImage,
+  otp,
+};
