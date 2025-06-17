@@ -71,7 +71,7 @@ const CogIcon = (props) => (
     ></path>
   </svg>
 );
-  const InfrastructureIcon = (props) => (
+const InfrastructureIcon = (props) => (
   <svg
     fill="none"
     stroke="currentColor"
@@ -185,14 +185,19 @@ const CustomPieChartTooltip = ({ active, payload }) => {
 
 // --- Main Dashboard Component ---
 export default function FacilityOwnerDashboard() {
-
   return (
-    <div className="flex min-h-screen bg-gray-100 font-sans" style={{scrollbarWidth: 'none'}}>
-      {/* Sidebar */}
-      <SideBar/>
+    <div
+      className="flex min-h-screen bg-gray-100 font-sans"
+      style={{ scrollbarWidth: "none" }}
+    >
+      {/* Sideba */}
+      <SideBar />
 
       {/* Main Content Area */}
-      <div className=" flex-1 flex flex-col bg-white overflow-auto" style={{scrollbarWidth: 'none'}}>
+      <div
+        className=" flex-1 flex flex-col bg-white overflow-auto"
+        style={{ scrollbarWidth: "none" }}
+      >
         <header className="h-20 w-full border-b border-[#dddddd] flex justify-between items-center bg-[#F7F9FC] px-5 sm:px-5 xl:px-10">
           <div className="flex items-center lg:w-60">
             <span className="text-[20px] font-medium text-[#344054]">
@@ -536,21 +541,21 @@ export default function FacilityOwnerDashboard() {
           </div>
           <div className="secondd px-5 py-8 w-[312px] h-screen flex flex-col items-center gap-5">
             {/* Total View Performance Card (Recharts Pie Chart) */}
-            <TotalViewPerformanceCard/>
+            <TotalViewPerformanceCard />
             <div className="bg-[#02402D] rounded-xl w-full  p-6">
               <div className="text-white w-full flex flex-col items-center gap-5">
                 <div className="self-start p-4 w-22 h-22 grid place-items-center bg-[#101928] rounded-full">
-                <BarChartIcon className="text-[#95BF33]" />
+                  <BarChartIcon className="text-[#95BF33]" />
                 </div>
                 <div className="flex flex-col gap-5">
                   <h3 className="text-[22px] font-normal mb-2 leading-[30px]">
-                  Level up your post-harvest strategy to the next level .
-                </h3>
-                <p className="text-[14px] text-gray-300 mb-6 leading-tight">
-                  Book the right infrastructure , from cold rooms to dryers and
-                  take full control of your harvest . Keep your produce fresh
-                  cut down post-harvest losses .
-                </p>
+                    Level up your post-harvest strategy to the next level .
+                  </h3>
+                  <p className="text-[14px] text-gray-300 mb-6 leading-tight">
+                    Book the right infrastructure , from cold rooms to dryers
+                    and take full control of your harvest . Keep your produce
+                    fresh cut down post-harvest losses .
+                  </p>
                 </div>
                 <button className="px-8 h-10 bg-white text-[#02402D] font-bold rounded-lg shadow-md hover:bg-gray-100 transition duration-300 ease-in-out">
                   Get started{" "}
@@ -558,7 +563,6 @@ export default function FacilityOwnerDashboard() {
                 </button>
               </div>
             </div>
-              
           </div>
         </section>
       </div>
