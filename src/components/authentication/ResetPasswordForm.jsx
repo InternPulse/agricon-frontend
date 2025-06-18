@@ -7,7 +7,7 @@ function ResetPasswordForm() {
             <div className='space-y-10'>
                 <div className='text-center  lg:w-[150%]'>
                     <h2 className='font-bold text-2xl'>Reset Password</h2>
-                    <p>No worries, we’ll send you a reset link.</p>
+                    <p>set a secure password</p>
                 </div>
                 <form>
                     <div className="mb-5">
