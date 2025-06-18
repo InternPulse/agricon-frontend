@@ -1,7 +1,5 @@
 import { Routes, Route } from 'react-router-dom'
-import PasswordReset from './pages/PasswordReset';
-import Form from './components/form';
-import Cards from './pages/Cards';
+import Home from './pages/Home/Home';
 
 
 function App() {
@@ -10,9 +8,7 @@ function App() {
   return (
     <div>
       <Routes>
-          {/* reset-password */}
-          <Route path='/' element={<Cards />}/>
-          <Route path='/password-reset' element={<PasswordReset />}/>
+          <Route path='/' element={<Home />}/>
       </Routes>
     </div>
   )
