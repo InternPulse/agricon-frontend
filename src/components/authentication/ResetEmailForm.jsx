@@ -9,7 +9,7 @@ export default function Form() {
   return (
     <div>
         <section className="flex flex-col justify-center p-10 rounded-md h-full max-w-[500px] w-full mx-auto lg:mx-0 ">
-        <div className="mb-8 text-center">
+        <div className="hidden lg:block mb-8 text-center">
           <h1 className="text-[28px] md:text-[32px] font-semibold">
             Forgot Password
           </h1>
