@@ -1,5 +1,6 @@
 import SideBar from "../components/sideBar";
 import { FaDashcube } from "react-icons/fa6";
+import { assets } from "../assets/assets";
 
 import {
   LineChart,
@@ -14,6 +15,8 @@ import {
   Legend,
 } from "recharts";
 import TotalViewPerformanceCard from "../components/performance";
+import { BiNotification } from "react-icons/bi";
+import { IoNotifications } from "react-icons/io5";
 
 const ChevronDownIcon = (props) => (
   <svg
@@ -212,11 +215,20 @@ export default function Dashboard() {
             />
           </div>
           <div className="flex items-center space-y-4 sm:space-y-0 sm:space-x-4 justify-center sm:justify-end">
-            <div className="flex items-center space-x-2 bg-gray-100 p-2 rounded-lg border border-gray-200">
-              <UserIcon className="w-6 h-6 text-gray-600" />
-              <span className="font-medium text-gray-800">Interns</span>
-              <ChevronDownIcon className="w-4 h-4 cursor-pointer text-gray-500" />
-              <CogIcon className="w-5 h-5 text-gray-500 cursor-pointer" />
+            <div className="flex items-center h-10 gap-4 p-2 rounded-lg">
+              <div className="h-10 w-10 rounded-full bg-[#D5F0E8] flex justify-center items-center text-xl text-[#047D58]">
+                <IoNotifications />
+              </div>
+              <div className="flex items-center">
+                <div className="flex items-center space-x-2">
+                  <img src={assets.intern} /> <p>Interns</p>
+                </div>
+                <div>
+                  <select name="intern" id="intern">
+                    intern
+                  </select>
+                </div>
+              </div>
             </div>
           </div>
         </header>

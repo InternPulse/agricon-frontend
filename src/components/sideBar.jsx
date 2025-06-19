@@ -27,15 +27,16 @@ const SideBar = () => {
 
   return (
     <div
-      className="sidebar sticky top-0 left-0 overflow-y-scroll h-screen z-50 hidden lg:flex flex-col w-[264px] bg-[#02402D] text-white shadow-xl py-5 px-4"
-      style={{ scrollbarWidth: "none" }}
+    className="sidebar sticky top-0 left-0 overflow-y-scroll h-screen z-50 hidden lg:flex flex-col w-[264px] bg-[#02402D] text-white shadow-xl py-5 px-4"
+      style={{ scrollbarWidth: "none" }}>
+    <div
+      className="flex flex-col gap-5"
     >
-      <div className="flex items-center h-[66px]  px-2">
-        <img src={assets.agriconLogo2} alt="Agrion Logo" className="size-30" />
+      <div className="flex items-center h-[66px] border-b-[0.5px] border-[#FFAC00]/70 h-[66px] pl-2 pb-5">
+        <img src={assets.agriconLogo2} alt="Agrion Logo" className="w-25" />
       </div>
-      <hr className="my-5 text-gray-600 border" />
       <div className="flex flex-col justify-between h-full">
-        <nav className="flex-1 gap-[16px]">
+        <nav className="flex flex-col gap-4">
           {[
             {
               id: "dashboard",
@@ -102,6 +103,7 @@ const SideBar = () => {
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 };
