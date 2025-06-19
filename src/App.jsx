@@ -7,10 +7,14 @@ import Login from "./pages/authentication/Login";
 import ForgotPassword from './pages/authentication/ForgotPassword';
 import ResetPassword from './pages/authentication/ResetPassword'
 import Home from './pages/home/Home'
+import Navbar from './components/home/Navbar';
 
 function App() {
   return (
-    <Routes>
+    <div>
+      <Navbar />
+      <div>
+      <Routes>
         <Route path='/' element={<Home />}/>
         <Route path='/roles' element={<SignupLanding />}/>
         <Route path='/signup' element={<SignUp />}/>
@@ -20,6 +24,8 @@ function App() {
         <Route path='/reset-success' element={<ResetPassword />}/>
         <Route path='/otp' element={<OTP />}/>
     </Routes>
+       </div>
+    </div>
   )
 }
 
