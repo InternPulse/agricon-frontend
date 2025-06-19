@@ -6,7 +6,7 @@ import Card from './Card'
 
 function OurService() {
     return (
-        <div className='px-5 py-15 bg-[#F7F7F7] sm:px-15'>
+        <div className='px-5 py-15 bg-[#F7F7F7] sm:px-15' id='services'>
             <div className='text-center space-y-6 mb-8'>
                 <h6 className='font-bold text-[#02402D]'>Our Services</h6>
                 <h1 className='text-2xl font-bold'>What Agric<span className='text-[#FFAC00]'>o</span>n Offers</h1>

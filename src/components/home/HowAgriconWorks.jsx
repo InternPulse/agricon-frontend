@@ -5,7 +5,7 @@ import { FaAngleRight } from "react-icons/fa";
 
 function HowAgriconWorks() {
     return (
-        <div className="bg-[#F7F7F7] py-15 px-5 flex items-center justify-center sm:px-15">
+        <div className="bg-[#F7F7F7] py-15 px-5 flex items-center justify-center sm:px-15" id='contact'>
             <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
                 <div className="lg:hidden inline-block mx-auto">
                     <img src={assets.howwework} alt="how_we_work" className="w-[100%]"/>

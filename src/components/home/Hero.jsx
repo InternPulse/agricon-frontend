@@ -6,8 +6,9 @@ function Hero() {
         <section
             className="
                 relative flex items-center justify-center h-screen 
-                bg-[url(/heroImage.jpg)] bg-cover bg-center bg-no-repeat
+                bg-[url(/heroImage.jpg)] bg-cover bg-center bg-no-repeat 
             "
+            id='hero'
         >
             <div className="absolute inset-0 bg-black opacity-50"></div>
 

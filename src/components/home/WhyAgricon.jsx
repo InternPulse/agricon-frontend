@@ -3,7 +3,7 @@ import { assets } from "../../assets/assets";
 
 function WhyAgricon() {
     return (
-        <div className="py-15 px-5 flex items-center justify-center sm:px-15">
+        <div className="py-15 px-5 flex items-center justify-center sm:px-15" id='about'>
             <div className="grid grid-cols-1 gap-5 lg:grid-cols-2">
                 <div>
                     <img src={assets.whyimage}  alt="why_us"  className="w-[100%] lg:w-[90%]"/>
