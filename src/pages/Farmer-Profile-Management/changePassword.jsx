@@ -64,7 +64,7 @@ const ChangePassword = () => {
 
       {/* Modal */}
       {showModal && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-40 z-50 px-4">
+        <div className="fixed inset-0 flex items-center justify-center bg-[#F7F7F7] bg-opacity-40 z-50 px-4">
           <div className="bg-white p-6 sm:p-8 rounded-lg shadow-md w-full max-w-md text-center relative">
             <button
               className="absolute top-4 right-4 text-gray-500 text-xl"
