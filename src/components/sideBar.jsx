@@ -1,28 +1,60 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { assets } from "../assets/assets";
 import { RiDashboardHorizontalLine } from "react-icons/ri";
 import { FiSettings } from "react-icons/fi";
 import { MdOutlineHeadphones } from "react-icons/md";
 import { FaRegBuilding } from "react-icons/fa6";
 
-const SideBar = () => {
-  const [activeMenuItem, setActiveMenuItem] = useState("dashboard");
+const BookingHistoryIcon = (props) => (
+  <svg
+    fill="none"
+    stroke="currentColor"
+    viewBox="0 0 24 24"
+    xmlns="http://www.w3.org/2000/svg"
+    {...props}
+  >
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth="2"
+      d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+    ></path>
+  </svg>
+);
 
-  const BookingHistoryIcon = (props) => (
-    <svg
-      fill="none"
-      stroke="currentColor"
-      viewBox="0 0 24 24"
-      xmlns="http://www.w3.org/2000/svg"
-      {...props}
-    >
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth="2"
-        d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
-      ></path>
-    </svg>
+const menuItems = [
+  {
+    id: "dashboard",
+    label: "Dashboard",
+    icon: RiDashboardHorizontalLine,
+    to: "/",
+  },
+  {
+    id: "infrastructure",
+    label: "Infrastructure",
+    icon: FaRegBuilding,
+    to: "/infrastructure", // placeholder
+  },
+  {
+    id: "booking-history",
+    label: "Booking History",
+    icon: BookingHistoryIcon,
+    to: "/booking-history", // placeholder
+  },
+  { id: "settings", label: "Settings", icon: FiSettings, to: "/settings" },
+  {
+    id: "customer-support",
+    label: "Customer Support",
+    icon: MdOutlineHeadphones,
+    to: "/customer-support", // placeholder
+  },
+];
+
+const SideBar = () => {
+  const location = useLocation();
+  const [activeMenuItem, setActiveMenuItem] = useState(
+    menuItems.find((item) => item.to === location.pathname)?.id || "dashboard"
   );
 
   return (
@@ -39,47 +71,25 @@ const SideBar = () => {
       </div>
       <hr className="my-5 text-gray-600 border" />
       <div className="flex flex-col justify-between h-full">
-        <nav className="flex-1 gap-[16px]">
-          {[
-            {
-              id: "dashboard",
-              label: "Dashboard",
-              icon: RiDashboardHorizontalLine,
-            },
-            {
-              id: "infrastructure",
-              label: "Infrastructure",
-              icon: FaRegBuilding,
-            },
-            {
-              id: "booking-history",
-              label: "Booking History",
-              icon: BookingHistoryIcon,
-            },
-            { id: "settings", label: "Settings", icon: FiSettings },
-            {
-              id: "customer-support",
-              label: "Customer Support",
-              icon: MdOutlineHeadphones,
-            },
-          ].map((item) => (
-            <button
+        <nav className="flex-1 gap-[16px] flex flex-col">
+          {menuItems.map((item) => (
+            <Link
+              to={item.to}
               key={item.id}
               onClick={() => setActiveMenuItem(item.id)}
               className={`w-full flex items-center h-10 pl-2 rounded-lg text-left transition-colors duration-200
-                          ${
-                            activeMenuItem === item.id
-                              ? "bg-[#FFAC00] text-white font-semibold shadow-md"
-                              : "text-white"
-                          }`}
+                ${
+                  activeMenuItem === item.id || location.pathname === item.to
+                    ? "bg-[#FFAC00] text-white font-semibold shadow-md"
+                    : "text-white"
+                }`}
             >
               <item.icon className="w-5 h-5 mr-3" />
               <span className="text-[14px]">{item.label}</span>
-            </button>
+            </Link>
           ))}
         </nav>
         <div className="profile py-5 px-3">
-          {" "}
           <div className="bg-white flex flex-col gap-5 p-4 rounded-xl shadow-inner mb-4">
             <div className="flex items-center mb-3">
               <div className="top flex">

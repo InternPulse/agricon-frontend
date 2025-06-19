@@ -1,10 +1,19 @@
-//how to use the images from the assets.js file
-//import the directory below
-import { assets } from "./assets/assets";
-import FacilityOwnerDashboard from "./pages/Dassss";
+import React from 'react'
+import { Routes, Route, Navigate } from "react-router-dom";
+import Dassss from './pages/Dassss';
+import Settings from "./pages/Farmer-Profile-Management/Settings";
+import ChangePassword from "./pages/Farmer-Profile-Management/changePassword"; 
 
-function App() {
-  return <FacilityOwnerDashboard />
+const App = () => {
+  return (
+    
+  <Routes>
+    <Route path="/" element={<Dassss />} />
+    <Route path="/settings" element={<Settings />} />
+    <Route path="/settings/change-password" element={<ChangePassword />} />
+    {/* other routes */}
+  </Routes>
+  )
 }
 
-export default App;
+export default App

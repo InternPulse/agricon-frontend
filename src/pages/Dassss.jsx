@@ -565,3 +565,14 @@ export default function FacilityOwnerDashboard() {
     </div>
   );
 }
+
+
+// import React from "react";
+
+// export default function FacilityOwnerDashboard() {
+//   return (
+//     <div>
+//       <h1>Welcome to the Dashboard</h1>
+//     </div>
+//   );
+// }
