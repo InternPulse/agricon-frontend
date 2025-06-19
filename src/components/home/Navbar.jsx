@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom"; // Use NavLink from react-router-dom for proper routing
+import { NavLink } from "react-router-dom";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { FaTimes } from 'react-icons/fa';
 import { assets } from '../../assets/assets';
 
 const Navbar = () => {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
+  const [activeSection, setActiveSection] = useState('hero'); 
 
   useEffect(() => {
     if (showMobileMenu) {
@@ -18,6 +19,39 @@ const Navbar = () => {
     };
   }, [showMobileMenu]);
 
+  useEffect(() => {
+    const sectionIds = ['hero', 'services', 'about', 'contact']; 
+    const sections = sectionIds.map(id => document.getElementById(id));
+
+    const observerOptions = {
+      root: null,
+      rootMargin: '-50% 0px -50% 0px', 
+      threshold: 0, // intersection changes
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          setActiveSection(entry.target.id);
+        }
+      });
+    }, observerOptions);
+
+    sections.forEach(section => {
+      if (section) {
+        observer.observe(section);
+      }
+    });
+
+    return () => {
+      sections.forEach(section => {
+        if (section) {
+          observer.unobserve(section);
+        }
+      });
+    };
+  }, []);
+
   const scrollToSection = (id) => {
     const element = document.getElementById(id);
     if (element) {
@@ -25,37 +59,46 @@ const Navbar = () => {
         behavior: 'smooth',
         block: 'start',
       });
-      setShowMobileMenu(false); // Close mobile menu after clicking a link
+      setShowMobileMenu(false);
+      setActiveSection(id); //set active section on click 
     }
+  };
+
+  const getDesktopLinkClasses = (sectionId) => {
+    return `cursor-pointer hover:text-gray-400 ${activeSection === sectionId ? 'border-b border-[#FFAC00]' : 'text-gray-500'}`;
+  };
+
+  const getMobileLinkClasses = (sectionId) => {
+    return `cursor-pointer px-4 inline-block ${activeSection === sectionId ? 'border-b border-[#FFAC00]' : 'text-gray-800'}`;
   };
 
   return (
     <>
-      <div className='absolute top-0 left-0 w-full z-10'>
+      <div className='absolute top-0 left-0 w-full z-40'>
         <div className='bg-gray-100 flex justify-between items-center py-4 px-8 fixed w-full md:px-10 lg:px-32 font-bold'>
           <div>
             <img src={assets.agriconLogo} alt="" className="w-20"/>
           </div>
 
-          <ul className='hidden md:flex gap-7 lg:gap-7 text-gray-500 text-md px-4'>
+          <ul className='hidden md:flex gap-7 lg:gap-7 text-md px-4'>
             {/* Desktop Navigation Links */}
             <li>
-              <a onClick={(e) => { e.preventDefault(); scrollToSection('hero'); }} className='cursor-pointer hover:text-gray-400'>
+              <a onClick={(e) => { e.preventDefault(); scrollToSection('hero'); }} className={getDesktopLinkClasses('hero')}>
                 Home
               </a>
             </li>
             <li>
-              <a onClick={(e) => { e.preventDefault(); scrollToSection('services'); }} className='cursor-pointer hover:text-gray-400'>
+              <a onClick={(e) => { e.preventDefault(); scrollToSection('services'); }} className={getDesktopLinkClasses('services')}>
                 Services
               </a>
             </li>
             <li>
-              <a onClick={(e) => { e.preventDefault(); scrollToSection('about'); }} className='cursor-pointer hover:text-gray-400'>
+              <a onClick={(e) => { e.preventDefault(); scrollToSection('about'); }} className={getDesktopLinkClasses('about')}>
                 About
               </a>
             </li>
             <li>
-              <a onClick={(e) => { e.preventDefault(); scrollToSection('contact'); }} className='cursor-pointer hover:text-gray-400'>
+              <a onClick={(e) => { e.preventDefault(); scrollToSection('contact'); }} className={getDesktopLinkClasses('contact')}>
                 Contact Us
               </a>
             </li>
@@ -74,7 +117,6 @@ const Navbar = () => {
           />
         </div>
 
-        {/* mobile screen */}
         <div
           className={`md:hidden ${showMobileMenu ? "fixed w-96" : "h-0 w-0"}
                        left-0 top-0 bottom-0 overflow-hidden bg-gray-100 text-gray-800 transition-all drop-shadow-lg`}
@@ -92,22 +134,22 @@ const Navbar = () => {
           >
             {/* Mobile Navigation Links */}
             <li>
-              <a onClick={(e) => { e.preventDefault(); scrollToSection('home'); }} className='px-4 inline-block'>
+              <a onClick={(e) => { e.preventDefault(); scrollToSection('hero'); }} className={getMobileLinkClasses('hero')}>
                 Home
               </a>
             </li>
             <li>
-              <a onClick={(e) => { e.preventDefault(); scrollToSection('services'); }} className='px-4 inline-block'>
+              <a onClick={(e) => { e.preventDefault(); scrollToSection('services'); }} className={getMobileLinkClasses('services')}>
                 Services
               </a>
             </li>
             <li>
-              <a onClick={(e) => { e.preventDefault(); scrollToSection('about'); }} className='px-4 inline-block'>
+              <a onClick={(e) => { e.preventDefault(); scrollToSection('about'); }} className={getMobileLinkClasses('about')}>
                 About
               </a>
             </li>
             <li>
-              <a onClick={(e) => { e.preventDefault(); scrollToSection('contact'); }} className='px-4 inline-block'>
+              <a onClick={(e) => { e.preventDefault(); scrollToSection('contact'); }} className={getMobileLinkClasses('contact')}>
                 Contact Us
               </a>
             </li>

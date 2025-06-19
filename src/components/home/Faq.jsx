@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { FaqData } from "../../assets/assets";
 import { FaAngleDown, FaAngleUp } from "react-icons/fa";
+import { motion } from 'framer-motion'
 
 
 function Faq() {
@@ -16,17 +17,29 @@ function Faq() {
         <div className="bg-[#F7F7F7] w-full py-15 px-5 flex items-center justify-center sm:px-15">
             <div className="space-y-4">
                 <div className="text-center space-y-4 mb-10">
-                    <p className="font-bold text-[#02402D]">
+                    <motion.p className="font-bold text-[#02402D]"
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{opacity: 1, y: 0}}
+                        transition={{duration: 1.0, delay: 0.3}}
+                    >
                             Discover the Agric<span className='text-[#FFAC00]'>o</span>n Journey <br className="sm:hidden"/> Through Our Users.
-                    </p>
-                    <h2 className="text-2xl font-bold sm:text-4xl">
+                    </motion.p>
+                    <motion.h2
+                        className="text-2xl font-bold sm:text-4xl"
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{opacity: 1, y: 0}}
+                        transition={{duration: 1.0, delay: 0.5}}
+                    >
                         Frequently Asked Questions 
-                    </h2>
+                    </motion.h2>
                 </div>
                 <div className="px-5 space-y-5 lg:px-80">
                     {FaqData.map((faq, index) => (
-                        <div
+                        <motion.div
                             key={faq.id}
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{opacity: 1, y: 0}}
+                            transition={{duration: 1.0, delay: faq.id * 0.1 }}
                             className="border rounded-xl p-5 w-[100%]"
                             onClick={() => toggleAccordion(index)}
                         >
@@ -42,7 +55,7 @@ function Faq() {
                                 <p>{faq.answer}</p>
                              </div>
                             )}
-                    </div>
+                    </motion.div>
                     ))}
                 </div>
             </div>    
