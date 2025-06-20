@@ -1,23 +1,29 @@
-//how to use the images from the assets.js file
-//import the directory below
-import { assets } from "./assets/assets";
+import BookingForm from "./pages/infrastructure/BookingForm";
+import ComingSoon from "./pages/infrastructure/ComingSoon";
+import FacilityDetails from "./pages/infrastructure/FacilityDetails";
+import Facility from "./pages/infrastructure/Facility";
+import RootLayout from "./pages/infrastructure/Root";
+import SignUp from "./pages/signUp/SignUp";
+import BookingSummary from "./pages/infrastructure/BookingSummary";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
+const router = createBrowserRouter([
+  { path: "/", element: <SignUp /> },
+  {
+    path: "/facility",
+    element: <RootLayout />,
+    children: [
+      { path: ":id", element: <ComingSoon /> },
+      { index: true, element: <Facility /> },
+      { path: "facility-details", element: <FacilityDetails /> },
+      { path: "booking", element: <BookingForm /> },
+      { path: "booking-summary", element: <BookingSummary /> },
+    ],
+  },
+]);
 
 function App() {
-  
-
-  return (
-    <div className='text-red-700 text-3xl flex items-center justify-center min-h-screen'>
-      <div>
-          <div>
-      {/* render it this way in your various components */}
-              <img src={assets.agriconLogo} alt="agriCon"/>
-          </div>
-          <div>Welcome to Agricon</div>
-          </div>
-      </div>
-  )
+  return <RouterProvider router={router} />;
 }
-
 
 export default App;
