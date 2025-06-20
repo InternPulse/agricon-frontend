@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { assets } from "../assets/assets";
+import { assets } from "../../assets/assets";
 import { RiDashboardHorizontalLine } from "react-icons/ri";
 import { FiSettings } from "react-icons/fi";
 import { MdOutlineHeadphones } from "react-icons/md";

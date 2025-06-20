@@ -1,6 +1,6 @@
-import SideBar from "../components/sideBar";
-import { FaDashcube } from "react-icons/fa6";
-import { assets } from "../assets/assets";
+import SideBar from "../../components/Dashboard/sideBar";
+import TotalViewPerformanceCard from "../../components/Dashboard/Performance";
+import { assets } from "../../assets/assets";
 
 import {
   LineChart,
@@ -14,9 +14,9 @@ import {
   Tooltip,
   Legend,
 } from "recharts";
-import TotalViewPerformanceCard from "../components/performance";
-import { BiNotification } from "react-icons/bi";
-import { IoNotifications } from "react-icons/io5";
+import Transaction from "../../components/Transaction";
+import { FaBook } from "react-icons/fa6";
+import Header from "../../components/Dashboard/Header";
 
 const ChevronDownIcon = (props) => (
   <svg
@@ -35,45 +35,6 @@ const ChevronDownIcon = (props) => (
   </svg>
 );
 
-const UserIcon = (props) => (
-  <svg
-    fill="none"
-    stroke="currentColor"
-    viewBox="0 0 24 24"
-    xmlns="http://www.w3.org/2000/svg"
-    {...props}
-  >
-    <path
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      strokeWidth="2"
-      d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-    ></path>
-  </svg>
-);
-
-const CogIcon = (props) => (
-  <svg
-    fill="none"
-    stroke="currentColor"
-    viewBox="0 0 24 24"
-    xmlns="http://www.w3.org/2000/svg"
-    {...props}
-  >
-    <path
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      strokeWidth="2"
-      d="M10.325 4.317c.52-.52 1.362-.52 1.882 0l7.25 7.25c.52.52.52 1.362 0 1.882l-7.25 7.25c-.52.52-1.362.52-1.882 0l-7.25-7.25c-.52-.52-.52-1.362 0-1.882l7.25-7.25z"
-    ></path>
-    <path
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      strokeWidth="2"
-      d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-    ></path>
-  </svg>
-);
 const InfrastructureIcon = (props) => (
   <svg
     fill="none"
@@ -201,37 +162,7 @@ export default function Dashboard() {
         className=" flex-1 flex flex-col bg-white overflow-auto"
         style={{ scrollbarWidth: "none" }}
       >
-        <header className="h-20 w-full border-b border-[#dddddd] flex justify-between items-center bg-[#F7F9FC] px-5 sm:px-5 xl:px-10">
-          <div className="flex items-center lg:w-60">
-            <span className="text-[20px] font-medium text-[#344054]">
-              Facility Owner Dashboard
-            </span>
-          </div>
-          <div className="hidden md:flex items-center justify-center w-full max-w-sm sm:max-w-xs mb-4 sm:mb-0">
-            <input
-              type="text"
-              placeholder="Search here"
-              className="sm:w-9/10 max-w-[382px] px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 text-[14px] text-gray-700"
-            />
-          </div>
-          <div className="flex items-center space-y-4 sm:space-y-0 sm:space-x-4 justify-center sm:justify-end">
-            <div className="flex items-center h-10 gap-4 p-2 rounded-lg">
-              <div className="h-10 w-10 rounded-full bg-[#D5F0E8] flex justify-center items-center text-xl text-[#047D58]">
-                <IoNotifications />
-              </div>
-              <div className="flex items-center">
-                <div className="flex items-center space-x-2">
-                  <img src={assets.intern} /> <p>Interns</p>
-                </div>
-                <div>
-                  <select name="intern" id="intern">
-                    intern
-                  </select>
-                </div>
-              </div>
-            </div>
-          </div>
-        </header>
+        <Header/>
 
         <section className="flex flex-wrap md:flex-nowrap">
           <div className="firstt px-5 xl:pl-8 xl:pr-5 py-4 md:border-r border-[#D0D5DD]">
@@ -338,103 +269,74 @@ export default function Dashboard() {
                 </div>
               </div>
 
-              {/* Transaction History & Strategy CTA */}
-              <div className="w-full border border-[#D0D5DD] rounded-[12px] lg:col-span-2 bg-white  overflow-x-auto">
-                <table className="w-full divide-y divide-gray-200">
-                  <thead className="h-16">
-                    <tr>
-                      <th
-                        scope="col"
-                        className="px-6 py-3 text-left text-[24px] font-[500] text-[#1D2739]"
-                      >
-                        Transaction
-                      </th>
-                      <th
-                        scope="col"
-                        className="px-6 py-3 text-left text-[16px] font-medium text-gray-700"
-                      >
-                        Price
-                      </th>
-                      <th
-                        scope="col"
-                        className="px-6 py-3 text-left text-[16px] font-medium text-gray-700"
-                      >
-                        Status
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody className="bg-white divide-y divide-gray-200">
-                    {/* Mock Transaction Rows - with specific data */}
-                    <tr className="">
-                      <td className="px-6 py-4 whitespace-nowrap">
-                        <div className="text-sm font-medium text-gray-900">
-                          Cold Room-Akure Hub
-                        </div>
-                        <div className="text-xs text-gray-500">
-                          Jun 14th 2025
-                        </div>
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                        ₦27.000
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap">
-                        <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                          Completed
-                        </span>
-                        <div className="text-xs text-gray-500 mt-1">
-                          ZTWHT24FGNC
-                        </div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td className="px-6 py-4 whitespace-nowrap">
-                        <div className="text-sm font-medium text-gray-900">
-                          Solar Dryer-Wuse Zone 3
-                        </div>
-                        <div className="text-xs text-gray-500">
-                          May 27th 2025
-                        </div>
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                        ₦14.000
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap">
-                        <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800">
-                          Pending
-                        </span>
-                        <div className="text-xs text-gray-500 mt-1">
-                          FONCQ24TWHT
-                        </div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td className="px-6 py-4 whitespace-nowrap">
-                        <div className="text-sm font-medium text-gray-900">
-                          Milling Unit-Kano
-                        </div>
-                        <div className="text-xs text-gray-500">
-                          Feb 6th 2025
-                        </div>
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                        ₦32.000
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap">
-                        <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800">
-                          Failed
-                        </span>
-                        <div className="text-xs text-gray-500 mt-1">
-                          QWER24TPOCY
-                        </div>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
+              <Transaction
+                title="Booking history"
+                hvalue1="Price"
+                hvalue2="Staus"
+                details={[
+                  {
+                    img: <FaBook/>,
+                    size: true,
+                    title: "Cold Room-Akure Hub",
+                    date: "Jun 14th 2025",
+                    price: "₦27.000",
+                    status: "Completed",
+                    id: "ZTWHT24FGNC",
+                  },
+                  {
+                    img: '',
+                    size: true,
+                    title: "Solar Dryer-Wuse Zone 3",
+                    date: "May 27th 2025",
+                    price: "₦14.000",
+                    status: "Pending",
+                    id: "FONCQ24TWHT",
+                  },
+                  {
+                    img: '',
+                    size: true,
+                    title: "Milling Unit-Kano",
+                    date: "Feb 6th 2025",
+                    price: "₦32.000",
+                    status: "Failed",
+                    id: "QWER24TPOCY",
+                  },
+                ]}
+              />
+              <Transaction
+                title="Facilities"
+                hvalue1="Facility"
+                hvalue2="Payment type"
+                details={[
+                  {
+                    img: '',
+                    name: "Stanley Benson",
+                    facility: "Cold Room",
+                    payment: "Wallet",
+                  },
+                  {
+                    img: '',
+                    name: "Ladicia Godspower",
+                    facility: "Solar Dryer",
+                    payment: "Bank Transfer",
+                  },
+                  {
+                    img: '',
+                    name: "Kingsley Okoro",
+                    facility: "Milling Unit",
+                    payment: "Card",
+                  },
+                  {
+                    img: '',
+                    name: "Kingsley Okoro",
+                    facility: "Milling Unit",
+                    payment: "Card",
+                  },
+                ]}
+              />
 
               {/* Revenue Chart & Sales Report */}
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
-                {/* Revenue Chart (Recharts Line Chart) */}
+              {/* <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
                 <div className="bg-white p-6 rounded-xl shadow-md">
                   <h2 className="text-xl font-semibold text-gray-900 mb-4">
                     Revenue
@@ -449,8 +351,7 @@ export default function Dashboard() {
                     </div>
                   </div>
                   <div className="h-64 w-full">
-                    {" "}
-                    {/* Ensure height and width are set for ResponsiveContainer */}
+                    
                     <ResponsiveContainer width="100%" height="100%">
                       <LineChart
                         data={REVENUE_DATA}
@@ -482,17 +383,16 @@ export default function Dashboard() {
                     </ResponsiveContainer>
                   </div>
                   <div className="flex justify-around text-xs text-gray-600 mt-4">
-                    {/* XAxis labels already handle "Jun", "Aug" etc. */}
                   </div>
                 </div>
 
-                {/* Sales Report */}
+                //Sales Report
                 <div className="bg-white p-6 rounded-xl shadow-md">
                   <h2 className="text-xl font-semibold text-gray-900 mb-4">
                     Sales report
                   </h2>
                   <div className="space-y-4 mb-6">
-                    {/* Produce Processed */}
+                    //Produce Processed
                     <div>
                       <div className="flex justify-between text-sm text-gray-700 mb-1">
                         <span>Produce Processed</span>
@@ -503,10 +403,10 @@ export default function Dashboard() {
                           className="bg-green-500 h-2.5 rounded-full"
                           style={{ width: `${(124 / 400) * 100}%` }}
                         ></div>{" "}
-                        {/* Scaled width */}
+                        //Scaled width
                       </div>
                     </div>
-                    {/* Ongoing Project */}
+                    //Ongoing Project
                     <div>
                       <div className="flex justify-between text-sm text-gray-700 mb-1">
                         <span>Ongoing Project</span>
@@ -519,7 +419,7 @@ export default function Dashboard() {
                         ></div>
                       </div>
                     </div>
-                    {/* Produce Sold */}
+                    //Produce Sold
                     <div>
                       <div className="flex justify-between text-sm text-gray-700 mb-1">
                         <span>Produce Sold</span>
@@ -539,7 +439,7 @@ export default function Dashboard() {
                       </span>
                     </div>
                   </div>
-                  {/* Horizontal scale */}
+                  //Horizontal scale 
                   <div className="flex justify-between text-xs text-gray-500 mt-6 pt-2 border-t border-gray-200">
                     <span>0</span>
                     <span>100</span>
@@ -548,12 +448,12 @@ export default function Dashboard() {
                     <span>400</span>
                   </div>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
           <div className="secondd px-5 py-8 w-[312px] h-screen flex flex-col items-center gap-5">
-            {/* Total View Performance Card (Recharts Pie Chart) */}
             <TotalViewPerformanceCard />
+
             <div className="bg-[#02402D] rounded-xl w-full  p-6">
               <div className="text-white w-full flex flex-col items-center gap-5">
                 <div className="self-start p-4 w-22 h-22 grid place-items-center bg-[#101928] rounded-full">
