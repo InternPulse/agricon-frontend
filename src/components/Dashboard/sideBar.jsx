@@ -1,109 +1,102 @@
 import React, { useState } from "react";
+import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
 import { assets } from "../../assets/assets";
-import { RiDashboardHorizontalLine } from "react-icons/ri";
-import { FiSettings } from "react-icons/fi";
-import { MdOutlineHeadphones } from "react-icons/md";
-import { FaRegBuilding } from "react-icons/fa6";
+import { LuLayoutDashboard } from "react-icons/lu";
+import { LuBoxes } from "react-icons/lu";
+import { TbReportSearch } from "react-icons/tb";
+import { MdOutlineSettings } from "react-icons/md";
+import { AiOutlineCustomerService } from "react-icons/ai";
+import Donut from "./Donut";
+import { FcCustomerSupport } from "react-icons/fc";
 
-const SideBar = () => {
+const SideBar = ({ role }) => {
   const [activeMenuItem, setActiveMenuItem] = useState("dashboard");
-
-  const BookingHistoryIcon = (props) => (
-    <svg
-      fill="none"
-      stroke="currentColor"
-      viewBox="0 0 24 24"
-      xmlns="http://www.w3.org/2000/svg"
-      {...props}
-    >
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth="2"
-        d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
-      ></path>
-    </svg>
-  );
 
   return (
     <div
-    className="sidebar sticky top-0 left-0 overflow-y-scroll h-screen z-50 hidden lg:flex flex-col w-[264px] bg-[#02402D] text-white shadow-xl py-5 px-4"
-      style={{ scrollbarWidth: "none" }}>
-    <div
-      className="flex flex-col gap-5"
+      className="sidebar sticky top-0 left-0 overflow-y-scroll h-screen z-50 hidden lg:flex flex-col w-[264px] bg-[#02402D] text-white shadow-xl py-5 px-4"
+      style={{ scrollbarWidth: "none" }}
     >
-      <div className="flex items-center h-[66px] border-b-[0.5px] border-[#FFAC00]/70 h-[66px] pl-2 pb-5">
-        <img src={assets.agriconLogo2} alt="Agrion Logo" className="w-25" />
-      </div>
-      <div className="flex flex-col justify-between h-full">
-        <nav className="flex flex-col gap-4">
-          {[
-            {
-              id: "dashboard",
-              label: "Dashboard",
-              icon: RiDashboardHorizontalLine,
-            },
-            {
-              id: "infrastructure",
-              label: "Infrastructure",
-              icon: FaRegBuilding,
-            },
-            {
-              id: "booking-history",
-              label: "Booking History",
-              icon: BookingHistoryIcon,
-            },
-            { id: "settings", label: "Settings", icon: FiSettings },
-            {
-              id: "customer-support",
-              label: "Customer Support",
-              icon: MdOutlineHeadphones,
-            },
-          ].map((item) => (
-            <button
-              key={item.id}
-              onClick={() => setActiveMenuItem(item.id)}
-              className={`w-full flex items-center h-10 pl-2 rounded-lg text-left transition-colors duration-200
+      <div className="flex flex-col gap-5">
+        <div className="flex items-center h-[66px] border-b-[0.5px] border-[#FFAC00]/70 h-[66px] pl-2 pb-5">
+          <img src={assets.agriconLogo2} alt="Agrion Logo" className="w-25" />
+        </div>
+        <div className="flex flex-col justify-between h-full">
+          <nav className="flex flex-col gap-4 mb-15">
+            {[
+              {
+                id: "dashboard",
+                label: "Dashboard",
+                icon: LuLayoutDashboard,
+              },
+              {
+                id: "infrastructure",
+                label:
+                  role === "Facility Owner"
+                    ? "My Facilities"
+                    : "Infrastructure",
+                icon: LuBoxes,
+              },
+              {
+                id: "booking-history",
+                label:
+                  role === "Facility Owner" ? "Bookings" : "Booking History",
+                icon: TbReportSearch,
+              },
+              {
+                id: "settings",
+                label: role === "Facility Owner" ? "Earnings" : "Settings",
+                icon: MdOutlineSettings,
+              },
+              role === "Facility Owner"
+                ? {
+                    id: "profile",
+                    label: "Profile",
+                    icon: AiOutlineCustomerService,
+                  }
+                : "",
+            ].map((item) => (
+              <button
+                key={item.id}
+                onClick={() => setActiveMenuItem(item.id)}
+                className={`w-full flex items-center h-10 pl-2 rounded-lg text-left hover:bg-green-400/40 transition-colors duration-200
                           ${
                             activeMenuItem === item.id
                               ? "bg-[#FFAC00] text-white font-semibold shadow-md"
                               : "text-white"
                           }`}
-            >
-              <item.icon className="w-5 h-5 mr-3" />
-              <span className="text-[14px]">{item.label}</span>
-            </button>
-          ))}
-        </nav>
-        <div className="profile py-5 px-3">
-          {" "}
-          <div className="bg-white flex flex-col gap-5 p-4 rounded-xl shadow-inner mb-4">
-            <div className="flex items-center mb-3">
-              <div className="top flex">
-                <div className="circle relative w-12 h-12 flex items-center justify-center rounded-full overflow-hidden">
-                  <div className="absolute border-r-4  border-green-800 w-10 h-10 bg-white rounded-full flex items-center justify-center">
-                    <span className="text-[10px] font-bold text-black">
-                      62%
-                    </span>
+              >
+                <item.icon className="w-5 h-5 mr-3" />
+                <span className="text-[14px]">{item.label}</span>
+              </button>
+            ))}
+          </nav>
+          <div className="profile py-5 px-3">
+            {" "}
+            <div className="bg-white flex flex-col gap-5 p-4 rounded-xl shadow-inner mb-4">
+              <div className="flex items-center mb-3">
+                <div className="top flex gap-1">
+                  <div className="w-full">
+                    <Donut completionPercentage={62} />
+                  </div>
+                  <div>
+                    <h3 className="text-[12px] font-semibold text-[#1D2739]">
+                      Refer & Earn
+                    </h3>
+                    <p className="text-[9px] text-[#344054]">
+                      Invite fellow farmers to join AGRICON and earn rewards
+                      when they sign up and book their first facility
+                    </p>
                   </div>
                 </div>
-                <div className="ml-3">
-                  <h3 className="text-[12px] font-semibold text-[#1D2739]">
-                    Complete Profile
-                  </h3>
-                  <p className="text-[9px] text-[#344054]">
-                    Complete profile to unlock all features
-                  </p>
-                </div>
               </div>
+              <button className="w-full text-left flex items-center justify-center px-3 py-2 bg-[#02402D] text-white rounded-lg shadow-sm hover:bg-green-600 transition mb-2 text-sm font-medium">
+                Verify Email
+              </button>
             </div>
-            <button className="w-full text-left flex items-center justify-center px-3 py-2 bg-[#02402D] text-white rounded-lg shadow-sm hover:bg-green-600 transition mb-2 text-sm font-medium">
-              Verify Email
-            </button>
           </div>
         </div>
       </div>
-    </div>
     </div>
   );
 };

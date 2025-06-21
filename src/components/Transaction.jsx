@@ -1,6 +1,6 @@
 import React from "react";
 import { FaBook, FaUser } from "react-icons/fa6";
-
+import { assets } from "../assets/assets";
 const Transaction = ({ title, hvalue1, hvalue2, details }) => {
   return (
     <div className="w-full border border-[#D0D5DD] rounded-[12px] lg:col-span-2 bg-white  overflow-x-auto">
@@ -43,7 +43,7 @@ const Transaction = ({ title, hvalue1, hvalue2, details }) => {
                       item.size ? "rounded-full" : ""
                     }`}
                   >
-                    {item.img || <FaUser />}
+                    {item.img ? <img src={item.img} alt="pic" /> :  item.icon}
                   </div>
                   <div>
                     <div className="text-sm font-medium text-gray-900">
