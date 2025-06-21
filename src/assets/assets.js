@@ -19,14 +19,18 @@ import transport from './transport.png'
 import about from './about.jpg'   
 import mission from './mission.jpg'   
 import impact from './impact.jpg'   
-import contact from './contact.jpg'   
+import contact from './contact.jpg' 
+import agriconLogoSvg from './agriconLogo.svg'  
+
+
 
 export const assets = {
     agriconLogo,
+    agriconLogoSvg,
     agriconLogo2,
-    intern,
     authImage,
     otp,
+    intern,
     logistics,
     protectProduce,
     sharedInfra,

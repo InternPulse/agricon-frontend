@@ -13,6 +13,8 @@ import Footer from './components/home/Footer';
 import AboutUs from './pages/home/AboutUs';
 import Contact from './pages/home/Contact';
 import Dashboard from "./pages/Dashboard/Dashboard";
+import Settings from "./pages/Farmer-Profile-Management/Settings";
+import ChangePassword from "./pages/Farmer-Profile-Management/changePassword"; 
 
 function App() {
   return (
@@ -31,7 +33,9 @@ function App() {
           <Route path='/reset-password' element={<PasswordReset />}/>
           <Route path='/reset-success' element={<ResetPassword />}/>
           <Route path='/otp' element={<OTP />}/>
-          <Route path='/dashboard' element={<Dashboard />}/>
+          <Route path='/dashboard' element={<Dashboard />} />
+          <Route path="/settings" element={<Settings />} />
+          <Route path="/settings/change-password" element={<ChangePassword />} />
         </Routes>
       </div>
       <Footer />
@@ -40,4 +44,3 @@ function App() {
 }
 
 export default App;
-
