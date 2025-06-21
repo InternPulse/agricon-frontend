@@ -1,5 +1,5 @@
 import authImage from "../../assets/authImage.png";
-import agriconLogo from "../../assets/agriconLogo.png";
+import agriconLogo from "../../assets/agriconLogo.png"
 import Carousels from "../../components/authentication/Carousels";
 import Credentials from "../../components/authentication/Credentials";
 

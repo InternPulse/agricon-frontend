@@ -15,6 +15,12 @@ import Contact from './pages/home/Contact';
 import Dashboard from "./pages/Dashboard/Dashboard";
 import Settings from "./pages/Farmer-Profile-Management/Settings";
 import ChangePassword from "./pages/Farmer-Profile-Management/changePassword"; 
+import BookingForm from "./pages/infrastructure/BookingForm";
+// import ComingSoon from "./pages/infrastructure/ComingSoon";
+import FacilityDetails from "./pages/infrastructure/FacilityDetails";
+import Facility from "./pages/infrastructure/Facility";
+import BookingSummary from "./pages/infrastructure/BookingSummary";
+
 
 function App() {
   return (
@@ -36,6 +42,10 @@ function App() {
           <Route path='/dashboard' element={<Dashboard />} />
           <Route path="/settings" element={<Settings />} />
           <Route path="/settings/change-password" element={<ChangePassword />} />
+          <Route path="/facility" element={<Facility />} />
+          <Route path="/facility-details" element={<FacilityDetails />} />
+          <Route path="/bookings" element={<BookingForm />} />
+          <Route path="/booking-summary" element={<BookingSummary />} />
         </Routes>
       </div>
       <Footer />
@@ -44,3 +54,5 @@ function App() {
 }
 
 export default App;
+
+

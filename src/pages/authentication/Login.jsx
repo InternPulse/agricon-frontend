@@ -1,5 +1,6 @@
 import React from 'react'
 import { assets } from "../../assets/assets";
+import { Link } from 'react-router-dom'
 
 const Login = () => {
   return (
@@ -52,9 +53,9 @@ const Login = () => {
                 className="w-full px-4 py-2 border rounded-md bg-gray-100 text-sm focus:outline-none focus:ring-2 focus:ring-green-700 text-gray-700"
               />
               <div className="text-right mt-1 w-sm">
-                <a href="/forgot-password" className="text-sm text-green-900 hover:underline">
+                <Link to="/forgot-password" className="text-sm text-green-900 hover:underline">
                   Forgot password?
-                </a>
+                </Link>
               </div>
             </div>
             <button className="w-full bg-[#02402D] text-white py-2 rounded-md hover:bg-green-800 transition">
