@@ -8,23 +8,31 @@ import ForgotPassword from './pages/authentication/ForgotPassword';
 import ResetPassword from './pages/authentication/ResetPassword'
 import Home from './pages/home/Home'
 import Navbar from './components/home/Navbar';
+import Services from './pages/home/Services';
+import Footer from './components/home/Footer';
+import AboutUs from './pages/home/AboutUs';
+import Contact from './pages/home/Contact';
 
 function App() {
   return (
     <div>
       <Navbar />
       <div>
-      <Routes>
-        <Route path='/' element={<Home />}/>
-        <Route path='/roles' element={<SignupLanding />}/>
-        <Route path='/signup' element={<SignUp />}/>
-        <Route path='/login' element={<Login />}/>
-        <Route path='/forgot-password' element={<ForgotPassword />}/>
-        <Route path='/reset-password' element={<PasswordReset />}/>
-        <Route path='/reset-success' element={<ResetPassword />}/>
-        <Route path='/otp' element={<OTP />}/>
-    </Routes>
-       </div>
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='/services' element={<Services />}/>
+          <Route path='/about' element={<AboutUs />}/>
+          <Route path='/contact' element={<Contact />}/>
+          <Route path='/roles' element={<SignupLanding />}/>
+          <Route path='/signup' element={<SignUp />}/>
+          <Route path='/login' element={<Login />}/>
+          <Route path='/forgot-password' element={<ForgotPassword />}/>
+          <Route path='/reset-password' element={<PasswordReset />}/>
+          <Route path='/reset-success' element={<ResetPassword />}/>
+          <Route path='/otp' element={<OTP />}/>
+        </Routes>
+      </div>
+      <Footer />
     </div>
   )
 }
