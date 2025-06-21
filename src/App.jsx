@@ -12,6 +12,7 @@ import Services from './pages/home/Services';
 import Footer from './components/home/Footer';
 import AboutUs from './pages/home/AboutUs';
 import Contact from './pages/home/Contact';
+import Dashboard from "./pages/Dashboard/Dashboard";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
           <Route path='/reset-password' element={<PasswordReset />}/>
           <Route path='/reset-success' element={<ResetPassword />}/>
           <Route path='/otp' element={<OTP />}/>
+          <Route path='/dashboard' element={<Dashboard />}/>
         </Routes>
       </div>
       <Footer />
@@ -38,3 +40,4 @@ function App() {
 }
 
 export default App;
+

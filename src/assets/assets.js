@@ -1,7 +1,8 @@
-import agriconLogo from './agriconLogo.png'
-import authImage from './authImage.png'
-import otp from './otp.png'
-import logistics from './logistics.png'
+import agriconLogo from "./agriconLogo.png";
+import agriconLogo2 from "./agriconLogo.svg";
+import authImage from "./authImage.png";
+import intern from "./intern.png";
+import otp from "./otp.png";import logistics from './logistics.png'
 import protectProduce from './protectProduce.png'
 import sharedInfra from './sharedInfra.png'
 import smartSales from './smartSales.png'
@@ -22,6 +23,8 @@ import contact from './contact.jpg'
 
 export const assets = {
     agriconLogo,
+    agriconLogo2,
+    intern,
     authImage,
     otp,
     logistics,
