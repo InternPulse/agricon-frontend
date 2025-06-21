@@ -28,7 +28,7 @@ export default function Sidebar() {
 
   return (
     <>
-      <aside className="sticky top-0 flex flex-col gap-4 bg-[#02402D] h-screen md:w-64 sm:min-w-54 pt-3.5 px-5 pb-7.5 shrink-0">
+      <aside className="sticky top-0 flex flex-col gap-4 bg-[#02402D] h-screen max-w-64 md:w-full pt-3.5 px-5 pb-7.5">
         <div className="pb-5 sm:pl-2 border-b border-[#FFAC00]">
           <div className="max-sm:flex max-sm:justify-center">
             <IoMdMenu size={30} className="sm:hidden text-white" />

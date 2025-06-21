@@ -4,7 +4,7 @@ import { facilityDetails } from "../../data.jsx";
 export default function Facility() {
   return (
     <>
-      <div className="grid grid-cols-3 gap-6 px-2 mb-[4.5rem]">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-2 mb-[4.5rem]">
         {facilityDetails.map((item, index) => (
           <div
             key={index}
@@ -19,7 +19,7 @@ export default function Facility() {
         ))}
       </div>
 
-      <Link to="/facility/booking" className="flex justify-center items-center rounded-lg py-2.5 mx-auto bg-[#02402D] text-white w-[756px]">Book Now</Link>
+      <Link to="/facility/booking" className="flex justify-center items-center rounded-lg py-2.5 mx-auto bg-[#02402D] text-white max-w-[756px]">Book Now</Link>
     </>
   );
 }

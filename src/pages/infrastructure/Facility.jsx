@@ -46,7 +46,7 @@ export default function Facility() {
             <h2 className="max-xl:mb-2 text-[#667185] mb-4">
               42 facilities available across 12 locations in Nigeria
             </h2>
-            <div className="flex items-center gap-2 pl-4 pr-3 lg:mb-5 border border-[#8B8B8B] rounded-lg h-[36px] w-[412px]">
+            <div className="flex items-center gap-2 pl-4 pr-3 lg:mb-5 border border-[#8B8B8B] rounded-lg h-[36px] ">
               <IoIosSearch />
               <input
                 type="text"

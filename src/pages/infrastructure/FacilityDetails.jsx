@@ -4,7 +4,7 @@ import Facility from "../../components/infrastructure/Facility";
 export default function FacilityDetails() {
   return (
     <div>
-      <div className="grid grid-cols-2 gap-4 mb-12">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-12">
         <img
           src={goldenGrains}
           alt="Golden grains"
