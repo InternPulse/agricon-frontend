@@ -34,20 +34,24 @@ const menuItems = [
     id: "infrastructure",
     label: "Infrastructure",
     icon: FaRegBuilding,
-    to: "/infrastructure", // placeholder
+    to: "", // placeholder
   },
   {
     id: "booking-history",
     label: "Booking History",
     icon: BookingHistoryIcon,
-    to: "/booking-history", // placeholder
+    to: "", // placeholder
   },
-  { id: "settings", label: "Settings", icon: FiSettings, to: "/settings" },
+  { 
+    id: "settings", 
+    label: "Settings", 
+    icon: FiSettings, 
+    to: "/settings" },
   {
     id: "customer-support",
     label: "Customer Support",
     icon: MdOutlineHeadphones,
-    to: "/customer-support", // placeholder
+    to: "", // placeholder
   },
 ];
 

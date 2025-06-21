@@ -3,9 +3,11 @@ import SideBar from "../../components/sideBar";
 import { HiBell } from "react-icons/hi";
 import { IoIosArrowForward } from "react-icons/io";
 import { Link } from "react-router-dom";
-import { IoIosArrowDown } from "react-icons/io";
+import { IoIosArrowDown, IoIosLogOut } from "react-icons/io";
+import UserDropdown from "../../components/Farmer-Profile-Management/userDropdown";
 
 export default function Settings() {
+  const [showDropdown, setShowDropdown] = useState(false);
   const [activeTab, setActiveTab] = useState("Profile");
   const [desktop, setDesktop] = useState(true);
   const [sms, setSms] = useState(true);
@@ -39,7 +41,7 @@ export default function Settings() {
               <img src="user-avatar.jpg" alt="User" className="w-8 h-8 rounded-full border" />
               <span className="text-sm font-medium text-gray-700">Interns</span>
               <div className="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-                <IoIosArrowDown />
+                <UserDropdown />
               </div>
             </div>
           </div>
@@ -192,7 +194,25 @@ export default function Settings() {
                     <Link to="#">
                       <div className="flex items-center gap-2">
                         <div className="text-sm text-[#02402D] font-semibold">Verify Email</div>
-                        <div><IoIosArrowForward /></div>
+                        <IoIosArrowDown
+                          className="w-4 h-4 text-gray-500 cursor-pointer"
+                          onClick={() => setShowDropdown(!showDropdown)}
+                        />
+                        {/* Dropdown Menu */}
+                        {showDropdown && (
+                          <div className="absolute top-14 right-0 z-50 bg-white border border-gray-200 shadow-lg rounded-lg w-40">
+                            <button
+                              className="flex items-center gap-2 text-red-600 px-4 py-3 text-sm font-medium hover:bg-gray-50 w-full"
+                              onClick={() => {
+                                // perform logout here
+                                console.log("Logging out...");
+                              }}
+                            >
+                              <IoIosLogOut className="w-5 h-5" />
+                              Log out
+                            </button>
+                          </div>
+                        )}
                       </div>
                     </Link>
                   </div>
