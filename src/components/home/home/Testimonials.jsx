@@ -1,7 +1,7 @@
 import { FaAngleRight } from "react-icons/fa";
 import { VscQuote } from "react-icons/vsc";
 import { Link } from "react-router-dom";
-import { assets } from "../../assets/assets";
+import { assets } from "../../../assets/assets";
 import { motion } from 'framer-motion'
 
 function Testimonials() {

@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { assets, howWeWorkData } from "../../assets/assets";
+import { assets, howWeWorkData } from "../../../assets/assets";
 import { FaAngleRight } from "react-icons/fa";
 import { motion } from 'framer-motion'
 

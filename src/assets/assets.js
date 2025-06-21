@@ -9,6 +9,16 @@ import whyimage from './whyImage.png'
 import howwework from './howwework.png'
 import user1 from './user1.png'
 import flagnigeria from './flagnigeria.png'
+import servicehub from './servicehubimg.jpg'
+import servicehero from './servicehero.jpg'
+import storageHub from './storageHub.png'   
+import drying from './drying.png'   
+import processing from './processing.png'   
+import transport from './transport.png'   
+import about from './about.jpg'   
+import mission from './mission.jpg'   
+import impact from './impact.jpg'   
+import contact from './contact.jpg'   
 
 export const assets = {
     agriconLogo,
@@ -22,6 +32,16 @@ export const assets = {
     howwework,
     user1,
     flagnigeria,
+    servicehub,
+    servicehero,
+    storageHub,
+    drying,
+    processing,
+    transport,
+    mission,
+    about,
+    impact,
+    contact,
 }
 
 export const howWeWorkData = [
@@ -56,21 +76,49 @@ export const FaqData = [
     {
         id: 2,
         question: "Where does Agricon operates",
-        answer: "Yes! CushPay enables seamless global transactions, bill payments, and virtual dollar card access for immigrants worldwide."
+        answer: "AgriCon currently operates across key agricultural regions in Nigeria, focusing on areas with high concentrations of smallholder farmers and significant post-harvest losses.The platform continues to expand its network of shared infrastructure—such as dryers, cold rooms, and processing plants—to improve access nationwide."
     },
     {
         id: 3,
         question: "Do you offer tailored solutions for different types of farms?",
-        answer: "We assist with Global Talent Visa, Self-Sponsorship, work permits, and resolving visa transition issues efficiently and faster."
+        answer: "Yes. AgriCon offers flexible, farm-specific solutions based on crop type, location, and scale of operation. Whether you're cultivating tomatoes, yams, grains, or other produce, our AI-powered platform recommends the most relevant infrastructure and services—ensuring your farm gets the right support at the right time."
     },
     {
         id: 4,
         question: "Who can benefits from Agricon’s services?",
-        answer: "Yes! Our Job Finder and Scholarship Finder connect users with funding, sponsorships, career opportunities and good living conditions."
+        answer: "AgriCon is designed for smallholder farmers, cooperatives, agribusinesses, and agricultural service providers. Whether you're an individual farmer seeking cold storage or a farming group looking to jointly access a processing plant, our platform ensures affordable, real-time access to critical infrastructure."
     },
     {
         id: 5,
         question: "How do Cooperative bookings works?",
-        answer: "Imisi is an AI powered chatbox that provides instant migration support, visa insights, and financial advice through AI-powered chat assistance."
+        answer: "Cooperative bookings allow multiple farmers to jointly reserve and share access to infrastructure like dryers and cold rooms. Using our mobile/web platform or USSD service, users can see real-time availability, form booking groups, and split costs—making access more affordable and efficient for everyone involved."
     }
 ]
+
+ export  const hubData = [
+     {
+         id: 1,
+         image: storageHub,
+         name: "Storage Facilities",
+         desc: "Secure, accessible storage options to protect your harvest and reduce losses.", 
+     },
+     {
+        id: 2,
+        image: drying,
+        name: "Drying Floors & Units",
+        desc: "Prevent spoilage and improve crop quality with clean, efficient drying spaces.",   
+     },
+     {
+        id: 3,
+        image: processing,
+        name: "Processing & Packaging",
+        desc: "Add value to your produce with local processing and professional packaging services.",   
+     },
+     {
+        id: 4,
+        image: transport,
+        name: "Transport Services",
+        desc: "Get your produce to market faster with verified, on-time delivery from trusted drivers near you.",   
+     },
+]
+

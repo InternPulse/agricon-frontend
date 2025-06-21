@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { FaqData } from "../../assets/assets";
+import { FaqData } from "../../../assets/assets";
 import { FaAngleDown, FaAngleUp } from "react-icons/fa";
 import { motion } from 'framer-motion'
 
@@ -44,7 +44,7 @@ function Faq() {
                             onClick={() => toggleAccordion(index)}
                         >
                             <div className="flex items-center justify-between gap-10">
-                                <h4 className="text-lg font-semibold">{faq.question}</h4>
+                                <h4 className="text-lg font-semibold text-[#02402D]">{faq.question}</h4>
                                 <p>
                                     {expandedIndex === index ? <FaAngleUp className='w-3'/> : <FaAngleDown className='w-3'/>}
                                 </p>
