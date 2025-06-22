@@ -23,7 +23,7 @@ const Navbar = () => {
   return (
     <>
       <div className='absolute top-0 left-0 w-full z-40'>
-        <div className='bg-gray-100 flex justify-between items-center py-4 px-8 md:px-10 lg:px-32 font-bold'>
+        <div className='bg-gray-100 w-full flex justify-between fixed items-center py-4 px-8 md:px-10 lg:px-32 font-bold'>
           <Link to="/">
             <img src={assets.agriconLogo} alt="" className="w-20"/>
           </Link>
@@ -45,10 +45,10 @@ const Navbar = () => {
           </ul>
           <ul className='hidden md:flex md:items-right gap-x-6 text-gray-50'>
             <li className='hover:cursor-pointer bg-[#02402D] rounded-full flex px-4 py-1 font-bold'>
-              <NavLink to='/signup'>Get Started</NavLink>
+              <Link to='/signup'>Get Started</Link>
             </li>
             <li className='hover:cursor-pointer text-[#FFAC00] border border-[#FFAC00] rounded-full flex px-6 py-1 font-bold'>
-              <NavLink to='/login'>Login</NavLink>
+              <Link to='/login'>Login</Link>
             </li>
           </ul>
           <GiHamburgerMenu
@@ -92,14 +92,14 @@ const Navbar = () => {
 
             <ul className='md:flex md:items-right gap-x-6 text-gray-50 space-y-3'>
               <li className='hover:cursor-pointer bg-[#02402D] rounded-full flex px-4 py-1 font-bold'>
-                <NavLink to='/signup' onClick={() => setShowMobileMenu(false)}>
+                <Link to='/signup' onClick={() => setShowMobileMenu(false)}>
                   Get Started
-                </NavLink>
+                </Link>
               </li>
               <li className='hover:cursor-pointer text-[#FFAC00] border border-[#FFAC00] rounded-full flex px-4 py-1 font-bold'>
-                <NavLink to='/login' onClick={() => setShowMobileMenu(false)}>
+                <Link to='/login' onClick={() => setShowMobileMenu(false)}>
                   Login
-                </NavLink>
+                </Link>
               </li>
             </ul>
           </ul>
