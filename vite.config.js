@@ -8,4 +8,19 @@ export default defineConfig({
     react(),
     tailwindcss(),
   ],
+  resolve: {
+    alias: {
+      '@': '/src',
+      'assets': '/src/assets',
+      'components': '/src/components',
+      'pages': '/src/pages',
+      'api': '/src/api',
+    }
+  }, 
+
+   server: {
+    proxy: {
+      '/api': 'https://agricon-django-backend.onrender.com',
+    }
+  }
 })

@@ -1,9 +1,10 @@
 import React from "react";
 import agriconlogo from "../../assets/agriconLogo.png";
 import authImage from "../../assets/authimage.png";
+import { Link } from "react-router-dom";
 
 
-const ResetPassword = () => {
+const SuccessPasswordReset = () => {
   return (
     <div className="min-h-screen flex lg:items-center justify-center bg-white p-4">
       <div className="flex flex-col lg:flex-row shadow-lg w-full max-w-5xl rounded-lg overflow-hidden">
@@ -19,19 +20,23 @@ const ResetPassword = () => {
 
         {/* Confirmation Message */}
         <div className="flex flex-col justify-center items-center p-8 lg:w-1/2">
-          <div className="text-green-700 text-4xl mb-4">
+          <div className="text-green-700 text-4xl my-14 md:my-36 lg:my-0 md:mb-4">
             ✓
           </div>
           <p className="text-center text-gray-800 text-lg mb-6">
             You have successfully<br />reset your password!
           </p>
+        
+        <Link  to="/login" className="">
+        
           <button className="bg-green-900 hover:bg-green-800 text-white text-sm py-2 px-16 md:px-25 rounded-md">
             Log In
           </button>
+        </Link>
         </div>
       </div>
     </div>
   );
 };
 
-export default ResetPassword;
+export default SuccessPasswordReset;
