@@ -12,12 +12,14 @@ import { MdWallet } from "react-icons/md";
 
 export const cardData = [
   {
+    id: 1,
     icon: dryingIcon,
     alt: "Drying Facilities",
     label: "Drying Facilities",
     description: "Grain and crop drying systems and equipment",
   },
   {
+    id: 2,
     icon: processingIcon,
     alt: "Processing Units",
     label: "Processing Units",
@@ -73,26 +75,31 @@ export const cardData = [
 // ✅ Sample facilityData (data.js)
 export const facilityData = [
   {
+    id: 1,
     name: "Golden Grains Dryer",
     type: "Dryer",
     address: "Imota-Ikorodu, Lagos State",
   },
   {
+    id: 2,
     name: "AgroPrime Hub",
     type: "Processing Unit",
     address: "Ketu-Ereyun (between Epe-Ketu)",
   },
   {
+    id: 3,
     name: "SunHarvest Drying",
     type: "Dryer",
     address: "Mile 12 International Market",
   },
   {
+    id: 4,
     name: "SafeGrain Silo Depot",
     type: "Storage Facility",
     address: "7B Abiloye Street, Ijegun",
   },
   {
+    id: 5,
     name: "Standard Silos",
     type: "Storage Facility",
     address: "Mile 2, Central Area District",

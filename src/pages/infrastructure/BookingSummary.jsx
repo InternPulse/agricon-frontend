@@ -77,7 +77,7 @@ export default function BookingSummary() {
   const total = subTotal + shipping + vat;
 
   return (
-    <div className="max-w-2xl mx-auto bg-white p-6 rounded-2xl shadow-md mt-10">
+    <div className="w-full bg-white p-6 rounded-2xl shadow-md mt-10">
       <img
         src={agriconLogo}
         alt="agricon logo"

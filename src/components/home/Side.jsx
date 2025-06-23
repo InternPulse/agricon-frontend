@@ -44,52 +44,79 @@ function Side () {
             </div>
 
             <div className="hidden md:inline-block bg-[#02402D]
-                            min-h-screen fixed  px-4 w-64 border-r text-white border-[#FFAC00]">
-                <div className='flex items-center space-x-1 font-bold border-b border-[#FFAC00] py-5'>
+                            min-h-screen fixed  w-64 border-r text-white border-[#FFAC00]">
+                <div className='flex items-center space-x-1 font-bold border-b border-[#FFAC00] py-4'>
                     <img src={assets.agriconLogo2} alt="Agricon_img" className='ml-6'/>
                 </div>
-                <ul className='flex flex-col mt-5  font-bold space-y-6'>
+                <ul className='flex flex-col mt-5  font-bold space-y-3 px-4'>
 
                     <Link
-                        to='/'
-                        className={`flex items-center py-3 px-2 space-x-4 rounded-lg ${isActive('/') ? activeClass : inactiveClass}`}
+                        to='/user'
+                        className={`flex items-center py-3 px-2 space-x-4 rounded-lg ${isActive('/user') ? activeClass : inactiveClass}`}
                     >
                         <MdOutlineDashboard className="w-5 h-5" />
                         <span className='hidden md:inline'>Dashboard</span>
                     </Link>
 
                     <Link
-                        to='/infrastructure'
-                        className={`flex items-center py-3 px-2 space-x-4 rounded-lg ${isActive('/market') ? activeClass : inactiveClass}`}
+                        to='/user/facility'
+                        className={`flex items-center py-3 px-2 space-x-4 rounded-lg ${isActive('/user/facility') ? activeClass : inactiveClass}`}
                     >
                         <FaCubes className="w-5 h-5" />
-                        <span className='hidden md:inline'>Infrastructure</span>
+                        <span className='hidden md:inline'>Facilities</span>
                     </Link>
 
                     <Link
-                        to='/booking-history'
-                        className={`flex items-center py-3 px-2 space-x-4 rounded-lg ${isActive('/convert') ? activeClass : inactiveClass}`}
+                        to='/user/bookings'
+                        className={`flex items-center py-3 px-2 space-x-4 rounded-lg ${isActive('/user/bookings') ? activeClass : inactiveClass}`}
                     >
                         <AiOutlineFileSearch className="w-5 h-5" />
                         <span className='hidden md:inline'>Booking History</span>
                     </Link>
 
-                    <Link
-                        to='payment'
-                        className={`flex items-center py-3 px-2 space-x-4 rounded-lg ${isActive('/portfolio') ? activeClass : inactiveClass}`}
+                    {/* <Link
+                        to='/user/payment'
+                        className={`flex items-center py-3 px-2 space-x-4 rounded-lg ${isActive('/user/payment') ? activeClass : inactiveClass}`}
                     >
                         <FaMoneyBillAlt className="w-5 h-5" />
                         <span className='hidden md:inline'>Payments</span>
-                    </Link>
+                    </Link> */}
 
                     <Link
-                        to='settings'
-                        className={`flex items-center py-3 px-2 space-x-4 rounded-lg ${isActive('/settings') ? activeClass : inactiveClass}`}
+                        to='/user/settings'
+                        className={`flex items-center py-3 px-2 space-x-4 rounded-lg ${isActive('/user/settings') ? activeClass : inactiveClass}`}
                     >
                         <FaCog className="w-5 h-5" />
                         <span className='hidden md:inline'>Settings</span>
                     </Link>
                 </ul>
+                <div className="profile pt-10 px-3">
+                    {" "}
+                        <div className="bg-white flex flex-col gap-5 p-4 rounded-xl shadow-inner mb-4">
+                            <div className="flex items-center mb-3">
+                                <div className="top flex">
+                                    <div className="circle relative w-12 h-12 flex items-center justify-center rounded-full     overflow-hidden">
+                                        <div className="absolute border-r-4  border-green-800 w-10 h-10 bg-white rounded-full flex items-center justify-center">
+                                            <span className="text-[10px] font-bold text-black">
+                                                62%
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div className="ml-3">
+                                        <h3 className="text-[12px] font-semibold text-[#1D2739]">
+                                            Complete Profile
+                                        </h3>
+                                        <p className="text-[9px] text-[#344054]">
+                                            Complete profile to unlock all features
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <button className="w-full text-left flex items-center justify-center px-3 py-2 bg-[#02402D] text-white      rounded-lg shadow-sm hover:bg-green-600 transition mb-2 text-sm font-medium">
+                                Verify Email
+                            </button>
+                        </div>
+                    </div>
             </div>
 
             {/* Mobile Sidebar (visible only when showMobileMenu is true and on small screens) */}
@@ -103,7 +130,7 @@ function Side () {
                                 shadow-lg transform transition-transform duration-300 ease-in-out z-50
                                 ${showMobileMenu ? 'translate-x-0' : '-translate-x-full'}`}
                 >
-                    <div className='flex justify-between items-center p-6 border-b border-[#FFAC00]'>
+                    <div className='flex justify-between items-center p-6 border-b border-[#FFAC00] z-40'>
                         <div className='flex items-center space-x-1 font-bold ml-3'>
                             <img src={assets.agriconLogo2} alt="Agricon_img" className='ml-6'/>
                         </div>
@@ -117,41 +144,62 @@ function Side () {
                         {/* Mobile Navigation Links */}
                         <Link
                             onClick={() => setShowMobileMenu(false)}
-                            to={"/"}
-                            className={`flex items-center py-3 px-4 rounded-lg ${isActive('/') ? activeClass : inactiveClass}`}
+                            to={"/user"}
+                            className={`flex items-center py-3 px-4 rounded-lg ${isActive('/user') ? activeClass : inactiveClass}`}
                         >
                             <MdOutlineDashboard className="w-5 h-5 mr-3" /> Dashboard
                         </Link>
                         <Link
                             onClick={() => setShowMobileMenu(false)}
-                            to={"/infrastructure"}
-                            className={`flex items-center py-3 px-4 rounded-lg ${isActive('/market') ? activeClass : inactiveClass}`}
+                            to={"/user/facilities"}
+                            className={`flex items-center py-3 px-4 rounded-lg ${isActive('/user/facilities') ? activeClass : inactiveClass}`}
                         >
                             <FaCubes className="w-5 h-5 mr-3" /> Infrastructure
                         </Link>
                         <Link
                             onClick={() => setShowMobileMenu(false)}
-                            to={"/booking-history"}
-                            className={`flex items-center py-3 px-4 rounded-lg ${isActive('/convert') ? activeClass : inactiveClass}`}
+                            to={"/users/booking-history"}
+                            className={`flex items-center py-3 px-4 rounded-lg ${isActive('/users/booking-history') ? activeClass : inactiveClass}`}
                         >
                             <AiOutlineFileSearch className="w-5 h-5 mr-3" /> Booking History
                         </Link>
+                        
                         <Link
                             onClick={() => setShowMobileMenu(false)}
-                            to={"payment"}
-                            className={`flex items-center py-3 px-4 rounded-lg ${isActive('#') ? activeClass : inactiveClass}`}
-                        >
-                            <FaMoneyBillAlt className="w-5 h-5 mr-3" /> Payment
-                        </Link>
-                        <Link
-                            onClick={() => setShowMobileMenu(false)}
-                            to={"settings"}
-                            className={`flex items-center py-3 px-4 rounded-lg ${isActive('#') ? activeClass : inactiveClass}`}
+                            to={"/user/settings"}
+                            className={`flex items-center py-3 px-4 rounded-lg ${isActive('/user/settings') ? activeClass : inactiveClass}`}
                         >
                             <FaCog className="w-5 h-5 mr-3" /> Settings
                         </Link>
 
                     </ul>
+                    <div className="profile py-5 px-3">
+                    {" "}
+                        <div className="bg-white flex flex-col gap-5 p-4 rounded-xl shadow-inner mb-4">
+                            <div className="flex items-center mb-3">
+                                <div className="top flex">
+                                    <div className="circle relative w-12 h-12 flex items-center justify-center rounded-full     overflow-hidden">
+                                        <div className="absolute border-r-4  border-green-800 w-10 h-10 bg-white rounded-full flex items-center justify-center">
+                                            <span className="text-[10px] font-bold text-black">
+                                                62%
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div className="ml-3">
+                                        <h3 className="text-[12px] font-semibold text-[#1D2739]">
+                                            Complete Profile
+                                        </h3>
+                                        <p className="text-[9px] text-[#344054]">
+                                            Complete profile to unlock all features
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <button className="w-full text-left flex items-center justify-center px-3 py-2 bg-[#02402D] text-white      rounded-lg shadow-sm hover:bg-green-600 transition mb-2 text-sm font-medium">
+                                Verify Email
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </>

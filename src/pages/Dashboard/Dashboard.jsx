@@ -1,6 +1,6 @@
-import SideBar from "../../components/Dashboard/sideBar";
+// import SideBar from "../../components/Dashboard/sideBar";
 import TotalViewPerformanceCard from "../../components/Dashboard/Performance";
-import { assets } from "../../assets/assets";
+// import { assets } from "../../assets/assets";
 
 import {
   LineChart,
@@ -155,7 +155,7 @@ export default function Dashboard() {
       style={{ scrollbarWidth: "none" }}
     >
       {/* Sideba */}
-      <SideBar />
+      {/* <SideBar /> */}
 
       {/* Main Content Area */}
       <div
@@ -164,7 +164,7 @@ export default function Dashboard() {
       >
         <Header/>
 
-        <section className="flex flex-wrap md:flex-nowrap">
+        <section className="flex flex-wrap md:flex-nowrap w-full">
           <div className="firstt px-5 xl:pl-8 xl:pr-5 py-4 md:border-r border-[#D0D5DD]">
             <div className="main flex flex-col gap-6">
               {/* Welcome Section */}
@@ -187,7 +187,7 @@ export default function Dashboard() {
               </div>
 
               {/* Top Metric Cards & Discover Infrastructure */}
-              <div className="flex justify-around space-y-5 flex-wrap mb-8">
+              <div className="flex justify-around space-y-5 flex-wrap mb-8 space-x-5">
                 {/* Discover Infrastructures Card */}
                 <div className="wrapper bg-[#02402D] w-[226px] h-[182px] text-white rounded-[12px] flex justify-center items-center">
                   <div className="container w-[194px]">
@@ -233,7 +233,7 @@ export default function Dashboard() {
                         </div>
                       </div>
                     </div>
-                    <div className="bottom items-baseline h-[20px] text-[12px] flex items-center">
+                    <div className="bottom  h-[20px] text-[12px] flex items-center">
                       <span className="font-semibold text-green-600 mr-1">
                         Up 42%
                       </span>
@@ -259,7 +259,7 @@ export default function Dashboard() {
                         </div>
                       </div>
                     </div>
-                    <div className="bottom items-baseline h-[20px] text-[12px] flex items-center">
+                    <div className="bottom  h-[20px] text-[12px] flex items-center">
                       <span className="font-semibold text-red-600 mr-1">
                         Down 17%
                       </span>

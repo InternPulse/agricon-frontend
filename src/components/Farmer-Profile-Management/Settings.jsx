@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import SideBar from "../sideBar";
+// import SideBar from "../sideBar";
 import { HiBell } from "react-icons/hi";
 import { IoIosArrowForward } from "react-icons/io";
 
@@ -13,8 +13,8 @@ export default function Settings() {
   const tabs = ["Profile", "Notifications", "Privacy & Security"];
 
   return (
-    <div className="flex min-h-screen bg-[#f7f9fa]">
-      <SideBar />
+    <div className="flex min-h-screen bg-[#f7f9fa] w-full">
+      {/* <SideBar /> */}
       <div className="flex-1">
         {/* Top Header */}
         <div className="flex items-center justify-between bg-[#f5f8fa] px-10 py-6 border-b border-blue-200">

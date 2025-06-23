@@ -1,11 +1,9 @@
 import { Outlet } from "react-router-dom";
-import Sidebar from "./Sidebar";
 import Header from "../../components/infrastructure/Header";
 
-export default function RootLayout() {
+export default function FacilityLayout() {
   return (
     <section className="flex w-full bg-[#FAFAFA]">
-      <Sidebar />
       <main className="w-full">
         <Header />
         <div className="mx-10 my-6">

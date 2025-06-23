@@ -1,4 +1,3 @@
-import Button from "../../components/infrastructure/ui/Button";
 import CalendarPicker from "../../components/infrastructure/ui/CalendarPicker";
 
 import { useActionState, useState } from "react";
@@ -95,6 +94,7 @@ export default function BookingForm() {
           type="hidden"
           name="date"
           value={startDate ? format(startDate, "dd/MM/yy") : ""}
+          required
         />
 
         <div className="flex flex-col gap-4">
@@ -138,7 +138,7 @@ export default function BookingForm() {
           <p className="text-sm text-green-600">Booking successful!</p>
         ) : null}
 
-        <Link to="/facility/booking-summary" className="flex justify-center items-center py-2.5 bg-[#02402D] hover:bg-[#03553F] transition-colors duration-200 focus:ring-2 focus:ring-offset-2 focus:ring-[#047D58] text-white w-full max-w-[529px] rounded-sm">
+        <Link to="/user/facility/booking-summary" className="flex justify-center items-center py-2.5 bg-[#02402D] hover:bg-[#03553F] transition-colors duration-200 focus:ring-2 focus:ring-offset-2 focus:ring-[#047D58] text-white w-full max-w-[529px] rounded-sm">
           Confirm Booking
         </Link>
       </form>

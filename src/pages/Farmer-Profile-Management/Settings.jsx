@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import SideBar from "../../components/sideBar";
+// import SideBar from "../../components/sideBar";
 import { HiBell } from "react-icons/hi";
 import { IoIosArrowForward } from "react-icons/io";
 import { Link } from "react-router-dom";
@@ -17,10 +17,10 @@ export default function Settings() {
 
   return (
     <div className="flex min-h-screen bg-[#f7f9fa]">
-      <SideBar />
-      <div className="flex-1">
+      {/* <SideBar /> */}
+      <div className="">
         {/* Top Header */}
-        <div className="flex items-center justify-between bg-[#f5f8fa] px-10 py-6 border-b border-blue-200">
+        <div className="flex items-center justify-between w-full bg-[#f5f8fa] px-10 py-6 border-b border-blue-200">
           <h1 className="text-2xl font-semibold text-gray-700">Account Settings</h1>
           <div className="flex items-center gap-4 w-full max-w-md">
             <input
@@ -47,7 +47,7 @@ export default function Settings() {
 
         {/* Tabs & Content Wrapper */}
         <div className="px-10 pb-10 pt-4 bg-[#f7f9fa] min-h-[calc(100vh-120px)]">
-          <div className="mx-auto">
+          <div className="w-full">
             {/* Tabs */}
             <div className="bg-white py-3 mb-4 rounded-lg">
               <div className="flex space-x-8 ">
@@ -201,7 +201,7 @@ export default function Settings() {
                       <div className="font-medium text-md text-black">Update Password</div>
                       <div className="text-gray-400 text-sm">Change your password to update & protect your Account</div>
                     </div>
-                    <Link to="/settings/change-password">
+                    <Link to="/user/settings/change-password">
                       <div className="flex items-center">
                           <div className="text-sm text-[#02402D] font-semibold">Change Password</div>
                           <div><IoIosArrowForward /> </div>

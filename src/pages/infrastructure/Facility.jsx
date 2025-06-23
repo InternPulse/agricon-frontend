@@ -32,7 +32,7 @@ export default function Facility() {
 
   return (
     <>
-      <section className="mb-8">
+      <section className="mb-8 p-5">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {cardData.map((item, index) => (
             <Card key={index} {...item} />
@@ -46,7 +46,7 @@ export default function Facility() {
             <h2 className="max-xl:mb-2 text-[#667185] mb-4">
               42 facilities available across 12 locations in Nigeria
             </h2>
-            <div className="flex items-center gap-2 pl-4 pr-3 lg:mb-5 border border-[#8B8B8B] rounded-lg h-[36px] w-[412px]">
+            <div className="flex items-center gap-2 pl-4 pr-3 lg:mb-5 border border-[#8B8B8B] rounded-lg h-[36px] ">
               <IoIosSearch />
               <input
                 type="text"
@@ -100,9 +100,9 @@ export default function Facility() {
             </p>
           </div>
 
-          {currentFacilities.map((facility, index) => (
+          {currentFacilities.map((facility) => (
             <div
-              key={index}
+              key={facility.id}
               className="flex flex-wrap justify-between items-center gap-4 bg-white hover:bg-gray-50 py-3.5 px-7.5"
             >
               <div className="flex flex-wrap">
@@ -121,7 +121,7 @@ export default function Facility() {
                 <Button className="bg-[#E4E7EC] hover:bg-gray-300 font-medium px-5">
                   View Details
                 </Button>
-                <Link to="facility-details" className="flex justify-center items-center rounded-lg py-2.5 bg-[#02402DA6] hover:bg-[#02402D] text-white font-medium px-6">
+                <Link to={`/user/facility/${facility.id}`} className="flex justify-center items-center rounded-lg py-2.5 bg-[#02402DA6] hover:bg-[#02402D] text-white font-medium px-6">
                   Book
                 </Link>
               </div>

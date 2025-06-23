@@ -19,6 +19,9 @@ import Facility from "./pages/infrastructure/Facility";
 import BookingSummary from "./pages/infrastructure/BookingSummary";
 import RootLayout from './layout/RootLayout';
 import Side from './components/home/Side';
+import UsersLayout from './layout/UsersLayout';
+import FacilityLayout from './pages/infrastructure/Root';
+import SettingsLayout from './pages/Farmer-Profile-Management/SettingsLayout';
 
 
 function App() {
@@ -39,14 +42,20 @@ function App() {
             <Route path='/reset-success' element={<ResetPassword />}/>
             <Route path='/otp' element={<OTP />}/>
           </Route>
-          <Route path='/side' element={<Side />} />
-          <Route path='/dashboard' element={<Dashboard />} />
-          <Route path="/settings" element={<Settings />} />
-          <Route path="/settings/change-password" element={<ChangePassword />} />
-          <Route path="/facility" element={<Facility />} />
-          <Route path="/facility-details" element={<FacilityDetails />} />
-          <Route path="/bookings" element={<BookingForm />} />
-          <Route path="/booking-summary" element={<BookingSummary />} />
+
+          <Route path='user' element={<UsersLayout />}>
+            <Route index element={<Dashboard />} />
+            <Route path="settings" element={<SettingsLayout />} >
+              <Route index element={<Settings />} />
+              <Route path="change-password" element={<ChangePassword />} />
+             </Route> 
+            <Route path="facility" element={<FacilityLayout />}>
+              <Route index element={<Facility />}/>
+              <Route path=":id" element={<FacilityDetails />} />
+              <Route path="bookings" element={<BookingForm />} />
+              <Route path="booking-summary" element={<BookingSummary />} />
+            </Route>  
+          </Route>
         </Routes>
       </div>
     </div>
