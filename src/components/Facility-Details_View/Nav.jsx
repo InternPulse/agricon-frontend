@@ -5,10 +5,10 @@ import { FaUserCircle } from "react-icons/fa";
 
 export default function Navbar() {
   return (
-    <nav className="w-full bg-[#f9fafb] py-4 px-6 flex items-center justify-between border-b">
-      <div className="flex items-center space-x-4">
+    <nav className="w-full bg-[#f9fafb] py-4 px-6 sm:px-6 flex flex-wrap items-center justify-between border-b gap-y-4">
+      <div className="flex items-center space-x-3">
         <IoMdArrowBack className="text-xl text-black" />
-        <h1 className="text-lg font-semibold text-[#2c3e50]">
+        <h1 className="text-base sm:text-lg font-semibold text-[#344054]">
           Facility Details
         </h1>
       </div>
@@ -22,7 +22,7 @@ export default function Navbar() {
           />
         </div>
         <div className="bg-[#d7f3ed] p-2 rounded-full">
-          <IoNotificationsOutline className="text-lg text-[#2c3e50]" />
+          <IoNotificationsOutline className="text-lg text-[#047D58] " />
         </div>
         <FaUserCircle className="w-8 h-8 rounded-full object-cover" />
         <div className="flex items-center space-x-1 text-[#111827] font-medium">
