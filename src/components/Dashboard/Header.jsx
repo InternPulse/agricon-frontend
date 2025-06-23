@@ -1,18 +1,24 @@
-import React from "react";
-import { BiNotification } from "react-icons/bi";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { IoNotifications } from "react-icons/io5";
 import { assets } from "../../assets/assets";
+import { FaAngleDown, FaArrowDown } from "react-icons/fa";
+import { AiOutlineLogout } from "react-icons/ai";
 
-const Header = () => {
+const Header = ({role}) => {
+  const capture = (e) => (e.key === "Enter" ? (e.target.value = "") : "");
+  const [logout, setLogout] = useState(false);
+  const toggleLogout = () => setLogout(!logout);
   return (
     <header className="h-20 w-full border-b border-[#dddddd] flex justify-between items-center bg-[#F7F9FC] px-5 sm:px-5 xl:px-10">
       <div className="flex items-center lg:w-60">
         <span className="text-[20px] font-medium text-[#344054]">
-          Facility Owner Dashboard
+          {role === 'Farmer' ? role + 'Dashboard' : role === 'Facility Owner' ? role + ' Dashboard' : 'Error 404'}
         </span>
       </div>
       <div className="hidden md:flex items-center justify-center w-full max-w-sm sm:max-w-xs mb-4 sm:mb-0">
         <input
+          onKeyPress={(e) => capture(e)}
           type="text"
           placeholder="Search here"
           className="sm:w-9/10 max-w-[382px] px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 text-[14px] text-gray-700"
@@ -23,14 +29,29 @@ const Header = () => {
           <div className="h-10 w-10 rounded-full bg-[#D5F0E8] flex justify-center items-center text-xl text-[#047D58]">
             <IoNotifications />
           </div>
-          <div className="flex items-center">
+          <div
+            onClick={() => toggleLogout()}
+            className="flex items-center gap-1"
+          >
             <div className="flex items-center space-x-2">
               <img src={assets.intern} /> <p>Interns</p>
             </div>
             <div>
-              <select name="intern" id="intern">
-                Log out
-              </select>
+              <FaAngleDown />
+            </div>
+            <div
+              className={`${
+                logout ? "relative" : "hidden"
+              } top-20 right-5 w-0 h-15 rounded-md flex items-center px-2 text-red-600`}
+            >
+              <Link
+                onClick={toggleLogout}
+                to={"/sign-up"}
+                className="z-50 absolute px-4  w-[200px] h-15 rounded-lg flex gap-2 items-center bg-white border border-[#dddddd] right-[-30px]"
+              >
+                <AiOutlineLogout />
+                <span className="text-[14px]">Log out</span>
+              </Link>
             </div>
           </div>
         </div>

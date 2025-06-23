@@ -18,7 +18,6 @@ import FacilityDetails from "./pages/infrastructure/FacilityDetails";
 import Facility from "./pages/infrastructure/Facility";
 import BookingSummary from "./pages/infrastructure/BookingSummary";
 import RootLayout from './layout/RootLayout';
-import Side from './components/home/Side';
 import UsersLayout from './layout/UsersLayout';
 import FacilityLayout from './pages/infrastructure/Root';
 import SettingsLayout from './pages/Farmer-Profile-Management/SettingsLayout';
@@ -44,7 +43,7 @@ function App() {
           </Route>
 
           <Route path='user' element={<UsersLayout />}>
-            <Route index element={<Dashboard />} />
+            <Route index element={<Dashboard role={"Facility Owner"} />} />
             <Route path="settings" element={<SettingsLayout />} >
               <Route index element={<Settings />} />
               <Route path="change-password" element={<ChangePassword />} />

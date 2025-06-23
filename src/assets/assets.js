@@ -2,7 +2,8 @@ import agriconLogo from "./agriconLogo.png";
 import agriconLogo2 from "./agriconLogo.svg";
 import authImage from "./authImage.png";
 import intern from "./intern.png";
-import otp from "./otp.png";import logistics from './logistics.png'
+import otp from "./otp.png";
+import logistics from './logistics.png'
 import protectProduce from './protectProduce.png'
 import sharedInfra from './sharedInfra.png'
 import smartSales from './smartSales.png'
@@ -21,6 +22,10 @@ import mission from './mission.jpg'
 import impact from './impact.jpg'   
 import contact from './contact.jpg' 
 import agriconLogoSvg from './agriconLogo.svg'  
+import kingsley from "./facilityOwnersPic/kingsley.png";
+import Ladicia from "./facilityOwnersPic/Ladicia.png";
+import stanley from "./facilityOwnersPic/stanley.png";
+
 
 
 
@@ -31,6 +36,9 @@ export const assets = {
     authImage,
     otp,
     intern,
+    kingsley,
+    stanley,
+    Ladicia,
     logistics,
     protectProduce,
     sharedInfra,
