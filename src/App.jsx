@@ -3,7 +3,6 @@
 
 import FacilityDetails from "./components/Facility-Details_View/FacilityView";
 import Navbar from "./components/Facility-Details_View/Nav";
-// import Login from "./components/Login";
 
 function App() {
   return (
