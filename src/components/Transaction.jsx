@@ -43,7 +43,7 @@ const Transaction = ({ title, hvalue1, hvalue2, details }) => {
                       item.size ? "rounded-full" : ""
                     }`}
                   >
-                    {item.img ? <img src={item.img} alt="pic" /> :  item.icon}
+                    {item.img ? <img src={item.img} alt="pic" /> : item.icon}
                   </div>
                   <div>
                     <div className="text-sm font-medium text-gray-900">

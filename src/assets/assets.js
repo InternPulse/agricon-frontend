@@ -6,6 +6,8 @@ import otp from "./otp.png";
 import kingsley from "./facilityOwnersPic/kingsley.png";
 import Ladicia from "./facilityOwnersPic/Ladicia.png";
 import stanley from "./facilityOwnersPic/stanley.png";
+import img1 from "../assets/bookingsImg/img1.jpg";
+import img2 from "../assets/bookingsImg/img2.jpg";
 
 export const assets = {
   agriconLogo,
@@ -16,4 +18,8 @@ export const assets = {
   kingsley,
   stanley,
   Ladicia,
+  bookings: {
+    img1,
+    img2,
+  },
 };
