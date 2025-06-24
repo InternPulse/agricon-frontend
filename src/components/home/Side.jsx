@@ -67,7 +67,7 @@ function Side () {
                     </Link>
 
                     <Link
-                        to='/user/bookings'
+                        to='/user/booking-history'
                         className={`flex items-center py-3 px-2 space-x-4 rounded-lg ${isActive('/user/bookings') ? activeClass : inactiveClass}`}
                     >
                         <AiOutlineFileSearch className="w-5 h-5" />

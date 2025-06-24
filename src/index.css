@@ -5,3 +5,16 @@
     border-bottom: 2px solid #FFAC00;
     color: #070707;
 }
+
+.app-layout {
+  display: flex;
+  background: #f7f9fc;
+  min-height: 100vh;
+}
+
+.main-content {
+  flex: 1 1 auto;
+  background: #f7f9fc;
+  min-height: 100vh;
+  /* Optionally add padding if needed */
+}

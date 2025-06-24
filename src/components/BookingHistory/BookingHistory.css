@@ -1,0 +1,266 @@
+.booking-list-filters {
+  width: 1080px;
+  height: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;   /* Ensures vertical alignment */
+  gap: 16px;                /* No gap, spacing handled by child widths */
+}
+
+.booking-history-wrapper {
+  background: #f7f9fc;
+  min-height: 100vh;
+}
+.booking-content {
+  padding: px 0 0 0; /* Remove left/right padding */
+  max-width: none;      /* Remove max-width */
+  margin: 0;            /* Remove centering */
+}
+.filter-search {
+  width: 248px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  padding: 13px 16px;
+  gap: 10px;
+  border-radius: 10px;
+  border: 1px solid #E5E5E5;
+  background: #fafbfc;
+  box-sizing: border-box;
+}
+.filter-search input {
+  border: none;
+  background: transparent;
+  width: 100%;
+  font-size: 15px;
+  outline: none;
+}
+.filter-status {
+  width: 180px;
+  height: 40px;
+  padding: 13px 17px;
+  border-radius: 10px;
+  border: 1px solid #E5E5E5;
+  background: #fafbfc;
+  font-size: 15px;
+  box-sizing: border-box;
+}
+.filter-date {
+  width: 268px;
+  height: 40px;
+  padding: 13px 30px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-radius: 10px;
+  border: 1px solid #E5E5E5;  /* or your preferred color */
+  box-sizing: border-box;
+  background: #fafbfc;         /* Optional: to match "Search booking" look */
+}
+.metrics-row {
+  width: 1108px;
+  height: 113px;
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  gap: 18px;
+  margin: 32px 0 40px 0;
+  /* If you need to position: absolute, use top: 104px; left: 304px; 
+     But usually for responsive layouts, margin is better.
+  */
+}
+
+.metric-card {
+  width: 357.33px;
+  height: 113px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+  border-radius: 10px;
+  border: 1px solid #E5E5E5;
+  padding: 24px;
+  background: #fff;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.metric-label {
+  font-size: 16px;
+  color: #8B8B8B;
+  font-weight: 500;
+}
+
+.metric-value {
+  font-size: 32px;
+  font-weight: 700;
+  color: #222;
+  margin: 0 0 8px 0;
+}
+
+.metric-icon {
+  position: absolute;
+  right: 24px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 32px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Optional: Differentiate icons by color/type */
+.metric-card.total .metric-icon img {
+  width: 32px;
+  height: 32px;
+}
+
+.metric-card.success .metric-icon {
+  color: #36B37E;
+}
+.metric-card.fail .metric-icon {
+  color: #FF5630;
+}
+.metric-icon.total {
+  background: #eaf4ff;
+}
+.metric-icon.success {
+  background: #e6f7ec;
+  color: #36B37E;
+}
+.metric-icon.fail {
+  background: #fff0f0;
+  color: #FF5630;
+}
+.metric-icon.total img {
+  width: 27px;
+  vertical-align: middle;
+}
+/* OUTER LAYOUT (Image 1: Blue Outline) */
+.booking-list-section {
+  width: 1108px;
+  height: 725px;
+  border-radius: 10px;
+  border: 1px solid #E5E5E5;
+  background: #fff;
+  box-sizing: border-box;
+  padding: 24px 10px;
+  margin: 0 auto; /* Center horizontally */
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* FILTERS AND HEADER (adjust as needed for your filters/inputs) */
+.booking-list-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+.booking-list-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #232323;
+}
+
+.booking-list-filters {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+/* TABLE CONTAINER (Image 2) */
+.booking-table-container {
+  width: 1080px;
+  height: 630px;
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 10px 10px 0 0;
+  box-sizing: border-box;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  overflow: hidden;
+}
+
+/* TABLE LAYOUT (Image 3) */
+.booking-table {
+  width: 100%;
+  height: 520px; /* As per your Figma for the table area */
+  border: 1px solid #E5E5E5;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  border-collapse: collapse;
+  background: #fff;
+  box-sizing: border-box;
+}
+
+.booking-table th {
+  background: #f5f5f5;
+  font-weight: 600;
+  color: #232323;
+  padding: 16px 8px;
+  text-align: left;
+  font-size: 15px;
+}
+
+.booking-table td {
+  padding: 14px 8px;
+  font-size: 15px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+/* STATUS LABELS (for Success/Unsuccessful) */
+.status-success {
+  background: #e3fcec;
+  color: #219653;
+  border-radius: 8px;
+  padding: 4px 15px;
+  font-size: 13px;
+  font-weight: 500;
+  display: inline-block;
+}
+
+.status-failed {
+  background: #fde9e8;
+  color: #e2574c;
+  border-radius: 8px;
+  padding: 4px 15px;
+  font-size: 13px;
+  font-weight: 500;
+  display: inline-block;
+}
+
+/* PAGINATION */
+.pagination {
+  display: flex;
+  gap: 6px;
+  justify-content: flex-end;
+  margin-top: 18px;
+}
+
+.pagination button {
+  background: #fff;
+  border: 1px solid #ececec;
+  border-radius: 5px;
+  font-size: 15px;
+  padding: 3px 10px;
+  margin-left: 2px;
+  cursor: pointer;
+  color: #232323;
+}
+
+.pagination button.active,
+.pagination button:hover {
+  background: rgba(255, 255, 255, 1);
+  color:rgba(98, 108, 122, 1);
+  border: 1px solid rgba(196, 196, 196, 0.5);
+}

@@ -23,6 +23,7 @@ import FacilityLayout from './pages/infrastructure/Root';
 import SettingsLayout from './pages/Farmer-Profile-Management/SettingsLayout';
 import ResetPasswordOTP from './pages/authentication/RepasswordOTP';
 import ResetPassword from './components/authentication/ResetPasswordForm';
+import BookingHistory from './pages/BookingHistory/BookingHistory';
 
 
 function App() {
@@ -56,7 +57,8 @@ function App() {
               <Route path=":id" element={<FacilityDetails />} />
               <Route path="bookings" element={<BookingForm />} />
               <Route path="booking-summary" element={<BookingSummary />} />
-            </Route>  
+            </Route> 
+            <Route path='booking-history' element={<BookingHistory />}/>
           </Route>
         </Routes>
       </div>
