@@ -11,7 +11,6 @@ import Bookings from "../../components/Dashboard/Bookings";
 import TotalFacilities from "../../components/Dashboard/TotalFacilities";
 import CompleteProfile from "../../components/Dashboard/CompleteProfile";
 import LevelUp from "../../components/Dashboard/LevelUp";
-
 export default function FarmerDashboard({ role }) {
   return (
     <div

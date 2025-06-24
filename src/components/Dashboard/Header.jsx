@@ -1,11 +1,13 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { IoNotifications } from "react-icons/io5";
 import { assets } from "../../assets/assets";
-import { FaAngleDown, FaArrowDown } from "react-icons/fa";
+import { FaAngleDown } from "react-icons/fa";
 import { AiOutlineLogout } from "react-icons/ai";
+import { SidebarContext } from "../../App";
 
 const Header = ({ role }) => {
+  const { open, toggleSidebar } = useContext(SidebarContext);
   const capture = (e) => (e.key === "Enter" ? (e.target.value = "") : "");
   const [logout, setLogout] = useState(false);
   const toggleLogout = () => setLogout(!logout);
@@ -32,14 +34,20 @@ const Header = ({ role }) => {
         <div className="flex items-center h-10 gap-4 p-2 rounded-lg">
           <Link className="absolute sm:static right-16 h-6 w-6 sm:h-10 sm:w-10 rounded-full bg-[#D5F0E8] flex justify-center items-center sm:text-xl text-[#047D58]">
             <IoNotifications />
-            <span className="text-red-600 relative bottom-[6px] sm:bottom-[8px] right-[3px] text-[9px] sm:text-[12px] font-bold">3</span>
+            <span className="text-red-600 relative bottom-[6px] sm:bottom-[8px] right-[3px] text-[9px] sm:text-[12px] font-bold">
+              3
+            </span>
           </Link>
           <div
-            onClick={() => toggleLogout()}
+            onClick={() => {
+              toggleLogout();
+              toggleSidebar();
+            }}
             className="absolute sm:static top-4 right-4 sm:flex items-center gap-1"
           >
             <div className="flex items-center space-x-1 sm:space-x-2">
-              <img className="size-8 sm:size-10" src={assets.intern} /> <p className="hidden sm:block">Interns</p>
+              <img className="size-8 sm:size-10" src={assets.intern} />{" "}
+              <p className="hidden sm:block">Interns</p>
             </div>
             <div className="hidden sm:block">
               <FaAngleDown />
