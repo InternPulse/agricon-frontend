@@ -1,4 +1,4 @@
-// import SideBar from "../../components/Dashboard/sideBar";
+import SideBar from "../../components/Dashboard/sideBar";
 import { assets } from "../../assets/assets";
 import Welcome from "../../components/Dashboard/Welcome";
 import Transaction from "../../components/Transaction";
@@ -10,13 +10,7 @@ import {
   FaMillSign,
 } from "react-icons/fa6";
 import Header from "../../components/Dashboard/Header";
-import {
-  ArrowDown,
-  ArrowUp,
-  ChevronRight,
-  TrendingDown,
-  TrendingUp,
-} from "lucide-react";
+import { ArrowDown, ArrowUp, TrendingDown, TrendingUp } from "lucide-react";
 import { PiCalendarCheck, PiCalendarCheckBold } from "react-icons/pi";
 import { TbDots } from "react-icons/tb";
 import { FaSolarPanel } from "react-icons/fa";
@@ -30,7 +24,6 @@ import TotalFacilities from "../../components/Dashboard/TotalFacilities";
 import CompleteProfile from "../../components/Dashboard/CompleteProfile";
 import LevelUp from "../../components/Dashboard/LevelUp";
 import { Link } from "react-router-dom";
-import { CgArrowTopRight } from "react-icons/cg";
 
 const PIE_DATA = [
   { name: "Total Earmings", value: 40, color: "#10B981" }, // Green
@@ -42,28 +35,28 @@ const COLORS_PIE = ["#10B981", "#FACC15", "#3B82F6"];
 export default function Dashboard({ role }) {
   const recentBookings = [
     {
-      img: assets.img1,
+      img: "assets.chinoso",
       name: "Chinoso Okafor",
       email: "nonso@gmail.com",
       price: 8500,
       location: "Ibadan",
     },
     {
-      img: assets.img2,
+      img: "assets.chinoso",
       name: "Tunde Adebayo",
       email: "tunde.adebayo@gmail.com",
       price: 7900,
       location: "Enugu",
     },
     {
-      img: assets.img1,
+      img: "assets.chinoso",
       name: "Adaobi Nwosu",
       email: "a.nwoankwo@gmail.com",
       price: 6750,
       location: "Abuja",
     },
     {
-      img: assets.img2,
+      img: "assets.chinoso",
       name: "Emeka Ibe",
       email: "emeka.ibe@gmail.com",
       price: 5600,
@@ -75,7 +68,7 @@ export default function Dashboard({ role }) {
       className="flex min-h-screen bg-gray-100 font-sans"
       style={{ scrollbarWidth: "none" }}
     >
-      {/* <SideBar role={role} /> */}
+      <SideBar role={role} />
       <main
         className=" flex-1 flex flex-col bg-white overflow-auto"
         style={{ scrollbarWidth: "none" }}
@@ -238,8 +231,8 @@ export default function Dashboard({ role }) {
                       </div>
                     </div>
                   </div>
-                  <div className="flex h-[699px] gap-[27px]">
-                    <div className="left h-full w-[715px] flex flex-col gap-8">
+                  <div className="flex gap-10">
+                    <div className="left w-[715px] flex flex-col gap-8">
                       {/*Expense Report */}
                       <div className="expense border border-[#D0D5DD] rounded-xl w-full min-h-[294px] flex flex-col gap-3">
                         <div className="head flex justify-between items-center p-4">
@@ -292,107 +285,80 @@ export default function Dashboard({ role }) {
                         ]}
                       />
                     </div>
-                    <div className="right w-[354px] flex flex-col gap-4">
-                      <div className="one flex flex-col justify-between bg-[#02402D] rounded-xl min-h-[294px] w-full p-5 text-white/80 gap-10">
-                        <div className="flex gap-5 items-center justify-between">
-                          <div className="w-full h-5">
-                            <h2 className="font-medium text-[14px]">
-                              Last 30 Days
-                            </h2>
+                    <div className="right flex flex-col gap-8">
+                      <div className="one flex flex-col justify-between bg-[#02402D] rounded-xl min-h-[294px] p-5 text-white/80">
+                        <div className="flex justify-between ">
+                          <div className="w-full">
+                            <h2 className="font-medium">Last 30 Days</h2>
                           </div>
-                          <Link
-                            to={"/"}
-                            className="flex items-center justify-center"
-                          >
-                            <div className="flex items-center gap-[4px] px-2 py-[1px]  border border-[#D0D5DD]/80 rounded-full">
-                              <CgArrowTopRight size={10} />
-                              <button className="text-[10px] w-9">
-                                View all
-                              </button>
-                            </div>
-                          </Link>
+                          <div>
+                            <button className="text-xs w-20 font-medium border rounded-full self-end">
+                              View all
+                            </button>
+                          </div>
+                          <div></div>
                         </div>
-                        <div className="flex flex-col h-[180px] justify-between">
-                          <div className="flex gap-3 items-center">
-                            <div className="size-16 flex justify-center items-baseline">
-                              <FaBuilding fill="orange" size="100%" />
-                            </div>
-                            <div className="w-[132px] space-y-[4px]">
-                              <h1 className="text-[32px] font-[600] text-white">
-                                98
-                              </h1>
-                              <p className="text-[16px] text-[#E4E7EC]">
-                                Storage Facilities
-                              </p>
-                            </div>
+                        <div className="flex gap-5">
+                          <FaBuilding fill="orange" size={60} />
+                          <div>
+                            <h1 className="text-3xl font-semibold text-white">
+                              98
+                            </h1>
+                            <p>Storage Facilities</p>
                           </div>
-                          <div className="box bg-white flex justify-between gap-5  py-2 px-4 text-black rounded-lg w-full">
-                            <div className="flex flex-col items-center">
-                              <p className="text-xl font-semibold">8</p>
-                              <p className="text-xs text-gray-600">Vacant</p>
-                            </div>
-                            <div className="flex flex-col items-center">
-                              <p className="text-xl font-semibold">64</p>
-                              <p className="text-xs text-gray-600">Occupied</p>
-                            </div>
-                            <div className="flex flex-col items-center">
-                              <p className="text-xl font-semibold">26</p>
-                              <p className="text-xs text-gray-600">Unlisted</p>
-                            </div>
+                        </div>
+                        <div className="box bg-white flex justify-between gap-5  py-2 px-4 text-black rounded-lg w-full">
+                          <div className="flex flex-col items-center">
+                            <p className="text-xl font-semibold">8</p>
+                            <p className="text-xs text-gray-600">Vacant</p>
+                          </div>
+                          <div className="flex flex-col items-center">
+                            <p className="text-xl font-semibold">64</p>
+                            <p className="text-xs text-gray-600">Occupied</p>
+                          </div>
+                          <div className="flex flex-col items-center">
+                            <p className="text-xl font-semibold">26</p>
+                            <p className="text-xs text-gray-600">Unlisted</p>
                           </div>
                         </div>
                       </div>
-                      <div className="two py-4 px-6 border h-[320px] border-[#D0D5DD] space-y-7 rounded-xl">
-                        <div className="w-[294px] space-y-[2px]">
-                          <h1 className="font-semibold text-[16px] text-[#101928]">
+                      <div className="two p-5 border border-[#D0D5DD] space-y-5 rounded-xl ">
+                        <div>
+                          <h1 className="font-semibold text-lg">
                             Recent Bookings
                           </h1>
-                          <p className="text-[12px] text-[#344054]">
+                          <p className="text-sm text-gray-700 font-medium">
                             Hurray! check out farmers who booked your facility
                           </p>
                         </div>
-                        <div className="space-y-3">
-                          <div className="space-y-4">
-                            {recentBookings.map((person, i) => (
-                              <div
-                                key={i}
-                                className="flex w-full justify-between items-center h-9"
-                              >
-                                <div className="flex gap-4">
-                                  <div className="h-8 w-8 flex justify-center items-center rounded-full">
-                                    <img
-                                      src={person.img}
-                                      className="rounded-full h-8 w-8 object-cover"
-                                    />
-                                  </div>
-                                  <div>
-                                    <p className="font-[500] text-[#1D2739] text-[12px]">
-                                      {person.name}
-                                    </p>
-                                    <p className="text-[#667185] text-[12px]">
-                                      {person.email}
-                                    </p>
-                                  </div>
+                        <div className="space-y-2">
+                          {recentBookings.map((person) => (
+                            <div className="flex gap-2 items-center">
+                              <div>
+                                <img src={person.img} alt="" />
+                              </div>
+                              <div className="flex w-full justify-between items-center">
+                                <div>
+                                  <p className="font-semibold text-md">
+                                    {person.name}
+                                  </p>
+                                  <p className="text-gray-600 text-md">
+                                    {person.email}
+                                  </p>
                                 </div>
-                                <div className="flex justify-between items-center">
-                                  <div>
-                                    <p className="font-semibold text-[12px] text-gray-900">
-                                      ${person.price}
-                                    </p>
-                                    <p className="text-gray-600 text-[12px]">
-                                      {person.location}
-                                    </p>
-                                  </div>
+                                <div>
+                                  <p className="font-semibold text-md">
+                                    ${person.price}
+                                  </p>
+                                  <p className="text-gray-600 text-md">
+                                    {person.location}
+                                  </p>
                                 </div>
                               </div>
-                            ))}
-                          </div>
-                          <div className="p-1 text-[#4F46E5] text-[10px]">
-                            <Link className="text-[10px] flex gap-1 items-center">
-                              See all Bookings <ChevronRight size={12} />
-                            </Link>
-                          </div>
+                            </div>
+                          ))}
                         </div>
+                        <div><Link>See all Bookings</Link></div>
                       </div>
                     </div>
                   </div>

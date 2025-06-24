@@ -25,6 +25,8 @@ import agriconLogoSvg from './agriconLogo.svg'
 import kingsley from "./facilityOwnersPic/kingsley.png";
 import Ladicia from "./facilityOwnersPic/Ladicia.png";
 import stanley from "./facilityOwnersPic/stanley.png";
+import img1 from "../assets/bookingsImg/img1.jpg";
+import img2 from "../assets/bookingsImg/img2.jpg";
 
 
 
@@ -40,6 +42,8 @@ export const assets = {
     stanley,
     Ladicia,
     logistics,
+        img1,
+        img2,
     protectProduce,
     sharedInfra,
     smartSales,

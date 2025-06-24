@@ -31,10 +31,7 @@ const SideBar = ({ role }) => {
               },
               {
                 id: "infrastructure",
-                label:
-                  role === "Facility Owner"
-                    ? "My Facilities"
-                    : "Infrastructure",
+                label: "My Facilities",
                 icon: LuBoxes,
               },
               {
@@ -48,28 +45,32 @@ const SideBar = ({ role }) => {
                 label: role === "Facility Owner" ? "Earnings" : "Settings",
                 icon: MdOutlineSettings,
               },
-              role === "Facility Owner"
+              role === ""
                 ? {
                     id: "profile",
                     label: "Profile",
                     icon: AiOutlineCustomerService,
                   }
                 : "",
-            ].map((item) => (
-              <button
-                key={item.id}
-                onClick={() => setActiveMenuItem(item.id)}
-                className={`w-full flex items-center h-10 pl-2 rounded-lg text-left hover:bg-green-400/40 transition-colors duration-200
+            ].map((item) =>
+              item.icon && item.label ? (
+                <button
+                  key={item.id}
+                  onClick={() => setActiveMenuItem(item.id)}
+                  className={`w-full flex items-center h-10 pl-2 rounded-lg text-left hover:bg-green-400/40 transition-colors duration-200
                           ${
                             activeMenuItem === item.id
                               ? "bg-[#FFAC00] text-white font-semibold shadow-md"
                               : "text-white"
                           }`}
-              >
-                <item.icon className="w-5 h-5 mr-3" />
-                <span className="text-[14px]">{item.label}</span>
-              </button>
-            ))}
+                >
+                  {item.icon ? <item.icon className="w-5 h-5 mr-3" /> : ""}
+                  <span className="text-[14px]">{item.label}</span>
+                </button>
+              ) : (
+                ""
+              )
+            )}
           </nav>
           <div className="profile py-5 px-3">
             {" "}

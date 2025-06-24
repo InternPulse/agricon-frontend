@@ -47,7 +47,7 @@ function App() {
           </Route>
 
           <Route path='user' element={<UsersLayout />}>
-            <Route index element={<Dashboard role={"Facility Owner"} />} />
+            <Route index element={<Dashboard role={"Farmer"} />} />
             <Route path="settings" element={<SettingsLayout />} >
               <Route index element={<Settings />} />
               <Route path="change-password" element={<ChangePassword />} />

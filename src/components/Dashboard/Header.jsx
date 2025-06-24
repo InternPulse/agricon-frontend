@@ -5,7 +5,7 @@ import { assets } from "../../assets/assets";
 import { FaAngleDown, FaArrowDown } from "react-icons/fa";
 import { AiOutlineLogout } from "react-icons/ai";
 
-const Header = ({role}) => {
+const Header = ({ role }) => {
   const capture = (e) => (e.key === "Enter" ? (e.target.value = "") : "");
   const [logout, setLogout] = useState(false);
   const toggleLogout = () => setLogout(!logout);
