@@ -19,7 +19,12 @@ export default function Facility() {
         ))}
       </div>
 
-      <Link to="/user/facility/bookings" className="flex justify-center items-center rounded-lg py-2.5 mx-auto bg-[#02402D] text-white max-w-[756px]">Book Now</Link>
+      <Link
+        to="/user/facility/bookings"
+        className="flex justify-center items-center rounded-lg py-2.5 mx-auto bg-[#02402D] text-white max-w-[756px]"
+      >
+        Book Now
+      </Link>
     </>
   );
 }

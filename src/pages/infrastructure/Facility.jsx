@@ -118,9 +118,9 @@ export default function Facility() {
               </div>
 
               <div className="flex gap-2">
-                <Button className="bg-[#E4E7EC] hover:bg-gray-300 font-medium px-5">
+                <Link to={`/user/facility/${facility.id}`} className="bg-[#E4E7EC] hover:bg-gray-300 font-medium px-5 py-2 rounded-md">
                   View Details
-                </Button>
+                </Link>
                 <Link to={`/user/facility/${facility.id}`} className="flex justify-center items-center rounded-lg py-2.5 bg-[#02402DA6] hover:bg-[#02402D] text-white font-medium px-6">
                   Book
                 </Link>

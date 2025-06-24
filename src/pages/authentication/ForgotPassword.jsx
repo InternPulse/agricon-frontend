@@ -3,15 +3,16 @@ import logo from "../../assets/agriconLogo.png";
 import companyImage from "../../assets/authImage.png";
 import lightBar from "../../assets/LightBar.png";
 import darkBar from "../../assets/darkBar.png";
+import { assets } from '../../assets/assets';
 import ResetEmailForm from "../../components/authentication/ResetEmailForm";
 
 export default function ForgotPassword() {
   const [isActive, setIsActive] = useState(1);
 
   return (
-    <main className="min-h-screen grid grid-cols-1 lg:grid-cols-2  px-6 py-12 md:px-16 md:py-16 items-center">
+    <main >
       {/* Left Panel */}
-      <section className="flex flex-col items-center justify-center bg-[#F0F2F5] p-8 md:p-[75px] rounded-md w-full max-w-[600px] mx-auto">
+      {/* <section className="flex flex-col items-center justify-center bg-[#F0F2F5] p-8 md:p-[75px] rounded-md w-full max-w-[600px] mx-auto">
         <header className="mb-8">
           <img src={logo} alt="logo" className="w-[140px]" />
         </header>
@@ -35,7 +36,7 @@ export default function ForgotPassword() {
             </p>
           </div>
 
-          {/* Had to reduce the width of the bar in response to the screen sizes */}
+          
 
           <div className=" flex gap-2 justify-center  mt-10">
             {Array.from({ length: 5 }, (_, i) => i + 1).map((num) => {
@@ -51,10 +52,12 @@ export default function ForgotPassword() {
             })}
           </div>
         </footer>
-      </section>
+      </section> */}
 
-      {/* Right Panel */}
+      
+  {/*=============================Right Panel============================================*/}
       <ResetEmailForm />
+      
     </main>
   );
 }

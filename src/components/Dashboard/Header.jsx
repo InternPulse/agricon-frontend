@@ -13,7 +13,7 @@ const Header = ({role}) => {
     <header className="h-20 w-full border-b border-[#dddddd] flex justify-between items-center bg-[#F7F9FC] px-5 sm:px-5 xl:px-10">
       <div className="flex items-center lg:w-60">
         <span className="text-[20px] font-medium text-[#344054]">
-          {role === 'Farmer' ? role + 'Dashboard' : role === 'Facility Owner' ? role + ' Dashboard' : 'Error 404'}
+          {role === 'Farmer' ? role + 'Dashboard' : role === 'Facility Owner' ? role + ' Dashboard' : 'Setting'}
         </span>
       </div>
       <div className="hidden md:flex items-center justify-center w-full max-w-sm sm:max-w-xs mb-4 sm:mb-0">

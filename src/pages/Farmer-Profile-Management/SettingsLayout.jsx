@@ -3,9 +3,10 @@ import { Outlet } from "react-router-dom";
 
 function SettingsLayout() {
     return (
-        <>
-            <Outlet />
-        </>
+       
+            <div className="w-full">
+                <Outlet />
+            </div>
     );
 }
 

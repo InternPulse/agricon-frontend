@@ -45,7 +45,7 @@ const Navbar = () => {
           </ul>
           <ul className='hidden md:flex md:items-right gap-x-6 text-gray-50'>
             <li className='hover:cursor-pointer bg-[#02402D] rounded-full flex px-4 py-1 font-bold'>
-              <Link to='/signup'>Get Started</Link>
+              <Link to='/roles'>Get Started</Link>
             </li>
             <li className='hover:cursor-pointer text-[#FFAC00] border border-[#FFAC00] rounded-full flex px-6 py-1 font-bold'>
               <Link to='/login'>Login</Link>
@@ -92,7 +92,7 @@ const Navbar = () => {
 
             <ul className='md:flex md:items-right gap-x-6 text-gray-50 space-y-3'>
               <li className='hover:cursor-pointer bg-[#02402D] rounded-full flex px-4 py-1 font-bold'>
-                <Link to='/signup' onClick={() => setShowMobileMenu(false)}>
+                <Link to='/roles' onClick={() => setShowMobileMenu(false)}>
                   Get Started
                 </Link>
               </li>

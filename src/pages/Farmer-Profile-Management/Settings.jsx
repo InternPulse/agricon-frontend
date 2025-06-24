@@ -4,6 +4,7 @@ import { HiBell } from "react-icons/hi";
 import { IoIosArrowForward } from "react-icons/io";
 import { Link } from "react-router-dom";
 import { IoIosArrowDown } from "react-icons/io";
+import Header from "../../components/Dashboard/Header";
 
 export default function Settings() {
   const [activeTab, setActiveTab] = useState("Profile");
@@ -16,37 +17,14 @@ export default function Settings() {
   const tabs = ["Profile", "Notifications", "Privacy & Security"];
 
   return (
-    <div className="flex min-h-screen bg-[#f7f9fa]">
+    <div className="flex items-center w-full min-h-screen border">
       {/* <SideBar /> */}
-      <div className="">
+      <div className="w-full">
         {/* Top Header */}
-        <div className="flex items-center justify-between w-full bg-[#f5f8fa] px-10 py-6 border-b border-blue-200">
-          <h1 className="text-2xl font-semibold text-gray-700">Account Settings</h1>
-          <div className="flex items-center gap-4 w-full max-w-md">
-            <input
-              type="search"
-              placeholder="Search here"
-              className="border border-gray-300 rounded-xl px-4 py-2 focus:outline-none w-full"
-            />
-            <div className="flex items-center gap-2">
-              <span className="relative">
-                <div className="w-[40px] h-[40px] rounded-full bg-[#D5F0E8] flex justify-center items-center">
-                  <span className="text-[#047D58] flex justify-center items-center">
-                    <HiBell />
-                  </span>
-                </div>
-              </span>
-              <img src="user-avatar.jpg" alt="User" className="w-8 h-8 rounded-full border" />
-              <span className="text-sm font-medium text-gray-700">Interns</span>
-              <div className="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-                <IoIosArrowDown />
-              </div>
-            </div>
-          </div>
-        </div>
+        <Header />
 
         {/* Tabs & Content Wrapper */}
-        <div className="px-10 pb-10 pt-4 bg-[#f7f9fa] min-h-[calc(100vh-120px)]">
+        <div className="px-10 pb-10 pt-4 bg-[#f7f9fa] min-h-screen">
           <div className="w-full">
             {/* Tabs */}
             <div className="bg-white py-3 mb-4 rounded-lg">
