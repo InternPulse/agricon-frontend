@@ -3,7 +3,7 @@ import { FaBuilding, FaChevronRight } from "react-icons/fa6";
 
 const Discover = () => {
   return (
-    <div className="wrapper bg-[#02402D] w-[226px] h-[182px] text-white rounded-[12px] flex justify-center items-center">
+    <div className="wrapper min-w-55 flex-1 bg-[#02402D] w-[226px] h-[182px] text-white rounded-[12px] flex justify-center items-center">
       <div className="container w-[194px]">
         <div className="top space-y-2">
           <div className="first flex gap-[6px] items-start">

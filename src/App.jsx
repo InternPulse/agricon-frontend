@@ -1,7 +1,9 @@
 import Example from "./components/Example";
-import Dashboard from "./pages/Dashboard/Dashboard";
+import FacilityOwnerDashboard from "./pages/Dashboard/FacilityOwnerDashboard";
+import Dashboard from "./pages/Dashboard/FacilityOwnerDashboard";
+import FarmerDashboard from "./pages/Dashboard/FarmerDashboard";
 
 function App() {
-  return <Dashboard role={"Facility Owner"} />;
+  return <FarmerDashboard role={"Farmer"} />;
 }
 export default App;

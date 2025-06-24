@@ -45,7 +45,7 @@ const SideBar = ({ role }) => {
                 label: role === "Facility Owner" ? "Earnings" : "Settings",
                 icon: MdOutlineSettings,
               },
-              role === ""
+              role === "Facility Owner"
                 ? {
                     id: "profile",
                     label: "Profile",
