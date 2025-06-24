@@ -11,7 +11,11 @@ import Bookings from "../../components/Dashboard/Bookings";
 import TotalFacilities from "../../components/Dashboard/TotalFacilities";
 import CompleteProfile from "../../components/Dashboard/CompleteProfile";
 import LevelUp from "../../components/Dashboard/LevelUp";
+import { SidebarContext } from "../../App";
+import { useContext } from "react";
+
 export default function FarmerDashboard({ role }) {
+  const { open, toggleSidebar } = useContext(SidebarContext);
   return (
     <div
       className="flex min-h-screen bg-gray-100 font-sans"
@@ -19,7 +23,7 @@ export default function FarmerDashboard({ role }) {
     >
       <SideBar role={role} />
       <main
-        className=" flex-1 flex flex-col bg-white overflow-auto"
+        className={`${open ? 'hidden sm:flex' : 'flex'} flex-1 flex-col bg-white overflow-x-hidden`}
         style={{ scrollbarWidth: "none" }}
       >
         <Header role={role} />

@@ -11,8 +11,11 @@ import Stats from "../../components/Dashboard/Stats";
 import FacilityTransaction from "../../components/Dashboard/FacilityTransaction";
 import StorageFacilities from "../../components/Dashboard/StorageFacilities";
 import RecentBookings from "../../components/Dashboard/RecentBookings";
+import { SidebarContext } from "../../App";
+import { useContext } from "react";
 
 export default function FacilityOwnerDashboard({ role }) {
+  const {open} = useContext(SidebarContext);
   return (
     <div
       className="flex min-h-screen bg-gray-100 font-sans"
@@ -20,7 +23,7 @@ export default function FacilityOwnerDashboard({ role }) {
     >
       <SideBar role={role} />
       <main
-        className=" flex-1 flex flex-col bg-white overflow-auto"
+        className={`${open ? 'hidden sm:flex' : 'flex'}  flex-1 flex flex-col bg-white overflow-auto`}
         style={{ scrollbarWidth: "none" }}
       >
         <Header role={role} />

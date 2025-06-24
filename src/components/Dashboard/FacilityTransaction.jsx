@@ -76,8 +76,8 @@ const FacilityTransaction = () => {
                 </div>
               </td>
               <td className="px-6 py-4 whitespace-nowrap text-[12px]font-medium">
-                <div className="text-[#101928]">{item.price}</div>
-                <div className="text-[#667185]">{item.date}</div>
+                <div className="text-[#101928] text-[12px]">{item.price}</div>
+                <div className="text-[#667185] text-[12px]">{item.date}</div>
               </td>
               <td className="px-6 py-4 whitespace-nowrap">
                 <span

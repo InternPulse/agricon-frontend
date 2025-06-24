@@ -13,7 +13,7 @@ function App() {
   };
   return (
     <SidebarContext.Provider value={{ open, toggleSidebar }}>
-      <FarmerDashboard role={"Farmer"} />
+      <FacilityOwnerDashboard role={"Facility Owner"} />
     </SidebarContext.Provider>
   );
 }

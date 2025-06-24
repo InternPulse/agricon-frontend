@@ -15,7 +15,7 @@ const SideBar = ({ role }) => {
 
   return (
     <div
-      className={`sidebar sticky top-0 left-0 overflow-y-scroll h-screen z-50 ${open ? 'flex fixed left-0 top-0' : 'hidden'}  lg:flex flex-col w-[264px] bg-[#02402D] text-white shadow-xl py-5 px-4`}
+      className={`sidebar sticky top-0 left-0 overflow-y-scroll h-screen z-50 ${open ? 'w-screen sm:hidden' : 'hidden'}  lg:flex flex-col w-[264px] bg-[#02402D] text-white shadow-xl py-5 px-4`}
       style={{ scrollbarWidth: "none" }}
     >
       <div className="flex flex-col gap-5">
@@ -57,7 +57,7 @@ const SideBar = ({ role }) => {
               item.icon && item.label ? (
                 <button
                   key={item.id}
-                  onClick={() => setActiveMenuItem(item.id)}
+                  onClick={() => {setActiveMenuItem(item.id); toggleSidebar();}}
                   className={`w-full flex items-center h-10 pl-2 rounded-lg text-left hover:bg-green-400/40 transition-colors duration-200
                           ${
                             activeMenuItem === item.id
@@ -77,7 +77,7 @@ const SideBar = ({ role }) => {
             {" "}
             <div className="bg-white flex flex-col gap-5 p-4 rounded-xl shadow-inner mb-4">
               <div className="flex items-center mb-3">
-                <div className="top flex gap-1">
+                <div className="top flex gap-1 max-w-70">
                   <div className="w-full">
                     <Donut completionPercentage={62} />
                   </div>
