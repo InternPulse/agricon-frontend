@@ -30,13 +30,13 @@ const Header = ({ role }) => {
       </div>
       <div className="flex items-center space-y-4 sm:space-y-0 sm:space-x-4 justify-center sm:justify-end">
         <div className="flex items-center h-10 gap-4 p-2 rounded-lg">
-          <Link className="fixed sm:static right-16 h-6 w-6 sm:h-10 sm:w-10 rounded-full bg-[#D5F0E8] flex justify-center items-center sm:text-xl text-[#047D58]">
+          <Link className="absolute sm:static right-16 h-6 w-6 sm:h-10 sm:w-10 rounded-full bg-[#D5F0E8] flex justify-center items-center sm:text-xl text-[#047D58]">
             <IoNotifications />
             <span className="text-red-600 relative bottom-[6px] sm:bottom-[8px] right-[3px] text-[9px] sm:text-[12px] font-bold">3</span>
           </Link>
           <div
             onClick={() => toggleLogout()}
-            className="fixed sm:static top-4 right-4 sm:flex items-center gap-1"
+            className="absolute sm:static top-4 right-4 sm:flex items-center gap-1"
           >
             <div className="flex items-center space-x-1 sm:space-x-2">
               <img className="size-8 sm:size-10" src={assets.intern} /> <p className="hidden sm:block">Interns</p>
