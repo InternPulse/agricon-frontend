@@ -10,26 +10,31 @@ import Home from './pages/home/Home'
 import Services from './pages/home/Services';
 import AboutUs from './pages/home/AboutUs';
 import Contact from './pages/home/Contact';
-import Dashboard from "./pages/Dashboard/Dashboard";
+// import Dashboard from "./pages/Dashboard/Dashboard";
 import Settings from "./pages/Farmer-Profile-Management/Settings";
 import ChangePassword from "./pages/Farmer-Profile-Management/changePassword"; 
 import BookingForm from "./pages/infrastructure/BookingForm";
 import FacilityDetails from "./pages/infrastructure/FacilityDetails";
 import Facility from "./pages/infrastructure/Facility";
-import BookingSummary from "./pages/infrastructure/BookingSummary";
 import RootLayout from './layout/RootLayout';
-import UsersLayout from './layout/UsersLayout';
+// import UsersLayout from './layout/UsersLayout';
 import FacilityLayout from './pages/infrastructure/Root';
 import SettingsLayout from './pages/Farmer-Profile-Management/SettingsLayout';
 import ResetPasswordOTP from './pages/authentication/RepasswordOTP';
 import ResetPassword from './components/authentication/ResetPasswordForm';
 import BookingHistory from './pages/BookingHistory/BookingHistory';
+import FacilityOwnerLayout from './layout/FAcilityOwnerLayout';
+import FarmerLayout from './layout/Farmerlayout';
+import FarmerDashboard from './pages/Dashboard/FarmerDashboard';
+import FacilityOwnerDashboard from './pages/Dashboard/FacilityOwnerDashboard';
+import { AuthProvider } from './context/AuthContext.jsx';
+import UserLayout from './layout/UsersLayout.jsx';
+
 
 
 function App() {
   return (
-    <div>
-      <div>
+    <AuthProvider>
         <Routes>
           <Route path='/' element={<RootLayout />}>
             <Route index element={<Home />} />
@@ -46,31 +51,30 @@ function App() {
             <Route path='/successful-reset-password-form' element={<ResetPassword />} />
           </Route>
 
-          <Route path='user' element={<UsersLayout />}>
-            <Route index element={<Dashboard role={"Farmer"} />} />
-            <Route path="settings" element={<SettingsLayout />} >
-              <Route index element={<Settings />} />
-              <Route path="change-password" element={<ChangePassword />} />
-             </Route> 
-            <Route path="facility" element={<FacilityLayout />}>
-              <Route index element={<Facility />}/>
-              <Route path=":id" element={<FacilityDetails />} />
-              <Route path="bookings" element={<BookingForm />} />
-              <Route path="booking-summary" element={<BookingSummary />} />
-            </Route> 
-            <Route path='booking-history' element={<BookingHistory />}/>
+          {/* Routes for farmer Dashboard */}
+          <Route path='farmer' element={<FarmerLayout />}>
+              <Route index element={< FarmerDashboard />} />
+              <Route path="facility" element={<FacilityLayout />}>
+                  <Route index element={<Facility />}/>
+                  <Route path=":id" element={<FacilityDetails />} />
+                  <Route path="bookings" element={<BookingForm />} />
+              </Route> 
+                  <Route path="booking-history" element={<BookingHistory />} />
+              <Route path="settings" element={<SettingsLayout />} >
+                  <Route index element={<Settings />} />
+                  <Route path="change-password" element={<ChangePassword />} />
+              </Route>  
           </Route>
+
+            {/* Route for facility owner/operator */}
+          <Route path="operator" element={<FacilityOwnerLayout />}>
+                <Route index element={<FacilityOwnerDashboard />}/>
+          </Route>
+          
         </Routes>
-      </div>
-    </div>
+    </AuthProvider>
   )
 }
 
 export default App;
 
-
-
-        
-
-        
-        

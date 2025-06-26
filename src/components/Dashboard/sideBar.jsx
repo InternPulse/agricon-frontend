@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {  useState } from "react";
 import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
 import { assets } from "../../assets/assets";
 import { LuLayoutDashboard } from "react-icons/lu";
@@ -7,18 +7,19 @@ import { TbReportSearch } from "react-icons/tb";
 import { MdOutlineSettings } from "react-icons/md";
 import { AiOutlineCustomerService } from "react-icons/ai";
 import Donut from "./Donut";
-import { FcCustomerSupport } from "react-icons/fc";
+// import { SidebarContext } from "../../App";
 
 const SideBar = ({ role }) => {
+  // const { open, toggleSidebar } = useContext(SidebarContext);
   const [activeMenuItem, setActiveMenuItem] = useState("dashboard");
 
   return (
     <div
-      className="sidebar sticky top-0 left-0 overflow-y-scroll h-screen z-50 hidden lg:flex flex-col w-[264px] bg-[#02402D] text-white shadow-xl py-5 px-4"
+      className={`sidebar sticky top-0 left-0 overflow-y-scroll h-screen z-50 ${open ? 'flex fixed left-0 top-0' : 'hidden'}  lg:flex flex-col w-[264px] bg-[#02402D] text-white shadow-xl py-5 px-4`}
       style={{ scrollbarWidth: "none" }}
     >
       <div className="flex flex-col gap-5">
-        <div className="flex items-center h-[66px] border-b-[0.5px] border-[#FFAC00]/70 h-[66px] pl-2 pb-5">
+        <div className="flex items-center  border-b-[0.5px] border-[#FFAC00]/70 h-[66px] pl-2 pb-5">
           <img src={assets.agriconLogo2} alt="Agrion Logo" className="w-25" />
         </div>
         <div className="flex flex-col justify-between h-full">
@@ -45,7 +46,7 @@ const SideBar = ({ role }) => {
                 label: role === "Facility Owner" ? "Earnings" : "Settings",
                 icon: MdOutlineSettings,
               },
-              role === ""
+              role === "Facility Owner"
                 ? {
                     id: "profile",
                     label: "Profile",

@@ -1,15 +1,30 @@
-import { Outlet } from "react-router-dom";
-import Side from "../components/home/Side";
+import React from 'react';
+import { useAuth } from '../context/AuthContext';
+import FacilityLayout from '../pages/infrastructure/Root';
+import FarmerLayout from './Farmerlayout';
 
-function UsersLayout() {
-    return (
-        <div className="flex w-full">
-            <Side />
-            <div className="pl-0 md:pl-64 w-full"> 
-                <Outlet />
-            </div>
-        </div>
-    )
+function UserLayout() {
+    const { userRole } = useAuth();
+
+
+  const renderDashboard = () => {
+    switch (userRole) { 
+      case 'OPERATOR':
+        return <FacilityLayout />;
+      case 'FARMER':
+        return <FarmerLayout />;
+      default:
+        return <div>No roles found</div>
+    }
+  };
+
+  return (
+    <div>
+      <main>
+        {renderDashboard()}
+      </main>
+    </div>
+  );
 }
 
-export default UsersLayout;
+export default UserLayout;

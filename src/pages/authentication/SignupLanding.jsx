@@ -2,11 +2,39 @@
 // src/components/SignupLanding.js
 
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link,  useNavigate } from "react-router-dom";
 import { assets } from "../../assets/assets";
 import logo from "../../assets/agriconLogo.png";
 
 const SignupLanding = () => {
+
+  const navigate = useNavigate();
+  const farmerRole = (event) => {
+    if (event && event.preventDefault) {
+      event.preventDefault(); 
+    }
+    try {
+      localStorage.setItem('userRole', 'FARMER');
+      navigate("/signup")
+    } catch (error) {
+      console.error("Error saving farmer role", error);
+    }
+  };
+
+  const facilityRole = (event) => {
+    if (event && event.preventDefault) {
+      event.preventDefault(); 
+    }
+    try {
+      localStorage.setItem('userRole', 'OPERATOR');
+      navigate("/signup")
+     
+    } catch (error) {
+      console.error("Error saving facility owner role", error);
+    }
+  };
+
+
   return (
     <div className="min-h-screen lg:flex items-center justify-center bg-gray-50 p-6">
       <div className="py-16 lg:py-0 bg-white rounded-xl shadow-md w-full max-w-6xl grid lg:grid-cols-2 md:gap-6">
@@ -37,7 +65,7 @@ const SignupLanding = () => {
             <h2 className=" text-xl md:text-2xl font-bold text-gray-900 md:mb-4">Sign up</h2>
           </div>
           <div className="md:space-y-4 w-full md:max-w-md p-4">
-              <Link to="/signup" state={{ role: "FARMER" }}>
+              <Link to="/signup" onClick={farmerRole}>
             <div className="flex items-center mb-4 md:mb-6 justify-between bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition">
               <div>
                 <div className="md:text-lg font-semibold text-gray-900 mb-2">
@@ -51,7 +79,7 @@ const SignupLanding = () => {
               <span className="text-xl text-[#02402D] ml-2 font-extrabold">›</span>
             </div>
               </Link>
-              <Link to="/signup" state={{ role: "OPERATOR" }}>
+              <Link to="/signup" onClick={facilityRole}>
             <div className=" flex items-center justify-between bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition">
                 <div>
                 <div className="md:text-lg font-semibold text-gray-900 mb-2">

@@ -84,12 +84,15 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { assets } from '../../assets/assets';
 import { Link } from 'react-router-dom'
+import { useAuth } from '../../context/AuthContext';
+
 
 const Login = () => {
   const [formData, setFormData] = useState({ email: '', password: '' });
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const { login } = useAuth();
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.id]: e.target.value });
@@ -108,7 +111,13 @@ const Login = () => {
       );
       localStorage.setItem('access_token', response.data.access);
       localStorage.setItem('refresh_token', response.data.refresh);
-      navigate('/user');
+      const currentRole = response.data.role.toLowerCase();
+
+      console.log(currentRole);
+      login(currentRole);
+      
+          navigate(`/${currentRole}`)
+      
     } catch (err) {
       setError(err.response?.data?.detail || 'Login failed. Please check your credentials.');
     } finally {

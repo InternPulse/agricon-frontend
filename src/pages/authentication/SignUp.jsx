@@ -44,25 +44,25 @@
 
 
 import React, { useState } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate} from 'react-router-dom';
 import axios from 'axios';
 import { assets } from '../../assets/assets';
 
 const SignUp = () => {
-  const location = useLocation();
   const navigate = useNavigate();
-  const initialRole = location.state?.role || 'FARMER' ||'OPERATOR'; // Default to FARMER, a valid choice
-
-  const [formData, setFormData] = useState({
-    email: '',
-    password: '',
-    password2: '',
-    role: initialRole,
-  });
+  const role = localStorage.getItem("userRole")
+  
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(null);
   const [loading, setLoading] = useState(false);
   const [otp, setOtp] = useState(''); // To store and display the OTP or handle input
+  const [formData, setFormData] = useState({
+    email: '',
+    password: '',
+    password2: '',
+    role: role,
+  });
+  
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.id]: e.target.value });
@@ -110,7 +110,7 @@ const SignUp = () => {
         },
         { headers: { 'Content-Type': 'application/json' } }
       );
-      console.log('Registration response:', response.data);
+      // console.log('Registration response:', response.data);
       localStorage.setItem('access_token', response.data.access);
       localStorage.setItem('refresh_token', response.data.refresh);
       const receivedOtp = response.data.otp; // Assuming backend returns otp
@@ -243,7 +243,7 @@ const SignUp = () => {
                 required
               />
             </div>
-            <div>
+            <div className='hidden'>
               <label htmlFor="role" className="block text-sm font-medium text-gray-700 mb-1">
                 Role
               </label>

@@ -4,7 +4,7 @@ import { TbDots } from "react-icons/tb";
 
 const Bookings = () => {
   return (
-    <div className="self-start bg-white w-[226px] h-[182px] p-6 rounded-xl border border-[#D0D5DD] flex flex-col justify-between">
+    <div className="self-start bg-white w-[226px] h-[182px] p-6 rounded-xl border border-[#D0D5DD] flex sm:flex-1 flex-col justify-between">
       <div className="container space-y-[32px] w-[194px] h-[134px]">
         <div className="top flex flex-col h-[82px] w-full gap-[24px]">
           <div className="h-[24px] w-full flex justify-between items-center">
