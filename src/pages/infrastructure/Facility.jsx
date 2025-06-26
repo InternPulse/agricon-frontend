@@ -4,15 +4,32 @@ import { IoIosSearch } from "react-icons/io";
 // import { IoFilterSharp } from "react-icons/io5";
 // import Facilities from "../../components/infrastructure/Facilities";
 import Pagination from "../../components/infrastructure/ui/Pagination";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Button from "../../components/infrastructure/ui/Button";
 import { Link } from "react-router-dom";
+import { fetchAllFacilities } from "../../components/bookingCreateion&Management/actions/getAllFacilities";
 
 export default function Facility() {
   const [searchTerm, setSearchTerm] = useState("");
   const [filter, setFilter] = useState("All");
   const [currentPage, setCurrentPage] = useState(1);
   const facilitiesPerPage = 5;
+
+  const [data, setData] = useState([]);
+  
+  useEffect(() => {
+      const getData = async () => {
+          try {
+              const dataFetched = await fetchAllFacilities();
+            
+              setData(dataFetched)
+  
+          } catch (error) {
+              console.log("Error loading data", error)
+          }
+      }
+      getData();
+  }, [])
 
   // Filter and search logic
   const filteredFacilities = useMemo(() => {
