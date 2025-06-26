@@ -6,6 +6,7 @@ import RootLayout from "./pages/infrastructure/Root";
 import SignUp from "./pages/signUp/SignUp";
 import BookingSummary from "./pages/infrastructure/BookingSummary";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import FacilityProvider from "./components/infrastructure/FacilityContext";
 
 const router = createBrowserRouter([
   { path: "/", element: <SignUp /> },
@@ -23,7 +24,11 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
-  return <RouterProvider router={router} />;
+  return (
+    <FacilityProvider>
+      <RouterProvider router={router} />
+    </FacilityProvider>
+  );
 }
 
 export default App;

@@ -1,14 +1,17 @@
 import Card from "../../components/infrastructure/ui/Card";
-import { cardData, facilityData } from "../../data";
+import { cardData } from "../../data";
 import { IoIosSearch } from "react-icons/io";
 // import { IoFilterSharp } from "react-icons/io5";
 // import Facilities from "../../components/infrastructure/Facilities";
 import Pagination from "../../components/infrastructure/ui/Pagination";
-import { useMemo, useState } from "react";
+import { useContext, useMemo, useState } from "react";
 import Button from "../../components/infrastructure/ui/Button";
 import { Link } from "react-router-dom";
+import { FacilityContext } from "../../components/infrastructure/FacilityContext";
 
 export default function Facility() {
+  const { facilities } = useContext(FacilityContext);
+
   const [searchTerm, setSearchTerm] = useState("");
   const [filter, setFilter] = useState("All");
   const [currentPage, setCurrentPage] = useState(1);
@@ -16,12 +19,12 @@ export default function Facility() {
 
   // Filter and search logic
   const filteredFacilities = useMemo(() => {
-    return facilityData
+    return (facilities ?? []) //	Uses [] only if facilities is null or undefined
       .filter((item) =>
         item.name?.toLowerCase().includes(searchTerm.toLowerCase())
       )
       .filter((item) => (filter === "All" ? true : item.type === filter));
-  }, [searchTerm, filter]);
+  }, [facilities, searchTerm, filter]);
 
   // Pagination logic
   const indexOfLast = currentPage * facilitiesPerPage;
@@ -113,7 +116,7 @@ export default function Facility() {
                   {facility.type}
                 </p>
                 <p className="flex items-center truncate w-[243px] h-10.5 text-[#475367]">
-                  {facility.address}
+                  {facility.location}
                 </p>
               </div>
 
@@ -121,7 +124,10 @@ export default function Facility() {
                 <Button className="bg-[#E4E7EC] hover:bg-gray-300 font-medium px-5">
                   View Details
                 </Button>
-                <Link to="facility-details" className="flex justify-center items-center rounded-lg py-2.5 bg-[#02402DA6] hover:bg-[#02402D] text-white font-medium px-6">
+                <Link
+                  to="facility-details"
+                  className="flex justify-center items-center rounded-lg py-2.5 bg-[#02402DA6] hover:bg-[#02402D] text-white font-medium px-6"
+                >
                   Book
                 </Link>
               </div>

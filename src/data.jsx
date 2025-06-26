@@ -73,29 +73,44 @@ export const cardData = [
 // ✅ Sample facilityData (data.js)
 export const facilityData = [
   {
+    id: 1,
     name: "Golden Grains Dryer",
     type: "Dryer",
-    address: "Imota-Ikorodu, Lagos State",
+    location: "Imota-Ikorodu, Lagos State",
+    availability: "Available",
+    capacity: "",
+    contact: "",
+    description: `This modern drying station in Ikorodu operates fuel-efficient grain
+            dryers capable of handling up to 5 tonnes per cycle. Targeted at
+            rice and maize farmers, the station offers precise temperature and
+            humidity control, speeding up drying time while preserving grain
+            quality for storage or sale.`,
+    price: "",
+    description: "",
   },
   {
+    id: 2,
     name: "AgroPrime Hub",
     type: "Processing Unit",
-    address: "Ketu-Ereyun (between Epe-Ketu)",
+    location: "Ketu-Ereyun (between Epe-Ketu)",
   },
   {
+    id: 3,
     name: "SunHarvest Drying",
     type: "Dryer",
-    address: "Mile 12 International Market",
+    location: "Mile 12 International Market",
   },
   {
+    id: 4,
     name: "SafeGrain Silo Depot",
     type: "Storage Facility",
-    address: "7B Abiloye Street, Ijegun",
+    location: "7B Abiloye Street, Ijegun",
   },
   {
+    id: 5,
     name: "Standard Silos",
     type: "Storage Facility",
-    address: "Mile 2, Central Area District",
+    location: "Mile 2, Central Area District",
   },
 ];
 
