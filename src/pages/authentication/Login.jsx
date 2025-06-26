@@ -112,7 +112,7 @@ const Login = () => {
       localStorage.setItem('access_token', response.data.access);
       localStorage.setItem('refresh_token', response.data.refresh);
       const currentRole = response.data.role.toLowerCase();
-
+      
       console.log(currentRole);
       login(currentRole);
       

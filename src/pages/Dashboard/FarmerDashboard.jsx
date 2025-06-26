@@ -20,7 +20,7 @@ export default function FarmerDashboard({role}) {
     >
       {/* <SideBar role={role} /> */}
       <main
-        className=" flex-1 flex flex-col bg-white overflow-auto"
+        className={`${open ? 'hidden sm:flex' : 'flex'} flex-1 flex-col bg-white overflow-x-hidden`}
         style={{ scrollbarWidth: "none" }}
       >
         <Header role={role} />

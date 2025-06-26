@@ -35,7 +35,7 @@ const RecentBookings = () => {
     },
   ];
   return (
-    <div className="two w-full py-4 px-6 border h-[320px] border-[#D0D5DD] space-y-7 rounded-xl">
+    <div className="two w-full overflow-x-scroll py-4 px-6 border h-[320px] border-[#D0D5DD] space-y-7 rounded-xl">
       <div className="w-[294px] space-y-[2px]">
         <h1 className="font-semibold text-[16px] text-[#101928]">
           Recent Bookings
@@ -44,7 +44,7 @@ const RecentBookings = () => {
           Hurray! check out farmers who booked your facility
         </p>
       </div>
-      <div className="space-y-3">
+      <div className="space-y-3 min-w-70">
         <div className="space-y-4">
           {recentBookings.map((person, i) => (
             <div
