@@ -7,6 +7,20 @@ import AboutUs from './pages/home/AboutUs';
 import Contact from './pages/home/Contact';
 
 
+const router = createBrowserRouter([
+  { path: "/", element: <SignUp /> },
+  {
+    path: "/facility",
+    element: <RootLayout />,
+    children: [
+      { path: ":id", element: <ComingSoon /> },
+      { index: true, element: <Facility /> },
+      { path: "facility-details", element: <FacilityDetails /> },
+      { path: "booking", element: <BookingForm /> },
+      { path: "booking-summary", element: <BookingSummary /> },
+    ],
+  },
+]);
 
 function App() {
 
@@ -25,6 +39,5 @@ function App() {
     </div>
   )
 }
-
 
 export default App;
