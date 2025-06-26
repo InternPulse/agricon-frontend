@@ -9,8 +9,17 @@ export default function FacilityProvider({ children }) {
   useEffect(() => {
     async function fetchFacility() {
       try {
+        const token = localStorage.getItem("accessToken");
+
         const response = await fetch(
-          "https://agricon-express-backend.onrender.com/api/v1/facilities/"
+          "https://agricon-express-backend.onrender.com/api/v1/facilities/",
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${token}`,
+            },
+          }
         );
         const resData = await response.json();
 
@@ -38,7 +47,7 @@ export default function FacilityProvider({ children }) {
   }, []);
 
   return (
-    <FacilityContext.Provider value={{facilities}}>
+    <FacilityContext.Provider value={{ facilities }}>
       {children}
     </FacilityContext.Provider>
   );
