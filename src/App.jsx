@@ -7,11 +7,12 @@ import Sample from "./pages/samplePage";
 import ForgotPassword from "./components/EmailTemplatesComponent/ForgotPassword";
 import BookingComfirmationAndReceipt from "./components/EmailTemplatesComponent/BookingComfirmationAndReceipt";
 import WelcomeEmail from "./components/EmailTemplatesComponent/WelcomeEmail";
+import Email from "./pages/EmailFeatures/Email";
 
 function Overview() {
   return (
     <>
-      <div className="">
+      <div className="bg-red-600">
         <div>
           <h1>Overview page for Dashboard</h1>
           <img src={assets.agriconLogo} alt="agriCon" />
@@ -37,19 +38,7 @@ function App() {
   //     </div>
   //   </>
   // );
-
-
-  ///Email rendering 
-  return (
-    <div>
-      <img  src={assets.farmerBg}/>
-    <ForgotPassword />
-
-    </div>
-
-    // <BookingComfirmationAndReceipt />
-    // <WelcomeEmail />
-  );
+  return <Email />;
 }
 
 export default App;

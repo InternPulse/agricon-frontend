@@ -1,7 +1,7 @@
 function Sample() {
   return (
     <>
-      <div className="">
+      <div className="bg-yellow-400">
         This is Facility page
       </div>
     </>
