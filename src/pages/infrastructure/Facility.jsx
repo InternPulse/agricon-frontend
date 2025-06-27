@@ -1,11 +1,9 @@
 import Card from "../../components/infrastructure/ui/Card";
 import { cardData, facilityData } from "../../data";
 import { IoIosSearch } from "react-icons/io";
-// import { IoFilterSharp } from "react-icons/io5";
-// import Facilities from "../../components/infrastructure/Facilities";
 import Pagination from "../../components/infrastructure/ui/Pagination";
 import { useMemo, useState } from "react";
-import Button from "../../components/infrastructure/ui/Button";
+// import Button from "../../components/infrastructure/ui/Button";
 import { Link } from "react-router-dom";
 
 export default function Facility() {

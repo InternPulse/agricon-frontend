@@ -4,7 +4,7 @@ import { HiBell } from "react-icons/hi";
 import { IoIosArrowForward } from "react-icons/io";
 import { Link } from "react-router-dom";
 import { IoIosArrowDown } from "react-icons/io";
-import Header from "../../components/Dashboard/Header";
+// import Header from "../../components/Dashboard/Header";
 
 export default function Settings() {
   const [activeTab, setActiveTab] = useState("Profile");
@@ -20,8 +20,6 @@ export default function Settings() {
     <div className="flex items-center w-full min-h-screen border">
       {/* <SideBar /> */}
       <div className="w-full">
-        {/* Top Header */}
-        <Header />
 
         {/* Tabs & Content Wrapper */}
         <div className="px-10 pb-10 pt-4 bg-[#f7f9fa] min-h-screen">

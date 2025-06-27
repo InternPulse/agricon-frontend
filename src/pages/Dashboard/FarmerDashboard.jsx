@@ -3,7 +3,6 @@ import { assets } from "../../assets/assets";
 import Welcome from "../../components/Dashboard/Welcome";
 import Transaction from "../../components/Transaction";
 import { FaBook, FaMillSign } from "react-icons/fa6";
-import Header from "../../components/Dashboard/Header";
 import { FaSolarPanel } from "react-icons/fa";
 import Date from "../../components/Dashboard/Date";
 import Discover from "../../components/Dashboard/Discover";
@@ -12,7 +11,7 @@ import TotalFacilities from "../../components/Dashboard/TotalFacilities";
 import CompleteProfile from "../../components/Dashboard/CompleteProfile";
 import LevelUp from "../../components/Dashboard/LevelUp";
 
-export default function FarmerDashboard({role}) {
+export default function FarmerDashboard() {
   return (
     <div
       className="flex min-h-screen bg-gray-100 font-sans"
@@ -23,7 +22,7 @@ export default function FarmerDashboard({role}) {
         className={`${open ? 'hidden sm:flex' : 'flex'} flex-1 flex-col bg-white overflow-x-hidden`}
         style={{ scrollbarWidth: "none" }}
       >
-        <Header role={role} />
+        
         <section className="flex flex-wrap md:flex-nowrap">
           <div className="firstt px-5 xl:pl-8 xl:pr-5 py-4 md:border-r border-[#D0D5DD] w-full">
             <div className="container flex flex-col gap-6">

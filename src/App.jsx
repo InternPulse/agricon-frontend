@@ -28,7 +28,6 @@ import FarmerLayout from './layout/Farmerlayout';
 import FarmerDashboard from './pages/Dashboard/FarmerDashboard';
 import FacilityOwnerDashboard from './pages/Dashboard/FacilityOwnerDashboard';
 import { AuthProvider } from './context/AuthContext.jsx';
-import UserLayout from './layout/UsersLayout.jsx';
 
 
 

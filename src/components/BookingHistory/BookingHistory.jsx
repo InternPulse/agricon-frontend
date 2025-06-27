@@ -1,5 +1,4 @@
 import React from "react";
-import BookingHistoryHeader from "./BookingHistoryHeader";
 import BookingTable from "./BookingTable";
 import bookingData from "./bookingData";
 import "./BookingHistory.css";
@@ -29,7 +28,6 @@ const metrics = [
 export default function History() {
   return (
     <div className="booking-history-wrapper">
-      <BookingHistoryHeader />
       <div className="booking-content">
         {/* Metrics */}
         {metrics.map((metric) => (

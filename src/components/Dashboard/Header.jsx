@@ -1,76 +1,69 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import { IoNotifications } from "react-icons/io5";
-import { assets } from "../../assets/assets";
-import { FaAngleDown } from "react-icons/fa";
-import { AiOutlineLogout } from "react-icons/ai";
-// import { SidebarContext } from "../../App";
+import React, { useState } from 'react';
+import { FaAngleDown, FaAngleUp, FaSignOutAlt } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom'; 
+import { logout } from '../../api/logout'
 
-const Header = ({ role }) => {
-  // const { open, toggleSidebar } = useContext(SidebarContext);
-  const capture = (e) => (e.key === "Enter" ? (e.target.value = "") : "");
-  const [logout, setLogout] = useState(false);
-  const toggleLogout = () => setLogout(!logout);
-  return (
-    <header className="h-15 sm:h-20 w-full border-b border-[#dddddd] flex justify-between items-center bg-[#F7F9FC] px-5 sm:px-5 xl:px-10">
-      <div className="flex items-center lg:w-60">
-        <span className="text-[14px] sm:text-[20px] font-medium text-[#344054]">
-          {role === "Farmer"
-            ? role + " Dashboard"
-            : role === "Facility Owner"
-            ? role + " Dashboard"
-            : "Error 404"}
-        </span>
-      </div>
-      <div className="hidden md:flex items-center justify-center w-full max-w-sm sm:max-w-xs mb-4 sm:mb-0">
-        <input
-          onKeyPress={(e) => capture(e)}
-          type="text"
-          placeholder="Search here"
-          className="sm:w-9/10 max-w-[382px] px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 text-[14px] text-gray-700"
-        />
-      </div>
-      <div className="flex items-center space-y-4 sm:space-y-0 sm:space-x-4 justify-center sm:justify-end">
-        <div className="flex items-center h-10 gap-4 p-2 rounded-lg">
-          <Link className="absolute sm:static right-16 h-6 w-6 sm:h-10 sm:w-10 rounded-full bg-[#D5F0E8] flex justify-center items-center sm:text-xl text-[#047D58]">
-            <IoNotifications />
-            <span className="text-red-600 relative bottom-[6px] sm:bottom-[8px] right-[3px] text-[9px] sm:text-[12px] font-bold">
-              3
-            </span>
-          </Link>
-          <div
-            onClick={() => {
-              toggleLogout();
-              // toggleSidebar();
-            }}
-            className="absolute sm:static top-4 right-4 sm:flex items-center gap-1"
-          >
-            <div className="flex items-center space-x-1 sm:space-x-2">
-              <img className="size-8 sm:size-10" src={assets.intern} />{" "}
-              <p className="hidden sm:block">Interns</p>
+const Header = ({ title, userName, picture }) => {
+  const [showLogoutDropdown, setShowLogoutDropdown] = useState(false);
+    const navigate = useNavigate();
+
+ //logout handler 
+  const handleLogout = async () => {
+    try {
+      //call the api
+      await logout(); 
+      navigate('/login'); 
+      setShowLogoutDropdown(false); 
+    } catch (error) {
+      console.error('Logout failed:', error);
+      navigate('/login');
+    }
+  };
+    
+
+    return (
+        <div className='flex items-center border-b border-gray-700 bg-white justify-between space-x-10 py-5 px-20  backdrop-blur-3xl w-full z-30'>
+            <div className='font-bold text-xl'>
+                {title}
             </div>
-            <div className="hidden sm:block">
-              <FaAngleDown />
+
+            
+
+            <div className='flex items-center gap-5'> 
+              <div className=''>
+                  <input
+                      type="text"
+                      name=""
+                      id=""
+                      placeholder="Search..." 
+                      className='w-60 h-10 rounded-xl border outline-none bg-gray-50 px-3 py-1 text-sm' 
+                  />
+              </div>
+                {/* User Info and Dropdown Toggle */}
+                <div className='relative flex items-center gap-4'> 
+                    <h6 className='font-bold'>{userName}</h6>
+                    <p>{picture}</p> 
+                    <button
+                        onClick={() => setShowLogoutDropdown(!showLogoutDropdown)}
+                        className="flex items-center text-gray-700 hover:text-gray-900 focus:outline-none"
+                    >
+                        {showLogoutDropdown ? <FaAngleUp className='w-6 h-6' /> : <FaAngleDown className='w-6 h-6' />}
+                    </button>
+                    {showLogoutDropdown && (
+                        <div className="absolute top-full right-0 mt-2 w-32 bg-white rounded-md shadow-lg py-1 z-40">
+                            <hr className="text-gray-400 my-1" /> 
+                            <button
+                                onClick={handleLogout}
+                                className="flex items-center w-full text-left px-4 py-2 text-red-600 hover:bg-red-50 text-sm"
+                            >
+                                <FaSignOutAlt className="mr-2" /> Logout
+                            </button>
+                        </div>
+                    )}
+                </div>
             </div>
-            <div
-              className={`${
-                logout ? "opacity-0 sm:relative sm:opacity-100" : "hidden"
-              } top-20 right-5 w-0 h-15 rounded-md flex items-center px-2 text-red-600`}
-            >
-              <Link
-                onClick={toggleLogout}
-                to={"/sign-up"}
-                className="z-50 absolute px-4  w-[200px] h-15 rounded-lg flex gap-2 items-center bg-white border border-[#dddddd] right-[-30px]"
-              >
-                <AiOutlineLogout />
-                <span className="text-[14px]">Log out</span>
-              </Link>
-            </div>
-          </div>
         </div>
-      </div>
-    </header>
-  );
-};
+    );
+}
 
 export default Header;
