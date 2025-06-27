@@ -15,7 +15,7 @@ const SideBar = ({ role }) => {
 
   return (
     <div
-      className={`sidebar sticky top-0 left-0 overflow-y-scroll h-screen z-50 ${open ? 'w-screen sm:hidden' : 'hidden'}  lg:flex flex-col w-[264px] bg-[#02402D] text-white shadow-xl py-5 px-4`}
+      className={`sidebar sticky top-0 left-0 overflow-y-scroll h-screen z-50 ${open ? 'w-screen sm:w-[264px] sm:hidden' : 'hidden'}  lg:flex flex-col w-[264px] bg-[#02402D] text-white shadow-xl py-5 px-4`}
       style={{ scrollbarWidth: "none" }}
     >
       <div className="flex flex-col gap-5">
