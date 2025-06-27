@@ -8,6 +8,7 @@ import FacilityApproval from "../../components/EmailTemplatesComponent/FacilityA
 import FacilityPending from "../../components/EmailTemplatesComponent/FacilityPending";
 import FacilityPendingRetry from "../../components/EmailTemplatesComponent/FacilityPendingRetry";
 import AlternativeLoginEmailTemp from "../../components/EmailTemplatesComponent/AlternativeLoginEmailTemp";
+import OtpEmail from "../../components/EmailTemplatesComponent/OtpEmail";
 
 export default function Email() {
   return (
@@ -15,10 +16,11 @@ export default function Email() {
       {/* <WelcomeEmail /> */}
       {/* <ForgotPassword /> */}
       {/* <BookingComfirmationAndReceipt /> */}
-       <AlternativeLoginEmailTemp />
+       {/* <AlternativeLoginEmailTemp /> */}
       {/* <FacilityApproval /> */}
       {/* <FacilityPending /> */}
       {/* <FacilityPendingRetry /> */}
+      <OtpEmail />
     </div>
   );
 }

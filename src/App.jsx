@@ -8,6 +8,7 @@ import ForgotPassword from "./components/EmailTemplatesComponent/ForgotPassword"
 import BookingComfirmationAndReceipt from "./components/EmailTemplatesComponent/BookingComfirmationAndReceipt";
 import WelcomeEmail from "./components/EmailTemplatesComponent/WelcomeEmail";
 import Email from "./pages/EmailFeatures/Email";
+import SearchBar from "./components/NotificationPages/SearchBar";
 
 function Overview() {
   return (
@@ -31,6 +32,7 @@ function App() {
   //       <div className="pl-68 h-[200%]">
   //         <Routes>
   //           {/* render it this way in your various components */}
+
   //           <Route path="/" element={<Overview />} />
   //           <Route path="/facilities" element={<Sample />} />
   //         </Routes>
@@ -38,6 +40,7 @@ function App() {
   //     </div>
   //   </>
   // );
+
   return <Email />;
 }
 
