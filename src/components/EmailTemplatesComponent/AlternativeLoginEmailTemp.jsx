@@ -4,7 +4,7 @@ import { assets } from "../../assets/assets"; // Replace with your actual assets
 export default function AlternativeLoginEmailTemp() {
   return (
     <section className="min-h-screen flex justify-center items-center px-4 py-8 addFont bg-white">
-      <div className="w-full max-w-[600px] bg-gradient-to-t from-[#067252] to-[#0B9D0B] rounded-lg shadow-md overflow-hidden relative">
+      <div className="w-full max-w-[600px] bg-gradient-to-t from-[#02402D] to-[#0B9D0B] rounded-lg shadow-md overflow-hidden relative">
         {/* Header Banner with Logo and Centered Text */}
         <div
           className="relative h-40 md:h-60 bg-cover bg-center"
@@ -152,7 +152,7 @@ export default function AlternativeLoginEmailTemp() {
             </p>
           </div>
 
-          <div>
+          <div className="text-[16px] font-[400] leading-[21px] mb-4">
             <p className="">© 2025 Agricon. All rights reserved.</p>
             <p>
               You’re receiving this email because you have an Agricon account.
