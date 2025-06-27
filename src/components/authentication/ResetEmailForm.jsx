@@ -55,6 +55,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { assets } from '../../assets/assets';
+import { ClipLoader } from 'react-spinners';
 
 const VerifyEmailOTP = () => {
   const navigate = useNavigate();
@@ -177,7 +178,7 @@ const VerifyEmailOTP = () => {
               className="w-full bg-[#02402D] text-white py-2 rounded-md hover:bg-green-800 transition "
               disabled={loading || !formData.email}
             >
-              {loading ? 'Checking...' : 'Confirm Email'}
+              {loading ? <ClipLoader color='#FFFFFF' size={27} /> : 'Confirm Email'}
             </button>
           </form>
         </div>

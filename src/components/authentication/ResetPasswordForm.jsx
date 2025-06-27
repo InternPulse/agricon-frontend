@@ -61,6 +61,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import axios from 'axios';
 import { assets } from '../../assets/assets';
+import { ClipLoader } from 'react-spinners';
 
 const ResetPassword = () => {
   const location = useLocation();
@@ -210,7 +211,7 @@ const ResetPassword = () => {
               className="w-full bg-[#02402D] text-white py-2 rounded-md hover:bg-green-800 transition"
               disabled={loading || !formData.email || !formData.code || !formData.new_password}
             >
-              {loading ? 'Resetting...' : 'Reset Password'}
+              {loading ? <ClipLoader color='#FFFFFF' size={27} /> : 'Reset Password'}
             </button>
           </form>
         </div>

@@ -118,7 +118,7 @@ const ResetPasswordOTP = () => {
               className="w-full bg-[#02402D] text-white py-2 rounded-md hover:bg-green-800 transition disabled:opacity-50"
               disabled={loading}
             >
-              {loading ? 'Verifying...' : 'Verify OTP'}
+              {loading ? <ClipLoader color='#FFFFFF' size={27} /> : 'Verify OTP'}
             </button>
           </form>
           <p className="text-sm text-center text-gray-700">

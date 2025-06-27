@@ -85,6 +85,7 @@ import axios from 'axios';
 import { assets } from '../../assets/assets';
 import { Link } from 'react-router-dom'
 import { useAuth } from '../../context/AuthContext';
+import { ClipLoader } from "react-spinners";
 
 
 const Login = () => {
@@ -193,14 +194,14 @@ const Login = () => {
               className="w-full bg-[#02402D] text-white py-2 rounded-md hover:bg-green-800 transition disabled:opacity-50"
               disabled={loading}
             >
-              {loading ? 'Logging in...' : 'Log In'}
+              {loading ? <ClipLoader color='#FFFFFF' size={27} /> : 'Log In'}
             </button>
           </form>
           <p className="text-sm text-center text-gray-700">
             Don’t have an account?{' '}
-            <a href="/roles" className="font-semibold text-black hover:underline">
+            <Link to="/roles" className="font-semibold text-black hover:underline">
               Sign Up
-            </a>
+            </Link>
           </p>
         </div>
       </div>
