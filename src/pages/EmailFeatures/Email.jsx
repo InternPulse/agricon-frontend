@@ -20,7 +20,7 @@ export default function Email() {
       {/* <FacilityApproval /> */}
       {/* <FacilityPending /> */}
       {/* <FacilityPendingRetry /> */}
-      <OtpEmail />
+      {/* <OtpEmail /> */}
     </div>
   );
 }

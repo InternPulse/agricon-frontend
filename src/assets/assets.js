@@ -6,6 +6,10 @@ import agriconLogoWhite from "./agriconLogoWhite.png";
 import tractorImage from "./tractorImage.png";
 import siloImage from "./siloImage.png";
 import greenhouseImage from "./greenhouseImage.png";
+import searchIcon from "./searchIcon.png";
+import  Notification from "./Notification.png";
+import  profilePics from "./profilePics.png";
+import arrowDown from "./arrowDown.png"
 
 export const assets = {
   agriconLogo,
@@ -16,4 +20,8 @@ export const assets = {
   tractorImage,
   siloImage,
   greenhouseImage,
+  searchIcon,
+  Notification,
+  profilePics,
+  arrowDown,
 };

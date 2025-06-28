@@ -46,7 +46,7 @@ function Sidebar() {
                             min-h-screen fixed  px-4 w-64 border-r text-white border-[#FFAC00]"
       >
         <div className="flex items-center space-x-1 font-bold border-b border-[#FFAC00] py-5">
-          <img src={assets.agriconLogo} alt="Agricon_img" className="ml-6" />
+          <img src={assets.agriconLogoWhite} alt="Agricon_img" className="ml-6" />
         </div>
         <ul className="flex flex-col mt-5  font-bold space-y-6">
           <Link

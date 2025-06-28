@@ -13,6 +13,7 @@ import SearchBar from "./components/NotificationPages/SearchBar";
 function Overview() {
   return (
     <>
+      {" "}
       <div className="bg-red-600">
         <div>
           <h1>Overview page for Dashboard</h1>
@@ -25,23 +26,24 @@ function Overview() {
 }
 
 function App() {
-  // return (
-  //   <>
-  //     <div className="flex w-full">
-  //       <Sidebar />
-  //       <div className="pl-68 h-[200%]">
-  //         <Routes>
-  //           {/* render it this way in your various components */}
+  return (
+    <>
+      <div className="bg-[#F7F7F7]">
+        <Sidebar />
+        <div className="pl-60">
+          <SearchBar />
+          <Routes>
+            {/* render it this way in your various components */}
 
-  //           <Route path="/" element={<Overview />} />
-  //           <Route path="/facilities" element={<Sample />} />
-  //         </Routes>
-  //       </div>
-  //     </div>
-  //   </>
-  // );
+            {/* <Route path="/" element={<Overview />} /> */}
+            {/* <Route path="/facilities" element={<Sample />} /> */}
+          </Routes>
+        </div>
+      </div>
+    </>
+  );
 
-  return <Email />;
+  // return <Email />;
 }
 
 export default App;
