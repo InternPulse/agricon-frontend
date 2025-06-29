@@ -13,7 +13,7 @@ import StorageFacilities from "../../components/Dashboard/StorageFacilities";
 import RecentBookings from "../../components/Dashboard/RecentBookings";
 
 
-export default function FacilityOwnerDashboard({ role }) {
+export default function FacilityOwnerDashboard() {
  
   return (
     <div
@@ -25,7 +25,7 @@ export default function FacilityOwnerDashboard({ role }) {
         className={`${open ? 'hidden sm:flex' : 'flex'}  flex-1 flex flex-col bg-white overflow-auto`}
         style={{ scrollbarWidth: "none" }}
       >
-        <Header role={role} />
+        
         <section className="flex flex-wrap md:flex-nowrap">
           <div className="firstt px-5 xl:pl-8 xl:pr-5 py-4 md:border-r border-[#D0D5DD] w-full">
             <div className="container flex flex-col gap-6">
