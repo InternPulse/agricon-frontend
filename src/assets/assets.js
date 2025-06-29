@@ -18,10 +18,12 @@ import transport from './transport.png'
 import about from './about.jpg'   
 import mission from './mission.jpg'   
 import impact from './impact.jpg'   
-import contact from './contact.jpg'   
+import contact from './contact.jpg'
+import success from './success.png'   
 
 export const assets = {
     agriconLogo,
+    success,
     authImage,
     otp,
     logistics,

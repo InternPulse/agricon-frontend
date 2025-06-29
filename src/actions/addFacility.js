@@ -1,10 +1,11 @@
+
 import axios from 'axios';
 
-export const fetchAllFacilities = async () => {
+export const addFacilities = async () => {
   try {
 
     const accessToken = localStorage.getItem('accessToken'); 
-    const response = await axios.get('https://agricon-express-backend.onrender.com/api/v1/facilities/', {
+    const response = await axios.post('https://agricon-express-backend.onrender.com/api/v1/facilities/', {
       headers: {
         'Authorization': `Bearer ${accessToken}`
       }

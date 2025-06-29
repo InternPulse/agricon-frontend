@@ -22,8 +22,8 @@ export default function Facility() {
           try {
               const dataFetched = await fetchAllFacilities();
             
+              console.log(setData)
               setData(dataFetched)
-            console.log(setData)
           } catch (error) {
               console.log("Error loading data", error)
           }

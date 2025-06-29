@@ -10,6 +10,8 @@ import BookingForm from './pages/infrastructure/BookingForm';
 import FacilityDetails from './pages/infrastructure/FacilityDetails';
 import RootLayout from './pages/infrastructure/Root';
 import Facility from './pages/infrastructure/Facility';
+import MyFacilityPage from './pages/my-facility/MyFacilityPage';
+import AddFacility from './components/my-facility/addFacility/Addfacility';
 
 
 
@@ -25,6 +27,8 @@ function App() {
               <Route path='/services' element={<Services />}/>
               <Route path='/about' element={<AboutUs />}/>
               <Route path='/contact' element={<Contact />}/>
+              <Route path='/my-facility' element={<MyFacilityPage />}/>
+              <Route path='/addFacility' element={<AddFacility />}/>
               
               <Route>
                 <Route path='facility' element={<RootLayout />}>
