@@ -1,18 +1,26 @@
-import React, { useState } from 'react'; // Import useState
-import { addFacilities } from "../../../actions/addFacility"; // Your action to send data
+import React, { useState, useEffect } from 'react';
+import { addFacilities } from "../../../actions/addFacility";
+import { ClipLoader } from 'react-spinners';
 
-function AddFacility({ onFacilityAdded }) { // Accept a callback prop for when facility is added
-    // State to hold form input values
+function AddFacility({ onFacilityAdded }) {
+    const [loading, setLoading] = useState(false);
     const [formData, setFormData] = useState({
         location: '',
         pricePerDay: '',
         facilityType: '',
-        available: '',
+        available: 'true',
         contact: '',
         description: '',
     });
+    const [operatorId, setOperatorId] = useState(null);
 
-    // Handle input changes
+    useEffect(() => {
+        const storedOperatorId = localStorage.getItem('operatorId');
+        if (storedOperatorId) {
+            setOperatorId(storedOperatorId);
+        }
+    }, []);
+
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData(prevData => ({
@@ -21,39 +29,60 @@ function AddFacility({ onFacilityAdded }) { // Accept a callback prop for when f
         }));
     };
 
-    // Handle form submission
     const handleSubmit = async (e) => {
-        e.preventDefault(); // Prevent default form submission behavior (page reload)
+        e.preventDefault();
+        setLoading(true);
+
+        // if (!operatorId) {
+        //     alert("Error: Operator ID is missing. Please log in again.");
+        //     setLoading(false);
+        //     return;
+        // }
+
+        const dataToSend = {
+            operatorId: operatorId,
+            location: formData.location,
+            pricePerDay: Number(formData.pricePerDay),
+            type: formData.facilityType,
+            available: formData.available === 'true' ? true : false,
+            contact: formData.contact,
+            description: formData.description,
+        };
 
         try {
-            // Call your addFacilities action with the form data
-            const response = await addFacilities(formData); 
+            const response = await addFacilities(dataToSend);
             console.log("Facility added successfully:", response);
-            
-            // Optionally clear the form or provide feedback
+
             setFormData({
                 location: '',
                 pricePerDay: '',
                 facilityType: '',
-                available: '',
+                available: 'true',
                 contact: '',
                 description: '',
             });
 
-            // If a callback is provided, invoke it (e.g., to close modal or show success message)
             if (onFacilityAdded) {
                 onFacilityAdded();
             }
 
         } catch (error) {
             console.error("Error adding facility:", error);
-            // Handle error (e.g., display error message to user)
+            if (error.response) {
+                alert(`Failed to add facility: ${error.response.data.message || 'Please check your inputs and try again.'}`);
+            } else if (error.request) {
+                alert("Failed to add facility. No response from server. Check your network connection.");
+            } else {
+                alert("An unexpected error occurred while setting up the request.");
+            }
+        } finally {
+            setLoading(false);
         }
     };
 
     return (
         <div className="p-4">
-            <form onSubmit={handleSubmit}> {/* Add onSubmit handler */}
+            <form onSubmit={handleSubmit}>
                 <div className="mb-4">
                     <label htmlFor="location" className="block text-gray-700 text-sm font-bold mb-2">Location</label>
                     <input
@@ -61,20 +90,22 @@ function AddFacility({ onFacilityAdded }) { // Accept a callback prop for when f
                         className="shadow appearance-none border border-gray-400 rounded-md w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                         type="text"
                         name="location"
-                        value={formData.location} // Bind value to state
-                        onChange={handleChange}    // Handle changes
+                        value={formData.location}
+                        onChange={handleChange}
+                        required
                     />
                 </div>
 
                 <div className="mb-4">
                     <label htmlFor="pricePerDay" className="block text-gray-700 text-sm font-bold mb-2">Price Per Day</label>
                     <input
-                        id="pricePerDay" // Changed ID to match name
+                        id="pricePerDay"
                         className="shadow appearance-none border border-gray-400 rounded-md w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                        type="text"
-                        name="pricePerDay" // Changed name to be descriptive
+                        type="number"
+                        name="pricePerDay"
                         value={formData.pricePerDay}
                         onChange={handleChange}
+                        required
                     />
                 </div>
 
@@ -87,19 +118,23 @@ function AddFacility({ onFacilityAdded }) { // Accept a callback prop for when f
                         name="facilityType"
                         value={formData.facilityType}
                         onChange={handleChange}
+                        required
                     />
                 </div>
 
                 <div className="mb-4">
                     <label htmlFor="available" className="block text-gray-700 text-sm font-bold mb-2">Available</label>
-                    <input
+                    <select
                         id="available"
                         className="shadow appearance-none border border-gray-400 rounded-md w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                        type="text"
                         name="available"
                         value={formData.available}
                         onChange={handleChange}
-                    />
+                        required
+                    >
+                        <option value="true">Yes</option>
+                        <option value="false">No</option>
+                    </select>
                 </div>
 
                 <div className="mb-4">
@@ -111,27 +146,34 @@ function AddFacility({ onFacilityAdded }) { // Accept a callback prop for when f
                         name="contact"
                         value={formData.contact}
                         onChange={handleChange}
+                        required
                     />
                 </div>
 
                 <div className="mb-6">
                     <label htmlFor="description" className="block text-gray-700 text-sm font-bold mb-2">Description</label>
-                    <input
+                    <textarea
                         id="description"
                         className="shadow appearance-none border border-gray-400 rounded-md w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                        type="text"
                         name="description"
                         value={formData.description}
                         onChange={handleChange}
-                    />
+                        rows="3"
+                        required
+                    ></textarea>
                 </div>
 
                 <div className="flex justify-end">
                     <button
                         type="submit"
-                        className="bg-[#02402D] w-full text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                        className="bg-[#02402D] w-full text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline cursor-pointer"
+                        disabled={loading}
                     >
-                        Save Facility
+                        {loading ? (
+                            <ClipLoader color={"#ffffff"} size={20} />
+                        ) : (
+                            'Save Facility'
+                        )}
                     </button>
                 </div>
             </form>

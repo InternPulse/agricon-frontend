@@ -1,46 +1,54 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { FaPlus } from "react-icons/fa";
 import MyFacility from "../../components/my-facility/MyFacility";
 import EmptyFacility from "../../components/my-facility/EmptyFacility";
-import {ClipLoader} from 'react-spinners'
+import { ClipLoader } from 'react-spinners';
+import Modal from '../../components/my-facility/modal/Modal';
+import AddFacility from '../../components/my-facility/addFacility/Addfacility';
+import { getAllFacilities } from '../../actions/getFacilities'; // Assuming this fetches all facilities
 
 function MyFacilityPage() {
-    const [hasFacilities, setHasFacilities] = useState(false);
-    const [loading, setLoading] = useState(true); // Add a loading state
+    const [facilities, setFacilities] = useState([]); // Store the actual facilities data
+    const [loading, setLoading] = useState(true);
+    const [isAddModalOpen, setIsAddModalOpen] = useState(false);
 
-    // useEffect to simulate data fetching when the component mounts
+    const handleOpenAddModal = () => {
+        setIsAddModalOpen(true);
+    };
+
+    const handleCloseAddModal = () => {
+        setIsAddModalOpen(false);
+    };
+
+    // Function to fetch facilities, wrapped in useCallback to prevent unnecessary re-creations
+    const fetchFacilities = useCallback(async () => {
+        setLoading(true);
+        try {
+            const data = await getAllFacilities();
+            setFacilities(data); 
+            console.log(setFacilities)
+        } catch (error) {
+            console.error("Error loading facilities:", error);
+            setFacilities([]); 
+        } finally {
+            setLoading(false);
+        }
+    }, []); 
+
+    
     useEffect(() => {
-        // --- Simulate fetching data ---
-        const fetchFacilityData = () => {
-            setLoading(true); // Set loading to true before fetching
-            // In a real application, you would make an API call here, e.g.:
-            // const response = await fetch('/api/facilities');
-            // const data = await response.json();
+        fetchFacilities();
+    }, [fetchFacilities]); 
 
-            // Dummy data for demonstration:
-            const dummyFacilities = [
-                // { id: 1, name: "Grains Silos", /* ... other facility data ... */ },
-                // { id: 2, name: "Cold Storage", /* ... */ }
-            ]; // Uncomment facilities above to test 'MyFacility' rendering
-
-            // Simulate network delay
-            setTimeout(() => {
-                if (dummyFacilities && dummyFacilities.length > 0) {
-                    setHasFacilities(true);
-                } else {
-                    setHasFacilities(false);
-                }
-                setLoading(false); 
-            }, 3000);
-        };
-
-        fetchFacilityData();
-    }, []);
+    const handleFacilityAdded = () => {
+        setIsAddModalOpen(false); 
+        fetchFacilities(); 
+    };
 
     if (loading) {
         return (
             <div className='flex justify-center items-center min-h-screen'>
-                <ClipLoader color='#02402D' className='w-64'/>
+                <ClipLoader color='#02402D' />
             </div>
         );
     }
@@ -50,17 +58,25 @@ function MyFacilityPage() {
             <div className="px-10 flex items-center justify-end">
                 <button
                     className="bg-[#02402D] text-green-50 px-5 py-4 rounded-md flex items-center gap-2"
+                    onClick={handleOpenAddModal}
                 >
-                    <FaPlus /> Added Facility
+                    <FaPlus /> Add Facility
                 </button>
             </div>
 
-            {/* Conditionally render based on the hasFacilities state after loading */}
-            {hasFacilities ? (
-                <MyFacility />
+            {facilities.length > 0 ? (
+                <MyFacility facilities={facilities} /> 
             ) : (
                 <EmptyFacility />
             )}
+
+            <Modal
+                isOpen={isAddModalOpen}
+                onClose={handleCloseAddModal}
+                title="Add New Facility"
+            >
+                <AddFacility onFacilityAdded={handleFacilityAdded} />
+            </Modal>
         </div>
     );
 }

@@ -8,7 +8,7 @@ import SuccessState from './edtFacility/SuccessState';
 import Delete from './deleteFacility/Delete';
 import { useNavigate } from 'react-router-dom'; 
 
-function MyFacility() {
+function MyFacility({ facilities }) {
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false);
@@ -23,6 +23,7 @@ function MyFacility() {
     setIsEditModalOpen(false);
   };
 
+   
   const handleSaveSuccess = () => {
     setIsEditModalOpen(false); 
     setIsSuccessModalOpen(true); 
@@ -52,33 +53,37 @@ function MyFacility() {
   return (
     <div className=" px-5 py-10">
         <div className="pt-5">
-          <div className="border border-gray-400 md:flex items-center justify-between px-5 py-1 rounded-xl space-x-5 space-y-5 md:space-y-2">
-            <div className="md:flex items-center gap-5">
-              <img src={assets.drying} alt="dryer" className="w-[50%] mx-auto p-2 md:p-0"/>
-              <div className="space-y-3">
-                <h5 className="text-xl font-bold">Grains Silos</h5>
-                <p className="flex items-center gap-3">
-                  <FaLocationDot /> 123 Farm Avenue, Wuse II, Abuja D42620
-                </p>
-                <p>Drying Facility</p>
+        {facilities.map(facility => (
+          <div
+            key={facility.id}
+            className="border border-gray-400 md:flex items-center justify-between px-5 py-1 rounded-xl space-x-5 space-y-5 md:space-y-2">
+              <div className="md:flex items-center gap-5">
+                <img src={assets.drying} alt="dryer" className="w-[50%] mx-auto p-2 md:p-0"/>
+                <div className="space-y-3">
+                  <h5 className="text-xl font-bold">{facility.name}</h5>
+                  <p className="flex items-center gap-3">
+                    <FaLocationDot /> {facility.address}
+                  </p>
+                  <p>{facility.type}</p>
+                </div>
               </div>
-            </div>
-            <div className="md:space-y-10 pb-5 md:pb-0 ">
-              <div className="flex items-center justify-end gap-5">
-                <FaPen
-                  className="border border-gray-400 rounded-xl p-2 fill-gray-500 cursor-pointer" 
-                  size={40}
-                  onClick={handleOpenEditModal} 
-                />
-                <FaBitbucket 
-                  className="border border-gray-400 rounded-xl p-2 fill-gray-500 cursor-pointer" 
-                  size={40}
-                  onClick={handleOpenDeleteModal} 
-                /> 
+              <div className="md:space-y-10 pb-5 md:pb-0 ">
+                <div className="flex items-center justify-end gap-5">
+                  <FaPen
+                    className="border border-gray-400 rounded-xl p-2 fill-gray-500 cursor-pointer" 
+                    size={40}
+                    onClick={handleOpenEditModal} 
+                  />
+                  <FaBitbucket 
+                    className="border border-gray-400 rounded-xl p-2 fill-gray-500 cursor-pointer" 
+                    size={40}
+                    onClick={handleOpenDeleteModal} 
+                  /> 
+                </div>
+                <p>{facility.pricePerDay}</p>
               </div>
-              <p>NGN120,000.00/10 Kilo</p>
-            </div>
           </div>
+          ))}
         </div>
       
 
