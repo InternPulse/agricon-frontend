@@ -35,6 +35,60 @@ const BookingList = () => {
       duration: "1.5 hours",
       status: "Cancelled",
     },
+    {
+      id: 3,
+      farmerName: "Jane Smith",
+      farmerImage: assets.Ladicia,
+      facility: "AquaFarm Innovations",
+      dateTime: "Jul 4, 2025, 9:AM",
+      duration: "1.5 hours",
+      status: "Cancelled",
+    },
+    {
+      id: 3,
+      farmerName: "Jane Smith",
+      farmerImage: assets.Ladicia,
+      facility: "AquaFarm Innovations",
+      dateTime: "Jul 4, 2025, 9:AM",
+      duration: "1.5 hours",
+      status: "Cancelled",
+    },
+    {
+      id: 3,
+      farmerName: "Jane Smith",
+      farmerImage: assets.Ladicia,
+      facility: "AquaFarm Innovations",
+      dateTime: "Jul 4, 2025, 9:AM",
+      duration: "1.5 hours",
+      status: "Completed",
+    },
+    {
+      id: 3,
+      farmerName: "Jane Smith",
+      farmerImage: assets.Ladicia,
+      facility: "AquaFarm Innovations",
+      dateTime: "Jul 4, 2025, 9:AM",
+      duration: "1.5 hours",
+      status: "Cancelled",
+    },
+    {
+      id: 3,
+      farmerName: "Jane Smith",
+      farmerImage: assets.Ladicia,
+      facility: "AquaFarm Innovations",
+      dateTime: "Jul 4, 2025, 9:AM",
+      duration: "1.5 hours",
+      status: "Upcoming",
+    },
+    {
+      id: 3,
+      farmerName: "Jane Smith",
+      farmerImage: assets.Ladicia,
+      facility: "AquaFarm Innovations",
+      dateTime: "Jul 4, 2025, 9:AM",
+      duration: "1.5 hours",
+      status: "Cancelled",
+    },
   ];
   return (
     <div
@@ -42,29 +96,29 @@ const BookingList = () => {
       style={{ scrollbarWidth: "none" }}
     >
       <table className="min-w-full bg-white overflow-hidden table-fixed">
-        <thead className="bg-green-800 text-white">
+        <thead className="bg-[#02402D] text-white">
           <tr>
-            <th className="w-1/6 py-2 px-4 text-left text-[12px] font-medium tracking-wide">
+            <th className="w-1/6 py-2 px-4 text-left text-[14px] font-medium tracking-wide">
               Farmer Name
             </th>
-            <th className="w-1/6 py-2 px-4 text-left text-[12px] font-medium tracking-wide">
+            <th className="w-1/6 py-2 px-4 text-left text-[14px] font-medium tracking-wide">
               Facility
             </th>
-            <th className="w-1/6 py-2 px-4 text-left text-[12px] font-medium tracking-wide">
+            <th className="w-1/6 py-2 px-4 text-left text-[14px] font-medium tracking-wide">
               Date/Time
             </th>
-            <th className="w-1/12 py-2 px-4 text-left text-[12px] font-medium tracking-wide">
+            <th className="w-1/12 py-2 px-4 text-left text-[14px] font-medium tracking-wide">
               Duration
             </th>
-            <th className="w-1/12 py-2 px-4 text-left text-[12px] font-medium tracking-wide">
+            <th className="w-1/12 py-2 px-4 text-left text-[14px] font-medium tracking-wide">
               Status
             </th>
-            <th className="w-1/6 py-2 px-4 text-left text-[12px] font-medium tracking-wide">
+            <th className="w-1/6 py-2 px-4 text-left text-[14px] font-medium tracking-wide">
               Details
             </th>
           </tr>
         </thead>
-        <tbody className="divide-y divide-gray-200">
+        <tbody className="">
           {tableData.map((farmer) => (
             <tr
               key={farmer.id}
@@ -75,34 +129,34 @@ const BookingList = () => {
                   <img
                     src={farmer.farmerImage}
                     alt={farmer.farmerName}
-                    className="w-8 h-8 rounded-full object-cover"
+                    className="w-6 h-6 rounded-full object-cover"
                   />
-                  <h3 className="text-gray-900 font-medium">
+                  <h3 className="text-[#323C47] text-[13px]">
                     {farmer.farmerName}
                   </h3>
                 </div>
               </td>
-              <td className="py-4 px-4 text-gray-700">{farmer.facility}</td>
-              <td className="py-4 px-4 text-gray-700">{farmer.dateTime}</td>
-              <td className="py-4 px-4 text-gray-700">{farmer.duration}</td>
+              <td className="py-4 px-4 text-[#323C47] text-[13px]">{farmer.facility}</td>
+              <td className="py-4 px-4 text-[#323C47] text-[13px]">{farmer.dateTime}</td>
+              <td className="py-4 px-4 text-[#323C47] text-[13px]">{farmer.duration}</td>
               <td className="py-4 px-4">
                 <span
                   className={`px-3 py-1 rounded-full text-xs font-semibold
                   ${
                     farmer.status === "Upcoming"
-                      ? "text-green-500"
+                      ? "text-[#0B9D09] text-[13px]"
                       : farmer.status === "Completed"
-                      ? "text-blue-400"
-                      : "text-red-500"
+                      ? "text-[#09B5FF] text-[13px]"
+                      : "text-[#ED0F13] text-[13px]"
                   }`}
                 >
                   {farmer.status}
                 </span>
               </td>
-              <td className="py-4 px-4">
+              <td className="">
                 <Link to={"/farmer-details"}>
                   <button
-                    className="bg-green-900 hover:bg-blue-600 text-white font-medium py-1 px-4 rounded-md text-xs transition-colors duration-200"
+                    className="bg-[#02402D] w-[120px] xl:w-[160px] h-[27px] hover:bg-green-700 cursor-pointer text-white font-medium sm:py-1 sm:px-4 rounded-md text-xs transition-colors duration-200"
                     onClick={() => {
                       setActiveFarmer(farmer.id);
                     }}
