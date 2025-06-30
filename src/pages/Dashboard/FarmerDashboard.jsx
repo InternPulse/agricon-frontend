@@ -11,27 +11,28 @@ import TotalFacilities from "../../components/Dashboard/TotalFacilities";
 import CompleteProfile from "../../components/Dashboard/CompleteProfile";
 import LevelUp from "../../components/Dashboard/LevelUp";
 
+
 export default function FarmerDashboard() {
+  
   return (
     <div
       className="flex min-h-screen bg-gray-100 font-sans"
       style={{ scrollbarWidth: "none" }}
     >
-      {/* <SideBar role={role} /> */}
+      
       <main
         className={`${open ? 'hidden sm:flex' : 'flex'} flex-1 flex-col bg-white overflow-x-hidden`}
         style={{ scrollbarWidth: "none" }}
       >
-        
+
         <section className="flex flex-wrap md:flex-nowrap">
           <div className="firstt px-5 xl:pl-8 xl:pr-5 py-4 md:border-r border-[#D0D5DD] w-full">
             <div className="container flex flex-col gap-6">
               <div className="greeting w-full xl:pr-10 flex justify-between items-center">
-                <Welcome />
+                <Welcome/>
                 <Date />
               </div>
 
-              {/* Top Metric Cards & Discover Infrastructure */}
               <div className="flex w-full gap-5 justify-start flex-wrap xl:flex-nowrap mb-8">
                 <Discover />
                 <div className="w- overflow-x-scroll flex gap-2">

@@ -47,6 +47,7 @@ import React, { useState } from 'react';
 import { useNavigate} from 'react-router-dom';
 import axios from 'axios';
 import { assets } from '../../assets/assets';
+import { Link } from 'react-router-dom';
 
 const SignUp = () => {
   const navigate = useNavigate();
@@ -294,9 +295,9 @@ const SignUp = () => {
           </form>
           <p className="text-sm text-center text-gray-700">
             Already have an account?{' '}
-            <a href="/login" className="font-semibold text-green-900 hover:underline">
+            <Link to="/login" className="font-semibold text-green-900 hover:underline">
               Log In
-            </a>
+            </Link>
           </p>
         </div>
       </div>
