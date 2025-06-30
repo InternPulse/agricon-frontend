@@ -14,7 +14,7 @@ function App() {
   };
   return (
     <SidebarContext.Provider value={{ open, toggleSidebar }}>
-      <Bookings role='Facility Owner'/>
+      <FacilityOwnerDashboard role='Facility Owner'/>
     </SidebarContext.Provider>
   );
 }

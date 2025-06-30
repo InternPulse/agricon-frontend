@@ -13,6 +13,7 @@ import StorageFacilities from "../../components/Dashboard/StorageFacilities";
 import RecentBookings from "../../components/Dashboard/RecentBookings";
 import { SidebarContext } from "../../App";
 import { useContext } from "react";
+import RecentFacilities from "../../components/Dashboard/RecentFacilities";
 
 export default function FacilityOwnerDashboard({ role }) {
   const {open} = useContext(SidebarContext);
@@ -36,8 +37,9 @@ export default function FacilityOwnerDashboard({ role }) {
               </div>
               <div className="bottom w-full flex flex-col gap-[27px]">
                 <Stats />
-                <div className="flex flex-wrap xl:flex-nowrap gap-[27px]">
+                <div className="flex flex-wrap xl:flex-nowrap gap-[27px] overflow-x-scroll">
                   <div className="left h-full w-full w-[715px] flex flex-col gap-8">
+                    <RecentFacilities/>
                     <FacilityTransaction />
                   </div>
                   <div className="right w-full xl:w-[354px] flex flex-wrap md:flex-nowrap xl:flex-col gap-4">
