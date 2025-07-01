@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
 @import "tailwindcss";
 
 
@@ -17,4 +18,9 @@
   background: #f7f9fc;
   min-height: 100vh;
   /* Optionally add padding if needed */
+}
+
+@theme {
+  --font-inter: 'Inter';
+  --font-nunito: 'Nunito';
 }
