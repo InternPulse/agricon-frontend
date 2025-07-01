@@ -2,11 +2,11 @@
 
 import axios from 'axios';
 
-export const getFarmerProfile = async () => { 
+export const getOperatorProfile = async () => { 
     const accessToken = localStorage.getItem("access_token")
   try {
     const response = await axios.get(
-      'https://agricon-django-backend.onrender.com/api/v1/auth/profile/farmer/', 
+      'https://agricon-django-backend.onrender.com/api/v1/auth/profile/operator/',
       { 
         headers: {
           'Authorization': `Bearer ${accessToken}`, 
@@ -15,7 +15,7 @@ export const getFarmerProfile = async () => {
     );
     return response.data;
   } catch (error) {
-    console.error('Error loading farmer details:', error); 
+    console.error('Error loading Operator Details:', error); 
     throw error;
   }
 };

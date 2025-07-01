@@ -21,7 +21,9 @@ export const logout = async () => {
    //clear local storage
     localStorage.removeItem('accessToken');
     localStorage.removeItem('refreshToken');
-    localStorage.removeItem('userRole'); 
+    localStorage.removeItem('userRole');
+    localStorage.removeItem('email');
+    localStorage.removeItem('farmerProfile');
 
     return response.data; // Return data to backed
 
@@ -32,6 +34,8 @@ export const logout = async () => {
     localStorage.removeItem('access_token');
     localStorage.removeItem('refresh_token');
     localStorage.removeItem('userRole');
+    localStorage.removeItem('email');
+    localStorage.removeItem('farmerProfile');
    
 
     throw error; 

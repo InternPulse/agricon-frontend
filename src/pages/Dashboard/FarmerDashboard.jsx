@@ -21,7 +21,7 @@ export default function FarmerDashboard() {
     >
       
       <main
-        className={`${open ? 'hidden sm:flex' : 'flex'} flex-1 flex-col bg-white overflow-x-hidden`}
+        className={`${open ? 'flex' : 'flex'} flex-1 flex-col bg-white overflow-x-hidden`}
         style={{ scrollbarWidth: "none" }}
       >
 

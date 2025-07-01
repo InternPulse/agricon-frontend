@@ -3,54 +3,92 @@ import Side from "../components/home/Side";
 import { getFarmerProfile } from "../api/getFarmerProfile";
 import { useCallback, useEffect, useState } from "react";
 import { ClipLoader } from 'react-spinners';
-import Header from '../components/Dashboard/Header'
+import Header from '../components/Dashboard/Header';
 
+// Define your default profile details
+const DEFAULT_PROFILE_DETAILS = {
+    name: "Farmer", 
+    firstName: "Farmer", 
+    address: "N/A", 
+    phone: "N/A", 
+};
+
+const DEFAULT_INITIAL_DISPLAY = "?";
 
 function FarmerLayout() {
-    const [farmerData, setFarmerData] = useState(null); 
-      const [loading, setLoading] = useState(true);
-    
-      // Function to fetch the farmer's profile
-      const getProfile = useCallback(async () => {
-        setLoading(true); 
-        try {
-            const data = await getFarmerProfile();
-            localStorage.setItem("farmerProfile", JSON.stringify(data));
-          console.log(data)
-            setFarmerData(data);
-      
-        } catch (error) {
-          setFarmerData(null, error); // Set to null on error
-        } finally {
-          setLoading(false); 
+    // If localStorage is empty or parsing fails, use DEFAULT_PROFILE_DETAILS.
+    const [farmerData, setFarmerData] = useState(() => {
+        const savedProfile = localStorage.getItem("farmerProfile");
+        if (savedProfile) {
+            try {
+                return JSON.parse(savedProfile);
+            } catch (e) {
+                console.error("Failed to parse farmerProfile from localStorage:", e);
+                localStorage.removeItem("farmerProfile"); // Clear corrupt data
+                return DEFAULT_PROFILE_DETAILS;
+            }
         }
-      }, []);
-    
-      useEffect(() => {
-        getProfile();
-      }, [getProfile]);
-    
+        return DEFAULT_PROFILE_DETAILS;
+    });
 
-      if (loading) {
+    const [loading, setLoading] = useState(true);
+
+    const getProfile = useCallback(async () => {
+        setLoading(true);
+        try {
+            const data = await getFarmerProfile(); 
+            console.log("Fetched farmer profile:", data);
+
+            // Store the fetched data in localStorage
+            localStorage.setItem("farmerProfile", JSON.stringify(data));
+            setFarmerData(data); 
+        } catch (error) {
+            console.error("Error loading farmer profile:", error);
+            // If fetching fails, ensure localStorage has default data
+            localStorage.setItem("farmerProfile", JSON.stringify(DEFAULT_PROFILE_DETAILS));
+            setFarmerData(DEFAULT_PROFILE_DETAILS); 
+        } finally {
+            setLoading(false);
+        }
+    }, []);
+
+    useEffect(() => {
+        getProfile();
+    }, [getProfile]);
+
+    // Determine the user name to display
+    const displayUserName = farmerData?.firstName || farmerData?.name || DEFAULT_PROFILE_DETAILS.name;
+
+    // Determine the first letter for the picture display
+    const displayInitial = displayUserName.charAt(0).toUpperCase() || DEFAULT_INITIAL_DISPLAY;
+
+    // Create the JSX element for the picture prop
+    const displayPictureElement = (
+        <span
+            className="bg-[#044b1c] text-2xl text-green-50 font-bold px-2 rounded-full"
+        >
+            {displayInitial}
+        </span>
+    );
+
+    if (loading) {
         return (
-          <div className='flex justify-center items-center min-h-screen'>
-            <ClipLoader color='#02402D' />
-          </div>
+            <div className='flex justify-center items-center min-h-screen'>
+                <ClipLoader color='#02402D' />
+            </div>
         );
-      }
-    
-    
+    }
+
     return (
         <div className="flex w-full">
             <Side />
             <div className="pl-0 md:pl-64 w-full">
                 <div>
-                <Header
-                    title='Farmer'
-                    userName={farmerData.firstName}
-                    picture={<span 
-                    className="bg-green-900 text-2xl text-green-50 font-bold px-2 rounded-full">{farmerData.firstName.at(0).toUpperCase()}</span>}
-                />
+                    <Header
+                        title='Farmer'
+                        userName={displayUserName}
+                        picture={displayPictureElement}
+                    />
                 </div>
                 <Outlet />
             </div>

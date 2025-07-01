@@ -63,8 +63,8 @@ function App() {
                   <Route index element={<Settings />} />
                   <Route path="change-password" element={<ChangePassword />} />
               </Route>  
-          </Route>
-
+        </Route>
+        
             {/* Route for facility owner/operator */}
           <Route path="operator" element={<FacilityOwnerLayout />}>
                 <Route index element={<FacilityOwnerDashboard />}/>
