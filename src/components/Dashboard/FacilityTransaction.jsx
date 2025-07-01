@@ -45,7 +45,7 @@ const FacilityTransaction = () => {
             Transactions
           </h1>
           <p className="text-[11px] text-[#71717A]">
-            Receny booking activities that has been carried in your account
+            Recent booking activities that has been carried in your account
           </p>
         </div>
         <div>

@@ -1,26 +1,19 @@
-// import SideBar from "../../components/Dashboard/sideBar";
-// import { assets } from "../../assets/assets";
 import Welcome from "../../components/Dashboard/Welcome";
-// import { FaBuilding } from "react-icons/fa6";
 import Header from "../../components/Dashboard/Header";
-// import { ArrowDown, ArrowUp, ChevronRight } from "lucide-react";
 import Date from "../../components/Dashboard/Date";
-// import { Link } from "react-router-dom";
-// import { CgArrowTopRight } from "react-icons/cg";
 import Stats from "../../components/Dashboard/Stats";
 import FacilityTransaction from "../../components/Dashboard/FacilityTransaction";
 import StorageFacilities from "../../components/Dashboard/StorageFacilities";
 import RecentBookings from "../../components/Dashboard/RecentBookings";
-
+import RecentFacilities from "../../components/Dashboard/RecentFacilities";
 
 export default function FacilityOwnerDashboard() {
- 
   return (
     <div
       className="flex min-h-screen bg-gray-100 font-sans"
       style={{ scrollbarWidth: "none" }}
     >
-      {/* <SideBar role={role} /> */}
+      
       <main
         className={`${open ? 'hidden sm:flex' : 'flex'}  flex-1 flex flex-col bg-white overflow-auto`}
         style={{ scrollbarWidth: "none" }}
@@ -35,8 +28,9 @@ export default function FacilityOwnerDashboard() {
               </div>
               <div className="bottom w-full flex flex-col gap-[27px]">
                 <Stats />
-                <div className="flex flex-wrap xl:flex-nowrap gap-[27px]">
+                <div className="flex flex-wrap xl:flex-nowrap gap-[27px] overflow-x-scroll">
                   <div className="left h-full w-full sm:w-[715px] flex flex-col gap-8">
+                    <RecentFacilities/>
                     <FacilityTransaction />
                   </div>
                   <div className="right w-full xl:w-[354px] flex flex-wrap md:flex-nowrap xl:flex-col gap-4">
