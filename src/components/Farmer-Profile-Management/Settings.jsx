@@ -181,7 +181,7 @@ export default function Settings() {
               <div className="bg-white rounded-xl my-5 shadow p-8">
                 <h2 className="text-lg font-bold mb-6 text-black">Account Details</h2>
                 <div className="space-y-8">
-                  <div className="flex items-center justify-between">
+                  {/* <div className="flex items-center justify-between">
                     <div className="space-y-2">
                       <div className="font-medium text-md text-black">Verify Email Adress</div>
                       <div className="text-gray-400 text-sm">Stay notified in real time on your desktop</div>
@@ -190,7 +190,7 @@ export default function Settings() {
                         <div className="text-sm text-[#02402D] font-semibold">Verify Email</div>
                         <div><IoIosArrowForward /></div>
                     </div>
-                  </div>
+                  </div> */}
                   <div className="flex items-center justify-between">
                     <div className="space-y-2">
                       <div className="font-medium text-md text-black">Update Password</div>

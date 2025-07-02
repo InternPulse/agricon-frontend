@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { LiaTimesSolid } from "react-icons/lia";
 import { FaCheckCircle } from "react-icons/fa";
+import { ClipLoader } from 'react-spinners'
 
 const ChangePassword = () => {
   const navigate = useNavigate();
@@ -117,12 +118,11 @@ const handleSubmit = async (e) => {
 
           <button
             type="submit"
-            className="bg-[#02402D] hover:bg-green-950 text-white w-full p-3 rounded transition flex justify-center items-center"
+            className="bg-[#02402D] hover:bg-green-950 text-white w-full p-3 rounded transition flex justify-center items-center "
             disabled={loading}
           >
-            {loading ? "Processing..." : token ? "Reset Password" : "Change Password"}
+            {loading ? <ClipLoader color='#a2cfc2' width='26'/> : token ? "Reset Password" : "Change Password"}
           </button>
-
           <button
             type="button"
             onClick={goBack}

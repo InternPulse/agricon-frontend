@@ -28,12 +28,14 @@ import FarmerLayout from './layout/Farmerlayout';
 import FarmerDashboard from './pages/Dashboard/FarmerDashboard';
 import FacilityOwnerDashboard from './pages/Dashboard/FacilityOwnerDashboard';
 import { AuthProvider } from './context/AuthContext.jsx';
+import FacilityProvider from './components/infrastructure/FacilityContext.jsx';
 
 
 
 function App() {
   return (
     <AuthProvider>
+      <FacilityProvider>
         <Routes>
           <Route path='/' element={<RootLayout />}>
             <Route index element={<Home />} />
@@ -53,13 +55,15 @@ function App() {
           {/* Routes for farmer Dashboard */}
           <Route path='farmer' element={<FarmerLayout />}>
               <Route index element={< FarmerDashboard />} />
-              <Route path="facility" element={<FacilityLayout />}>
-                  <Route index element={<Facility />}/>
-                  <Route path=":id" element={<FacilityDetails />} />
-                  <Route path="bookings" element={<BookingForm />} />
-              </Route> 
+              
+                <Route path="facility" element={<FacilityLayout />}>
+                    <Route index element={<Facility />}/>
+                    <Route path=":id" element={<FacilityDetails />} />
+                    <Route path="bookings" element={<BookingForm />} />
+                </Route> 
+              
                   <Route path="booking-history" element={<BookingHistory />} />
-              <Route path="settings" element={<SettingsLayout />} >
+              <Route path="settings/*" element={<SettingsLayout />} >
                   <Route index element={<Settings />} />
                   <Route path="change-password" element={<ChangePassword />} />
               </Route>  
@@ -71,6 +75,7 @@ function App() {
           </Route>
           
         </Routes>
+        </FacilityProvider>
     </AuthProvider>
   )
 }

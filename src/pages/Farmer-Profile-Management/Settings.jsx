@@ -262,7 +262,7 @@ export default function Settings() {
                 <div id="privacy" className="bg-white rounded-xl my-5 shadow p-8">
                   <h2 className="text-lg font-bold mb-6 text-black">Account Details</h2>
                   <div className="space-y-8">
-                    <div className="flex items-center justify-between">
+                    {/* <div className="flex items-center justify-between">
                       <div className="space-y-2">
                         <div className="font-medium text-md text-black">Verify Email Address</div>
                         <div className="text-gray-400 text-sm">Ensure your email is verified</div>
@@ -272,13 +272,13 @@ export default function Settings() {
                           Verify Email <IoIosArrowForward />
                         </div>
                       </Link>
-                    </div>
+                    </div> */}
                     <div className="flex items-center justify-between">
                       <div className="space-y-2">
                         <div className="font-medium text-md text-black">Update Password</div>
                         <div className="text-gray-400 text-sm">Change your password</div>
                       </div>
-                      <Link to="/settings/change-password">
+                      <Link to="change-password">
                         <div className="flex items-center gap-2 text-sm text-[#02402D] font-semibold">
                           Change Password <IoIosArrowForward />
                         </div>
