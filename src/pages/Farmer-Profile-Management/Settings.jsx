@@ -13,13 +13,10 @@ const SettingsSearch = ({ search, setSearch }) => {
     { label: "Notification", path: "#notifications" },
     { label: "Privacy & Security", path: "#privacy" },
     { label: "Enable Desktop Notification", path: "#notifications" },
-    { label: "Enable SMS Alert", path: "#notifications" },
     { label: "Enable Email Alert", path: "#notifications" },
     { label: "Disable All Notification Sounds", path: "#notifications" },
-    { label: "Verify Email Address", path: "#privacy" },
     { label: "Update Password", path: "#privacy" },
     { label: "Change Password", path: "#privacy" },
-    { label: "Enable Authentication", path: "#privacy" },
   ];
 
   const filteredSettings = settingsList.filter(setting =>
@@ -159,10 +156,6 @@ export default function Settings() {
                     <label className="block text-sm text-gray-500 mb-1">Phone number</label>
                     <div className="text-base text-gray-900 font-medium">080123456789</div>
                   </div>
-                  <div className="space-y-2">
-                    <label className="block text-sm text-gray-500 mb-1">Farm Address</label>
-                    <div className="text-base text-gray-900 font-medium">Manhattan freeway, Lagos</div>
-                  </div>
                 </div>
               </div>
             )}
@@ -192,26 +185,8 @@ export default function Settings() {
                     </div>
                     <div className="flex items-center justify-between">
                       <div className="space-y-2">
-                        <div className="font-medium text-md text-black">Enable SMS Alert</div>
-                        <div className="text-gray-400 text-sm">Receive alerts via text</div>
-                      </div>
-                      <button
-                        onClick={() => setSms(!sms)}
-                        className={`w-12 h-6 flex items-center rounded-full p-1 ${
-                          sms ? "bg-green-500" : "bg-gray-300"
-                        }`}
-                      >
-                        <span
-                          className={`bg-white w-5 h-5 rounded-full shadow transform ${
-                            sms ? "translate-x-6" : ""
-                          }`}
-                        />
-                      </button>
-                    </div>
-                    <div className="flex items-center justify-between">
-                      <div className="space-y-2">
                         <div className="font-medium text-md text-black">Enable Email Alert</div>
-                        <div className="text-gray-400 text-sm">Get updates via email</div>
+                        <div className="text-gray-400 text-sm">Get updates delivered to your inbox</div>
                       </div>
                       <button
                         onClick={() => setEmail(!email)}
@@ -234,7 +209,7 @@ export default function Settings() {
                   <div className="flex items-center justify-between">
                     <div className="space-y-2">
                       <div className="font-medium text-md text-black">Disable All Notification Sounds</div>
-                      <div className="text-gray-400 text-sm">Mute all sounds</div>
+                      <div className="text-gray-400 text-sm">Mute all alert sounds instantly</div>
                     </div>
                     <button
                       onClick={() => setMuteAll(!muteAll)}
@@ -260,17 +235,6 @@ export default function Settings() {
                   <div className="space-y-8">
                     <div className="flex items-center justify-between">
                       <div className="space-y-2">
-                        <div className="font-medium text-md text-black">Verify Email Address</div>
-                        <div className="text-gray-400 text-sm">Ensure your email is verified</div>
-                      </div>
-                      <Link to="#">
-                        <div className="flex items-center gap-2 text-sm text-[#02402D] font-semibold">
-                          Verify Email <IoIosArrowForward />
-                        </div>
-                      </Link>
-                    </div>
-                    <div className="flex items-center justify-between">
-                      <div className="space-y-2">
                         <div className="font-medium text-md text-black">Update Password</div>
                         <div className="text-gray-400 text-sm">Change your password</div>
                       </div>
@@ -280,28 +244,6 @@ export default function Settings() {
                         </div>
                       </Link>
                     </div>
-                  </div>
-                </div>
-
-                <div className="bg-white rounded-xl my-5 shadow p-8">
-                  <h2 className="text-lg font-bold mb-6 text-black">Two-factor Authentication</h2>
-                  <div className="flex items-center justify-between">
-                    <div className="space-y-2">
-                      <div className="font-medium text-md text-black">Enable Authentication</div>
-                      <div className="text-gray-400 text-sm">Add a second layer of login security</div>
-                    </div>
-                    <button
-                      onClick={() => setAuthentication(!authentication)}
-                      className={`w-12 h-6 flex items-center rounded-full p-1 ${
-                        authentication ? "bg-green-500" : "bg-gray-300"
-                      }`}
-                    >
-                      <span
-                        className={`bg-white w-5 h-5 rounded-full shadow transform ${
-                          authentication ? "translate-x-6" : ""
-                        }`}
-                      />
-                    </button>
                   </div>
                 </div>
               </>
