@@ -4,13 +4,16 @@ import { ClipLoader } from 'react-spinners';
 
 function AddFacility({ onFacilityAdded }) {
     const [loading, setLoading] = useState(false);
+    const id = localStorage.getItem('id')
     const [formData, setFormData] = useState({
+        operatorId: `${id}`,
         location: '',
         pricePerDay: '',
         facilityType: '',
-        available: 'true',
+        available: '',
         contact: '',
         description: '',
+        capacity: ''
     });
     const [operatorId, setOperatorId] = useState(null);
 
@@ -54,12 +57,14 @@ function AddFacility({ onFacilityAdded }) {
             console.log("Facility added successfully:", response);
 
             setFormData({
+                operatorId: `${id}`,
                 location: '',
                 pricePerDay: '',
                 facilityType: '',
-                available: 'true',
+                available: '',
                 contact: '',
                 description: '',
+                capacity: ''
             });
 
             if (onFacilityAdded) {
@@ -83,6 +88,7 @@ function AddFacility({ onFacilityAdded }) {
     return (
         <div className="p-4">
             <form onSubmit={handleSubmit}>
+                <input type="text" name="operator" id="operator" value={operatorId} hidden/>
                 <div className="mb-4">
                     <label htmlFor="location" className="block text-gray-700 text-sm font-bold mb-2">Location</label>
                     <input
@@ -111,15 +117,20 @@ function AddFacility({ onFacilityAdded }) {
 
                 <div className="mb-4">
                     <label htmlFor="facilityType" className="block text-gray-700 text-sm font-bold mb-2">Facility Type</label>
-                    <input
+                    <select 
                         id="facilityType"
                         className="shadow appearance-none border border-gray-400 rounded-md w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                        type="text"
                         name="facilityType"
-                        value={formData.facilityType}
+                        value={formData.facilityType} 
                         onChange={handleChange}
                         required
-                    />
+                    >
+                        <option value="" disabled hidden>Select Facility Type</option> 
+                        <option value="Drying Facility">Drying Facility</option>
+                        <option value="Cold Storage">Cold Storage</option>
+                        <option value="Storage Facility">Storage Facility</option>
+                        <option value="Processing Unit">Processing Unit</option>
+                    </select>
                 </div>
 
                 <div className="mb-4">
@@ -132,6 +143,7 @@ function AddFacility({ onFacilityAdded }) {
                         onChange={handleChange}
                         required
                     >
+                        <option value="" disabled hidden>Availability Status</option>
                         <option value="true">Yes</option>
                         <option value="false">No</option>
                     </select>
@@ -145,6 +157,19 @@ function AddFacility({ onFacilityAdded }) {
                         type="text"
                         name="contact"
                         value={formData.contact}
+                        onChange={handleChange}
+                        required
+                    />
+                </div>
+
+                <div className="mb-4">
+                    <label htmlFor="capacity" className="block text-gray-700 text-sm font-bold mb-2">Capacity</label>
+                    <input
+                        id="capacity"
+                        className="shadow appearance-none border border-gray-400 rounded-md w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        type="number"
+                        name="capacity"
+                        value={formData.capacity}
                         onChange={handleChange}
                         required
                     />

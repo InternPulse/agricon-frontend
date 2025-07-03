@@ -46,6 +46,27 @@ export const assets = {
     contact,
 }
 
+export const offerData = [
+    {
+        id: 1,
+        icon: sharedInfra,
+        name: 'Shared Infrastructure',
+        description: 'From rural villages to peri urban markets, We drives usage of assets via cooperative booking.'
+    },
+    {
+        id: 2,
+        icon: protectProduce,
+        name: 'Protect Your Produce',
+        description: 'We connects smallholder farmers to affordable storage, drying, and processing units to preserve more.'
+    },
+    {
+        id: 3,
+        icon: smartSales,
+        name: 'Smarter Sales',
+        description: 'Make informed decisions using AI-driven pricing data and trend forecasts tailored to your region.'
+    }
+]
+
 export const howWeWorkData = [
     {
         id: 1,
@@ -124,3 +145,30 @@ export const FaqData = [
      },
 ]
 
+export const aboutOffer = [
+    {
+        id: 1,
+        image: 'icon',
+        name: 'Smart Infrastructure Access',
+        desc: "Farmers and cooperatives can browse verified listings for storage, drying floors, transport, and processing units available by location, etc."
+    },
+    {
+        id: 2,
+        image: 'icon',
+        name: 'Easy Booking & Coordination',
+        desc: "No more manual calls or paperwork. Agricon lets users view availability, set reminders, and book      instantly—all in one dashboard."
+    },
+    {
+        id: 3,
+        image: 'icon',
+        name: 'Market Intelligence & Planning Tools',
+        desc: "Users get access to real-time market prices, infrastructure demand data, and simple reports that help them make informed decisions."
+    },
+    {   
+        id: 4,
+        image:'icon',
+        name:'Cooperative Support Tools',
+        desc:"We empower cooperative leaders with group booking features, member management, and shared dashboards to coordinate faster."
+                    
+    }
+]

@@ -1,32 +1,36 @@
-import AboutCard from "./AboutCard";
+import { aboutOffer } from "../../../assets/assets";
+import { motion } from 'framer-motion'
 
 function Offer() {
     return (
         <div className="flex items-center justify-center py-15 px-5">
             <div className="space-y-6">
-                <h1 className="text-center font-bold text-2xl sm:text-4xl">What We Offer</h1>
-                <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-                    <AboutCard
-                        image='icon'
-                        name='Smart Infrastructure Access'
-                        desc="Farmers and cooperatives can browse verified listings for storage, drying floors, transport, and processing units available by location, etc."
-                    />
-                    <AboutCard
-                        image='icon'
-                        name='Easy Booking & Coordination'
-                        desc="No more manual calls or paperwork. Agricon lets users view availability, set reminders, and book      instantly—all in one dashboard."
-                    />
-                    <AboutCard
-                        image='icon'
-                        name='Market Intelligence & Planning Tools'
-                        desc="Users get access to real-time market prices, infrastructure demand data, and simple reports that help them make informed decisions."
-                    />
-                    <AboutCard
-                        image='icon'
-                        name='Cooperative Support Tools'
-                        desc="We empower cooperative leaders with group booking features, member management, and shared dashboards to coordinate faster."
-                    />
-                </div>
+                <motion.h1
+                     initial={{ opacity: 0, y: 20 }}
+                     whileInView={{ opacity: 1, y: 0 }}
+                     transition={{duration: 1.0}}
+                    className="text-center font-bold text-2xl sm:text-4xl"
+                >
+                    What We Offer
+                </motion.h1>
+                <div
+                    className="grid grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
+                >
+                    {aboutOffer.map((about) => (   
+                        <motion.div
+                            key={about.id}
+                            initial={{ opacity: 0, y: 50 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            transition={{duration: 1.4, delay: about.id * 0.3}}
+                            className="bg-[#F9FAFB] drop-shadow-lg rounded-md  px-3 py-5">
+                            <div className="flex items-center justify-center space-x-3">
+                                <p>{about.image}</p>
+                                <h2 className="font-bold text-xl">{about.name}</h2>
+                            </div>
+                            <div className="font-semibold px-2 pt-5">{about.desc}</div>
+                        </motion.div>
+                    ))}     
+                </div>    
             </div>
         </div>
     );
