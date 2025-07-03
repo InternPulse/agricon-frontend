@@ -4,3 +4,24 @@
 .addFont {
   font-family: "Inter", sans-serif;
 }
+
+@theme {
+  --color-mint-green: #d5f0e8;
+  --color-dark: #000000;
+  --color-mid-gray: #8b8b8b;
+  --color-ice-blue: #f7f9fc;
+  --color-charcoal-blue: #344054;
+  --color-deep-green: #02402d;
+  --color-veryDark-gray: #1a1a1a;
+  --color-vibrant-red: #dd524d;
+  --color-semi-red: #e00000d9;
+  --color-dark-gray: #444;
+  --color-soft-mint-green: #a7e0cf1a;
+  --color-cool-gray: #667085;
+  --color-ghost-white: #f7f7f7;
+  --color-vivid-yellow: #ffac00;
+  --color-soft-pink: #f2bcba;
+  --color-gray-border: #d0d5dd;
+  --color-alert-red: #ff0202;
+  --color-dark-gray-tone: #616161;
+}
