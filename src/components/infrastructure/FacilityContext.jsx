@@ -9,12 +9,20 @@ export default function FacilityProvider({ children }) {
   useEffect(() => {
     async function fetchFacility() {
       try {
-        const token = localStorage.getItem("accessToken");
+        let token = localStorage.getItem("access");
+
+        if (!token) {
+          token =
+            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzUxNTg4MzYyLCJpYXQiOjE3NTE1NTIzNjIsImp0aSI6IjA2MTI2NjcyZGU0YzRjNjdiMWZhMzFiYjBjYTY1MDU1IiwidXNlcl9pZCI6IjdmZDNhOTIxLWQ0MTktNDhlYy05ZDgzLTI0NjZlYTE5N2JjMiIsImVtYWlsIjoiZmFjaWxpdHk4QGV4YW1wbGUuY29tIiwicm9sZSI6Ik9QRVJBVE9SIn0.CZl3g9l9evNK32jkgEsR9qDqz38OL0_ADTSeppN8c7k";
+          localStorage.setItem("access", token);
+          console.warn(
+            "Token was missing. Injected test token for dev use."
+          );
+        }
 
         const response = await fetch(
-          "https://agricon-express-backend.onrender.com/api/v1/facilities/",
+          "https://agricon-express-backend.onrender.com/api/v1/facilities?limit=3&page=2&available=true",
           {
-            method: "GET",
             headers: {
               "Content-Type": "application/json",
               Authorization: `Bearer ${token}`,
@@ -28,17 +36,17 @@ export default function FacilityProvider({ children }) {
         }
         console.log(resData);
         setFacilities(
-          resData.map((data) => {
+          resData.data.map((data) => {
             return {
               id: data.id,
-              name: data.name,
+              name: data.type,
               location: data.location,
               type: data.type,
             };
           })
         );
       } catch (error) {
-        console.error(error.message || "No facility data, using mok data...");
+        console.error(error.message || "No facility data, using mock data...");
         setFacilities(facilityData);
       }
     }
