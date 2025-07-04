@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { OperatorContext } from '../../context/OperatorContext';
 
 const ChangePassword = () => {
+ 
   const navigate = useNavigate();
   const [form, setForm] = useState({
     currentPassword: '',
@@ -10,10 +12,10 @@ const ChangePassword = () => {
   });
 
   const [errors, setErrors] = useState({});
-
+  const {changePassword} = useContext(OperatorContext)
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
-    setErrors({ ...errors, [e.target.name]: '' }); // clear error on change
+    setErrors({ ...errors, [e.target.name]: '' }); 
   };
 
   const validate = () => {
@@ -24,17 +26,21 @@ const ChangePassword = () => {
     return newErrors;
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const validationErrors = validate();
-    if (Object.keys(validationErrors).length > 0) {
-      setErrors(validationErrors);
-      return;
-    }
+ const handleSubmit = async (e) => {
+  e.preventDefault();
+  const validationErrors = validate();
+  if (Object.keys(validationErrors).length > 0) {
+    setErrors(validationErrors);
+    return;
+  }
 
-    // TODO: send data to API
+  try {
+    await changePassword(form.currentPassword, form.newPassword, form.confirmPassword);
     navigate('/passwordchanged');
-  };
+  } catch (error) {
+    alert('Error changing password: ' + (error.response?.data?.detail || error.message));
+  }
+};
 
   return (
     <div className='bg-gray-200 min-h-screen flex justify-center items-center'>

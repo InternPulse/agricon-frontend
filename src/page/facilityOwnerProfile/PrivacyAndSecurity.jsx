@@ -18,11 +18,11 @@ const PrivacyAndSecurity = () => {
         <h1 className='font-bold text-[16px]'>Account Details</h1>
       </header>
 
-      <ActionRow
+      {/* <ActionRow
         title='Verify Email Address'
         description='Stay notified in real time on your desktop'
         action={<span className='md:text-[12px] text-[10px] text-[#02402d] font-semibold cursor-pointer'>Verify Email</span>}
-      />
+      /> */}
 
       <ActionRow
         title='Update Password'

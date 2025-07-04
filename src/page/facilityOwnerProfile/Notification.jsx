@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import { MdToggleOn, MdToggleOff } from 'react-icons/md';
+// import { useAuth } from '../../context/AuthContext';
 
 const NotificationToggle = ({ label, description, enabled, onToggle }) => {
+  
+  
   return (
     <div className='flex justify-between items-start gap-4 md:w-1/2'>
       <div>
@@ -23,7 +26,7 @@ const NotificationToggle = ({ label, description, enabled, onToggle }) => {
 const Notifications = () => {
   const [desktopEnabled, setDesktopEnabled] = useState(true);
   const [emailEnabled, setEmailEnabled] = useState(true);
-
+// const {user, token, loading } = useAuth();
   return (
     <div className='bg-white p-4 rounded  flex flex-col gap-6'>
       <h1 className='font-bold text-[16px]'>Notifications</h1>
@@ -34,7 +37,7 @@ const Notifications = () => {
         enabled={desktopEnabled}
         onToggle={() => setDesktopEnabled(!desktopEnabled)}
       />
-
+        {/* <h1> {user.firstName} </h1> */}
       <NotificationToggle
         label='Enable Email Alert'
         description='Get updates in your inbox'

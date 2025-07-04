@@ -10,6 +10,11 @@ import ChangePassword from './page/facilityOwnerProfile/ChangePassword';
 import SuccesfulPasswordChange from './page/facilityOwnerProfile/SuccesfulPasswordChange';
 import Profile from './page/facilityOwnerProfile/Profile';
 import Notifications from './page/facilityOwnerProfile/Notification';
+import FacilityEmptyPage from './page/facilitites/FacilityEmptyPage';
+import AddFacility from './page/facilitites/AddFacility';
+import FacilityImage from './page/facilitites/FacilityImage';
+import SuccessfulPage from './page/facilitites/SuccessfulPage';
+
 
 const Layout = () => {
   return (
@@ -44,6 +49,13 @@ const App = () => {
           <Route path="otp" element={<OTP />} />
           <Route path="changepassword" element={<ChangePassword />} />
           <Route path="passwordchanged" element={<SuccesfulPasswordChange />} />
+         <Route element={<Layout />}>
+        <Route path='emptyfacility' element={<FacilityEmptyPage />} />
+        <Route path='addfacility' element={<AddFacility />} />
+        <Route path='facilityimage' element={<FacilityImage />}/>
+        <Route path='facilitiessuccessfulpage' element={<SuccessfulPage />}
+        />
+          </Route>
         </Routes>
       {/* </BrowserRouter> */}
     </div>
