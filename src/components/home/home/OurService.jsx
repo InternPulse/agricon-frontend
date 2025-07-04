@@ -1,8 +1,6 @@
 
-import React from 'react';
-import { assets } from '../../../assets/assets';
-import Card from './Card'
 import { motion } from 'framer-motion'
+import { offerData } from '../../../assets/assets';
 
 
 function OurService() {
@@ -18,31 +16,21 @@ function OurService() {
                 <h1 className='text-2xl font-bold'>What Agric<span className='text-[#FFAC00]'>o</span>n Offers</h1>
             </motion.div>
             <motion.div
-                className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5'
-                initial={{ opacity: 0, y: 60 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{duration: 1, delay: 0.8}}
-            >
-                        <Card
-                            image={<img src={assets.logistics} className='mx-auto bg-[#ECBD4629] rounded-full p-3'/>}  
-                            name="Efficient Logistics" 
-                            desc='We handle delivery to cut delays, protect your goods, and help you earn more.'
-                        /> 
-                         <Card
-                            image={<img src={assets.sharedInfra} className='mx-auto bg-[#8FBFFA3D] rounded-full p-3'/>}  
-                            name="Shared Infrastructure" 
-                            desc='From rural villages to peri urban markets, We drives usage of assets via cooperative booking.'
-                        /> 
-                         <Card
-                            image={<img src={assets.protectProduce} className='mx-auto bg-[#0000001A] rounded-full p-3'/>}  
-                            name="Protect Your Produce" 
-                            desc=' We connects smallholder farmers to affordable storage, drying, and processing units to preserve more.'
-                        /> 
-                         <Card
-                            image={<img src={assets.smartSales} className='mx-auto bg-[#4147D51A] rounded-full p-3'/>}  
-                            name="Smarter Sales" 
-                            desc={<p className='px-2'>Make informed decisions using   AI-driven pricing data and trend forecasts tailored to your region.</p>}
-                        /> 
+                className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10'
+            > 
+                {offerData.map((offer) => (
+                    <motion.div
+                        key={offer.id}
+                        initial={{ opacity: 0, y: 60 }}
+                        whileInView={{opacity: 1, y: 0}}
+                        transition={{duration: 1.0, delay: offer.id * 0.3 }}
+                        className="border border-gray-400 rounded-xl py-6 px-3 w-[100%] text-center space-y-5"
+                        >
+                            <img src={offer.icon} className='mx-auto bg-[#8FBFFA3D] rounded-full p-3'/>
+                            <h2 className="font-bold text-xl">{offer.name}</h2>
+                            <div className="font-semibold px-2">{offer.description}</div>
+                    </motion.div> 
+                ))}
             </motion.div>
         </div>
     )

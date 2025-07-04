@@ -35,7 +35,7 @@ function Cta() {
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{duration: 1, delay: 0.8}}
                     >
-                        <Link to='/signup' className='hover:cursor-pointer bg-[#02402D] border border-[#FFAC00] rounded-full pl-5 py-3 font-bold'>
+                        <Link to='/roles' className='hover:cursor-pointer bg-[#02402D] border border-[#FFAC00] rounded-full pl-5 py-3 font-bold'>
                             Start Saving Today <FaAngleRight className="inline-block bg-[#FFAC00] rounded-full text-black mb-1 ml-2 mr-1" size={38}/>
                         </Link>
                     </motion.div>

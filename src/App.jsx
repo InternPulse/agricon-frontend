@@ -29,6 +29,9 @@ import FarmerDashboard from './pages/Dashboard/FarmerDashboard';
 import FacilityOwnerDashboard from './pages/Dashboard/FacilityOwnerDashboard';
 import { AuthProvider } from './context/AuthContext.jsx';
 import FacilityProvider from './components/infrastructure/FacilityContext.jsx';
+import MyFacilityLayout from './layout/MyFacilityLayout.jsx';
+import MyFacilityPage from './pages/my-facility/MyFacilityPage.jsx';
+
 
 
 
@@ -72,6 +75,9 @@ function App() {
             {/* Route for facility owner/operator */}
           <Route path="operator" element={<FacilityOwnerLayout />}>
                 <Route index element={<FacilityOwnerDashboard />}/>
+                <Route path='my-facility' element={<MyFacilityLayout />}>
+                  <Route index element={<MyFacilityPage />}/>
+                </Route>
           </Route>
           
         </Routes>

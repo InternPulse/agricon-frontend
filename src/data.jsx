@@ -87,8 +87,6 @@ export const facilityData = [
             rice and maize farmers, the station offers precise temperature and
             humidity control, speeding up drying time while preserving grain
             quality for storage or sale.`,
-    price: "",
-    description: "",
   },
   {
     id: 2,

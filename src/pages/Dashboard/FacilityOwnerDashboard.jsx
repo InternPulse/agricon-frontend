@@ -15,7 +15,7 @@ export default function FacilityOwnerDashboard() {
     >
       
       <main
-        className={`${open ? 'hidden sm:flex' : 'flex'}  flex-1 flex flex-col bg-white overflow-auto`}
+        className={`${open ? ' sm:flex' : 'flex'}  flex-1 flex flex-col bg-white overflow-auto`}
         style={{ scrollbarWidth: "none" }}
       >
         

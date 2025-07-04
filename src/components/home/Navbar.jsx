@@ -28,8 +28,10 @@ const Navbar = () => {
             <img src={assets.agriconLogo} alt="" className="w-20"/>
           </Link>
           <ul className='hidden first md:flex gap-7 lg:gap-7 text-gray-500 text-md px-4'>
-            <NavLink to='/' className='cursor-pointer hover:text-gray-400'>
-              Home{" "}
+            <NavLink
+              to='/'
+              className='cursor-pointer hover:text-gray-400'>
+              Home
             </NavLink>
             <NavLink
               to='/services'

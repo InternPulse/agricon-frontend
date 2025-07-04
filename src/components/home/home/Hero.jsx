@@ -46,7 +46,7 @@ function Hero() {
                         transition={{ duration: 0.8, delay: 0.7 }}
                     >
                         <Link
-                            to='/signup' className='hover:cursor-pointer bg-[#02402D] border border-[#FFAC00] rounded-full pl-5 py-3 font-bold'>
+                            to='/roles' className='hover:cursor-pointer bg-[#02402D] border border-[#FFAC00] rounded-full pl-5 py-3 font-bold'>
                             Get Started <FaAngleRight className="inline-block bg-[#FFAC00] rounded-full text-black mb-1 ml-2 mr-1" size={38}/>
                         </Link>
                     </motion.div>

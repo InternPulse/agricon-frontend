@@ -81,7 +81,10 @@ function FarmerLayout() {
 
     return (
         <div className="flex w-full">
-            <Side />
+            <Side
+                userName={displayUserName}
+                picture={displayPictureElement}
+            />
             <div className="pl-0 md:pl-64 w-full">
                 <div>
                     <Header

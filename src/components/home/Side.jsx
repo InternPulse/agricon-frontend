@@ -1,27 +1,47 @@
-import { Link, useLocation } from 'react-router-dom';
-import { FaBars, FaCog, FaTimes } from 'react-icons/fa';
+import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom';
+import { FaBars, FaCog, FaSignOutAlt, FaTimes } from 'react-icons/fa';
 import { MdOutlineDashboard } from "react-icons/md";
-import { AiOutlineFileSearch } from "react-icons/ai";
+import { AiFillNotification, AiOutlineFileSearch } from "react-icons/ai";
 import { FaCubes } from "react-icons/fa";
 import { useEffect, useState } from 'react';
 import { assets } from '../../assets/assets';
 import Donut from '../Dashboard/Donut';
+import { logout } from '../../api/logout';
+import { IoNotifications } from "react-icons/io5";
 
 
-function Side({ FARMER, OPERATOR }) {
+
+function Side({ picture, userName}) {
     const location = useLocation();
     const [showMobileMenu, setShowMobileMenu] = useState(false);
+    const navigate = useNavigate();
     const userRole = localStorage.getItem("userRole")?.toUpperCase() || ''; 
 
-    // Prevent body scrolling when the mobile navbar is opened
+    //logout handler 
+    const handleLogout = async () => {
+        try {
+            //call the api
+            await logout(); 
+            navigate('/login'); // Use navigate instead of Navigate
+        } catch (error) {
+            console.error('Logout failed:', error);
+            navigate('/login');
+        }
+    };
+        
+
+    // Prevent body and html scrolling when the mobile navbar is opened
     useEffect(() => {
         if (showMobileMenu) {
             document.body.style.overflow = "hidden";
+            document.documentElement.style.overflow = "hidden"; // Also target the html element
         } else {
             document.body.style.overflow = "auto";
+            document.documentElement.style.overflow = "auto"; // Reset html
         }
         return () => {
             document.body.style.overflow = "auto";
+            document.documentElement.style.overflow = "auto"; // Cleanup html
         };
     }, [showMobileMenu]);
 
@@ -43,7 +63,7 @@ function Side({ FARMER, OPERATOR }) {
         ],
         OPERATOR: [
             { path: '/operator', icon: MdOutlineDashboard, text: 'Dashboard' },
-            { path: '/operator/facility', icon: FaCubes, text: 'My Facilities' },
+            { path: '/operator/my-facility', icon: FaCubes, text: 'My Facilities' },
             { path: '/operator/booking-history', icon: AiOutlineFileSearch, text: 'Booking History' },
             { path: '/operator/setting', icon: FaCog, text: 'Settings' },
         ],
@@ -56,25 +76,25 @@ function Side({ FARMER, OPERATOR }) {
     return (
         <>
             {/* Mobile Menu Toggle Button */}
-            <div className="md:hidden fixed top-4 left-3 z-50">
+            <div className="lg:hidden fixed top-4 left-3 z-50">
                 <FaBars
                     onClick={() => setShowMobileMenu(true)}
                     className="w-8 h-8 cursor-pointer border border-[#02402D] rounded-md p-2 text-[#02402D] hover:border-[#FFAC00] hover:text-[#FFAC00]"
                 />
             </div>
 
-            <div className="hidden md:inline-block bg-[#02402D]
-                                min-h-screen fixed w-64 border-r text-white border-[#FFAC00]">
-                <div className='flex items-center space-x-1 font-bold border-b border-[#FFAC00] py-4'>
-                    <img src={assets.agriconLogo2} alt="Agricon_img" className='ml-6'/>
+            <div className="hidden lg:inline-block bg-[#02402D]
+                                 min-h-screen fixed w-64 border-r text-white border-[#FFAC00]">
+                <div className='flex items-center space-x-1 font-bold border-b border-[#FFAC00] py-4 ml-3'>
+                    <img src={assets.agriconlog} alt="Agricon_img" className='ml-6'/>
                 </div>
                 {/* Desktop Navigation */}
-                <ul className='flex flex-col mt-5 font-bold space-y-3 px-4'>
+                <ul className='flex flex-col mt-5 font-bold space-y-2 px-2'>
                     {currentNavItems.map((item, index) => (
                         <Link
                             key={index}
                             to={item.path}
-                            className={`flex items-center py-3 px-2 space-x-4 rounded-lg ${isActive(item.path) ? activeClass : inactiveClass}`}
+                            className={`flex items-center py-2 px-2 space-x-4 rounded-lg ${isActive(item.path) ? activeClass : inactiveClass}`}
                         >
                             <item.icon className="w-5 h-5" />
                             <span className='hidden md:inline'>{item.text}</span>
@@ -82,44 +102,46 @@ function Side({ FARMER, OPERATOR }) {
                     ))}
                 </ul>
                 <div className="profile py-5 px-3">
-                    <div className="bg-white flex flex-col gap-5 p-4 rounded-xl shadow-inner mb-4">
-                        <div className="flex items-center ">
-                            <div className="top flex gap-1">
+                    <div className="bg-white flex flex-col gap-5 p-2 rounded-xl shadow-inner mb-4">
+                        <div className="flex  ">
+                            <div className="top flex">
                                 <div className="w-full">
                                     <Donut completionPercentage={62} />
                                 </div>
                                 <div>
-                                    <h3 className="text-[12px] font-semibold text-[#1D2739]">
-                                        Refer & Earn
+                                    <h3 className="text-[14px] font-bold text-[#1D2739]">
+                                        You’re Almost There
                                     </h3>
                                     <p className="text-[9px] text-[#344054]">
-                                        Invite fellow farmers to join AGRICON and earn rewards
-                                        when they sign up and book their first facility
+                                        Update your details to keep your account accurate and accessible.
                                     </p>
                                 </div>
                             </div>
                         </div>
                         <button className="w-full text-left flex items-center justify-center px-3 py-2 bg-[#02402D] text-white rounded-lg shadow-sm hover:bg-green-600 transition mb-2 text-sm font-medium">
-                            Refer
+                            Update Profile
                         </button>
                     </div>
                 </div>
+                
             </div>
 
             {/* Mobile Sidebar */}
             <div
                 className={`fixed inset-0 z-50 transition-opacity duration-300 ease-in-out
                             ${showMobileMenu ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}
-                onClick={() => setShowMobileMenu(false)}
+                onClick={() => setShowMobileMenu(false)} // This clicks the overlay to close
             >
                 <div
+                    // Prevent propagation so clicking inside the sidebar doesn't close it
+                    onClick={(e) => e.stopPropagation()} 
                     className={`fixed top-0 bottom-0 left-0 w-64 bg-[#02402D] text-gray-800 dark:text-white
-                                shadow-lg transform transition-transform duration-300 ease-in-out z-50
+                                 shadow-lg transform transition-transform duration-300 ease-in-out z-50
                                 ${showMobileMenu ? 'translate-x-0' : '-translate-x-full'}`}
                 >
-                    <div className='flex justify-between items-center p-6 border-b border-[#FFAC00] z-40'>
-                        <div className='flex items-center space-x-1 font-bold ml-3'>
-                            <img src={assets.agriconLogo2} alt="Agricon_img" className='ml-6'/>
+                    <div className='flex justify-between items-center px-6 py-4.5 border-b border-[#FFAC00] z-40'>
+                        <div className=' font-bold text-[#FFAC00]'>
+                            <IoNotifications size={24}/>
                         </div>
                         <FaTimes
                             onClick={() => setShowMobileMenu(false)}
@@ -127,13 +149,13 @@ function Side({ FARMER, OPERATOR }) {
                         />
                     </div>
 
-                    <ul className='flex flex-col gap-2 mt-5 px-5 text-lg font-medium'>
+                    <ul className='flex flex-col gap-2 mt-3 px-5 font-bold'>
                         {currentNavItems.map((item, index) => (
                             <Link
                                 key={index}
                                 onClick={() => setShowMobileMenu(false)}
                                 to={item.path}
-                                className={`flex items-center py-3 px-4 rounded-lg ${isActive(item.path) ? activeClass : inactiveClass}`}
+                                className={`flex items-center py-2 px-4 rounded-lg ${isActive(item.path) ? activeClass : inactiveClass}`}
                             >
                                 <item.icon className="w-5 h-5 mr-3" /> {item.text}
                             </Link>
@@ -147,19 +169,35 @@ function Side({ FARMER, OPERATOR }) {
                                         <Donut completionPercentage={62} />
                                     </div>
                                     <div>
-                                        <h3 className="text-[12px] font-semibold text-[#1D2739]">
-                                            Refer & Earn
+                                        <h3 className="text-[14px] font-bold text-[#1D2739]">
+                                            You’re Almost There
                                         </h3>
                                         <p className="text-[9px] text-[#344054]">
-                                            Invite fellow farmers to join AGRICON and earn rewards
-                                            when they sign up and book their first facility
+                                            Update your details to keep your account accurate and accessible.
                                         </p>
                                     </div>
                                 </div>
                             </div>
                             <button className="w-full text-left flex items-center justify-center px-3 py-2 bg-[#02402D] text-white rounded-lg shadow-sm hover:bg-green-600 transition mb-2 text-sm font-medium">
-                                Referl
+                                Update Profile
                             </button>
+                        </div>
+                    </div>
+                    {/* Added user profile and logout for mobile sidebar */}
+                    <div className='sm:hidden mt-auto'> {/* mt-auto pushes it to the bottom */}
+                        <div className='text-center space-y-4 px-5'> 
+                            <div className='flex items-center gap-4 px-8'>
+                                <p>{picture}</p> 
+                                <h6 className='font-bold text-black dark:text-white'>{userName}</h6> {/* Added text color for mobile menu */}
+                            </div>
+                            <div className=" mt-2 bg-white rounded-md shadow-lg py-1 text-center">
+                                <button
+                                    onClick={handleLogout}
+                                    className="flex items-center justify-center w-full px-4 py-2 text-red-600 hover:bg-red-50 text-sm"
+                                >
+                                    <FaSignOutAlt className="mr-2" /> Logout
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -60,8 +60,11 @@ function FacilityOwnerLayout() {
 
     return (
         <div className="flex w-full">
-            <Side />
-            <div className="pl-0 md:pl-64 w-full">
+            <Side
+                userName={displayUserName}
+                picture={displayPictureElement} 
+            />
+            <div className="pl-0 lg:pl-64 w-full">
                 <div>
                     <Header
                         title='Operator'
