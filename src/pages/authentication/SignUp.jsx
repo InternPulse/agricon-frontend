@@ -1,57 +1,15 @@
-// import authImage from "../../assets/authImage.png";
-// import agriconLogo from "../../assets/agriconLogo.png";
-// import Carousels from "../../components/authentication/Carousels";
-// import Credentials from "../../components/authentication/Credentials";
-
-// export default function SignUp() {
-//   return (
-//     <div className="grid lg:grid-cols-2 mb-10 gap-12 lg:gap-20 p-10 sm:p-18 lg:p-24 xl:p-30 lg:mb-0">
-//       <div className="order-2 lg:order-1 hidden lg:inline-block">
-//         <div className="flex flex-col py-[4.7rem] px-[4.2rem] items-center justify-center h-full bg-[#F0F2F5]">
-//           <img
-//             className="hidden lg:block w-auto mb-[2.3rem]"
-//             src={agriconLogo}
-//             alt="Agricon Logo"
-//           />
-//           <img
-//             className="w-full max-w-[441px] mb-[2.3rem]"
-//             src={authImage}
-//             alt="Sign up image"
-//           />
-//           <p className="font-Inter mb-2 text-xl font-semibold text-[#010E0A]">
-//             Find Nearby Infrastructure
-//           </p>
-//           <p className="font-Inter mb-9 text-[#010E0A] text-sm">
-//             Discover dryers, cold rooms, and processing units close to your
-//             farm.
-//           </p>
-//           <Carousels />
-//         </div>
-//       </div>
-
-//       <div className=" flex justify-center mb-0 lg:hidden lg:mb-8">
-//         <img className="hidden w-[120px]" src={agriconLogo} alt="Agricon Logo" />
-//       </div>
-//       <div className=" order-1 lg:order-2">
-//         <Credentials />
-//       </div>
-//     </div>
-
-
-//   );
-// }
-
 
 
 import React, { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import axios from 'axios';
 import { assets } from '../../assets/assets';
+import LeftSide from './LeftSide';
 
 const SignUp = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const initialRole = location.state?.role || 'FARMER' ||'OPERATOR'; // Default to FARMER, a valid choice
+  const initialRole = location.state?.role || 'FARMER'; // Default to FARMER, a valid choice
 
   const [formData, setFormData] = useState({
     email: '',
@@ -110,28 +68,29 @@ const SignUp = () => {
         },
         { headers: { 'Content-Type': 'application/json' } }
       );
-      console.log('Registration response:', response.data);
+      console.log('Registration response:', response.data); // Log full response
       localStorage.setItem('access_token', response.data.access);
       localStorage.setItem('refresh_token', response.data.refresh);
       const receivedOtp = response.data.otp; // Assuming backend returns otp
       if (receivedOtp) {
         setOtp(receivedOtp);
         setSuccess(`Registration successful! Your OTP is: ${receivedOtp}. Please copy it for verification.`);
-        setTimeout(() => navigate('/verifyemailotp', { state: { email: formData.email, otp: receivedOtp } }), 2000);
+        setTimeout(() => navigate('/verifyemailotp', { state: { email: formData.email, otp: receivedOtp } }), 2000); // 2 seconds to copy
       } else {
-        setError('OTP not received from backend.');
+        setSuccess('Registration successful! Please check your email for the OTP and proceed to verify.');
+        setTimeout(() => navigate('/verifyemailotp', { state: { email: formData.email } }), 2000); // Proceed without OTP if not in response
       }
     } catch (err) {
-      console.error('Registration error details:', err.response?.data);
+      console.error('Registration error details:', err.response?.data); // Log full error
       if (err.response?.data?.email?.[0]?.includes('A user with that email already exists.')) {
-        setSuccess('Email already registered. Please enter your OTP to verify:');
+        setError('This email is already registered. <a href="/login" className="text-green-700 underline">Log in</a> or <a href="/reset-password" className="text-green-700 underline">reset password</a>.');
       } else {
         setError(
           err.response?.data?.email?.[0] ||
           err.response?.data?.password?.[0] ||
           err.response?.data?.role?.[0] ||
           err.response?.data?.detail ||
-          'Registration failed. Check console for details.'
+          'Registration failed. Check console or network connection.'
         );
       }
     } finally {
@@ -154,7 +113,7 @@ const SignUp = () => {
         { headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' } }
       );
       setSuccess(response.data.message || 'Email verified successfully!');
-      setTimeout(() => navigate('/dashboard'), 20000);
+      setTimeout(() => navigate('/dashboard'), 2000);
     } catch (err) {
       setError(err.response?.data?.detail || 'Invalid OTP. Please try again.');
     } finally {
@@ -166,23 +125,7 @@ const SignUp = () => {
     <div className="min-h-screen lg:flex items-center justify-center bg-gray-50 p-2 md:p-6">
       <div className="py-16 lg:py-0 bg-white rounded-xl shadow-md w-full max-w-6xl grid lg:grid-cols-2 md:gap-2">
         {/* Left Side (Image & Info) */}
-        <div className="hidden lg:flex flex-col items-center justify-center px-4 py-8 md:p-10 space-y-6 bg-[#F0F2F5]">
-          <img src={assets.agriconLogo} alt="agriCon" className="w-32 mb-6" />
-          <img src={assets.authImage} alt="authImage" className="w-full max-w-sm rounded-lg shadow-md" />
-          <div className="text-center">
-            <h2 className="text-lg font-semibold text-black">Find Nearby Infrastructure</h2>
-            <p className="text-sm text-gray-600 mt-2">
-              Discover dryers, cold rooms, and processing units close to your farm.
-            </p>
-          </div>
-          <div className="flex gap-2 justify-center mt-4">
-            <div className="w-20 h-1 bg-black rounded-full"></div>
-            <div className="w-20 h-1 bg-[#A7E0CF] rounded-full"></div>
-            <div className="w-20 h-1 bg-[#A7E0CF] rounded-full"></div>
-            <div className="w-20 h-1 bg-[#A7E0CF] rounded-full"></div>
-            <div className="w-20 h-1 bg-[#A7E0CF] rounded-full"></div>
-          </div>
-        </div>
+        <LeftSide />
 
         {/* Right Side (Form) */}
         <div className="flex flex-col items-center justify-center lg:px-4 lg:py-8 p-4 md:p-10 space-y-6">
@@ -192,7 +135,7 @@ const SignUp = () => {
               Create a {formData.role === 'FARMER' ? 'farmer' : formData.role === 'OPERATOR' ? 'operator' : 'admin'} account to access facilities.
             </p>
           </div>
-          {error && <p className="text-red-500 text-sm text-center">{error}</p>}
+          {error && <p className="text-red-500 text-sm text-center" dangerouslySetInnerHTML={{ __html: error }}></p>}
           {success && (
             <div className="text-center">
               <p className="text-green-700 text-sm font-semibold">{success}</p>
