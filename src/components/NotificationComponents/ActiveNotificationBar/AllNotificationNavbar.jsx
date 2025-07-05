@@ -1,7 +1,8 @@
-import React from "react";
-
+import React, { useState } from "react";
 
 export default function AllNotificationNavbar() {
+  const [activeLabel, setActiveLabel] = useState("All");
+  const labels = ["All", "New", "Read", "Unread"];
   return (
     <div>
       {/* Notification count - visible on medium screens and above */}
@@ -13,11 +14,14 @@ export default function AllNotificationNavbar() {
       <div className="lg:flex lg:justify-between lg:items-center bg-white lg:p-4 mb-8 ">
         {/* Filter Buttons */}
         <div className="flex justify-between lg:gap-5 p-1">
-          {["All", "New", "Read", "Unread"].map((label) => (
+          {labels.map((label) => (
             <button
               key={label}
-              className={`p-2 rounded-md ${
-                label === "New" ? "bg-mint-green text-black" : "text-mid-gray"
+              onClick={() => setActiveLabel(label)}
+              className={`p-2 rounded-md cursor-pointer ${
+                activeLabel === label
+                  ? "bg-mint-green text-black"
+                  : "text-mid-gray"
               }`}
             >
               {label}
@@ -33,4 +37,3 @@ export default function AllNotificationNavbar() {
     </div>
   );
 }
-
