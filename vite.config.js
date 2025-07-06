@@ -9,11 +9,6 @@ export default defineConfig({
     react(),
     tailwindcss({}),
   ],
-  build: {
-    rollupOptions: {
-      //external: ['internmap']
-    },
-  },
   server: {
     port: 5173,
     proxy: {
