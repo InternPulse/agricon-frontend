@@ -14,6 +14,12 @@ import FacilityEmptyPage from './page/facilitites/FacilityEmptyPage';
 import AddFacility from './page/facilitites/AddFacility';
 import FacilityImage from './page/facilitites/FacilityImage';
 import SuccessfulPage from './page/facilitites/SuccessfulPage';
+import Modal from './components/Modal';
+import MyFacility from './page/facilitites/MyFacility';
+import EditFacility from './page/facilitites/EditFacility';
+import DeleteFacility from './page/facilitites/DeleteFacility';
+import SuccesfulEdit from './page/facilitites/SuccesfulEdit';
+import EditImage from './page/facilitites/EditImage';
 
 
 const Layout = () => {
@@ -32,7 +38,7 @@ const Layout = () => {
 
 const App = () => {
   return (
-    <div className="bg-[#f8f3f3] inter">
+    <div className=" inter">
       
     
       {/* <BrowserRouter> */}
@@ -53,8 +59,12 @@ const App = () => {
         <Route path='emptyfacility' element={<FacilityEmptyPage />} />
         <Route path='addfacility' element={<AddFacility />} />
         <Route path='facilityimage' element={<FacilityImage />}/>
-        <Route path='facilitiessuccessfulpage' element={<SuccessfulPage />}
-        />
+        <Route path='facilitiessuccessfulpage' element={<SuccessfulPage />}       />
+        <Route path='myfacility' element={<MyFacility />}/>
+      <Route path='editfacility' element={<EditFacility />}/>
+      <Route path='deletefacility' element={<DeleteFacility />} />
+      <Route path='successfuledit' element={<SuccesfulEdit />}/>
+      <Route path='editimage' element={<EditImage />}/>
           </Route>
         </Routes>
       {/* </BrowserRouter> */}
