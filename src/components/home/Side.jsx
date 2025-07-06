@@ -17,6 +17,9 @@ function Side({ picture, userName}) {
     const navigate = useNavigate();
     const userRole = localStorage.getItem("userRole")?.toUpperCase() || ''; 
 
+    //get the user roles for displaying of notifications
+    const role = localStorage.getItem('userRole');
+
     //logout handler 
     const handleLogout = async () => {
         try {
@@ -140,15 +143,17 @@ function Side({ picture, userName}) {
                                 ${showMobileMenu ? 'translate-x-0' : '-translate-x-full'}`}
                 >
                     <div className='flex justify-between items-center px-6 py-4.5 border-b border-[#FFAC00] z-40'>
-                        <div className=' font-bold text-[#FFAC00]'>
+                        <Link to={`/${role}/notification`} 
+                            onClick={() => setShowMobileMenu(false)}
+                            className='bg-green-100 rounded-full p-1 font-bold text-[#FFAC00]'
+                        >
                             <IoNotifications size={24}/>
-                        </div>
+                        </Link>
                         <FaTimes
                             onClick={() => setShowMobileMenu(false)}
                             className='w-8 h-8 cursor-pointer text-gray-600 dark:text-gray-300 hover:text-red-500 dark:hover:text-[#FFAC00] border rounded-md p-2'
                         />
                     </div>
-
                     <ul className='flex flex-col gap-2 mt-3 px-5 font-bold'>
                         {currentNavItems.map((item, index) => (
                             <Link

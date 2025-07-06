@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import { FaAngleDown, FaAngleUp, FaSignOutAlt } from 'react-icons/fa';
-import { useNavigate } from 'react-router-dom'; 
+import { Link, useNavigate } from 'react-router-dom'; 
 import { logout } from '../../api/logout'
 import { IoNotifications } from 'react-icons/io5';
 
 const Header = ({ title, userName, picture }) => {
   const [showLogoutDropdown, setShowLogoutDropdown] = useState(false);
     const navigate = useNavigate();
+
+    const role = localStorage.getItem('userRole');
 
  //logout handler 
   const handleLogout = async () => {
@@ -43,9 +45,9 @@ const Header = ({ title, userName, picture }) => {
                 {/* User Info and Dropdown Toggle */}
                 <div className='hidden md:inline-block'>
                     <div className='relative flex items-center gap-4'> 
-                        <div className=' font-bold text-[#FFAC00]'>
+                        <Link to={`/${role}/notification`} className='bg-green-100 rounded-full p-1 font-bold text-[#FFAC00]'>
                             <IoNotifications size={24}/>
-                        </div>
+                        </Link>
                         <p>{picture}</p> 
                         <h6 className='font-bold'>{userName}</h6>
                         <button

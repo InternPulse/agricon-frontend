@@ -110,10 +110,11 @@ const Login = () => {
         formData,
         { headers: { 'Content-Type': 'application/json' } }
       );
-      localStorage.setItem('access_token', response.data.access);
+      // Example in your login component, when saving the token:
+      localStorage.setItem('access_token', response.data.access.trim());
+      // localStorage.setItem('access_token', response.data.access);
       localStorage.setItem('refresh_token', response.data.refresh);
       localStorage.setItem('email', response.data.email);
-      
       const currentRole = response.data.role.toLowerCase();
       
       console.log(currentRole);

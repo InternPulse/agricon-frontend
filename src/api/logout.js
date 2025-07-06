@@ -24,6 +24,7 @@ export const logout = async () => {
     localStorage.removeItem('userRole');
     localStorage.removeItem('email');
     localStorage.removeItem('farmerProfile');
+    localStorage.removeItem('operatorProfile');
 
     return response.data; // Return data to backed
 
@@ -36,8 +37,8 @@ export const logout = async () => {
     localStorage.removeItem('userRole');
     localStorage.removeItem('email');
     localStorage.removeItem('farmerProfile');
-   
-
+    localStorage.removeItem('operatorProfile');
+  
     throw error; 
   }
 };

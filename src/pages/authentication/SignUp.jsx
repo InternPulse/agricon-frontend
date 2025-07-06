@@ -114,14 +114,8 @@ const SignUp = () => {
       // console.log('Registration response:', response.data);
       localStorage.setItem('access_token', response.data.access);
       localStorage.setItem('refresh_token', response.data.refresh);
-      const receivedOtp = response.data.otp; // Assuming backend returns otp
-      if (receivedOtp) {
-        setOtp(receivedOtp);
-        setSuccess(`Registration successful! Your OTP is: ${receivedOtp}. Please copy it for verification.`);
-        setTimeout(() => navigate('/verifyemailotp', { state: { email: formData.email, otp: receivedOtp } }), 2000);
-      } else {
-        setError('OTP not received from backend.');
-      }
+      navigate('/verifyemailotp');
+      
     } catch (err) {
       console.error('Registration error details:', err.response?.data);
       if (err.response?.data?.email?.[0]?.includes('A user with that email already exists.')) {

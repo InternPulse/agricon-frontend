@@ -21,7 +21,6 @@ function FacilityOwnerLayout() {
             const data = await getOperatorProfile();
             // Store the fetched data in localStorage
             localStorage.setItem("operatorProfile", JSON.stringify(data));
-            console.log("Fetched operator profile:", data);
             setFarmerData(data); 
         } catch (error) {
             console.error("Error loading operator profile:", error);

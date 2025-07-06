@@ -52,17 +52,17 @@ function MyFacility({ facilities }) {
 
   return (
     <div className=" px-5 py-10">
-        <div className="pt-5">
+        <div className="pt-5 space-y-3">
         {facilities.map(facility => (
           <div
             key={facility.id}
             className="border border-gray-400 md:flex items-center justify-between px-5 py-1 rounded-xl space-x-5 space-y-5 md:space-y-2">
               <div className="md:flex items-center gap-5">
-                <img src={assets.drying} alt="dryer" className="w-[50%] mx-auto p-2 md:p-0"/>
-                <div className="space-y-3">
-                  <h5 className="text-xl font-bold">{facility.name}</h5>
+                <img src={assets.drying} alt="dryer" className="w-[30%] mx-auto p-2 md:p-0"/>
+                <div className="space-y-3 w-100">
+                  <h5 className="font-bold">{facility.name}</h5>
                   <p className="flex items-center gap-3">
-                    <FaLocationDot /> {facility.address}
+                    <FaLocationDot /> {facility.location}
                   </p>
                   <p>{facility.type}</p>
                 </div>

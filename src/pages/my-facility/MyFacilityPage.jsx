@@ -5,10 +5,10 @@ import EmptyFacility from "../../components/my-facility/EmptyFacility";
 import { ClipLoader } from 'react-spinners';
 import Modal from '../../components/my-facility/modal/Modal';
 import AddFacility from '../../components/my-facility/addFacility/Addfacility';
-import { getAllFacilities } from '../../actions/getFacilities'; // Assuming this fetches all facilities
+import { getAllFacilities } from '../../actions/getFacilities'; 
 
 function MyFacilityPage() {
-    const [facilities, setFacilities] = useState([]); // Store the actual facilities data
+    const [facilities, setFacilities] = useState([]); 
     const [loading, setLoading] = useState(true);
     const [isAddModalOpen, setIsAddModalOpen] = useState(false);
 
@@ -20,22 +20,19 @@ function MyFacilityPage() {
         setIsAddModalOpen(false);
     };
 
-    // Function to fetch facilities, wrapped in useCallback to prevent unnecessary re-creations
     const fetchFacilities = useCallback(async () => {
         setLoading(true);
         try {
             const data = await getAllFacilities();
-            setFacilities(data); 
-            console.log(setFacilities)
+            setFacilities(data.facilities); 
         } catch (error) {
-            console.error("Error loading facilities:", error);
+            console.error("Error getting facility", error); 
             setFacilities([]); 
         } finally {
             setLoading(false);
         }
     }, []); 
 
-    
     useEffect(() => {
         fetchFacilities();
     }, [fetchFacilities]); 
@@ -65,7 +62,10 @@ function MyFacilityPage() {
             </div>
 
             {facilities.length > 0 ? (
-                <MyFacility facilities={facilities} /> 
+                <MyFacility 
+                    facilities={facilities} 
+                    onFacilityDeleted={fetchFacilities} 
+                /> 
             ) : (
                 <EmptyFacility />
             )}
