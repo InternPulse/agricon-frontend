@@ -23,5 +23,7 @@ export default defineConfig({
       'pages': '/src/pages',
       'api': '/src/api',
     }
-  }, 
+},
+  
 })
+
