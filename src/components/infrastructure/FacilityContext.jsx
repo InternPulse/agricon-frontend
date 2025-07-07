@@ -1,27 +1,18 @@
 import { useEffect, useState, createContext } from "react";
-import { facilityData } from "../../data";
 
 export const FacilityContext = createContext();
 
 export default function FacilityProvider({ children }) {
   const [facilities, setFacilities] = useState([]);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     async function fetchFacility() {
+      const token =
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzUxOTMwNDUyLCJpYXQiOjE3NTE4OTQ0NTIsImp0aSI6ImE4YWEwN2NjNzJhNzRkZTlhMmM4MDJkNDQwOTY3NjdkIiwidXNlcl9pZCI6IjE5MjkyMjYyLWYwMjMtNDhiMS04YjQzLWJmYjI1NzJiYjM1YSIsImVtYWlsIjoiZ29nb21hcm9zaTYxQGdtYWlsLmNvbSIsInJvbGUiOiJGQVJNRVIifQ.evEmFF1Oni8FSB_RjV0SJcMeAiAzw_MuX-zvsPGqP5M";
       try {
-        let token = localStorage.getItem("access");
-
-        if (!token) {
-          token =
-            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzUxNTg4MzYyLCJpYXQiOjE3NTE1NTIzNjIsImp0aSI6IjA2MTI2NjcyZGU0YzRjNjdiMWZhMzFiYjBjYTY1MDU1IiwidXNlcl9pZCI6IjdmZDNhOTIxLWQ0MTktNDhlYy05ZDgzLTI0NjZlYTE5N2JjMiIsImVtYWlsIjoiZmFjaWxpdHk4QGV4YW1wbGUuY29tIiwicm9sZSI6Ik9QRVJBVE9SIn0.CZl3g9l9evNK32jkgEsR9qDqz38OL0_ADTSeppN8c7k";
-          localStorage.setItem("access", token);
-          console.warn(
-            "Token was missing. Injected test token for dev use."
-          );
-        }
-
         const response = await fetch(
-          "https://agricon-express-backend.onrender.com/api/v1/facilities?limit=3&page=2&available=true",
+          "https://agricon-express-backend.onrender.com/api/v1/facilities?limit=10&page=2&available=true",
           {
             headers: {
               "Content-Type": "application/json",
@@ -30,24 +21,34 @@ export default function FacilityProvider({ children }) {
           }
         );
         const resData = await response.json();
+        console.log(resData);
 
         if (!response.ok) {
           throw new Error("No facilities available");
         }
         console.log(resData);
         setFacilities(
-          resData.data.map((data) => {
+          resData.facilities.map((data) => {
             return {
               id: data.id,
-              name: data.type,
+              operatorId: data.operatorId,
+              name: data.name,
               location: data.location,
               type: data.type,
+              available: data.available,
+              capacity: data.capacity,
+              contact: data.contact,
+              description: data.description,
+              createdAt: data.createdAt,
+              updatedAt: data.updatedAt,
+              pricePerDay: data.pricePerDay,
+              facilityImage: data.facilityImage,
             };
           })
         );
       } catch (error) {
         console.error(error.message || "No facility data, using mock data...");
-        setFacilities(facilityData);
+        setError(true);
       }
     }
 
@@ -55,7 +56,7 @@ export default function FacilityProvider({ children }) {
   }, []);
 
   return (
-    <FacilityContext.Provider value={{ facilities }}>
+    <FacilityContext.Provider value={{ facilities, error }}>
       {children}
     </FacilityContext.Provider>
   );
