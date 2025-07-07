@@ -9,7 +9,7 @@ export default function FacilityProvider({ children }) {
   useEffect(() => {
     async function fetchFacility() {
       const token =
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzUxOTMwNDUyLCJpYXQiOjE3NTE4OTQ0NTIsImp0aSI6ImE4YWEwN2NjNzJhNzRkZTlhMmM4MDJkNDQwOTY3NjdkIiwidXNlcl9pZCI6IjE5MjkyMjYyLWYwMjMtNDhiMS04YjQzLWJmYjI1NzJiYjM1YSIsImVtYWlsIjoiZ29nb21hcm9zaTYxQGdtYWlsLmNvbSIsInJvbGUiOiJGQVJNRVIifQ.evEmFF1Oni8FSB_RjV0SJcMeAiAzw_MuX-zvsPGqP5M";
+        "token-key-here";
       try {
         const response = await fetch(
           "https://agricon-express-backend.onrender.com/api/v1/facilities?limit=10&page=2&available=true",
