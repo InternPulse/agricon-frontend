@@ -32,6 +32,7 @@ import FacilityProvider from './components/infrastructure/FacilityContext.jsx';
 import MyFacilityLayout from './layout/MyFacilityLayout.jsx';
 import MyFacilityPage from './pages/my-facility/MyFacilityPage.jsx';
 import AllNotification from './pages/NotificationPage/AllNotification.jsx'
+import Bookings from './pages/Bookings/Bookings.jsx';
 
 
 
@@ -65,7 +66,7 @@ function App() {
                     <Route path=":id" element={<FacilityDetails />} />
                     <Route path="bookings" element={<BookingForm />} />
                 </Route> 
-                  <Route path="booking-history" element={<BookingHistory />} />
+                  <Route path="booking-history/*" element={<Bookings />} />
               <Route path="settings/*" element={<SettingsLayout />} >
                   <Route index element={<Settings />} />
                   <Route path="change-password" element={<ChangePassword />} />
@@ -75,7 +76,8 @@ function App() {
             {/* Route for facility owner/operator */}
           <Route path="operator" element={<FacilityOwnerLayout />}>
                 <Route index element={<FacilityOwnerDashboard />}/>
-                <Route path='notification' element={<AllNotification />}/>
+                <Route path='notification' element={<AllNotification />} />
+                <Route path="booking-history/*" element={<Bookings />} />
                 <Route path='my-facility' element={<MyFacilityLayout />}>
                   <Route index element={<MyFacilityPage />}/>
                 </Route>

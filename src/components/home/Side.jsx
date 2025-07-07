@@ -37,14 +37,14 @@ function Side({ picture, userName}) {
     useEffect(() => {
         if (showMobileMenu) {
             document.body.style.overflow = "hidden";
-            document.documentElement.style.overflow = "hidden"; // Also target the html element
+            document.documentElement.style.overflow = "hidden"; 
         } else {
             document.body.style.overflow = "auto";
-            document.documentElement.style.overflow = "auto"; // Reset html
+            document.documentElement.style.overflow = "auto"; 
         }
         return () => {
             document.body.style.overflow = "auto";
-            document.documentElement.style.overflow = "auto"; // Cleanup html
+            document.documentElement.style.overflow = "auto"; 
         };
     }, [showMobileMenu]);
 
@@ -74,7 +74,7 @@ function Side({ picture, userName}) {
     };
 
     
-    const currentNavItems = navItems[userRole] || []; // no userRole match, default to an empty array
+    const currentNavItems = navItems[userRole] || []; 
 
     return (
         <>
