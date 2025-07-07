@@ -23,7 +23,7 @@ import SettingsLayout from './pages/Farmer-Profile-Management/SettingsLayout';
 import ResetPasswordOTP from './pages/authentication/RepasswordOTP';
 import ResetPassword from './components/authentication/ResetPasswordForm';
 import BookingHistory from './pages/BookingHistory/BookingHistory';
-import FacilityOwnerLayout from './layout/FAcilityOwnerLayout';
+import FacilityOwnerLayout from './layout/FacilityOwnerLayout';
 import FarmerLayout from './layout/Farmerlayout';
 import FarmerDashboard from './pages/Dashboard/FarmerDashboard';
 import FacilityOwnerDashboard from './pages/Dashboard/FacilityOwnerDashboard';
