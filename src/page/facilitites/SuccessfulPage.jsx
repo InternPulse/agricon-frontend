@@ -1,7 +1,7 @@
 import React from 'react'
 import Image from '../../assets/Succesful.png'
 import { Link } from 'react-router-dom'
-import Modal from '../../components/Modal'
+// import Modal from '../../components/Modal'
 import FacilityImage from './FacilityImage'
 
 

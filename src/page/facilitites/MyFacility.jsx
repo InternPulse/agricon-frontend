@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
-import MyFacilityComponent from '../../components/MyFacilityComponent'
+import MyFacilityComponent from '../../components/facilities/MyFacilityComponent'
 import Image from '../../assets/FacilityImage.jpg'
-import Modal from '../../components/Modal';
-import AddFacilityComponent from '../../components/AddFacilityComponent'
-import SuccessfulCopmonent from '../../components/SuccessfulCopmonent';
+// import Modal from '../../components/Modal';
+import Modal from '../../components/facilities/Modal'
+import AddFacilityComponent from '../../components/facilities/AddFacilityComponent'
+import SuccessfulCopmonent from '../../components/facilities/SuccessfulCopmonent';
 
 const MyFacility = () => {
     const [editFacilityModal, setEditFacilityModal] = useState(false);
@@ -38,7 +39,7 @@ const MyFacility = () => {
           // title='Facility Information'
           onClose={()=>setEditFacilityModal(false)}
           >
-            < SuccessfulCopmonent nextModal={()=> {setImageFacilityModal(false)  }}/>
+            < SuccessfulCopmonent nextModal={()=> {{setImageFacilityModal(false)   }}}/>
           </Modal>
         )
       }

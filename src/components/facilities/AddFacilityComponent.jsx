@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { OperatorContext } from '../context/OperatorContext';
+import { OperatorContext } from '../../context/OperatorContext';
 
 
 const AddFacilityComponent = ({ nextModal  }) => {

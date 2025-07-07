@@ -1,5 +1,6 @@
 import React from 'react'
-import Image from '../assets/Succesful.png'
+import Image from '../../assets/Succesful.png'
+// import Image from '../../'
 import { useNavigate } from 'react-router-dom'
 
 

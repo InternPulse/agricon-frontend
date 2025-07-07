@@ -1,5 +1,5 @@
 import React from 'react'
-import AddFacilityComponent from '../../components/AddFacilityComponent'
+import AddFacilityComponent from '../../components/facilities/AddFacilityComponent'
 
 const EditFacility = () => {
   return (

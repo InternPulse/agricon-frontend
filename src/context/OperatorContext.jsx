@@ -126,8 +126,7 @@ const OperatorProvider = ({ children }) => {
         setOperatorData,
         changePassword,
         addFacility,
-        uploadToCloudinary,
-      }}
+        uploadToCloudinary,}}
     >
       {children}
     </OperatorContext.Provider>

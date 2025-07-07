@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { MdCancel, MdOutlineFileUpload } from 'react-icons/md';
 import { useNavigate } from 'react-router-dom';
-import { OperatorContext } from '../context/OperatorContext';
+import { OperatorContext } from '../../context/OperatorContext';
 
 const  FacilityImageComponent = ({onSuccess}) => {
   const navigate = useNavigate();

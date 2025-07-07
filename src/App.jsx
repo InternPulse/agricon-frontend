@@ -14,7 +14,9 @@ import FacilityEmptyPage from './page/facilitites/FacilityEmptyPage';
 import AddFacility from './page/facilitites/AddFacility';
 import FacilityImage from './page/facilitites/FacilityImage';
 import SuccessfulPage from './page/facilitites/SuccessfulPage';
-import Modal from './components/Modal';
+// import Modal from './components/Modal';
+import Modal from './components/facilities/Modal';
+
 import MyFacility from './page/facilitites/MyFacility';
 import EditFacility from './page/facilitites/EditFacility';
 import DeleteFacility from './page/facilitites/DeleteFacility';

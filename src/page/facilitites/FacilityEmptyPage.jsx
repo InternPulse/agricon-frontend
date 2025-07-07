@@ -3,10 +3,11 @@ import Image from '../../assets/FacilityEmpty.png'
 import { CgSortAz } from "react-icons/cg";
 import { IoMdAdd } from "react-icons/io";
 import { Link, useNavigate } from 'react-router-dom';
-import Modal from '../../components/Modal';
-import AddFacilityComponent from '../../components/AddFacilityComponent';
-import FacilityImageComponent from '../../components/FacilityImageComponent';
-import SuccessfulCopmonent from '../../components/SuccessfulCopmonent';
+// import Modal from '../../components/Modal';
+import Modal from '../../components/facilities/Modal';
+import AddFacilityComponent from '../../components/facilities/AddFacilityComponent';
+import FacilityImageComponent from '../../components/facilities/FacilityImageComponent';
+import SuccessfulCopmonent from '../../components/facilities/SuccessfulCopmonent';
 
 
 const FacilityEmptyPage = () => {
