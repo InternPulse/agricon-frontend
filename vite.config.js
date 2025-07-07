@@ -8,4 +8,21 @@ export default defineConfig({
     react(),
     tailwindcss(),
   ],
+  server: {
+    port: 5173,
+    proxy: {
+      '/api': 'https://agricon-django-backend.onrender.com',
+    }
+  },
+  resolve: {
+    alias: {
+      '@': '/src',
+      'assets': '/src/assets',
+      'components': '/src/components',
+      'pages': '/src/pages',
+      'api': '/src/api',
+    }
+  }, 
+
+   
 })
