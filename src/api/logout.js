@@ -3,8 +3,8 @@ import axios from 'axios';
 export const logout = async () => {
   try {
     // Get the tokens from local storage before sending the request
-    const accessToken = localStorage.getItem('access_token'); 
-    const refreshToken = localStorage.getItem('refresh_token'); 
+    const accessToken = localStorage.getItem('access_token')?.trim(); 
+    const refreshToken = localStorage.getItem('refresh_token')?.trim(); 
 
     const response = await axios.post(
       'https://agricon-django-backend.onrender.com/api/v1/auth/logout/',
@@ -19,8 +19,8 @@ export const logout = async () => {
     );
 
    //clear local storage
-    localStorage.removeItem('accessToken');
-    localStorage.removeItem('refreshToken');
+    localStorage.removeItem('access_Token');
+    localStorage.removeItem('refresh_Token');
     localStorage.removeItem('userRole');
     localStorage.removeItem('email');
     localStorage.removeItem('farmerProfile');
