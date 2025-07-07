@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
-import SideBar from "../../components/sideBar";
 import { HiBell } from "react-icons/hi";
 import { IoIosArrowForward, IoIosArrowDown } from "react-icons/io";
 import { Link } from "react-router-dom";
@@ -84,7 +83,7 @@ export default function Settings() {
       }
     }, 300);
   }
-}, ['']);
+}, []);
 
   const farmerDetailsString = localStorage.getItem("farmerProfile")
   const farmerEmail = localStorage.getItem("email")
