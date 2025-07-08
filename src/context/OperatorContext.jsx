@@ -18,7 +18,10 @@ const OperatorProvider = ({ children }) => {
 }, [accessToken, refreshToken]);
 
 
-  const [operator, setOperator] = useState({});
+  const [operator, setOperator] = useState(()=>{
+    const savedOperator = localStorage.getItem('operator');
+    return savedOperator ? JSON.parse(savedOperator):{}
+  });
   const [operatorData, setOperatorData] = useState({
     id: '',
     facilityName: '',
@@ -31,6 +34,11 @@ const OperatorProvider = ({ children }) => {
     image: '',
     contact: '',
   });
+
+  //my useEffect helps to save operator to localStorage whenever it changes
+  useEffect(()=>{
+    localStorage.setItem('operatoe', JSON.stringify(operator))
+  },[operator])
 
   // i am putting this here for logged  in users
   const login = ({access, refresh})=>{
@@ -161,6 +169,7 @@ const OperatorProvider = ({ children }) => {
     <OperatorContext.Provider
       value={{
         operator,
+        setOperator,
         operatorData,
         setOperatorData,
         changePassword,
