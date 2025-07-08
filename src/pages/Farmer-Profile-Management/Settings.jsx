@@ -1,12 +1,10 @@
-import React, { useState } from "react";
-import { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import SideBar from "../../components/sideBar";
 import { HiBell } from "react-icons/hi";
-import { IoIosArrowForward, IoIosArrowDown } from "react-icons/io";
+import { IoIosArrowForward } from "react-icons/io";
 import { Link } from "react-router-dom";
 import UserDropdown from "../../components/Farmer-Profile-Management/userDropdown";
 
-// 🔍 Settings Search Component
 const SettingsSearch = ({ search, setSearch }) => {
   const settingsList = [
     { label: "Profile", path: "#profile" },
@@ -34,7 +32,7 @@ const SettingsSearch = ({ search, setSearch }) => {
               href={setting.path}
               onClick={() => {
                 setSearch("");
-                window.location.hash = setting.path; // Force update
+                window.location.hash = setting.path;
               }}
               className="block px-4 py-2 text-sm text-gray-800 hover:bg-gray-100"
             >
@@ -49,63 +47,58 @@ const SettingsSearch = ({ search, setSearch }) => {
   );
 };
 
-
 export default function Settings() {
   const [showDropdown, setShowDropdown] = useState(false);
   const [activeTab, setActiveTab] = useState("Profile");
   const [desktop, setDesktop] = useState(true);
-  const [sms, setSms] = useState(true);
   const [email, setEmail] = useState(true);
   const [muteAll, setMuteAll] = useState(false);
-  const [authentication, setAuthentication] = useState(false);
   const [search, setSearch] = useState('');
+  const [isEditing, setIsEditing] = useState(false);
+  const [formData, setFormData] = useState({
+    fullName: "Yings Alex Ayoola",
+    email: "Yings.alex.ayoola@gmail.com",
+    phone: "080123456789"
+  });
 
   const tabs = ["Profile", "Notifications", "Privacy & Security"];
 
   useEffect(() => {
-  const hash = window.location.hash;
-  if (hash) {
-    const section = hash.replace("#", "");
-
-    if (section === "profile") {
-      setActiveTab("Profile");
-    } else if (section === "notifications") {
-      setActiveTab("Notifications");
-    } else if (section === "privacy") {
-      setActiveTab("Privacy & Security");
+    const hash = window.location.hash;
+    if (hash) {
+      const section = hash.replace("#", "");
+      if (section === "profile") setActiveTab("Profile");
+      else if (section === "notifications") setActiveTab("Notifications");
+      else if (section === "privacy") setActiveTab("Privacy & Security");
+      setTimeout(() => {
+        const target = document.getElementById(section);
+        if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
+      }, 300);
     }
+  }, [window.location.hash]);
 
-    // Delay scroll to give React time to render the tab content
-    setTimeout(() => {
-      const target = document.getElementById(section);
-      if (target) {
-        target.scrollIntoView({ behavior: "smooth", block: "start" });
-      }
-    }, 300);
-  }
-}, [window.location.hash]);
-
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
 
   return (
     <div className="flex min-h-screen bg-[#f7f9fa]">
       <SideBar />
       <div className="flex-1">
-        {/* Top Header */}
         <div className="flex items-center justify-between bg-[#f5f8fa] px-10 py-6 border-b border-blue-200 relative">
           <h1 className="text-2xl font-semibold text-gray-700">Account Settings</h1>
           <div className="flex items-center gap-4 w-full max-w-md relative">
             <div className="relative w-full">
               <input
-                type="serach"
+                type="search"
                 placeholder="Search settings"
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
                 className="border border-gray-300 rounded-xl px-4 py-2 focus:outline-none w-full"
               />
               <SettingsSearch search={search} setSearch={setSearch} />
-
             </div>
-
             <div className="flex items-center gap-2">
               <div className="w-[40px] h-[40px] rounded-full bg-[#D5F0E8] flex justify-center items-center">
                 <HiBell className="text-[#047D58]" />
@@ -117,10 +110,8 @@ export default function Settings() {
           </div>
         </div>
 
-        {/* Tabs & Content Wrapper */}
         <div className="px-10 pb-10 pt-4 bg-[#f7f9fa] min-h-[calc(100vh-120px)]">
           <div className="mx-auto">
-            {/* Tabs */}
             <div className="bg-white py-3 mb-4 rounded-lg">
               <div className="flex space-x-8">
                 {tabs.map((tab) => (
@@ -139,28 +130,90 @@ export default function Settings() {
               </div>
             </div>
 
-            {/* --- Tab Content --- */}
             {activeTab === "Profile" && (
               <div id="profile" className="bg-white rounded-xl shadow p-8">
-                <h2 className="text-lg font-semibold mb-6 text-gray-800">Personal details</h2>
+                <div className="flex justify-between items-center">
+                  <h2 className="text-lg font-semibold mb-6 text-gray-800">Personal details</h2>
+                  <div className="space-x-4">
+                    {isEditing ? (
+                      <>
+                        <button
+                          onClick={() => {
+                            // i will add an API call to save the profile if API is provided
+                            // For now, just log the formData to console
+                            console.log("Saved:", formData);
+                            setIsEditing(false);
+                          }}
+                          className="text-sm text-white bg-green-700 hover:bg-green-700 px-4 py-1.5 rounded-md"
+                        >
+                          Save Changes
+                        </button>
+                        <button
+                          onClick={() => setIsEditing(false)}
+                          className="text-sm text-gray-600 hover:text-gray-900"
+                        >
+                          Cancel
+                        </button>
+                      </>
+                    ) : (
+                      <button
+                        onClick={() => setIsEditing(true)}
+                        className="text-sm text-green-700 font-semibold"
+                      >
+                        Edit
+                      </button>
+                    )}
+                  </div>
+                </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-y-8">
                   <div className="space-y-2">
                     <label className="block text-sm text-gray-500 mb-1">Full name</label>
-                    <div className="text-base text-gray-900 font-medium">Yings Alex Ayoola</div>
+                    {isEditing ? (
+                      <input
+                        name="fullName"
+                        value={formData.fullName}
+                        onChange={handleInputChange}
+                        className="w-full border border-gray-300 px-4 py-2 rounded-md"
+                      />
+                    ) : (
+                      <div className="text-base text-gray-900 font-medium">{formData.fullName}</div>
+                    )}
                   </div>
+
                   <div className="space-y-2">
                     <label className="block text-sm text-gray-500 mb-1">Email address</label>
-                    <div className="text-base text-gray-900 font-medium">Yings.alex.ayoola@gmail.com</div>
+                    {isEditing ? (
+                      <input
+                        name="email"
+                        type="email"
+                        value={formData.email}
+                        onChange={handleInputChange}
+                        className="w-full border border-gray-300 px-4 py-2 rounded-md"
+                      />
+                    ) : (
+                      <div className="text-base text-gray-900 font-medium">{formData.email}</div>
+                    )}
                   </div>
+
                   <div className="space-y-2">
                     <label className="block text-sm text-gray-500 mb-1">Phone number</label>
-                    <div className="text-base text-gray-900 font-medium">080123456789</div>
+                    {isEditing ? (
+                      <input
+                        name="phone"
+                        type="tel"
+                        value={formData.phone}
+                        onChange={handleInputChange}
+                        className="w-full border border-gray-300 px-4 py-2 rounded-md"
+                      />
+                    ) : (
+                      <div className="text-base text-gray-900 font-medium">{formData.phone}</div>
+                    )}
                   </div>
                 </div>
               </div>
             )}
 
-            {activeTab === "Notifications" && (
+             {activeTab === "Notifications" && (
               <>
                 <div id="notifications" className="bg-white rounded-xl shadow p-8">
                   <h2 className="text-lg font-semibold mb-6 text-black">Notifications</h2>
@@ -227,6 +280,7 @@ export default function Settings() {
                 </div>
               </>
             )}
+
 
             {activeTab === "Privacy & Security" && (
               <>
