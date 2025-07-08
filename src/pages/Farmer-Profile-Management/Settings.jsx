@@ -12,13 +12,10 @@ const SettingsSearch = ({ search, setSearch }) => {
     { label: "Notification", path: "#notifications" },
     { label: "Privacy & Security", path: "#privacy" },
     { label: "Enable Desktop Notification", path: "#notifications" },
-    { label: "Enable SMS Alert", path: "#notifications" },
     { label: "Enable Email Alert", path: "#notifications" },
     { label: "Disable All Notification Sounds", path: "#notifications" },
-    { label: "Verify Email Address", path: "#privacy" },
     { label: "Update Password", path: "#privacy" },
     { label: "Change Password", path: "#privacy" },
-    { label: "Enable Authentication", path: "#privacy" },
   ];
 
   const filteredSettings = settingsList.filter(setting =>
@@ -55,10 +52,10 @@ const SettingsSearch = ({ search, setSearch }) => {
 export default function Settings() {
   const [activeTab, setActiveTab] = useState("Profile");
   const [desktop, setDesktop] = useState(true);
-  const [sms, setSms] = useState(true);
+  // const [sms, setSms] = useState(true);
   const [email, setEmail] = useState(true);
   const [muteAll, setMuteAll] = useState(false);
-  const [authentication, setAuthentication] = useState(false);
+  // const [authentication, setAuthentication] = useState(false);
 
   const tabs = ["Profile", "Notifications", "Privacy & Security"];
 
@@ -195,26 +192,8 @@ export default function Settings() {
                     </div>
                     <div className="flex items-center justify-between">
                       <div className="space-y-2">
-                        <div className="font-medium text-md text-black">Enable SMS Alert</div>
-                        <div className="text-gray-400 text-sm">Receive alerts via text</div>
-                      </div>
-                      <button
-                        onClick={() => setSms(!sms)}
-                        className={`w-12 h-6 flex items-center rounded-full p-1 ${
-                          sms ? "bg-green-500" : "bg-gray-300"
-                        }`}
-                      >
-                        <span
-                          className={`bg-white w-5 h-5 rounded-full shadow transform ${
-                            sms ? "translate-x-6" : ""
-                          }`}
-                        />
-                      </button>
-                    </div>
-                    <div className="flex items-center justify-between">
-                      <div className="space-y-2">
                         <div className="font-medium text-md text-black">Enable Email Alert</div>
-                        <div className="text-gray-400 text-sm">Get updates via email</div>
+                        <div className="text-gray-400 text-sm">Get updates delivered to your inbox</div>
                       </div>
                       <button
                         onClick={() => setEmail(!email)}
@@ -237,7 +216,7 @@ export default function Settings() {
                   <div className="flex items-center justify-between">
                     <div className="space-y-2">
                       <div className="font-medium text-md text-black">Disable All Notification Sounds</div>
-                      <div className="text-gray-400 text-sm">Mute all sounds</div>
+                      <div className="text-gray-400 text-sm">Mute all alert sounds instantly</div>
                     </div>
                     <button
                       onClick={() => setMuteAll(!muteAll)}
@@ -283,28 +262,6 @@ export default function Settings() {
                         </div>
                       </Link>
                     </div>
-                  </div>
-                </div>
-
-                <div className="bg-white rounded-xl my-5 shadow p-8">
-                  <h2 className="text-lg font-bold mb-6 text-black">Two-factor Authentication</h2>
-                  <div className="flex items-center justify-between">
-                    <div className="space-y-2">
-                      <div className="font-medium text-md text-black">Enable Authentication</div>
-                      <div className="text-gray-400 text-sm">Add a second layer of login security</div>
-                    </div>
-                    <button
-                      onClick={() => setAuthentication(!authentication)}
-                      className={`w-12 h-6 flex items-center rounded-full p-1 ${
-                        authentication ? "bg-green-500" : "bg-gray-300"
-                      }`}
-                    >
-                      <span
-                        className={`bg-white w-5 h-5 rounded-full shadow transform ${
-                          authentication ? "translate-x-6" : ""
-                        }`}
-                      />
-                    </button>
                   </div>
                 </div>
               </>
