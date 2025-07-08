@@ -1,15 +1,12 @@
-import { FaHome, FaTemperatureLow, FaWeightHanging, FaClock, FaPlug, FaCreditCard } from "react-icons/fa";
+import { FaHome, FaTemperatureLow, FaWeightHanging, FaClock, FaCreditCard } from "react-icons/fa";
+import { MdLocationOn } from "react-icons/md";
 import { assets } from "../../assets/assets";
-import "./facility.scss";
+// import "./facility.scss";
 
 const features = [
   {
     title: "Facility Type",
     content: "Drying facility",
-  },
-  {
-    title: "Climate Control",
-    content: "Temperature-controlled environment",
   },
   {
     title: "Capacity",
@@ -20,8 +17,8 @@ const features = [
     content: "Mon - Sat 8:00 AM - 8:00 PM",
   },
   {
-    title: "Power Source",
-    content: "Solar + Grid",
+    title: "Farm Location",
+    content: "Imota-Ikorodu, Lagos State, Nigeria",
   },
   {
     title: "Price",
@@ -34,7 +31,7 @@ const iconMap = {
   "Climate Control": FaTemperatureLow,
   "Capacity": FaWeightHanging,
   "Operating Hours": FaClock,
-  "Power Source": FaPlug,
+  "Farm Location": MdLocationOn,
   "Price": FaCreditCard,
 };
 
@@ -47,7 +44,7 @@ export default function FacilityDetails() {
       </div>
       <FacilityFeatures />
       <div className="center"> 
-      <Button className="btn btn-center" color="#fff" bgColor="#032e16">Book Now</Button>
+      <Button className="btn btn-center btn--green btn--w6" >Book Now</Button>
       </div>
     </div>
   );
@@ -91,7 +88,7 @@ function Features({ title, content }) {
         {IconComponent && <IconComponent />}
       </span>
       <h3 className="feature-title">{title}</h3>
-      <p>{content}</p>
+      <p className="content">{content}</p>
     </div>
   );
 }
