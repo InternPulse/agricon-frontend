@@ -101,7 +101,7 @@ const  FacilityImageComponent = ({onSuccess}) => {
           <button
             type='button'
             disabled={isSubmitting}
-            onClick={{handleSubmit}}
+            onClick={handleSubmit}
             className='bg-[#02402d] mt-2 w-full cursor-pointer text-white py-2 rounded-lg'
           >
             Continue
