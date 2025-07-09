@@ -52,6 +52,7 @@ const MyFacilityComponent = ({image, status, facilityName, type, address, time,r
           <div className='flex gap-2 justify-end md:text-4xl text-2xl'>
                 <MdOutlineEdit className='border border-[#808080] md:p-1 md:text-[4xl] text-xl rounded-lg cursor-pointer' 
                 onClick={nextModal}/>
+              
                 <RiDeleteBin6Line
                 onClick={deletePage}
                 className='border md:text-[4xl] text-xl border-[#808080] md:p-1 rounded-lg '/>

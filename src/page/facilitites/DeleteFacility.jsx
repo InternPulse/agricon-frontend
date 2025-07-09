@@ -1,11 +1,17 @@
 import React from 'react'
-// import Modal from '../../components/Modal'
+
 import Modal from '../../components/facilities/Modal'
+import DeleteFacilityComponent from '../../components/facilities/DeleteFacilityComponent';
 
 const DeleteFacility = () => {
   return (
-    <div>
-      <Modal />
+    <div >
+      <Modal >
+       
+          <DeleteFacilityComponent />
+       
+       
+      </Modal>
     </div>
   )
 }
