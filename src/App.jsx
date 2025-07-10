@@ -5,7 +5,6 @@ import EmailOTP from "./pages/authentication/EmailOtp";
 import SignUp from "./pages/authentication/SignUp";
 import Login from "./pages/authentication/Login";
 import ForgotPassword from './pages/authentication/ForgotPassword';
-
 import Home from './pages/home/Home'
 import Services from './pages/home/Services';
 import AboutUs from './pages/home/AboutUs';
@@ -33,6 +32,12 @@ import MyFacilityLayout from './layout/MyFacilityLayout.jsx';
 import MyFacilityPage from './pages/my-facility/MyFacilityPage.jsx';
 import AllNotification from './pages/NotificationPage/AllNotification.jsx'
 import Bookings from './pages/Bookings/Bookings.jsx';
+import BookingHistoryLayout from './layout/BookingHistoryLayout.jsx';
+import BookingList from './components/Bookings/BookingList.jsx';
+import FarmerDetails from './components/Bookings/FarmerDetails.jsx';
+import FacilityOwnerProfileLayout from './pages/facilityOwnerProfile/FacilityOwnerProfileLayout.jsx';
+import Profile from './pages/facilityOwnerProfile/Profile.jsx'
+import SubHeader from './pages/facilityOwnerProfile/SubHeader.jsx';
 
 
 function App() {
@@ -75,10 +80,17 @@ function App() {
           <Route path="operator" element={<FacilityOwnerLayout />}>
                 <Route index element={<FacilityOwnerDashboard />}/>
                 <Route path='notification' element={<AllNotification />} />
-                <Route path="booking-history/*" element={<Bookings />} />
+                <Route path="bookings" element={<BookingHistoryLayout />} >
+                  <Route index element={<BookingList />} />
+                  <Route path=":id" element={<FarmerDetails />} />
+                </Route>
                 <Route path='my-facility' element={<MyFacilityLayout />}>
                   <Route index element={<MyFacilityPage />}/>
-                </Route>
+            </Route>
+            <Route path="settings/*" element={<FacilityOwnerProfileLayout />} >
+                  <Route index element={<SubHeader />} />
+                  <Route path="change-password" element={<ChangePassword />} />
+              </Route> 
           </Route>
           
         </Routes>
@@ -86,6 +98,7 @@ function App() {
     </AuthProvider>
   )
 }
+
 
 export default App;
 

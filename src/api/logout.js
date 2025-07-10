@@ -2,43 +2,29 @@ import axios from 'axios';
 
 export const logout = async () => {
   try {
-    // Get the tokens from local storage before sending the request
-    const accessToken = localStorage.getItem('access_token')?.trim(); 
-    const refreshToken = localStorage.getItem('refresh_token')?.trim(); 
+    const accessToken = localStorage.getItem('access_token')?.trim();
+    const refreshToken = localStorage.getItem('refresh_token')?.trim();
 
     const response = await axios.post(
       'https://agricon-django-backend.onrender.com/api/v1/auth/logout/',
-      {
-        refresh_token: refreshToken
-      },
+      { refresh: refreshToken },  
       {
         headers: {
-          'Authorization': `Bearer ${accessToken}`
+          'Authorization': `Bearer ${accessToken}`,
+          'Content-Type': 'application/json',
         }
       }
     );
 
-   //clear local storage
-    localStorage.removeItem('access_Token');
-    localStorage.removeItem('refresh_Token');
-    localStorage.removeItem('userRole');
-    localStorage.removeItem('email');
-    localStorage.removeItem('farmerProfile');
-    localStorage.removeItem('operatorProfile');
+    // Clean localStorage
+    ['access_token','refresh_token','userRole','email','farmerProfile','operatorProfile']
+      .forEach(k => localStorage.removeItem(k));
 
-    return response.data; // Return data to backed
-
+    return response.data;
   } catch (error) {
     console.error('Error logging out:', error);
-
-    //removing all user data from the local storage even if there is error or network issues
-    localStorage.removeItem('access_token');
-    localStorage.removeItem('refresh_token');
-    localStorage.removeItem('userRole');
-    localStorage.removeItem('email');
-    localStorage.removeItem('farmerProfile');
-    localStorage.removeItem('operatorProfile');
-  
-    throw error; 
+    ['access_token','refresh_token','userRole','email','farmerProfile','operatorProfile']
+      .forEach(k => localStorage.removeItem(k));
+    throw error;
   }
 };

@@ -1,8 +1,20 @@
 import React from 'react';
 import { FaBitbucket } from 'react-icons/fa'; 
+import { deleteFacilityById } from '../../../actions/DeleteFacilityById';
 
 
-function Delete({ onClose, onDeleteConfirm }) {
+function Delete({ facilityId, onClose, onDeleteConfirm }) {
+
+    const handleDelete = async () => {
+        try {
+          await deleteFacilityById(facilityId);
+          onDeleteConfirm();
+        } catch (error) {
+          console.error("Error deleting facility:", error);
+        }
+      };
+
+    
     return (
         <div className="p-4"> 
             <div className="text-center space-y-5">
@@ -13,12 +25,12 @@ function Delete({ onClose, onDeleteConfirm }) {
                     </div>
                     <h2 className="text-2xl font-bold text-gray-900">Delete Facility?</h2>
                     <p className="px-6 text-gray-700">
-                        This will permanently remove the facility and all related booking information. Are you sure you want to continue?
+                        This will permanently remove the facility {facilityId} and all related booking information. Are you sure you want to continue? 
                     </p>
                 </div>
                 <div className="px-6 space-y-3"> 
                     <button
-                        onClick={onDeleteConfirm} 
+                        onClick={handleDelete} 
                         className="flex items-center justify-center gap-2 py-2 w-full bg-red-100 text-red-500 font-bold rounded-md hover:bg-red-300 transition duration-200"
                     >
                         Delete <FaBitbucket />

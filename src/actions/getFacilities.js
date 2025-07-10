@@ -1,5 +1,7 @@
 import axios from 'axios';
 
+
+//get operators facility
 export const getAllFacilities = async () => {
     const accessToken = localStorage.getItem("access_token");
     const operatorDetailsString = localStorage.getItem("operatorProfile");
@@ -16,12 +18,11 @@ export const getAllFacilities = async () => {
                 },
             }
         );
-        console.log(response.data)
       return response.data;
     } catch (error) {
-        console.error('Error getting facility:', error);
+        console.error('Error getting your facility:', error);
 
-        let displayMessage = 'Failed to load facilities. Please try again.'
+        let displayMessage = 'Failed to load your facilities. Please try again.'
         throw new Error(displayMessage);
     }
 };

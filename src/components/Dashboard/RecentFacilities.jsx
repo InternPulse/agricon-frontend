@@ -1,6 +1,8 @@
 import { ChevronRight } from "lucide-react";
-import React from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { getAllFacilities } from "../../actions/getFacilities";
+import { assets } from "../../assets/assets";
 
 const AssetIcon = () => (
   <svg
@@ -18,88 +20,79 @@ const AssetIcon = () => (
 );
 
 const RecentFacilities = () => {
-  const details = [
+  // This is your state variable for facilities fetched from the API
+  const [facilities, setFacilities] = useState([]);
+ 
+
+  const fetchFacilities = useCallback(async () => {
+    
+    try {
+      const data = await getAllFacilities();
+      // Ensure data.facilities is an array before slicing
+      const facilitiesData = Array.isArray(data?.facilities) ? data.facilities : [];
+      const trimmedFacilities = facilitiesData.slice(0, 3);
+      setFacilities(trimmedFacilities);
+    } catch (err) {
+      console.error("Error getting facilities:", err);
+      setFacilities([]); 
+    } 
+  }, []);
+
+  useEffect(() => {
+    fetchFacilities();
+  }, [fetchFacilities]);
+
+ 
+
+  // Ifoperator has no recent facility, show this 
+  const facilitiesToRender = facilities.length > 0 ? facilities : [
     {
-      status: "Completed",
-      payment: "Visa card **** ****",
-      type: "Card payment",
-      price: "₦7,900",
-      date: "Jun 17, 2025",
-      facility: "Cold Room",
-    },
-    {
-      status: "Completed",
-      payment: "Mastercard **** ****",
-      type: "Card payment",
-      price: "₦8,500",
-      date: "Jun 17, 2025",
-      facility: "Miller Unit",
-    },
-    {
-      status: "Completed",
-      payment: "Account **** ****",
-      type: "Bank payment",
-      price: "₦5,600",
-      date: "Jun 17, 2025",
-      facility: "Solar Dryer",
-    },
-    {
-      status: "Completed",
-      payment: "Mastercard **** ****",
-      type: "Card payment",
-      price: "₦6,750",
-      date: "Jun 17, 2025",
-      facility: "Miller Unit",
-    },
-  ];
-  const facilities = [
-    {
-      id: 1,
+      id: "default-1",
       image: "https://placehold.co/600x400/a3e635/000?text=Drying+Facilities",
-      title: "Drying Facilities",
+      name: "Drying Facilities", 
       description: "Grain and crop drying systems and dryers + equipments",
-      link: "/facilities/drying", // Example link
+      type: "DRYING", 
+      link: "/facilities/drying",
     },
     {
-      id: 2,
+      id: "default-2",
       image: "https://placehold.co/600x400/bfdbfe/000?text=Storage+Facilities",
-      title: "Storage Facilities",
+      name: "Storage Facilities", 
       description: "Secure storage spaces for harvested crops",
-      link: "/facilities/storage", // Example link
+      type: "STORAGE",
+      link: "/facilities/storage",
     },
     {
-      id: 3,
+      id: "default-3",
       image: "https://placehold.co/600x400/93c5fd/000?text=Cold+Storage",
-      title: "Cold Storage",
+      name: "Cold Storage",
       description: "Temperature-controlled storage facilities for aid",
-      link: "/facilities/cold-storage", // Example link
+      type: "COLD",
+      link: "/facilities/cold-storage",
     },
   ];
+
   return (
-    <div className="w-full border border-[#D0D5DD] rounded-[12px] lg:col-span-2 bg-white p-4 flex items-center flex gap-1">
+    <div className="w-full border border-[#D0D5DD] rounded-[12px] lg:col-span-2 bg-white p-4 flex items-center gap-1">
       <div className="w-full flex flex-col gap-3">
         <h1 className="h-[26px] text-[16px] font-[500] text-gray-800">
           Recently added facilities
         </h1>
-        <div className="items overflow-x-scroll items-center justify-around w-full max-w-[715px] gap-2 flex pb-4">
-          {facilities.map((facility) => (
+        <div className="w-full gap-2 grid grid-cols-1 pb-4 md:grid-cols-3">
+          {facilitiesToRender.map((facility) => (
             <div
               key={facility.id}
-              className="flex-none w-[180px]
-                       bg-white rounded-sm hover:shadow-xl
-                       transition duration-200 transform hover:-translate-y-1
-                       overflow-hidden flex flex-col"
+              className="flex-none w-full bg-white rounded-sm hover:shadow-xl transition duration-200 transform hover:-translate-y-1 overflow-hidden flex flex-col"
             >
               <div>
                 <div className="h-25 w-full overflow-hidden flex items-center justify-center bg-gray-100">
                   <img
-                    src={facility.image}
-                    alt={facility.title}
+                    src={facility.image || assets.greenhouseImage}
+                    alt={facility.name || "Facility Image"} 
                     className="w-full h-[106px] object-cover"
                     onError={(e) => {
                       e.target.onerror = null;
-                      e.target.src =
-                        "https://placehold.co/600x400/cccccc/333333?text=Image+Error";
+                      e.target.src = "https://placehold.co/600x400/cccccc/333333?text=Image+Error";
                     }}
                   />
                 </div>
@@ -107,10 +100,13 @@ const RecentFacilities = () => {
                 <div className="border-[0.5px] border-[#E4E7EC] border-t-none w-full h-20 py-1.5 px-3 flex justify-between">
                   <div className="mb-4">
                     <h3 className="text-[12px] font-[600] text-[#1D2739] mb-2">
-                      {facility.title}
+                      {facility.name || facility.title || "N/A"} {/* Use facility.name first, then facility.title */}
                     </h3>
                     <p className="text-[10px] text-[#475367] line-clamp-2">
-                      {facility.description}
+                      {facility.description || "No description available."}
+                    </p>
+                    <p className="text-[10px] text-[#475367] line-clamp-2">
+                      {facility.type || "N/A"} {/* Render type if available */}
                     </p>
                   </div>
 
@@ -121,8 +117,8 @@ const RecentFacilities = () => {
               </div>
 
               <Link
-                to={facility.link}
-                className="block text-center w-full h-7 mt-4 px-6 py-3
+                to={facility.link} 
+                className=" text-center w-full h-7 mt-4 px-6 py-3
                            bg-[#02402D] hover:bg-green-800 text-[14px] text-white font-[600]
                            rounded-[8px] transition-all
                            duration-300 flex items-center justify-center gap-2"
@@ -151,7 +147,7 @@ const RecentFacilities = () => {
       </div>
       <div className="see-all">
         <Link
-          to="/facilities/all" // Link to view all facilities
+          to="my-facility"
           className="flex flex-col gap-2 w-8 items-center text-[#40B869] hover:text-green-700 font-semibold text-[10px] transition-colors duration-200"
         >
           <div className="bg-[#F0F2F5] h-[29px] w-[29px] flex items-center justify-center text-[#40B869] rounded-full ">

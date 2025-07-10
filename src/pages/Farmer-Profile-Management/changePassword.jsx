@@ -8,7 +8,6 @@ const ChangePassword = () => {
   const navigate = useNavigate();
   const [params] = useSearchParams();
   const token = params.get('token'); 
-  // const [currentEmail, setCurrentEmail] = useState ('');
   const [currentPassword, setCurrentPassword] = useState('');
   const [newPassword, setNewPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -33,10 +32,12 @@ const handleSubmit = async (e) => {
   try {
     setLoading(true);
     const endpoint = 'https://agricon-django-backend.onrender.com/api/v1/auth/change-password/';
+
     const payload = {
-      currentPassword,
-      newPassword,
+      current_password: currentPassword,
+      new_password: newPassword,
     };
+
     const headers = {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${localStorage.getItem("token")}`,
@@ -56,6 +57,9 @@ const handleSubmit = async (e) => {
     }
 
     setMessage('');
+    setCurrentPassword('');
+    setNewPassword('');
+    setConfirmPassword('');
     setShowModal(true);
   } catch (error) {
     setLoading(false);
@@ -71,6 +75,7 @@ const handleSubmit = async (e) => {
     });
   };
 
+  
   return (
     <div className="bg-[#F7F7F7] min-h-screen flex items-center justify-center px-4">
       <div className="bg-white rounded-lg w-full max-w-lg p-6 sm:p-8">

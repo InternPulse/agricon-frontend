@@ -67,8 +67,8 @@ function Side({ picture, userName}) {
         OPERATOR: [
             { path: '/operator', icon: MdOutlineDashboard, text: 'Dashboard' },
             { path: '/operator/my-facility', icon: FaCubes, text: 'My Facilities' },
-            { path: '/operator/booking-history*', icon: AiOutlineFileSearch, text: 'Booking History' },
-            { path: '/operator/setting', icon: FaCog, text: 'Settings' },
+            { path: '/operator/bookings', icon: AiOutlineFileSearch, text: 'Bookings' },
+            { path: '/operator/settings', icon: FaCog, text: 'Settings' },
         ],
         
     };
@@ -189,11 +189,11 @@ function Side({ picture, userName}) {
                         </div>
                     </div>
                     {/* Added user profile and logout for mobile sidebar */}
-                    <div className='sm:hidden mt-auto'> {/* mt-auto pushes it to the bottom */}
+                    <div className='sm:hidden mt-auto'> 
                         <div className='text-center space-y-4 px-5'> 
                             <div className='flex items-center gap-4 px-8'>
                                 <p>{picture}</p> 
-                                <h6 className='font-bold text-black dark:text-white'>{userName}</h6> {/* Added text color for mobile menu */}
+                                <h6 className='font-bold text-black dark:text-white'>{userName}</h6> 
                             </div>
                             <div className=" mt-2 bg-white rounded-md shadow-lg py-1 text-center">
                                 <button

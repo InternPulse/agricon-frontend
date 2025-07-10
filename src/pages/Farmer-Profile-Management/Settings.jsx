@@ -1,10 +1,7 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
-import SideBar from "../../components/sideBar";
-import { HiBell } from "react-icons/hi";
-import { IoIosArrowForward, IoIosArrowDown } from "react-icons/io";
+import { IoIosArrowForward } from "react-icons/io";
 import { Link } from "react-router-dom";
-import UserDropdown from "../../components/Farmer-Profile-Management/userDropdown";
 
 // 🔍 Settings Search Component
 const SettingsSearch = ({ search, setSearch }) => {
@@ -13,13 +10,10 @@ const SettingsSearch = ({ search, setSearch }) => {
     { label: "Notification", path: "#notifications" },
     { label: "Privacy & Security", path: "#privacy" },
     { label: "Enable Desktop Notification", path: "#notifications" },
-    { label: "Enable SMS Alert", path: "#notifications" },
     { label: "Enable Email Alert", path: "#notifications" },
     { label: "Disable All Notification Sounds", path: "#notifications" },
-    { label: "Verify Email Address", path: "#privacy" },
     { label: "Update Password", path: "#privacy" },
     { label: "Change Password", path: "#privacy" },
-    { label: "Enable Authentication", path: "#privacy" },
   ];
 
   const filteredSettings = settingsList.filter(setting =>
@@ -56,10 +50,10 @@ const SettingsSearch = ({ search, setSearch }) => {
 export default function Settings() {
   const [activeTab, setActiveTab] = useState("Profile");
   const [desktop, setDesktop] = useState(true);
-  const [sms, setSms] = useState(true);
+  // const [sms, setSms] = useState(true);
   const [email, setEmail] = useState(true);
   const [muteAll, setMuteAll] = useState(false);
-  const [authentication, setAuthentication] = useState(false);
+  // const [authentication, setAuthentication] = useState(false);
 
   const tabs = ["Profile", "Notifications", "Privacy & Security"];
 
@@ -84,7 +78,7 @@ export default function Settings() {
       }
     }, 300);
   }
-}, ['']);
+}, []);
 
   const farmerDetailsString = localStorage.getItem("farmerProfile")
   const farmerEmail = localStorage.getItem("email")
@@ -97,33 +91,6 @@ export default function Settings() {
   return (
     <div className="flex min-h-screen bg-[#f7f9fa]">
       <div className="flex-1">
-        {/* Top Header */}
-        {/* <div className="flex items-center justify-between bg-[#f5f8fa] px-10 py-6 border-b border-blue-200 relative">
-          <h1 className="text-2xl font-semibold text-gray-700">Account Settings</h1>
-          <div className="flex items-center gap-4 w-full max-w-md relative">
-            <div className="relative w-full">
-              <input
-                type="serach"
-                placeholder="Search settings"
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-                className="border border-gray-300 rounded-xl px-4 py-2 focus:outline-none w-full"
-              />
-              <SettingsSearch search={search} setSearch={setSearch} />
-
-            </div>
-
-            <div className="flex items-center gap-2">
-              <div className="w-[40px] h-[40px] rounded-full bg-[#D5F0E8] flex justify-center items-center">
-                <HiBell className="text-[#047D58]" />
-              </div>
-              <img src="user-avatar.jpg" alt="User" className="w-8 h-8 rounded-full border" />
-              <span className="text-sm font-medium text-gray-700">Interns</span>
-              <UserDropdown />
-            </div>
-          </div>
-        </div> */}
-
         {/* Tabs & Content Wrapper */}
         <div className="px-10 pb-10 pt-4 bg-[#f7f9fa] min-h-screen">
           <div className="w-full">
@@ -196,26 +163,8 @@ export default function Settings() {
                     </div>
                     <div className="flex items-center justify-between">
                       <div className="space-y-2">
-                        <div className="font-medium text-md text-black">Enable SMS Alert</div>
-                        <div className="text-gray-400 text-sm">Receive alerts via text</div>
-                      </div>
-                      <button
-                        onClick={() => setSms(!sms)}
-                        className={`w-12 h-6 flex items-center rounded-full p-1 ${
-                          sms ? "bg-green-500" : "bg-gray-300"
-                        }`}
-                      >
-                        <span
-                          className={`bg-white w-5 h-5 rounded-full shadow transform ${
-                            sms ? "translate-x-6" : ""
-                          }`}
-                        />
-                      </button>
-                    </div>
-                    <div className="flex items-center justify-between">
-                      <div className="space-y-2">
                         <div className="font-medium text-md text-black">Enable Email Alert</div>
-                        <div className="text-gray-400 text-sm">Get updates via email</div>
+                        <div className="text-gray-400 text-sm">Get updates delivered to your inbox</div>
                       </div>
                       <button
                         onClick={() => setEmail(!email)}
@@ -238,7 +187,7 @@ export default function Settings() {
                   <div className="flex items-center justify-between">
                     <div className="space-y-2">
                       <div className="font-medium text-md text-black">Disable All Notification Sounds</div>
-                      <div className="text-gray-400 text-sm">Mute all sounds</div>
+                      <div className="text-gray-400 text-sm">Mute all alert sounds instantly</div>
                     </div>
                     <button
                       onClick={() => setMuteAll(!muteAll)}
@@ -262,17 +211,7 @@ export default function Settings() {
                 <div id="privacy" className="bg-white rounded-xl my-5 shadow p-8">
                   <h2 className="text-lg font-bold mb-6 text-black">Account Details</h2>
                   <div className="space-y-8">
-                    {/* <div className="flex items-center justify-between">
-                      <div className="space-y-2">
-                        <div className="font-medium text-md text-black">Verify Email Address</div>
-                        <div className="text-gray-400 text-sm">Ensure your email is verified</div>
-                      </div>
-                      <Link to="#">
-                        <div className="flex items-center gap-2 text-sm text-[#02402D] font-semibold">
-                          Verify Email <IoIosArrowForward />
-                        </div>
-                      </Link>
-                    </div> */}
+        
                     <div className="flex items-center justify-between">
                       <div className="space-y-2">
                         <div className="font-medium text-md text-black">Update Password</div>
@@ -284,28 +223,6 @@ export default function Settings() {
                         </div>
                       </Link>
                     </div>
-                  </div>
-                </div>
-
-                <div className="bg-white rounded-xl my-5 shadow p-8">
-                  <h2 className="text-lg font-bold mb-6 text-black">Two-factor Authentication</h2>
-                  <div className="flex items-center justify-between">
-                    <div className="space-y-2">
-                      <div className="font-medium text-md text-black">Enable Authentication</div>
-                      <div className="text-gray-400 text-sm">Add a second layer of login security</div>
-                    </div>
-                    <button
-                      onClick={() => setAuthentication(!authentication)}
-                      className={`w-12 h-6 flex items-center rounded-full p-1 ${
-                        authentication ? "bg-green-500" : "bg-gray-300"
-                      }`}
-                    >
-                      <span
-                        className={`bg-white w-5 h-5 rounded-full shadow transform ${
-                          authentication ? "translate-x-6" : ""
-                        }`}
-                      />
-                    </button>
                   </div>
                 </div>
               </>

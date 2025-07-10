@@ -10,30 +10,28 @@ import RecentFacilities from "../../components/Dashboard/RecentFacilities";
 export default function FacilityOwnerDashboard() {
   return (
     <div
-      className="flex min-h-screen bg-gray-100 font-sans"
-      style={{ scrollbarWidth: "none" }}
+      className="min-h-screen bg-gray-100 font-sans w-full"
     >
       
       <main
-        className={`${open ? ' sm:flex' : 'flex'}  flex-1 flex flex-col bg-white overflow-auto`}
-        style={{ scrollbarWidth: "none" }}
+        className='flex flex-col bg-white overflow-auto'
       >
         
-        <section className="flex flex-wrap md:flex-nowrap">
-          <div className="firstt px-5 xl:pl-8 xl:pr-5 py-4 md:border-r border-[#D0D5DD] w-full">
-            <div className="container flex flex-col gap-6">
-              <div className="greeting w-full flex justify-between items-center">
+        <section className="flex flex-wrap">
+          <div className="p-5 md:border-r border-[#D0D5DD] w-full">
+            <div className="flex-col gap-6">
+              <div className="w-full flex justify-between items-center">
                 <Welcome />
                 <Date />
               </div>
               <div className="bottom w-full flex flex-col gap-[27px]">
                 <Stats />
-                <div className="flex flex-wrap xl:flex-nowrap gap-[27px] overflow-x-scroll">
-                  <div className="left h-full w-full sm:w-[715px] flex flex-col gap-8">
+                <div className="flex flex-wrap xl:flex-nowrap gap-[27px] ">
+                  <div className="h-full w-full flex flex-col gap-8">
                     <RecentFacilities/>
                     <FacilityTransaction />
                   </div>
-                  <div className="right w-full xl:w-[354px] flex flex-wrap md:flex-nowrap xl:flex-col gap-4">
+                  <div className="w-full xl:w-[354px] flex flex-wrap sm:flex-nowrap xl:flex-col gap-4">
                     <StorageFacilities />
                     <RecentBookings />
                   </div>
