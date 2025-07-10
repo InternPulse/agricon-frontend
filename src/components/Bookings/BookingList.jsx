@@ -4,8 +4,54 @@ import { Link } from "react-router-dom";
 import { ViewFarmerContext } from "../../pages/Bookings/Bookings";
 
 const BookingList = () => {
-  const {activeFarmer, setActiveFarmer} = useContext(ViewFarmerContext);
-  console.log(activeFarmer);
+  const [bookings, setBookings] = useState([
+    { id: "1", date: "Jul 2, 2025, 10:00AM", status: "Upcoming", customer: "" },
+  ]);
+  console.log(bookings);
+  
+  /*{
+    "success": true,
+    "data": [],
+    "pagination": {
+        "currentPage": 1,
+        "limit": 10,
+        "total": 0
+    }
+} */
+  const authToken =
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzUxNTk1OTQyLCJpYXQiOjE3NTE1NTk5NDIsImp0aSI6IjkwYWZlOTVlZjZiNjQxZjg4OWFjMzYwYjIyM2FjYmIwIiwidXNlcl9pZCI6IjJhZDI5NGZiLWI5MDctNDhiNi05ZTgzLTQzNWEzN2RjNWZkYyIsImVtYWlsIjoidG9mZXh6eW5vb2tlb3dvQGdtYWlsLmNvbSIsInJvbGUiOiJGQVJNRVIifQ.cqXEMFCmGq8kVbmfVdn_rN80vBQSqLp0yijl07g2ByQ";
+
+  fetch(
+    "https://agricon-express-backend.onrender.com/api/v1/bookings/farmer/me",
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${authToken}`,
+      },
+    }
+  )
+    .then((res) => {
+      if (!res.ok) {
+        // Handle HTTP errors (e.g., 401, 403, 404, 500)
+        return res.json().then((errorData) => {
+          throw new Error(
+            errorData.message || `HTTP error! Status: ${res.status}`
+          );
+        });
+      }
+      return res.json();
+    })
+    .then((data) => {
+      //setBookings(data.data);
+      // You can now use the fetched data in your application
+    })
+    .catch((error) => {
+      console.error("Error fetching data:", error.message);
+      // Display an error message to the user
+    });
+
+  const { activeFarmer, setActiveFarmer } = useContext(ViewFarmerContext);
 
   const tableData = [
     {
@@ -36,7 +82,7 @@ const BookingList = () => {
       status: "Cancelled",
     },
     {
-      id: 3,
+      id: 4,
       farmerName: "Jane Smith",
       farmerImage: assets.Ladicia,
       facility: "AquaFarm Innovations",
@@ -45,7 +91,7 @@ const BookingList = () => {
       status: "Cancelled",
     },
     {
-      id: 3,
+      id: 5,
       farmerName: "Jane Smith",
       farmerImage: assets.Ladicia,
       facility: "AquaFarm Innovations",
@@ -54,7 +100,7 @@ const BookingList = () => {
       status: "Cancelled",
     },
     {
-      id: 3,
+      id: 6,
       farmerName: "Jane Smith",
       farmerImage: assets.Ladicia,
       facility: "AquaFarm Innovations",
@@ -63,7 +109,7 @@ const BookingList = () => {
       status: "Completed",
     },
     {
-      id: 3,
+      id: 7,
       farmerName: "Jane Smith",
       farmerImage: assets.Ladicia,
       facility: "AquaFarm Innovations",
@@ -72,7 +118,7 @@ const BookingList = () => {
       status: "Cancelled",
     },
     {
-      id: 3,
+      id: 8,
       farmerName: "Jane Smith",
       farmerImage: assets.Ladicia,
       facility: "AquaFarm Innovations",
@@ -81,7 +127,7 @@ const BookingList = () => {
       status: "Upcoming",
     },
     {
-      id: 3,
+      id: 9,
       farmerName: "Jane Smith",
       farmerImage: assets.Ladicia,
       facility: "AquaFarm Innovations",
@@ -136,9 +182,15 @@ const BookingList = () => {
                   </h3>
                 </div>
               </td>
-              <td className="py-4 px-4 text-[#323C47] text-[13px]">{farmer.facility}</td>
-              <td className="py-4 px-4 text-[#323C47] text-[13px]">{farmer.dateTime}</td>
-              <td className="py-4 px-4 text-[#323C47] text-[13px]">{farmer.duration}</td>
+              <td className="py-4 px-4 text-[#323C47] text-[13px]">
+                {farmer.facility}
+              </td>
+              <td className="py-4 px-4 text-[#323C47] text-[13px]">
+                {farmer.dateTime}
+              </td>
+              <td className="py-4 px-4 text-[#323C47] text-[13px]">
+                {farmer.duration}
+              </td>
               <td className="py-4 px-4">
                 <span
                   className={`px-3 py-1 rounded-full text-xs font-semibold

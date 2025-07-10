@@ -1,8 +1,10 @@
 import { TrendingUp } from "lucide-react";
+import { useState } from "react";
 import { PiCalendarCheckBold } from "react-icons/pi";
 import { TbDots } from "react-icons/tb";
 
 const Bookings = () => {
+
   return (
     <div className="self-start bg-white w-[226px] h-[182px] p-6 rounded-xl border border-[#D0D5DD] flex sm:flex-1 flex-col justify-between">
       <div className="container space-y-[32px] w-[194px] h-[134px]">

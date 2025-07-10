@@ -18,6 +18,9 @@ const AssetIcon = () => (
 );
 
 const RecentFacilities = () => {
+
+ 
+
   const details = [
     {
       status: "Completed",
