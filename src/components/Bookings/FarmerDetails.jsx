@@ -23,6 +23,16 @@ const FarmerDetails = () => {
          useEffect(() => {
           fetchSinglebooking();
          }, [fetchSinglebooking]);
+
+  //loading state
+  if (loading) {
+      return (
+        <div className='flex justify-center items-center min-h-screen'>
+          <ClipLoader color='#02402D' />
+        </div>
+      );
+    }
+
   
   return (
     <div>
