@@ -67,7 +67,7 @@ function Side({ picture, userName}) {
         OPERATOR: [
             { path: '/operator', icon: MdOutlineDashboard, text: 'Dashboard' },
             { path: '/operator/my-facility', icon: FaCubes, text: 'My Facilities' },
-            { path: '/operator/booking-history*', icon: AiOutlineFileSearch, text: 'Booking History' },
+            { path: '/operator/bookings', icon: AiOutlineFileSearch, text: 'Bookings' },
             { path: '/operator/setting', icon: FaCog, text: 'Settings' },
         ],
         

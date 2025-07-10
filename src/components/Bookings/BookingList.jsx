@@ -1,95 +1,32 @@
-import React, { useContext } from "react";
-import { assets } from "../../assets/assets";
+import { useCallback, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { ViewFarmerContext } from "../../pages/Bookings/Bookings";
+import {getOperatorBookings} from '../../actions/getOperatorBookings'
+
 
 const BookingList = () => {
-  const {activeFarmer, setActiveFarmer} = useContext(ViewFarmerContext);
-  console.log(activeFarmer);
+  const [bookings, setBookings] = useState([]); 
+  const [loading, setLoading] = useState(true);
 
-  const tableData = [
-    {
-      id: 1,
-      farmerName: "Lindsey Stroud",
-      farmerImage: assets.Ladicia,
-      facility: "SunHarvest Drying Yard",
-      dateTime: "Jul 2, 2025, 10:AM",
-      duration: "2 hours",
-      status: "Upcoming",
-    },
-    {
-      id: 2,
-      farmerName: "John Doe",
-      farmerImage: assets.Ladicia,
-      facility: "GreenFields Processing",
-      dateTime: "Jul 3, 2025, 2:PM",
-      duration: "4 hours",
-      status: "Completed",
-    },
-    {
-      id: 3,
-      farmerName: "Jane Smith",
-      farmerImage: assets.Ladicia,
-      facility: "AquaFarm Innovations",
-      dateTime: "Jul 4, 2025, 9:AM",
-      duration: "1.5 hours",
-      status: "Cancelled",
-    },
-    {
-      id: 3,
-      farmerName: "Jane Smith",
-      farmerImage: assets.Ladicia,
-      facility: "AquaFarm Innovations",
-      dateTime: "Jul 4, 2025, 9:AM",
-      duration: "1.5 hours",
-      status: "Cancelled",
-    },
-    {
-      id: 3,
-      farmerName: "Jane Smith",
-      farmerImage: assets.Ladicia,
-      facility: "AquaFarm Innovations",
-      dateTime: "Jul 4, 2025, 9:AM",
-      duration: "1.5 hours",
-      status: "Cancelled",
-    },
-    {
-      id: 3,
-      farmerName: "Jane Smith",
-      farmerImage: assets.Ladicia,
-      facility: "AquaFarm Innovations",
-      dateTime: "Jul 4, 2025, 9:AM",
-      duration: "1.5 hours",
-      status: "Completed",
-    },
-    {
-      id: 3,
-      farmerName: "Jane Smith",
-      farmerImage: assets.Ladicia,
-      facility: "AquaFarm Innovations",
-      dateTime: "Jul 4, 2025, 9:AM",
-      duration: "1.5 hours",
-      status: "Cancelled",
-    },
-    {
-      id: 3,
-      farmerName: "Jane Smith",
-      farmerImage: assets.Ladicia,
-      facility: "AquaFarm Innovations",
-      dateTime: "Jul 4, 2025, 9:AM",
-      duration: "1.5 hours",
-      status: "Upcoming",
-    },
-    {
-      id: 3,
-      farmerName: "Jane Smith",
-      farmerImage: assets.Ladicia,
-      facility: "AquaFarm Innovations",
-      dateTime: "Jul 4, 2025, 9:AM",
-      duration: "1.5 hours",
-      status: "Cancelled",
-    },
-  ];
+
+const fetchAllbookings = useCallback(async () => {
+      setLoading(true);
+      try {
+          const data = await getOperatorBookings();
+          setBookings(data.facilities); 
+      } catch (error) {
+          console.error("Error getting facility", error); 
+          setBookings([]); 
+      } finally {
+          setLoading(false);
+      }
+  }, []); 
+
+  useEffect(() => {
+    fetchAllbookings();
+  }, [fetchAllbookings]);
+
+    
+    
   return (
     <div
       className="overflow-x-auto sm:p-8 text-[12px]"
@@ -119,49 +56,46 @@ const BookingList = () => {
           </tr>
         </thead>
         <tbody className="">
-          {tableData.map((farmer) => (
+          {bookings.map((operator) => ( 
             <tr
-              key={farmer.id}
+              key={operator.id}
               className="hover:bg-gray-50 transition duration-150 ease-in-out"
             >
               <td className="py-4 px-4">
                 <div className="flex items-center gap-3">
                   <img
-                    src={farmer.farmerImage}
-                    alt={farmer.farmerName}
+                    src={operator.farmerImage}
+                    alt={operator.farmerName}
                     className="w-6 h-6 rounded-full object-cover"
                   />
                   <h3 className="text-[#323C47] text-[13px]">
-                    {farmer.farmerName}
+                    {operator.farmerName}
                   </h3>
                 </div>
               </td>
-              <td className="py-4 px-4 text-[#323C47] text-[13px]">{farmer.facility}</td>
-              <td className="py-4 px-4 text-[#323C47] text-[13px]">{farmer.dateTime}</td>
-              <td className="py-4 px-4 text-[#323C47] text-[13px]">{farmer.duration}</td>
+              <td className="py-4 px-4 text-[#323C47] text-[13px]">{operator.facility}</td>
+              <td className="py-4 px-4 text-[#323C47] text-[13px]">{operator.dateTime}</td>
+              <td className="py-4 px-4 text-[#323C47] text-[13px]">{operator.duration}</td>
               <td className="py-4 px-4">
                 <span
                   className={`px-3 py-1 rounded-full text-xs font-semibold
                   ${
-                    farmer.status === "Upcoming"
+                    operator.status === "Upcoming"
                       ? "text-[#0B9D09] text-[13px]"
-                      : farmer.status === "Completed"
+                      : operator.status === "Completed"
                       ? "text-[#09B5FF] text-[13px]"
                       : "text-[#ED0F13] text-[13px]"
                   }`}
                 >
-                  {farmer.status}
+                  {operator.status}
                 </span>
               </td>
               <td className="">
-                <Link to={"/farmer-details"}>
+                <Link to={`operator/booking-history/${operator.id}`}>
                   <button
                     className="bg-[#02402D] w-[120px] xl:w-[160px] h-[27px] hover:bg-green-700 cursor-pointer text-white font-medium sm:py-1 sm:px-4 rounded-md text-xs transition-colors duration-200"
-                    onClick={() => {
-                      setActiveFarmer(farmer.id);
-                    }}
                   >
-                    View Details
+                   {loading ? <ClipLoader /> : "View Details"}
                   </button>
                 </Link>
               </td>

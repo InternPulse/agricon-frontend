@@ -1,63 +1,51 @@
-import React, { useContext } from "react";
-import { ViewFarmerContext } from "../../pages/Bookings/Bookings";
-import { assets } from "../../assets/assets";
+import { useCallback, useEffect, useState } from "react";
 import { FaMessage } from "react-icons/fa6";
+import  {getOperatorBookingById}  from "../../actions/getBookingsById";
+
 
 const FarmerDetails = () => {
-  const tableData = [
-    {
-      id: 1,
-      farmerName: "Lindsey Stroud",
-      farmerImage: assets.Ladicia,
-      facility: "SunHarvest Drying Yard",
-      dateTime: "Jul 2, 2025, 10:AM",
-      duration: "2 hours",
-      status: "Upcoming",
-    },
-    {
-      id: 2,
-      farmerName: "John Doe",
-      farmerImage: assets.Ladicia,
-      facility: "GreenFields Processing",
-      dateTime: "Jul 3, 2025, 2:PM",
-      duration: "4 hours",
-      status: "Completed",
-    },
-    {
-      id: 3,
-      farmerName: "Jane Smith",
-      farmerImage: assets.Ladicia,
-      facility: "AquaFarm Innovations",
-      dateTime: "Jul 4, 2025, 9:AM",
-      duration: "1.5 hours",
-      status: "Cancelled",
-    },
-  ];
-  const { activeFarmer } = useContext(ViewFarmerContext);
-  console.log(activeFarmer);
+       const [booking, setBooking] = useState([]); 
+         const [loading, setLoading] = useState(true);
+       
+       const fetchSinglebooking = useCallback(async () => {
+             setLoading(true);
+             try {
+                 const data = await getOperatorBookingById();
+                 setBooking(data.facilities); 
+             } catch (error) {
+                 console.error("Error getting facility", error); 
+                 setBooking([]); 
+             } finally {
+                 setLoading(false);
+             }
+         }, []); 
+       
+         useEffect(() => {
+          fetchSinglebooking();
+         }, [fetchSinglebooking]);
+  
   return (
     <div>
-      {activeFarmer &&
-        tableData.map((farmer) =>
-          farmer.id === activeFarmer ? (
-            <div
+      {booking.map((operator) =>(
+        <div
+          key={operator.id}
               className="mx-auto max-w-[
-1096px] pt-10 space-y-8 p-5 px-10"
+                1096px] pt-10 space-y-8 p-5 px-10"
             >
               {/* TOP SECTION: Profile and Action Buttons */}
               <div className="flex flex-col md:flex-row justify-between items-center pb-6 gap-6 md:gap-0">
                 <div className="flex items-center gap-4">
                   <img
-                    src={farmer.farmerImage}
-                    alt={farmer.farmerName}
+                    src={operator.farmerImage}
+                    alt={operator.farmerName}
                     className="w-25 h-25 rounded-full object-cover"
                   />
                   <div>
                     <h1 className="text-[20px] font-semibold text-[#000000] leading-tight">
-                      {farmer.farmerName}
+                      {operator.farmerName}
                     </h1>
                     <p className="text-[16px] text-[#000000]/40">
-                      {farmer.farmerName.toLowerCase().replace(/\s/g, ".") +
+                      {operator.farmerName.toLowerCase().replace(/\s/g, ".") +
                         "@gmail.com"}
                     </p>
                   </div>
@@ -87,7 +75,7 @@ const FarmerDetails = () => {
                     <input
                       type="text"
                       id="fullName"
-                      value={farmer.farmerName}
+                      value={operator.farmerName}
                       readOnly // Use readOnly instead of contentEditable for inputs
                       className="form-input block w-full px-4 py-2 rounded-md bg-[#F9F9F9] text-[#000000]/40 cursor-not-allowed focus:outline-none"
                     />
@@ -104,7 +92,7 @@ const FarmerDetails = () => {
                     <input
                       type="text"
                       id="facility"
-                      value={farmer.facility}
+                      value={operator.facility}
                       readOnly
                       className="form-input block w-full px-4 py-2 rounded-md bg-[#F9F9F9] text-[#000000]/40 cursor-not-allowed focus:outline-none"
                     />
@@ -121,7 +109,7 @@ const FarmerDetails = () => {
                     <input
                       type="text"
                       id="dateTime"
-                      value={farmer.dateTime}
+                      value={operator.dateTime}
                       readOnly
                       className="form-input block w-full px-4 py-2 rounded-md bg-[#F9F9F9] text-[#000000]/40 cursor-not-allowed focus:outline-none"
                     />
@@ -138,7 +126,7 @@ const FarmerDetails = () => {
                     <input
                       type="text"
                       id="duration"
-                      value={farmer.duration}
+                      value={operator.duration}
                       readOnly
                       className="form-input block w-full px-4 py-2 rounded-md bg-[#F9F9F9] text-[#000000]/40 cursor-not-allowed focus:outline-none"
                     />
@@ -155,7 +143,7 @@ const FarmerDetails = () => {
                     <input
                       type="text"
                       id="status"
-                      value={farmer.status}
+                      value={operator.status}
                       readOnly
                       className={`form-input block w-full px-4 py-2 rounded-md bg-[#F9F9F9] text-[#000000]/40 cursor-not-allowed focus:outline-none`}
                     />
@@ -170,7 +158,7 @@ const FarmerDetails = () => {
                     <input
                       type="text"
                       id="status"
-                      value={farmer.id}
+                      value={operator.id}
                       readOnly
                       className={`form-input block w-full px-4 py-2 rounded-md bg-[#F9F9F9] text-[#000000]/40 cursor-not-allowed focus:outline-none`}
                     />
@@ -200,10 +188,7 @@ const FarmerDetails = () => {
                 </button>
               </div>
             </div>
-          ) : (
-            ""
-          )
-        )}
+          ) )}
     </div>
   );
 };
