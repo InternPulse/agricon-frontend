@@ -10,7 +10,7 @@ import Bookings from "../../components/Dashboard/Bookings";
 import TotalFacilities from "../../components/Dashboard/TotalFacilities";
 import CompleteProfile from "../../components/Dashboard/CompleteProfile";
 import LevelUp from "../../components/Dashboard/LevelUp";
-
+import FarmerBookings from "../../components/Dashboard/FarmerBookings";
 
 export default function FarmerDashboard() {
   
@@ -32,6 +32,7 @@ export default function FarmerDashboard() {
                 <Welcome/>
                 <Date />
               </div>
+              
 
               <div className="flex w-full gap-5 justify-start flex-wrap xl:flex-nowrap mb-8">
                 <Discover />
@@ -41,40 +42,7 @@ export default function FarmerDashboard() {
                 </div>
               </div>
 
-              <Transaction
-                title="Booking history"
-                hvalue1="Price"
-                hvalue2="Status"
-                details={[
-                  {
-                    icon: <FaBook />,
-                    size: true,
-                    title: "Cold Room-Akure Hub",
-                    date: "Jun 14th 2025",
-                    price: "₦27.000",
-                    status: "Completed",
-                    id: "ZTWHT24FGNC",
-                  },
-                  {
-                    icon: <FaSolarPanel />,
-                    size: true,
-                    title: "Solar Dryer-Wuse Zone 3",
-                    date: "May 27th 2025",
-                    price: "₦14.000",
-                    status: "Pending",
-                    id: "FONCQ24TWHT",
-                  },
-                  {
-                    icon: <FaMillSign />,
-                    size: true,
-                    title: "Milling Unit-Kano",
-                    date: "Feb 6th 2025",
-                    price: "₦32.000",
-                    status: "Failed",
-                    id: "QWER24TPOCY",
-                  },
-                ]}
-              />
+              <FarmerBookings/>
               <Transaction
                 title="Facilities"
                 hvalue1="Category"
