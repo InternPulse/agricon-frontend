@@ -9,7 +9,7 @@ export default function FacilityProvider({ children }) {
   useEffect(() => {
     async function fetchFacility() {
       const token =
-        "token-key-here";
+        "your_token_here"; // Replace with your actual token retrieval logic
       try {
         const response = await fetch(
           "https://agricon-express-backend.onrender.com/api/v1/facilities?limit=10&page=2&available=true",

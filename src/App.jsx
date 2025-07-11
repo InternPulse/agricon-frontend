@@ -1,5 +1,5 @@
 
-import BookingForm from "./pages/infrastructure/BookingForm";
+import BookingForm from "./pages/infrastructure/BookingFormEdited";
 import ComingSoon from "./pages/infrastructure/ComingSoon";
 import FacilityDetails from "./pages/infrastructure/FacilityDetails";
 import Facility from "./pages/infrastructure/Facility";
