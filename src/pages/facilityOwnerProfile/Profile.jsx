@@ -1,108 +1,200 @@
-import React, { useContext, useState } from 'react';
-import { OperatorContext } from '../../context/OperatorContext';
+import React, { useEffect, useState } from 'react';
 import { MdOutlineModeEditOutline } from "react-icons/md";
+import { operatorProfileReg } from '../../actions/OperatorProfileReg'; 
+import { ClipLoader } from 'react-spinners';
 
-const DetailRow = ({ label, value, name, onChange, isEditing }) => (
-  <div className="flex flex-col gap-1">
-    <h1 className='text-[12px] text-[#999999]'>{label}</h1>
-    {isEditing ? (
-      <input
-        type="text"
-        name={name}
-        value={value}
-        onChange={onChange}
-        className='text-[#1a1a1a] border-[#D0D5DD] p-1 focus:outline-none focus:border-[#D0D5DD] rounded-lg py-2 text-[12px]'
-        placeholder={`Enter ${label.toLowerCase()}`}
-      />
-    ) : (
-      <p>{value}</p>
-    )}
-  </div>
+// Helper component for displaying or editing a detail row
+const DetailRow = ({ label, name, value, onChange, isEditing, type = 'text' }) => (
+    <div className='flex flex-col gap-1'>
+        <label className='text-[#475367] font-medium'>{label}</label>
+        {isEditing ? (
+            <input
+                type={type}
+                name={name}
+                value={value}
+                onChange={onChange}
+                className='border border-gray-300 rounded-md p-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500'
+            />
+        ) : (
+            <p className='text-[#1D2739] font-normal'>{value || 'N/A'}</p>
+        )}
+    </div>
 );
 
+
 const Profile = () => {
-  const { operator, setOperator } = useContext(OperatorContext);
-  const [isEditing, setIsEditing] = useState(false);
+    const [isEditing, setIsEditing] = useState(false);
+    const [profileData, setProfileData] = useState({
+        firstName: '',
+        lastName: '',
+        email: '',
+        phone: '',
+        address: '',
+    });
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(null);
+    const [successMessage, setSuccessMessage] = useState(null);
 
-  const {
-    firstName = '',
-    lastName = '',
-    phone = '',
-    address = '',
-    email = 'taiwopersonal24@gmail.com',
-  } = operator;
+    // Load initial data from localStorage when the component mounts
+    useEffect(() => {
+        const operatorData = localStorage.getItem("operatorProfile");
+        const farmerEmail = localStorage.getItem("email"); 
 
-  
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setOperator((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  };
+        if (operatorData) {
+            const parsedData = JSON.parse(operatorData);
+            setProfileData({
+                firstName: parsedData.firstName || '',
+                lastName: parsedData.lastName || '',
+                email: farmerEmail || '', 
+                phone: parsedData.phone || '',
+                address: parsedData.address || '',
+            });
+        } else {
+            setProfileData(prev => ({ ...prev, email: farmerEmail || '' }));
+        }
+    }, []); 
 
-  const fullName = `${firstName} ${lastName}`;
+    // Handler for input changes in edit mode
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setProfileData(prevData => ({
+            ...prevData,
+            [name]: value
+        }));
+    };
 
-  if (!operator.id) return <p>Loading...</p>;
+    // Function to save/update the profile
+    const handleSave = async () => {
+        setLoading(true);
+        setError(null);
+        setSuccessMessage(null);
+        try {
+            const response = await operatorProfileReg(profileData); 
 
-  return (
-    <div className='flex flex-col justify-center items-center'>
-      <div className='flex inter flex-col gap-8 w-full'>
-        <div className='flex flex-col gap-8 bg-white px-4 py-4 rounded'>
-          <div className='flex justify-between'>
-            <h1 className='font-semibold text-[16px] text-[#1a1a1a]'>Personal details</h1>
-            <MdOutlineModeEditOutline
-              onClick={() => setIsEditing(!isEditing)}
-              className='border p-1 rounded-lg border-[#808080] text-3xl cursor-pointer'
-              title={isEditing ? 'Cancel' : 'Edit'}
-            />
-          </div>
+            // After successful update, update localStorage
+            localStorage.setItem("operatorProfile", JSON.stringify({
+                firstName: profileData.firstName,
+                lastName: profileData.lastName,
+                phone: profileData.phone,
+                address: profileData.address,
+            }));
+            localStorage.setItem("email", profileData.email); 
 
-          <div className='grid md:grid-cols-2 gap-10 md:text-[14px] text-[12px]'>
-            <DetailRow
-              label='First Name'
-              name='firstName'
-              value={fullName}
-              onChange={handleChange}
-              isEditing={isEditing}
-            />
+            setSuccessMessage("Profile updated successfully!");
+            setIsEditing(false); // Exit editing mode
+        } catch (err) {
+            console.error("Error updating profile:", err);
+            setError(err.response?.data?.message || err.message || "Failed to update profile.");
+        } finally {
+            setLoading(false);
+        }
+    };
 
-            {/* <DetailRow
-              label='Last Name'
-              name='lastName'
-              value={lastName}
-              onChange={handleChange}
-              isEditing={isEditing}
-            /> */}
+    // Function to cancel editing and revert to original data from localStorage
+    const handleCancel = () => {
+        const operatorData = localStorage.getItem("operatorProfile");
+        const farmerEmail = localStorage.getItem("email");
+        if (operatorData) {
+            const parsedData = JSON.parse(operatorData);
+            setProfileData({
+                firstName: parsedData.firstName || '',
+                lastName: parsedData.lastName || '',
+                email: farmerEmail || '',
+                phone: parsedData.phone || '',
+                address: parsedData.address || '',
+            });
+        }
+        setIsEditing(false); 
+        setError(null); 
+        setSuccessMessage(null); 
+    };
 
-            <DetailRow
-              label='Email Address'
-              name='email'
-              value={email}
-              onChange={handleChange}
-              isEditing={isEditing}
-            />
 
-            <DetailRow
-              label='Phone Number'
-              name='phone'
-              value={phone}
-              onChange={handleChange}
-              isEditing={isEditing}
-            />
+    return (
+        <div className='flex flex-col justify-center items-center'>
+            <div className='flex inter flex-col gap-8 w-full'>
+                <div className='flex flex-col gap-8 bg-white px-4 py-4 rounded'>
+                    <div className='flex justify-between'>
+                        <h1 className='font-semibold text-[16px] text-[#1a1a1a]'>Personal details</h1>
+                        <MdOutlineModeEditOutline
+                            onClick={() => {
+                                if (isEditing) {
+                                    handleCancel(); 
+                                } else {
+                                    setIsEditing(true); 
+                                }
+                            }}
+                            className='border p-1 rounded-lg border-[#808080] text-3xl cursor-pointer'
+                            title={isEditing ? 'Cancel' : 'Edit'}
+                        />
+                    </div>
 
-            <DetailRow
-              label='Facility Address'
-              name='address'
-              value={address}
-              onChange={handleChange}
-              isEditing={isEditing}
-            />
-          </div>
+                    {loading && <p className="text-blue-500">Updating profile...</p>}
+                    {error && <p className="text-red-500">{error}</p>}
+                    {successMessage && <p className="text-green-500">{successMessage}</p>}
+
+                    <div className='grid md:grid-cols-2 gap-10 md:text-[14px] text-[12px]'>
+                        <DetailRow
+                            label='First Name'
+                            name='firstName'
+                            value={profileData.firstName}
+                            onChange={handleChange}
+                            isEditing={isEditing}
+                        />
+                        <DetailRow
+                            label='Last Name' 
+                            name='lastName'
+                            value={profileData.lastName}
+                            onChange={handleChange}
+                            isEditing={isEditing}
+                        />
+                        <DetailRow
+                            label='Email Address'
+                            name='email'
+                            value={profileData.email}
+                            onChange={handleChange}
+                            isEditing={isEditing}
+                            type='email' 
+                        />
+                        <DetailRow
+                            label='Phone Number'
+                            name='phone'
+                            value={profileData.phone}
+                            onChange={handleChange}
+                            isEditing={isEditing}
+                            type='tel'
+                        />
+                        <DetailRow
+                            label='Facility Address'
+                            name='address'
+                            value={profileData.address}
+                            onChange={handleChange}
+                            isEditing={isEditing}
+                        />
+                    </div>
+
+                    {isEditing && (
+                        <div className="flex justify-end gap-4 mt-3">
+                            <button
+                                onClick={handleCancel}
+                                className="px-4 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-100"
+                                disabled={loading}
+                            >
+                                Cancel
+                            </button>
+                            <button
+                                onClick={handleSave}
+                                className="px-4 py-2 bg-[#02402D] text-white rounded-md disabled:opacity-50"
+                                disabled={loading}
+                            >
+                                {loading ? <ClipLoader color="#fff" size={20} /> : 'Save Changes'}
+                            </button>
+                        </div>
+                    )}
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  );
+    );
 };
 
 export default Profile;

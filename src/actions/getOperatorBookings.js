@@ -13,12 +13,12 @@ export const getOperatorBookings = async () => {
                 },
             }
         );
-        console.log(response.data)
+        // console.log(response.data)
       return response.data;
     } catch (error) {
-        console.error('Error getting facility:', error);
+        console.error('Error getting your bookings:', error);
 
-        let displayMessage = 'Failed to load facilities. Please try again.'
+        let displayMessage = 'Failed to load your bookings. Please try again.'
         throw new Error(displayMessage);
     }
 };

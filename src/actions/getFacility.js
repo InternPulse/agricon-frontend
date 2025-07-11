@@ -1,6 +1,8 @@
-// src/actions/getFacilityById.js
+
 import axios from 'axios';
 
+
+//get single facility
 export const getFacilityById = async (facilityId) => {
   const accessToken = localStorage.getItem('access_token');
   if (!accessToken) throw new Error('Access token is missing.');

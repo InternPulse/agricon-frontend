@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
-// import { HiBell } from "react-icons/hi";
 import { IoIosArrowForward } from "react-icons/io";
 import { Link } from "react-router-dom";
-// import UserDropdown from "../../components/Farmer-Profile-Management/userDropdown";
 
 // 🔍 Settings Search Component
 const SettingsSearch = ({ search, setSearch }) => {
@@ -93,33 +91,6 @@ export default function Settings() {
   return (
     <div className="flex min-h-screen bg-[#f7f9fa]">
       <div className="flex-1">
-        {/* Top Header */}
-        {/* <div className="flex items-center justify-between bg-[#f5f8fa] px-10 py-6 border-b border-blue-200 relative">
-          <h1 className="text-2xl font-semibold text-gray-700">Account Settings</h1>
-          <div className="flex items-center gap-4 w-full max-w-md relative">
-            <div className="relative w-full">
-              <input
-                type="serach"
-                placeholder="Search settings"
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-                className="border border-gray-300 rounded-xl px-4 py-2 focus:outline-none w-full"
-              />
-              <SettingsSearch search={search} setSearch={setSearch} />
-
-            </div>
-
-            <div className="flex items-center gap-2">
-              <div className="w-[40px] h-[40px] rounded-full bg-[#D5F0E8] flex justify-center items-center">
-                <HiBell className="text-[#047D58]" />
-              </div>
-              <img src="user-avatar.jpg" alt="User" className="w-8 h-8 rounded-full border" />
-              <span className="text-sm font-medium text-gray-700">Interns</span>
-              <UserDropdown />
-            </div>
-          </div>
-        </div> */}
-
         {/* Tabs & Content Wrapper */}
         <div className="px-10 pb-10 pt-4 bg-[#f7f9fa] min-h-screen">
           <div className="w-full">
@@ -240,17 +211,7 @@ export default function Settings() {
                 <div id="privacy" className="bg-white rounded-xl my-5 shadow p-8">
                   <h2 className="text-lg font-bold mb-6 text-black">Account Details</h2>
                   <div className="space-y-8">
-                    {/* <div className="flex items-center justify-between">
-                      <div className="space-y-2">
-                        <div className="font-medium text-md text-black">Verify Email Address</div>
-                        <div className="text-gray-400 text-sm">Ensure your email is verified</div>
-                      </div>
-                      <Link to="#">
-                        <div className="flex items-center gap-2 text-sm text-[#02402D] font-semibold">
-                          Verify Email <IoIosArrowForward />
-                        </div>
-                      </Link>
-                    </div> */}
+        
                     <div className="flex items-center justify-between">
                       <div className="space-y-2">
                         <div className="font-medium text-md text-black">Update Password</div>

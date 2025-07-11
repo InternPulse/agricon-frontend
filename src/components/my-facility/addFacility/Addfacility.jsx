@@ -2,10 +2,8 @@ import React, { useState, useRef } from 'react';
 import axios from 'axios';
 import { ClipLoader } from 'react-spinners';
 import { FaUpload } from 'react-icons/fa';
-// Import your Modal and SuccessState components
-// Adjust paths based on where these components are located relative to AddFacility.jsx
-import Modal from '../modal/Modal'; // Example path, adjust as needed
-import SuccessState from './AddSuccess'; // Example path, adjust as needed
+import Modal from '../modal/Modal'; 
+import SuccessState from './AddSuccess'; 
 import { useNavigate } from 'react-router-dom';
 
 
@@ -28,7 +26,7 @@ const AddFacility = () => {
     });
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
-    const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false); // New state for success modal
+    const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false); 
     const fileInputRef = useRef(null);
     const navigate = useNavigate()
 
@@ -77,7 +75,7 @@ const AddFacility = () => {
             // STEP 2: Upload image only if provided
             if (formData.facilityImage) {
                 const imageForm = new FormData();
-                imageForm.append('images', formData.facilityImage); // Already refined this to 'images'
+                imageForm.append('images', formData.facilityImage); 
 
                 await axios.post(
                     `https://agricon-express-backend.onrender.com/api/v1/facilities/${facilityId}/image`,
@@ -89,15 +87,13 @@ const AddFacility = () => {
                     }
                 );
             }
-
-            // Replace alert with showing the success modal
             setIsSuccessModalOpen(true);
 
             // Automatically close the success modal and navigate after 2 seconds
             setTimeout(() => {
-                setIsSuccessModalOpen(false); // Close the modal
+                setIsSuccessModalOpen(false); 
                 navigate('/operator/my-facility');
-            }, 3000); // 2000 milliseconds = 2 seconds
+            }, 3000); 
 
         } catch (err) {
             console.error('Error submitting form:', err);
@@ -264,12 +260,10 @@ const AddFacility = () => {
             {/* Success Modal */}
             <Modal
                 isOpen={isSuccessModalOpen}
-                onClose={() => setIsSuccessModalOpen(false)} // Allows manual closing if needed
-                title="Facility Added" // You can customize the title
+                onClose={() => setIsSuccessModalOpen(false)} 
+                title="Facility Added" 
             >
                 <SuccessState message="Facility created successfully!" />
-                {/* You can pass a message prop to SuccessState if it accepts one,
-                    otherwise, it will show its default success message. */}
             </Modal>
         </form>
     );

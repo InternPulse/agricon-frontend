@@ -26,12 +26,12 @@ export default function FacilityOwnerDashboard() {
               </div>
               <div className="bottom w-full flex flex-col gap-[27px]">
                 <Stats />
-                <div className="flex flex-wrap xl:flex-nowrap gap-[27px] overflow-x-scroll">
+                <div className="flex flex-wrap xl:flex-nowrap gap-[27px] ">
                   <div className="h-full w-full flex flex-col gap-8">
                     <RecentFacilities/>
                     <FacilityTransaction />
                   </div>
-                  <div className="right w-full xl:w-[354px] flex flex-wrap md:flex-nowrap xl:flex-col gap-4">
+                  <div className="w-full xl:w-[354px] flex flex-wrap sm:flex-nowrap xl:flex-col gap-4">
                     <StorageFacilities />
                     <RecentBookings />
                   </div>

@@ -4,7 +4,6 @@ import { ClipLoader } from 'react-spinners';
 import { getFacilityById } from '../../../actions/getFacility';
 
 function Editfacility({ facilityId, onSaveSuccess }) {
-  console.log('EditFacility: Received facilityId prop:', facilityId);
   const [formData, setFormData] = useState({
     name: '',
     location: '',
@@ -16,12 +15,11 @@ function Editfacility({ facilityId, onSaveSuccess }) {
     description: '',
   });
   const [loading, setLoading] = useState(false);
-  const [initialLoading, setInitialLoading] = useState(true); // New state for initial data fetch
-  const [error, setError] = useState(null); // New state for errors
+  const [initialLoading, setInitialLoading] = useState(true); 
+  const [error, setError] = useState(null); 
 
   // Effect to fetch facility data when the component mounts or facilityId changes
   useEffect(() => {
-    console.log('EditFacility: Received facilityId prop:', facilityId);
     const fetchFacilityData = async () => {
       if (!facilityId) {
         setInitialLoading(false);
@@ -38,12 +36,9 @@ function Editfacility({ facilityId, onSaveSuccess }) {
         setFormData({
           name: facilityData.facility.name || '',
           location: facilityData.facility.location || '',
-          // Convert pricePerDay to string for input type="number" value
           pricePerDay: facilityData.facility.pricePerDay ? String(facilityData.facility.pricePerDay) : '',
           type: facilityData.facility.type || '',
-          // Convert boolean to string "true" or "false" for select element
           available: String(facilityData.facility.available),
-          // Convert capacity to string for input type="number" value
           capacity: facilityData.facility.capacity ? String(facilityData.facility.capacity) : '',
           contact: facilityData.facility.contact || '',
           description: facilityData.facility.description || '',
@@ -58,7 +53,7 @@ function Editfacility({ facilityId, onSaveSuccess }) {
     };
 
     fetchFacilityData();
-  }, [facilityId]); // Re-run effect if facilityId changes
+  }, [facilityId]); 
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -72,22 +67,22 @@ function Editfacility({ facilityId, onSaveSuccess }) {
     e.preventDefault();
 
     setLoading(true);
-    setError(null); // Clear previous errors
+    setError(null); 
 
     try {
       // Prepare data for submission, ensuring correct types for backend
       const dataToSubmit = {
         name: formData.name.trim(),
         location: formData.location.trim(),
-        pricePerDay: parseFloat(formData.pricePerDay), // Convert to float
+        pricePerDay: parseFloat(formData.pricePerDay), 
         type: formData.type,
-        available: formData.available === 'true', // Convert to boolean
-        capacity: parseInt(formData.capacity, 10), // Convert to integer
+        available: formData.available === 'true', 
+        capacity: parseInt(formData.capacity, 10), 
         contact: formData.contact.trim(),
         description: formData.description.trim(),
       };
 
-      const response = await editFacilityById(facilityId, dataToSubmit); // Pass converted data
+      const response = await editFacilityById(facilityId, dataToSubmit); 
       console.log('Facility updated successfully:', response);
 
       if (onSaveSuccess) {
@@ -121,7 +116,6 @@ function Editfacility({ facilityId, onSaveSuccess }) {
   return (
     <div className="p-4">
       <form onSubmit={handleSubmit}>
-        {/* All your form fields as before */}
         <div className="mb-4">
           <label htmlFor="name" className="block mb-1 font-medium">Facility Name *</label>
           <input

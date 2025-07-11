@@ -16,9 +16,9 @@ export const getOperatorBookingById = async (bookingId) => {
         console.log(response.data)
       return response.data;
     } catch (error) {
-        console.error('Error getting facility:', error);
+        console.error('Error getting single bookings:', error);
 
-        let displayMessage = 'Failed to load facilities. Please try again.'
+        let displayMessage = 'Failed to  get single bookings:. Please try again.'
         throw new Error(displayMessage);
     }
 };
