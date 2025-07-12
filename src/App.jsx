@@ -36,14 +36,13 @@ import BookingHistoryLayout from './layout/BookingHistoryLayout.jsx';
 import BookingList from './components/Bookings/BookingList.jsx';
 import FarmerDetails from './components/Bookings/FarmerDetails.jsx';
 import FacilityOwnerProfileLayout from './pages/facilityOwnerProfile/FacilityOwnerProfileLayout.jsx';
-import Profile from './pages/facilityOwnerProfile/Profile.jsx'
 import SubHeader from './pages/facilityOwnerProfile/SubHeader.jsx';
+import Profile from './components/Farmer-Profile-Management/Profile.jsx';
 
 
 function App() {
   return (
     <AuthProvider>
-      <FacilityProvider>
         <Routes>
           <Route path='/' element={<RootLayout />}>
             <Route index element={<Home />} />
@@ -94,7 +93,6 @@ function App() {
           </Route>
           
         </Routes>
-        </FacilityProvider>
     </AuthProvider>
   )
 }

@@ -2,14 +2,14 @@
 import axios from 'axios';
 
 
-//get single facility
-export const getFacilityById = async (facilityId) => {
+//get Farmer personal bookings
+export const getFarmerBookings = async () => {
   const accessToken = localStorage.getItem('access_token');
   // if (!accessToken) throw new Error('Access token is missing.');
 
   try {
     const { data } = await axios.get(
-      `https://agricon-express-backend.onrender.com/api/v1/facilities/${facilityId}`,
+      "https://agricon-express-backend.onrender.com/api/v1/bookings/farmer/me",
       {
         headers: {
           Authorization: `Bearer ${accessToken}`
@@ -18,7 +18,7 @@ export const getFacilityById = async (facilityId) => {
     );
     return data;
   } catch (error) {
-    console.error(`Error fetching facility with ID ${facilityId}:`, error.response?.data || error.message || error);
+    console.error('Error geting bookings error.messaga', error);
     throw error;
   }
 };

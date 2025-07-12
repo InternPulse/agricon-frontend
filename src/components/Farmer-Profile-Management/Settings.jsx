@@ -2,6 +2,7 @@ import React, { useState } from "react";
 // import SideBar from "../sideBar";
 import { HiBell } from "react-icons/hi";
 import { IoIosArrowForward } from "react-icons/io";
+import Profile from "./Profile";
 
 export default function Settings() {
   const [activeTab, setActiveTab] = useState("Profile");
@@ -65,27 +66,7 @@ export default function Settings() {
 
             {/* Content */}
             {activeTab === "Profile" && (
-              <div className="bg-white rounded-xl shadow p-8">
-                <h2 className="text-lg font-semibold mb-6 text-gray-800">Personal details</h2>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-y-8">
-                  <div className="space-y-2">
-                    <label className="block text-sm text-gray-500 mb-1">Full name</label>
-                    <div className="text-base text-gray-900 font-medium">Yings Alex Ayoola</div>
-                  </div>
-                  <div className="space-y-2">
-                    <label className="block text-sm text-gray-500 mb-1">Email address</label>
-                    <div className="text-base text-gray-900 font-medium">Yings.alex.ayoola@gmail.com</div>
-                  </div>
-                  <div className="space-y-2">
-                    <label className="block text-sm text-gray-500 mb-1">Phone number</label>
-                    <div className="text-base text-gray-900 font-medium">080123456789</div>
-                  </div>
-                  <div className="space-y-2">
-                    <label className="block text-sm text-gray-500 mb-1">Farm Address</label>
-                    <div className="text-base text-gray-900 font-medium">Mahanttan freeway, Lagos</div>
-                  </div>
-                </div>
-              </div>
+              <Profile />
             )}
 
             {/* Notifications Tab Content */}
@@ -181,16 +162,6 @@ export default function Settings() {
               <div className="bg-white rounded-xl my-5 shadow p-8">
                 <h2 className="text-lg font-bold mb-6 text-black">Account Details</h2>
                 <div className="space-y-8">
-                  {/* <div className="flex items-center justify-between">
-                    <div className="space-y-2">
-                      <div className="font-medium text-md text-black">Verify Email Adress</div>
-                      <div className="text-gray-400 text-sm">Stay notified in real time on your desktop</div>
-                    </div>
-                    <div className="flex items-center gap-2">
-                        <div className="text-sm text-[#02402D] font-semibold">Verify Email</div>
-                        <div><IoIosArrowForward /></div>
-                    </div>
-                  </div> */}
                   <div className="flex items-center justify-between">
                     <div className="space-y-2">
                       <div className="font-medium text-md text-black">Update Password</div>

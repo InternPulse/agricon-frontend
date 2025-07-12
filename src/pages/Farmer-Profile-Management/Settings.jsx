@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useEffect } from "react";
 import { IoIosArrowForward } from "react-icons/io";
 import { Link } from "react-router-dom";
+import Profile from "../../components/Farmer-Profile-Management/Profile";
 
 // 🔍 Settings Search Component
 const SettingsSearch = ({ search, setSearch }) => {
@@ -80,10 +81,10 @@ export default function Settings() {
   }
 }, []);
 
-  const farmerDetailsString = localStorage.getItem("farmerProfile")
-  const farmerEmail = localStorage.getItem("email")
-  const farmerDetails = farmerDetailsString ? JSON.parse(farmerDetailsString) : null;
-  const { firstName, address, lastName, phone } = farmerDetails || 'N/A'
+  // const farmerDetailsString = localStorage.getItem("farmerProfile")
+  // const farmerEmail = localStorage.getItem("email")
+  // const farmerDetails = farmerDetailsString ? JSON.parse(farmerDetailsString) : null;
+  // const { firstName, address, lastName, phone } = farmerDetails || 'N/A'
  
 
 
@@ -115,27 +116,7 @@ export default function Settings() {
 
             {/* --- Tab Content --- */}
             {activeTab === "Profile" && (
-              <div id="profile" className="bg-white rounded-xl shadow p-8">
-                <h2 className="text-lg font-semibold mb-6 text-gray-800">Personal details</h2>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-y-8">
-                  <div className="space-y-2">
-                    <label className="block text-sm text-gray-500 mb-1">Full name</label>
-                    <div className="text-base text-gray-900 font-medium">{firstName + lastName}</div>
-                  </div>
-                  <div className="space-y-2">
-                    <label className="block text-sm text-gray-500 mb-1">Email address</label>
-                    <div className="text-base text-gray-900 font-medium">{farmerEmail}</div>
-                  </div>
-                  <div className="space-y-2">
-                    <label className="block text-sm text-gray-500 mb-1">Phone number</label>
-                    <div className="text-base text-gray-900 font-medium">{phone}</div>
-                  </div>
-                  <div className="space-y-2">
-                    <label className="block text-sm text-gray-500 mb-1">Farm Address</label>
-                    <div className="text-base text-gray-900 font-medium">{address}</div>
-                  </div>
-                </div>
-              </div>
+              <Profile />
             )}
 
             {activeTab === "Notifications" && (

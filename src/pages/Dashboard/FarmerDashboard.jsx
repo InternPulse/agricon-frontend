@@ -1,8 +1,6 @@
-// import SideBar from "../../components/Dashboard/sideBar";
-import { assets } from "../../assets/assets";
+import React  from 'react';
 import Welcome from "../../components/Dashboard/Welcome";
-import Transaction from "../../components/Transaction";
-import { FaBook, FaMillSign } from "react-icons/fa6";
+import { FaBook, FaMillSign } from "react-icons/fa6"; 
 import { FaSolarPanel } from "react-icons/fa";
 import Date from "../../components/Dashboard/Date";
 import Discover from "../../components/Dashboard/Discover";
@@ -11,69 +9,37 @@ import TotalFacilities from "../../components/Dashboard/TotalFacilities";
 import CompleteProfile from "../../components/Dashboard/CompleteProfile";
 import LevelUp from "../../components/Dashboard/LevelUp";
 import FarmerBookings from "../../components/Dashboard/FarmerBookings";
+import FacilityProvider from '../../components/infrastructure/FacilityContext';
+import Transaction from '../../components/Dashboard/Transaction';
 
 export default function FarmerDashboard() {
-  
+  const open = true;
+
   return (
     <div
       className="flex min-h-screen bg-gray-100 font-sans"
-      style={{ scrollbarWidth: "none" }}
     >
-      
       <main
         className={`${open ? 'flex' : 'flex'} flex-1 flex-col bg-white overflow-x-hidden`}
-        style={{ scrollbarWidth: "none" }}
       >
-
         <section className="flex flex-wrap md:flex-nowrap">
-          <div className="firstt px-5 xl:pl-8 xl:pr-5 py-4 md:border-r border-[#D0D5DD] w-full">
-            <div className="container flex flex-col gap-6">
+          <div className="px-5 xl:pl-8 xl:pr-5 py-4 md:border-r border-[#D0D5DD] w-full">
+            <div className=" flex flex-col gap-6">
               <div className="greeting w-full xl:pr-10 flex justify-between items-center">
-                <Welcome/>
+                <Welcome />
                 <Date />
               </div>
-              
 
-              <div className="flex w-full gap-5 justify-start flex-wrap xl:flex-nowrap mb-8">
+              <div className="flex items-center justify-between flex-wrap w-full gap-5 mb-8 px-5 sm:px-0">
                 <Discover />
-                <div className="w- overflow-x-scroll flex gap-2">
-                  <Bookings />
-                  <TotalFacilities />
-                </div>
+                  <FacilityProvider>
+                    <Bookings />
+                    <TotalFacilities />
+                  </FacilityProvider>
               </div>
 
-              <FarmerBookings/>
-              <Transaction
-                title="Facilities"
-                hvalue1="Category"
-                hvalue2="Payment type"
-                details={[
-                  {
-                    img: assets.stanley,
-                    name: "Stanley Benson",
-                    facility: "Cold Room",
-                    payment: "Wallet",
-                  },
-                  {
-                    img: assets.Ladicia,
-                    name: "Ladicia Godspower",
-                    facility: "Solar Dryer",
-                    payment: "Bank Transfer",
-                  },
-                  {
-                    img: assets.kingsley,
-                    name: "Kingsley Okoro",
-                    facility: "Milling Unit",
-                    payment: "Card",
-                  },
-                  {
-                    img: assets.kingsley,
-                    name: "Kingsley Okoro",
-                    facility: "Milling Unit",
-                    payment: "Card",
-                  },
-                ]}
-              />
+              <FarmerBookings />
+              <Transaction/>
             </div>
           </div>
           <div className="secondd px-4 md:w-[350px] py-8 flex flex-wrap items-start gap-5">

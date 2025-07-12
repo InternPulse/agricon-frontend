@@ -116,31 +116,35 @@ export const facilityData = [
 
 export const facilityDetails = [
   {
+    id: "type",
     icon: <GoHomeFill />,
     label: "Facility Type",
     description: "Drying Facility",
   },
+  // {
+  //   icon: <FaThermometerEmpty />,
+  //   label: "Climate Control",
+  //   description: "Temperature-controlled environment",
+  // },
   {
-    icon: <FaThermometerEmpty />,
-    label: "Climate Control",
-    description: "Temperature-controlled environment",
-  },
-  {
+    id: "capacity",
     icon: <MdOutlineShoppingCart />,
     label: "Capacity",
     description: "50,000 sq ft",
   },
+  // {
+  //   id: "hours",
+  //   icon: <RiCalendarScheduleFill />,
+  //   label: "Operating Hours",
+  //   description: "Mon - Sat: 8:00 AM - 8:00 PM",
+  // },
+  // {
+  //   icon: <MdSolarPower />,
+  //   label: "Power Source",
+  //   description: "Solar + Grid",
+  // },
   {
-    icon: <RiCalendarScheduleFill />,
-    label: "Operating Hours",
-    description: "Mon - Sat: 8:00 AM - 8:00 PM",
-  },
-  {
-    icon: <MdSolarPower />,
-    label: "Power Source",
-    description: "Solar + Grid",
-  },
-  {
+    id: "price",
     icon: <MdWallet />,
     label: "Price",
     description: "N2,000/ton/day",

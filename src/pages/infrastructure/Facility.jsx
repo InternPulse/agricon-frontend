@@ -3,12 +3,13 @@ import { cardData } from "../../data";
 import { IoIosSearch } from "react-icons/io";
 import Pagination from "../../components/infrastructure/ui/Pagination";
 import { useContext, useMemo, useState } from "react";
-// import Button from "../../components/infrastructure/ui/Button";
+
 import { Link } from "react-router-dom";
 import { FacilityContext } from "../../components/infrastructure/FacilityContext";
 
+
 export default function Facility() {
-  const { facilities } = useContext(FacilityContext);
+  const { facilities, error } = useContext(FacilityContext);
 
   const [searchTerm, setSearchTerm] = useState("");
   const [filter, setFilter] = useState("All");
@@ -90,33 +91,38 @@ export default function Facility() {
         {/* Table */}
         <div className="flex flex-col gap-1.5 border border-gray-300 rounded-t-[10px] mb-4">
           <div className="flex flex-wrap items-center bg-gray-200 py-3.5 px-7.5 font-semibold text-sm">
-            <p className="flex items-center truncate w-[243px] h-10.5 text-[#475367]">
+            <p className="flex items-center truncate w-[200px] h-10.5 text-[#475367]">
               Facility Name
             </p>
             <p className="flex items-center truncate w-[181px] h-10.5 text-[#475367]">
               Facility Type
             </p>
-            <p className="flex items-center truncate w-[243px] h-10.5 text-[#475367]">
+            <p className="flex items-center truncate w-[200px] h-10.5 text-[#475367]">
               Address
             </p>
           </div>
 
-          {currentFacilities.map((facility) => (
-            <div
-              key={facility.id}
-              className="flex flex-wrap justify-between items-center gap-4 bg-white hover:bg-gray-50 py-3.5 px-7.5"
-            >
-              <div className="flex flex-wrap">
-                <p className="flex items-center truncate w-[243px] h-10.5 text-[#475367]">
-                  {facility.name}
-                </p>
-                <p className="flex items-center truncate w-[181px] h-10.5 text-[#475367]">
-                  {facility.type}
-                </p>
-                <p className="flex items-center truncate w-[243px] h-10.5 text-[#475367]">
-                  {facility.location}
-                </p>
-              </div>
+          {error === true ? (
+            <p className="px-4 py-3 text-gray-500">Couldn't load facility data. Check your network or retry later</p>
+          ) : facilities.length === 0 ? (
+            <p className="px-4 py-3 text-gray-500">Loading facility data...</p>
+          ) : (
+            currentFacilities.map((facility, index) => (
+              <div
+                key={index}
+                className="flex flex-wrap justify-between items-center gap-4 bg-white hover:bg-gray-50 py-3.5 px-7.5"
+              >
+                <div className="flex flex-wrap">
+                  <p className="flex items-center truncate w-[200px] h-10.5 text-[#475367]">
+                    {facility.name}
+                  </p>
+                  <p className="flex items-center truncate w-[181px] h-10.5 text-[#475367]">
+                    {facility.type}
+                  </p>
+                  <p className="flex items-center truncate w-[200px] h-10.5 text-[#475367]">
+                    {facility.location}
+                  </p>
+                </div>
 
               <div className="flex gap-2">
                 <Link to={`/farmer/facility/${facility.id}`} className="bg-[#E4E7EC] hover:bg-gray-300 font-medium px-5 py-2 rounded-md">
@@ -126,33 +132,16 @@ export default function Facility() {
                   Book
                 </Link>
               </div>
-            </div>
-          ))}
+              </div>
+            ))
+          )};
         </div>
-
         {/* Pagination Component */}
         <Pagination
           totalPages={pageCount}
           currentPage={currentPage}
           onPageChange={(page) => setCurrentPage(page)}
         />
-
-        {/* <div className="flex my-7.5">
-            <button className="flex justify-between items-center gap-2 px-3 border border-[#8B8B8B] rounded-lg h-[36px]">
-              <IoFilterSharp />
-              <p className="max-sm:hidden">Filter</p>
-            </button>
-          </div>
-        </div>
-
-        <div className="flex flex-col gap-1.5 border border-gray-300 rounded-t-[10px] mb-[74px]">
-          <Facilities />
-        </div>
-        <Pagination
-          totalPages={pageCount}
-          currentPage={currentPage}
-          onPageChange={(page) => setCurrentPage(page)}
-        /> */}
       </section>
     </>
   );
