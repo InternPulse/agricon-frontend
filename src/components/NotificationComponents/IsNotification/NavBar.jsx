@@ -1,28 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
+import NavButtons from "./NavButtons";
 
-
-export default function AllNotificationNavbar() {
+export default function NavBar({ read, unRead }) {
+  const [active, setActive] = useState(false);
+  const resetActive = () => setActive(false);
   return (
     <div>
       {/* Notification count - visible on medium screens and above */}
       <p className="pb-5 text-veryDark-gray  md:block font-[400] text-[16px] leading-[100%]">
-        You have 2 unread notifications
+        You have {unRead} unread notifications
       </p>
 
       {/* Filter and Action Buttons */}
       <div className="lg:flex lg:justify-between lg:items-center bg-white lg:p-4 mb-8 ">
         {/* Filter Buttons */}
         <div className="flex justify-between lg:gap-5 p-1">
-          {["All", "New", "Read", "Unread"].map((label) => (
-            <button
-              key={label}
-              className={`p-2 rounded-md ${
-                label === "New" ? "bg-mint-green text-black" : "text-mid-gray"
-              }`}
-            >
-              {label}
-            </button>
-          ))}
+          {<NavButtons items={['All', 'New', 'Read', 'Unread']}/>}
         </div>
 
         {/* Mark All as Read Button (only on md and up) */}
@@ -33,4 +26,3 @@ export default function AllNotificationNavbar() {
     </div>
   );
 }
-
