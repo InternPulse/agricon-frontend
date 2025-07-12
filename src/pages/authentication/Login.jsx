@@ -31,7 +31,8 @@ const Login = () => {
       localStorage.setItem('refresh_token', response.data.refresh);
       localStorage.setItem('email', response.data.email);
       const currentRole = response.data.role.toLowerCase();
-      console.log(currentRole);
+      // console.log(response.data)
+      // console.log(currentRole);
       login(currentRole);
       navigate(`/${currentRole}`)
       

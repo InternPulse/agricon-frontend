@@ -5,7 +5,6 @@ export const getFarmerTransaction = async () => {
     const farmerDetails = localStorage.getItem("farmerProfile")
     const userId = farmerDetails ? JSON.parse(farmerDetails) : null;
     const { id } = userId || 'N/A'
-    console.log(userId)
 
     try {
         const response = await axios.get(
@@ -16,7 +15,7 @@ export const getFarmerTransaction = async () => {
                 },
             }
         );
-        console.log(response.data)
+        // console.log(response.data)
       return response.data;
     } catch (error) {
         console.error('Error getting your transactions:', error);

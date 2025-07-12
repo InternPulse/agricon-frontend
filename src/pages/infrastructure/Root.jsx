@@ -6,7 +6,7 @@ export default function FacilityLayout() {
   return (
     <section className="flex w-full bg-[#FAFAFA]">
       <main className="w-full">
-        <div className="mx-10 my-6">
+        <div className="mx-5 my-6">
           <FacilityProvider>
             <Outlet />
           </FacilityProvider>

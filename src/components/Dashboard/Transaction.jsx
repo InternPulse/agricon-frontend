@@ -1,8 +1,6 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { FaBook, FaUser } from "react-icons/fa6";
-// import { assets } from "../../assets/assetsets";
 import { getFarmerTransaction } from "../../actions/getFarmerTransaction";
-// import EmptyTransaction from "./EmptyTransaction";
 import EmptyFarmerTransaction from "./EmptyFarmerTransaction";
 
 

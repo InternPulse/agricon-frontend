@@ -34,7 +34,7 @@ export default function Facility() {
 
   return (
     <>
-      <section className="mb-8 p-5">
+      <section className="mb-8 ">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {cardData.map((item, index) => (
             <Card key={index} {...item} />

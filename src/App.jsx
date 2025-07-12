@@ -27,7 +27,6 @@ import FarmerLayout from './layout/Farmerlayout';
 import FarmerDashboard from './pages/Dashboard/FarmerDashboard';
 import FacilityOwnerDashboard from './pages/Dashboard/FacilityOwnerDashboard';
 import { AuthProvider } from './context/AuthContext.jsx';
-import FacilityProvider from './components/infrastructure/FacilityContext.jsx';
 import MyFacilityLayout from './layout/MyFacilityLayout.jsx';
 import MyFacilityPage from './pages/my-facility/MyFacilityPage.jsx';
 import AllNotification from './pages/NotificationPage/AllNotification.jsx'
@@ -37,7 +36,6 @@ import BookingList from './components/Bookings/BookingList.jsx';
 import FarmerDetails from './components/Bookings/FarmerDetails.jsx';
 import FacilityOwnerProfileLayout from './pages/facilityOwnerProfile/FacilityOwnerProfileLayout.jsx';
 import SubHeader from './pages/facilityOwnerProfile/SubHeader.jsx';
-import Profile from './components/Farmer-Profile-Management/Profile.jsx';
 
 
 function App() {
@@ -63,12 +61,12 @@ function App() {
           <Route path='farmer' element={<FarmerLayout />}>
               <Route index element={< FarmerDashboard />} />
               <Route path='notification' element={<AllNotification />}/>
-                <Route path="facility" element={<FacilityLayout />}>
-                    <Route index element={<Facility />}/>
-                    <Route path=":id" element={<FacilityDetails />} />
-                    <Route path="bookings" element={<BookingForm />} />
-                </Route> 
-                  <Route path="booking-history/*" element={<Bookings />} />
+              <Route path="facility" element={<FacilityLayout />}>
+                  <Route index element={<Facility />}/>
+                  <Route path=":id" element={<FacilityDetails />} />
+                  <Route path="bookings" element={<BookingForm />} />
+              </Route> 
+              <Route path="booking-history" element={<BookingHistory />} />
               <Route path="settings/*" element={<SettingsLayout />} >
                   <Route index element={<Settings />} />
                   <Route path="change-password" element={<ChangePassword />} />

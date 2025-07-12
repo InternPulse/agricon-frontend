@@ -93,11 +93,11 @@ export default function Settings() {
     <div className="flex min-h-screen bg-[#f7f9fa]">
       <div className="flex-1">
         {/* Tabs & Content Wrapper */}
-        <div className="px-10 pb-10 pt-4 bg-[#f7f9fa] min-h-screen">
+        <div className="px-5 pb-10 pt-4 bg-[#f7f9fa] min-h-screen">
           <div className="w-full">
             {/* Tabs */}
             <div className="bg-white py-3 mb-4 rounded-lg">
-              <div className="flex space-x-8">
+              <div className="flex items-center flex-wrap space-x-8">
                 {tabs.map((tab) => (
                   <button
                     key={tab}
