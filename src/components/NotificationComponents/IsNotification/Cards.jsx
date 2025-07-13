@@ -4,18 +4,22 @@ import DeleteConfirmationModal from "./DeleteConfirmationModal";
 import { FilterContext } from "./IsNotification";
 
 export default function Cards({ data, showModal, handleDelete, setShowModal }) {
-  const [state, _ ] = useContext(FilterContext);
+  const [state, _] = useContext(FilterContext);
   return (
     <div>
       {/* Notification Cards */}
       <div className="grid grid-cols-1 gap-6">
         {data.map((data) => {
           return state === "Unread" ? (
-            !data.isRead && <Card key={data.id} data={data} />
+            !data.isRead && (
+              <Card key={data.id} data={data} setShowModal={setShowModal} />
+            )
           ) : state === "Read" ? (
-            data.isRead && <Card key={data.id} data={data} />
+            data.isRead && (
+              <Card key={data.id} data={data} setShowModal={setShowModal} />
+            )
           ) : (
-            <Card key={data.id} data={data} />
+            <Card key={data.id} data={data} setShowModal={setShowModal} />
           );
         })}
       </div>
@@ -29,7 +33,7 @@ export default function Cards({ data, showModal, handleDelete, setShowModal }) {
   );
 }
 
-const Card = ({ data }) => {
+const Card = ({ data, setShowModal }) => {
   return (
     <div
       key={data.id}
