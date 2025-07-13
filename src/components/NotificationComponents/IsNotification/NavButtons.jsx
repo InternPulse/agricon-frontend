@@ -1,9 +1,14 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { FilterContext } from "./IsNotification";
 
 const NavButtons = ({ items }) => {
   const [filter, setFilter] = useContext(FilterContext);
   const [activeTab, setActiveTab] = useState("All");
+
+  useEffect(() => {
+    console.log(activeTab);
+    setFilter(activeTab);
+  }, [activeTab]);
 
   // switch button active state
   const getButtonClasses = (tabName) => {
@@ -21,8 +26,6 @@ const NavButtons = ({ items }) => {
           key={item}
           onClick={() => {
             setActiveTab(item);
-            setFilter(activeTab);
-            
           }}
           className={getButtonClasses(item)}
         >
