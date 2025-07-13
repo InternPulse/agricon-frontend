@@ -4,7 +4,7 @@ import DeleteConfirmationModal from "./DeleteConfirmationModal";
 import { FilterContext } from "./IsNotification";
 
 export default function Cards({ data, showModal, handleDelete, setShowModal }) {
-  const [state, setState] = useContext(FilterContext);
+  const [state, _ ] = useContext(FilterContext);
   return (
     <div>
       {/* Notification Cards */}
@@ -39,7 +39,7 @@ const Card = ({ data }) => {
           : !data.isRead
           ? "bg-[#A7E0CF]/10"
           : ""
-      } w-full p-2 md:px-0 md:py-4 md:h-[122px] lg:p-5 rounded-md`}
+      } w-full p-2 md:px-2 md:py-4 md:h-[122px] lg:p-5 rounded-md`}
     >
       <div className="flex gap-2 w-full">
         <div

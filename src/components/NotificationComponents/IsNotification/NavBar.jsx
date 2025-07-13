@@ -19,7 +19,7 @@ export default function NavBar({ read, unRead }) {
         </div>
 
         {/* Mark All as Read Button (only on md and up) */}
-        <button className="bg-deep-green text-white h-10 px-4 text-sm font-medium rounded hidden lg:block">
+        <button className="bg-deep-green text-white h-10 w-40 px-4 text-sm font-medium rounded hidden lg:block">
           Mark all as read
         </button>
       </div>
