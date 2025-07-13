@@ -11,11 +11,11 @@ export default function Cards({ data, showModal, handleDelete, setShowModal }) {
       <div className="grid grid-cols-1 gap-6">
         {data.map((data) => {
           return state === "Unread" ? (
-            !data.isRead && <Card data={data} />
+            !data.isRead && <Card key={data.id} data={data} />
           ) : state === "Read" ? (
-            data.isRead && <Card data={data} />
+            data.isRead && <Card key={data.id} data={data} />
           ) : (
-            <Card data={data} />
+            <Card key={data.id} data={data} />
           );
         })}
       </div>

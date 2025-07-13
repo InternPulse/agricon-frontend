@@ -6,7 +6,6 @@ const NavButtons = ({ items }) => {
   const [activeTab, setActiveTab] = useState("All");
 
   useEffect(() => {
-    console.log(activeTab);
     setFilter(activeTab);
   }, [activeTab]);
 
