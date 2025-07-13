@@ -13,13 +13,13 @@ const NavButtons = ({ items }) => {
   const getButtonClasses = (tabName) => {
     return `p-1 rounded-md transition-colors px-4 duration-200 ease-in-out ${
       activeTab === tabName
-        ? "bg-green-100 text-gray-800"
-        : "text-gray-800 hover:bg-gray-200"
+        ? "bg-green-100 text-sm sm:text-base text-gray-800"
+        : "text-[#8B8B8B] text-sm sm:text-base sm:text-gray-800 hover:bg-gray-200"
     }`;
   };
 
   return (
-    <div className="flex flex-wrap items-center p-1 gap-5 space-x-1 bg-white">
+    <div className="w-full max-w-100 md:max-w-130 flex flex-wrap justify-between items-center p-1 bg-white">
       {items.map((item) => (
         <button
           key={item}

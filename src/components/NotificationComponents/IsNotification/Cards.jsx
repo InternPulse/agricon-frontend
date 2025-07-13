@@ -31,46 +31,56 @@ export default function Cards({ data, showModal, handleDelete, setShowModal }) {
 
 const Card = ({ data }) => {
   return (
-    <div key={data.id} className="bg-[#A7E0CF1A] p-4 lg:p-5 rounded-md">
-      <div className="flex items-start lg:items-center  space-x-4 ">
-        {/* logo */}
-        <div>
-          <div
-            className={`size-10 rounded-full flex  items-center justify-center ${
-              data.type === "error" ? "bg-[#E2737333]" : "bg-[#C1E27366]"
-            }`}
-          >
-            <img
-              src={
-                data.type === "booking"
-                  ? assets.iconPark
-                  : data.type === "error"
-                  ? assets.polygon
-                  : data.type === "welcome"
-                  ? assets.wave
-                  : ""
-              }
-              alt="icon"
-              className="size-5"
-            />
-          </div>
+    <div
+      key={data.id}
+      className={`${
+        !data.isRead && data.type === "error"
+          ? "bg-[#E0A7A7]/10"
+          : !data.isRead
+          ? "bg-[#A7E0CF]/10"
+          : ""
+      } w-full p-2 md:px-0 md:py-4 md:h-[122px] lg:p-5 rounded-md`}
+    >
+      <div className="flex gap-2 w-full">
+        <div
+          className={`size-10 md:size-16 min-w-[40px] rounded-full flex  items-center justify-center ${
+            data.type === "error" ? "bg-[#E2737333]" : "bg-[#C1E273]/50"
+          }`}
+        >
+          <img
+            src={
+              data.type === "booking"
+                ? assets.iconPark
+                : data.type === "error"
+                ? assets.polygon
+                : data.type === "welcome"
+                ? assets.wave
+                : ""
+            }
+            alt="icon"
+            className="size-5 md:size-8"
+          />
         </div>
 
-        <div className="flex flex-col lg:flex-row lg:flex-1/2 lg:justify-between lg:items-center">
+        <div className="w-full flex flex-col md:flex-row md:flex-1/2 space-x-1 md:justify-between md:items-center">
           {/* content */}
           <div className="space-y-1">
-            <p className="text-md font-semibold  ">{data.title}</p>
-            <p className="text-sm font-light">{data.message}</p>
+            <p className="text-[18px] sm:text-[20px] font-semibold  ">
+              {data.title}
+            </p>
+            <p className="text-[14px] sm:text-[15px] font-light">
+              {data.message}
+            </p>
             <p className="text-sm font-light mb-2">{data.createdAt}</p>
           </div>
 
           {/* buttons */}
-          <div className="space-x-4 lg:space-x-2 lg:flex lg:items-center justify-center ">
-            <button className="bg-deep-green p-2 text-xs text-white rounded-md font-semibold lg:w-23">
+          <div className="gap-2 sm:gap-4  sm:h-[42px] lg:space-x-2 flex items-center md:justify-center ">
+            <button className="bg-[#02402D] p-1 px-2 sm:p-2 text-xs sm:text-[16px] text-[#F9FAFB] rounded-md md:font-semibold sm:w-[122px]">
               {data.type === "booking" ? "View Receipt" : "View Details"}
             </button>
             <button
-              className="border border-vibrant-red p-2 text-xs text-vibrant-red rounded-md font-semibold"
+              className="sm:w-[71px] border border-vibrant-red py-1 px-2 sm:p-2 text-xs sm:text-[16px] text-vibrant-red rounded-md sm:font-semibold"
               onClick={() => setShowModal(true)}
             >
               Delete

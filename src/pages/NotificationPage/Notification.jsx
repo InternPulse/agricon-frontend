@@ -22,6 +22,16 @@ export default function Notification() {
         createdAt: "June 20, 10:35 AM",
       },
       {
+        id: 0,
+        userId: "",
+        title: "Booking Confirmed",
+        message:
+          "Your booking for Cold Room A has been confirmed for June 22, 2025",
+        type: "booking",
+        isRead: false,
+        createdAt: "June 20, 10:35 AM",
+      },
+      {
         id: 1,
         userId: "",
         title: "Error Processing Payment",

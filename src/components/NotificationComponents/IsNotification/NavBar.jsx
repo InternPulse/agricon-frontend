@@ -12,9 +12,9 @@ export default function NavBar({ read, unRead }) {
       </p>
 
       {/* Filter and Action Buttons */}
-      <div className="lg:flex lg:justify-between lg:items-center bg-white lg:p-4 mb-8 ">
+      <div className="h-[40px] flex items-center bg-white lg:flex lg:justify-between lg:items-center bg-white lg:p-4 mb-8 ">
         {/* Filter Buttons */}
-        <div className="flex justify-between lg:gap-5 p-1">
+        <div className="h-full w-full flex justify-between items-center p-1">
           {<NavButtons items={['All', 'New', 'Read', 'Unread']}/>}
         </div>
 
