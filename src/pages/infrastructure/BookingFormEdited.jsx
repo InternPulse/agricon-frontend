@@ -54,7 +54,7 @@ export default function BookingFormEdited() {
     };
 
     const token =
-      "token_here"; // Replace with your actual token retrieval logic
+      ""; // Replace with your actual token retrieval logic
     const url = "https://agricon-express-backend.onrender.com/api/v1/bookings/";
 
     let retries = 3;
