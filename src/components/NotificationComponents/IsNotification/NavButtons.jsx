@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { FilterContext } from "./IsNotification";
 
 const NavButtons = ({ items }) => {
+  const [filter, setFilter] = useContext(FilterContext);
   const [activeTab, setActiveTab] = useState("All");
 
   // switch button active state
@@ -16,7 +18,12 @@ const NavButtons = ({ items }) => {
     <div className="flex flex-wrap items-center p-1 gap-5 space-x-1 bg-white">
       {items.map((item) => (
         <button
-          onClick={() => setActiveTab(item)}
+          key={item}
+          onClick={() => {
+            setActiveTab(item);
+            setFilter(activeTab);
+            
+          }}
           className={getButtonClasses(item)}
         >
           {item}
