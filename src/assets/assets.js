@@ -48,8 +48,8 @@ import exportClose from "./exportClose.png"
 import signoutIcon from "./signoutIcon.png"
 import Frame from './Frame.png'
 import pending from './round-pending-stamp-png.png'
-import frame1 from './frame2.png'
-import frame2 from './frame3.png'
+import frame1 from './Frame-2.png'
+import frame2 from './Frame-3.png'
 import diamond from './diamond.png'
 import packer from './packer.png'
 import calendar from './calendar.png'
