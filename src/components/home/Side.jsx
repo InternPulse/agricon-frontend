@@ -79,10 +79,10 @@ function Side({ picture, userName}) {
     return (
         <>
             {/* Mobile Menu Toggle Button */}
-            <div className="lg:hidden fixed top-4 left-3 z-50">
+            <div className="lg:hidden fixed top-4 right-3 z-50">
                 <FaBars
                     onClick={() => setShowMobileMenu(true)}
-                    className="w-8 h-8 cursor-pointer border border-[#02402D] rounded-md p-2 text-[#02402D] hover:border-[#FFAC00] hover:text-[#FFAC00]"
+                    className="w-8 h-8 cursor-pointer text-[#FFAC00]"
                 />
             </div>
 
@@ -133,25 +133,25 @@ function Side({ picture, userName}) {
             <div
                 className={`fixed inset-0 z-50 transition-opacity duration-300 ease-in-out
                             ${showMobileMenu ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}
-                onClick={() => setShowMobileMenu(false)} // This clicks the overlay to close
+                onClick={() => setShowMobileMenu(false)} 
             >
                 <div
                     // Prevent propagation so clicking inside the sidebar doesn't close it
                     onClick={(e) => e.stopPropagation()} 
-                    className={`fixed top-0 bottom-0 left-0 w-64 bg-[#02402D] text-gray-800 dark:text-white
+                    className={`fixed top-0 bottom-0 left-0 w-full bg-[#02402D] text-gray-800 dark:text-white
                                  shadow-lg transform transition-transform duration-300 ease-in-out z-50
                                 ${showMobileMenu ? 'translate-x-0' : '-translate-x-full'}`}
                 >
                     <div className='flex justify-between items-center px-6 py-4.5 border-b border-[#FFAC00] z-40'>
                         <Link to={`/${role}/notification`} 
                             onClick={() => setShowMobileMenu(false)}
-                            className='bg-green-100 rounded-full p-1 font-bold text-[#FFAC00]'
+                            className='font-bold text-[#FFAC00]'
                         >
                             <IoNotifications size={24}/>
                         </Link>
                         <FaTimes
                             onClick={() => setShowMobileMenu(false)}
-                            className='w-8 h-8 cursor-pointer text-gray-600 dark:text-gray-300 hover:text-red-500 dark:hover:text-[#FFAC00] border rounded-md p-2'
+                            className='w-8 h-8 cursor-pointer  text-[#FFAC00]'
                         />
                     </div>
                     <ul className='flex flex-col gap-2 mt-3 px-5 font-bold'>

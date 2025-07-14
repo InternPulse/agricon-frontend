@@ -38,17 +38,17 @@ function Contact() {
                              initial={{ opacity: 0, y: 20 }}
                              whileInView={{ opacity: 1, y: 0 }}
                              transition={{duration: 1.8}}
-                            className="space-y-3 flex items-center gap-5">
-                            <Link className="flex items-center gap-2 cursor-pointer hover:text-gray-900">
+                            className="space-x-5 flex items-center ">
+                            <Link className="flex items-center  cursor-pointer hover:text-gray-900">
                                 <FaFacebook className="text-blue-800"/> 
                             </Link>
-                            <Link className="flex items-center gap-2 cursor-pointer hover:text-gray-900">
+                            <Link className="flex items-center  cursor-pointer hover:text-gray-900">
                                 <FaLinkedin className="text-blue-800"/> 
                             </Link>
-                            <Link className="flex items-center gap-2 cursor-pointer hover:text-gray-900">
+                            <Link className="flex items-center  cursor-pointer hover:text-gray-900">
                                 <FaTwitter />
                             </Link>
-                            <Link className="flex items-center gap-2 cursor-pointer hover:text-gray-900">
+                            <Link className="flex items-center  cursor-pointer hover:text-gray-900">
                                 <FaInstagram className="text-red-800"/> 
                             </Link>
                         </motion.ul>

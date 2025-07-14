@@ -20,7 +20,7 @@ function Cta() {
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{duration: 1, delay: 0.3}}
                     >
-                        Ready to Stop Losing Harvest to Spoilage?
+                        Ready to Stop Losing Harvest <br className=" sm:hidden"/> to Spoilage?
                     </motion.h1>
                     <motion.p
                         className="text-lg px-5 md:text-xl mb-15 animate-fade-in-up delay-200 "

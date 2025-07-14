@@ -45,21 +45,39 @@ import deleteIcon from "./deleteIcon.png"
 import hamburger from "./hamburger.png"
 import NotificationsYellow from "./NotificationsYellow.png"
 import exportClose from "./exportClose.png"
-import  signoutIcon from "./signoutIcon.png"
+import signoutIcon from "./signoutIcon.png"
+import Frame from './Frame.png'
+import pending from './round-pending-stamp-png.png'
+import frame1 from './frame-2.png'
+import frame2 from './frame-3.png'
+import diamond from './diamond.png'
+import packer from './packer.png'
+import calendar from './calendar.png'
+import chair from './chair.png'
+
+
 
 export const assets = {
     agriconLogo,
     agriconlog,
+    packer,
+    diamond,
     success,
     authImage,
+    Frame,
+    pending,
+    chair,
+    calendar,
+    frame1,
+    frame2,
     otp,
     intern,
     kingsley,
     stanley,
     Ladicia,
     logistics,
-        img1,
-        img2,
+    img1,
+    img2,
     protectProduce,
     sharedInfra,
     smartSales,
@@ -162,11 +180,6 @@ export const FaqData = [
         id: 4,
         question: "Who can benefits from Agricon’s services?",
         answer: "AgriCon is designed for smallholder farmers, cooperatives, agribusinesses, and agricultural service providers. Whether you're an individual farmer seeking cold storage or a farming group looking to jointly access a processing plant, our platform ensures affordable, real-time access to critical infrastructure."
-    },
-    {
-        id: 5,
-        question: "How do Cooperative bookings works?",
-        answer: "Cooperative bookings allow multiple farmers to jointly reserve and share access to infrastructure like dryers and cold rooms. Using our mobile/web platform or USSD service, users can see real-time availability, form booking groups, and split costs—making access more affordable and efficient for everyone involved."
     }
 ]
 
@@ -192,35 +205,8 @@ export const FaqData = [
      {
         id: 4,
         image: transport,
-        name: "Transport Services",
-        desc: "Get your produce to market faster with verified, on-time delivery from trusted drivers near you.",   
+        name: "Cold Storage",
+        desc: "Keep your produce fresh with temperature-controlled cold rooms, available near your farm.",   
      },
 ]
 
-export const aboutOffer = [
-    {
-        id: 1,
-        image: 'icon',
-        name: 'Smart Infrastructure Access',
-        desc: "Farmers and cooperatives can browse verified listings for storage, drying floors, transport, and processing units available by location, etc."
-    },
-    {
-        id: 2,
-        image: 'icon',
-        name: 'Easy Booking & Coordination',
-        desc: "No more manual calls or paperwork. Agricon lets users view availability, set reminders, and book      instantly—all in one dashboard."
-    },
-    {
-        id: 3,
-        image: 'icon',
-        name: 'Market Intelligence & Planning Tools',
-        desc: "Users get access to real-time market prices, infrastructure demand data, and simple reports that help them make informed decisions."
-    },
-    {   
-        id: 4,
-        image:'icon',
-        name:'Cooperative Support Tools',
-        desc:"We empower cooperative leaders with group booking features, member management, and shared dashboards to coordinate faster."
-                    
-    }
-]

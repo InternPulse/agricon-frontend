@@ -12,7 +12,7 @@ import Contact from './pages/home/Contact';
 // import Dashboard from "./pages/Dashboard/Dashboard";
 import Settings from "./pages/Farmer-Profile-Management/Settings";
 import ChangePassword from "./pages/Farmer-Profile-Management/changePassword"; 
-import BookingForm from "./pages/infrastructure/BookingForm";
+import BookingForm from "./pages/infrastructure/BookingFormEdited";
 import FacilityDetails from "./pages/infrastructure/FacilityDetails";
 import Facility from "./pages/infrastructure/Facility";
 import RootLayout from './layout/RootLayout';
@@ -27,23 +27,21 @@ import FarmerLayout from './layout/Farmerlayout';
 import FarmerDashboard from './pages/Dashboard/FarmerDashboard';
 import FacilityOwnerDashboard from './pages/Dashboard/FacilityOwnerDashboard';
 import { AuthProvider } from './context/AuthContext.jsx';
-import FacilityProvider from './components/infrastructure/FacilityContext.jsx';
 import MyFacilityLayout from './layout/MyFacilityLayout.jsx';
 import MyFacilityPage from './pages/my-facility/MyFacilityPage.jsx';
-import AllNotification from './pages/NotificationPage/AllNotification.jsx'
 import Bookings from './pages/Bookings/Bookings.jsx';
 import BookingHistoryLayout from './layout/BookingHistoryLayout.jsx';
 import BookingList from './components/Bookings/BookingList.jsx';
 import FarmerDetails from './components/Bookings/FarmerDetails.jsx';
 import FacilityOwnerProfileLayout from './pages/facilityOwnerProfile/FacilityOwnerProfileLayout.jsx';
-import Profile from './pages/facilityOwnerProfile/Profile.jsx'
 import SubHeader from './pages/facilityOwnerProfile/SubHeader.jsx';
+import BookingSummary from './pages/infrastructure/BookingSummary.jsx';
+import Notification from './pages/NotificationPage/Notification.jsx'
 
 
 function App() {
   return (
     <AuthProvider>
-      <FacilityProvider>
         <Routes>
           <Route path='/' element={<RootLayout />}>
             <Route index element={<Home />} />
@@ -63,13 +61,14 @@ function App() {
           {/* Routes for farmer Dashboard */}
           <Route path='farmer' element={<FarmerLayout />}>
               <Route index element={< FarmerDashboard />} />
-              <Route path='notification' element={<AllNotification />}/>
-                <Route path="facility" element={<FacilityLayout />}>
-                    <Route index element={<Facility />}/>
-                    <Route path=":id" element={<FacilityDetails />} />
-                    <Route path="bookings" element={<BookingForm />} />
-                </Route> 
-                  <Route path="booking-history/*" element={<Bookings />} />
+              <Route path='notification' element={<Notification />}/>
+              <Route path="facility" element={<FacilityLayout />}>
+                  <Route index element={<Facility />}/>
+                  <Route path=":facilityId" element={<FacilityDetails />} />
+                  <Route path="bookings" element={<BookingForm />} />
+                  <Route path="booking-summary" element={<BookingSummary />} />
+              </Route> 
+              <Route path="booking-history" element={<BookingHistory />} />
               <Route path="settings/*" element={<SettingsLayout />} >
                   <Route index element={<Settings />} />
                   <Route path="change-password" element={<ChangePassword />} />
@@ -79,7 +78,7 @@ function App() {
             {/* Route for facility owner/operator */}
           <Route path="operator" element={<FacilityOwnerLayout />}>
                 <Route index element={<FacilityOwnerDashboard />}/>
-                <Route path='notification' element={<AllNotification />} />
+                <Route path='notification' element={<Notification />} />
                 <Route path="bookings" element={<BookingHistoryLayout />} >
                   <Route index element={<BookingList />} />
                   <Route path=":id" element={<FarmerDetails />} />
@@ -94,11 +93,12 @@ function App() {
           </Route>
           
         </Routes>
-        </FacilityProvider>
     </AuthProvider>
   )
 }
 
 
 export default App;
+
+
 

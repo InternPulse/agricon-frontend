@@ -5,7 +5,7 @@ import axios from 'axios';
 //get single facility
 export const getFacilityById = async (facilityId) => {
   const accessToken = localStorage.getItem('access_token');
-  if (!accessToken) throw new Error('Access token is missing.');
+  // if (!accessToken) throw new Error('Access token is missing.');
 
   try {
     const { data } = await axios.get(

@@ -1,5 +1,6 @@
 import { GoArrowUpRight } from "react-icons/go";
 import { LuWarehouse } from "react-icons/lu";
+import { Link } from 'react-router-dom';
 
 const LevelUp = () => {
   return (
@@ -18,9 +19,11 @@ const LevelUp = () => {
             post-harvest losses .
           </p>
         </div>
-        <button className="w-full h-10 bg-white text-[#02402D] text-sm font-semibold rounded-lg shadow-md hover:bg-gray-100 transition duration-300 ease-in-out flex items-center gap-1 justify-center">
+        <Link
+          to='/farmer/settings'
+          className="w-full h-10 bg-white text-[#02402D] text-sm font-semibold rounded-lg shadow-md hover:bg-gray-100 transition duration-300 ease-in-out flex items-center gap-1 justify-center">
           Get started <GoArrowUpRight />
-        </button>
+        </Link>
       </div>
     </div>
   );

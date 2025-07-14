@@ -40,11 +40,11 @@ function ServiceHub() {
                                 initial={{ opacity: 0, y: 50 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 transition={{duration: 1.4, delay: hub.id * 0.3}}
-                                className="bg-[#F9FAFB] rounded-xl px-2 py-5"
+                                className="bg-gray-100 rounded-xl px-2 py-2 space-y-3 pt-4 "
                             >
-                                    <img src={hub.image} alt='image_hub' className="mx-auto bg-[#F0F2F5] w-10 p-2 rounded-full"/>
-                                    <h2 className="font-bold text-xl">{hub.name}</h2>
-                                    <div className="font-semibold text-sm px-2">{hub.desc}</div>
+                                    <img src={hub.image} alt='image_hub' className="mx-auto bg-gray-200 w-10 p-2 rounded-full"/>
+                                    <h2 className="font-bold text-xl text-center">{hub.name}</h2>
+                                    <div className="font-semibold text-sm text-gray-500 text-center px-2">{hub.desc}</div>
                                     <FaArrowRight className="mx-auto bg-[#F0F2F5] p-2 rounded-full" size={28}/>
                             </motion.div>
                         ))}

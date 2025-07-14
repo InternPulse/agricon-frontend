@@ -38,19 +38,19 @@ const Profile = () => {
     // Load initial data from localStorage when the component mounts
     useEffect(() => {
         const operatorData = localStorage.getItem("operatorProfile");
-        const farmerEmail = localStorage.getItem("email"); 
+        const operatorEmail = localStorage.getItem("email"); 
 
         if (operatorData) {
             const parsedData = JSON.parse(operatorData);
             setProfileData({
                 firstName: parsedData.firstName || '',
                 lastName: parsedData.lastName || '',
-                email: farmerEmail || '', 
+                email: operatorEmail || '', 
                 phone: parsedData.phone || '',
                 address: parsedData.address || '',
             });
         } else {
-            setProfileData(prev => ({ ...prev, email: farmerEmail || '' }));
+            setProfileData(prev => ({ ...prev, email: operatorEmail || '' }));
         }
     }, []); 
 
@@ -93,13 +93,13 @@ const Profile = () => {
     // Function to cancel editing and revert to original data from localStorage
     const handleCancel = () => {
         const operatorData = localStorage.getItem("operatorProfile");
-        const farmerEmail = localStorage.getItem("email");
+        const operatorEmail = localStorage.getItem("email");
         if (operatorData) {
             const parsedData = JSON.parse(operatorData);
             setProfileData({
                 firstName: parsedData.firstName || '',
                 lastName: parsedData.lastName || '',
-                email: farmerEmail || '',
+                email: operatorEmail || '',
                 phone: parsedData.phone || '',
                 address: parsedData.address || '',
             });

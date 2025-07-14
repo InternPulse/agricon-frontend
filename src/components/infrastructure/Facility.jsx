@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
 import { facilityDetails } from "../../data.jsx";
 
-export default function Facility() {
+export default function Facility({ facility }) {
   return (
     <>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-2 mb-[4.5rem]">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 px-2 mb-[4.5rem]">
         {facilityDetails.map((item, index) => (
           <div
             key={index}
@@ -14,7 +14,18 @@ export default function Facility() {
               <p className="text-xl">{item.icon}</p>
               <p className="font-medium text-xl">{item.label}</p>
             </div>
-            <p>{item.description}</p>
+            {item.id === "type" && <p>{facility.type}</p>}
+            {item.id === "capacity" && <p>{facility.capacity}</p>}
+            {/* {item.id === hours && <p>{facility.name}</p>} */}
+            {item.id === "price" && (
+              <p>
+                {facility.pricePerDay.toLocaleString("en-NG", {
+                  style: "currency",
+                  currency: "NGN",
+                  minimumFractionDigits: 0,
+                })}
+              </p>
+            )}
           </div>
         ))}
       </div>

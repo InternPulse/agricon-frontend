@@ -25,7 +25,7 @@ const Header = ({ title, userName, picture }) => {
     
 
     return (
-        <div className='flex items-center border-b border-gray-700 bg-white justify-between space-x-10 py-5 px-20  backdrop-blur-3xl w-full z-30'>
+        <div className='flex items-center border-b border-gray-700 bg-white justify-between space-x-10 py-5 px-5  backdrop-blur-3xl w-full z-30'>
             <div className='font-bold text-xl'>
                 {title}
             </div>

@@ -96,7 +96,7 @@ export default function CalendarPicker() {
   };
 
   return (
-    <div className="grid xl:grid-cols-2 gap-8 rounded-xl border p-6 h-max w-full shadow-sm">
+    <div className="hidden md:inline-block grid xl:grid-cols-2 gap-8 rounded-xl border p-6 h-max w-full shadow-sm">
       <div>
         <p className="font-medium text-gray-700 mb-2">Pick time & date</p>
         {renderHeader()}

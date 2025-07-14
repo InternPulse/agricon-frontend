@@ -1,4 +1,5 @@
 import Donut from "./Donut";
+import { Link } from 'react-router-dom'
 
 const CompleteProfile = () => {
   return (
@@ -18,9 +19,9 @@ const CompleteProfile = () => {
             personalized insights tailored to your farm operations.
           </p>
         </div>
-        <button className="bg-[#02402D] w-full flex items-center justify-center text-white rounded-md text-[13px] h-10 font-semibold hover:bg-green-600 transition">
+          <Link to='/farmer/settings' className="bg-[#02402D] w-full flex items-center justify-center text-white rounded-md text-[13px] h-10 font-semibold hover:bg-green-600 transition">
           Continue to profile
-        </button>
+        </Link>
       </div>
     </div>
   );
