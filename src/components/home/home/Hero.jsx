@@ -18,7 +18,7 @@ function Hero() {
             <div className="absolute inset-0 bg-black opacity-50 z-10"></div> 
 
             <motion.div
-                className="relative text-center text-white lg:px-80 z-20" 
+                className="relative text-center text-white px-5  lg:px-50 z-20" 
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1.0, ease: 'easeOut' }}
@@ -30,7 +30,7 @@ function Hero() {
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, delay: 0.3 }}
                     >
-                        Modern Infrastructure <br className="lg:hidden"/> for Smart Farming.
+                        Modern Infrastructure <br className=""/> for Smart Farming.
                     </motion.h1>
                     <motion.h6
                         className="text-lg px-5 md:text-xl mb-8 animate-fade-in-up delay-200 "

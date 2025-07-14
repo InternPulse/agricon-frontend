@@ -12,7 +12,7 @@ import Contact from './pages/home/Contact';
 // import Dashboard from "./pages/Dashboard/Dashboard";
 import Settings from "./pages/Farmer-Profile-Management/Settings";
 import ChangePassword from "./pages/Farmer-Profile-Management/changePassword"; 
-import BookingForm from "./pages/infrastructure/BookingForm";
+import BookingForm from "./pages/infrastructure/BookingFormEdited";
 import FacilityDetails from "./pages/infrastructure/FacilityDetails";
 import Facility from "./pages/infrastructure/Facility";
 import RootLayout from './layout/RootLayout';
@@ -36,6 +36,7 @@ import BookingList from './components/Bookings/BookingList.jsx';
 import FarmerDetails from './components/Bookings/FarmerDetails.jsx';
 import FacilityOwnerProfileLayout from './pages/facilityOwnerProfile/FacilityOwnerProfileLayout.jsx';
 import SubHeader from './pages/facilityOwnerProfile/SubHeader.jsx';
+import BookingSummary from './pages/infrastructure/BookingSummary.jsx';
 
 
 function App() {
@@ -63,8 +64,9 @@ function App() {
               <Route path='notification' element={<AllNotification />}/>
               <Route path="facility" element={<FacilityLayout />}>
                   <Route index element={<Facility />}/>
-                  <Route path=":id" element={<FacilityDetails />} />
+                  <Route path=":facilityId" element={<FacilityDetails />} />
                   <Route path="bookings" element={<BookingForm />} />
+                  <Route path="booking-summary" element={<BookingSummary />} />
               </Route> 
               <Route path="booking-history" element={<BookingHistory />} />
               <Route path="settings/*" element={<SettingsLayout />} >
@@ -97,4 +99,6 @@ function App() {
 
 
 export default App;
+
+
 

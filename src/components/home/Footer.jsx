@@ -1,19 +1,9 @@
 import { FaFacebook, FaInstagram, FaLinkedin, FaTwitter } from 'react-icons/fa';
 import { assets } from '../../assets/assets';
+import { Link } from 'react-router-dom';
 
 function Footer() {
     const currentYear = new Date().getFullYear();
-
-    // Function to scroll to a specific section
-    const scrollToSection = (id) => {
-        const element = document.getElementById(id);
-        if (element) {
-            element.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start',
-            });
-        }
-    };
 
     return (
         <section
@@ -39,11 +29,11 @@ function Footer() {
                     </div>
                     <div>
                         <ul className="space-y-3">
-                            <li className="font-bold text-gray-900">Quick Links</li>
-                            <li><a onClick={(e) => { e.preventDefault(); scrollToSection('hero'); }} className="cursor-pointer hover:text-gray-900">Home</a></li>
-                            <li><a onClick={(e) => { e.preventDefault(); scrollToSection('services'); }} className="cursor-pointer hover:text-gray-900">Services</a></li>
-                            <li><a onClick={(e) => { e.preventDefault(); scrollToSection('contact'); }} className="cursor-pointer hover:text-gray-900">Contact Us</a></li>
-                            <li><a onClick={(e) => { e.preventDefault(); scrollToSection('about'); }} className="cursor-pointer hover:text-gray-900">About Us</a></li>
+                            <li className="font-bold text-gray-900 block">Quick Links</li>
+                            <Link to='/' className="cursor-pointer hover:text-gray-900 block">Home</Link>
+                            <Link to='/services' className="cursor-pointer hover:text-gray-900 block">Services</Link>
+                            <Link to='/about' className="cursor-pointer hover:text-gray-900 block">About Us</Link>
+                            <Link to='/contact' className="cursor-pointer hover:text-gray-900 block">Contact Us</Link>
                         </ul>
                     </div>
                     <div>

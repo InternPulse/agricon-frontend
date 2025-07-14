@@ -23,9 +23,10 @@ const Navbar = () => {
   return (
     <>
       <div className='absolute top-0 left-0 w-full z-40'>
-        <div className='bg-gray-100 w-full flex justify-between fixed items-center py-4 px-8 md:px-10 lg:px-32 font-bold'>
+        <div className='bg-[#02402D] w-full flex justify-between fixed items-center py-4 px-8 md:px-10 lg:px-32 font-bold md:bg-gray-100'>
           <Link to="/">
-            <img src={assets.agriconLogo} alt="" className="w-20"/>
+            <img src={assets.agriconLogo} alt="" className="w-20 hidden sm:inline-block"/>
+            <img src={assets.agriconLogoWhite} alt="" className="w-20 md:hidden"/>
           </Link>
           <ul className='hidden first md:flex gap-7 lg:gap-7 text-gray-500 text-md px-4'>
             <NavLink
@@ -55,19 +56,19 @@ const Navbar = () => {
           </ul>
           <GiHamburgerMenu
             onClick={() => setShowMobileMenu(true)}
-            className="md:hidden text-green-950" size={24}
+            className="md:hidden text-[#FFAC00]" size={24}
           />
         </div>
 
         {/* mobile screen */}
         <div
-          className={`md:hidden ${showMobileMenu ? "fixed w-90" : "h-0 w-0"}
-                       left-0 top-0 bottom-0 overflow-hidden bg-gray-100 text-gray-800 transition-all drop-shadow-lg`}>
+          className={`md:hidden ${showMobileMenu ? "fixed w-full" : "h-0 w-0"}
+                       left-0 top-0 bottom-0 overflow-hidden bg-[#02402D] text-gray-100 transition-all drop-shadow-lg`}>
           <div className='flex justify-between p-6 cursor-pointer text-green'>
             <h1 className='text-lg font-bold text-red-400'>
-              <img src={assets.agriconLogo} alt='' className="w-20"/>
+              <img src={assets.agriconLogoWhite} alt="" className="w-20"/>
             </h1>
-            <FaTimes to='/' onClick={() => setShowMobileMenu(false)} className="text-green-950" size={24}/>
+            <FaTimes to='/' onClick={() => setShowMobileMenu(false)} className="text-[#FFAC00]" size={25}/>
           </div>
 
           <ul

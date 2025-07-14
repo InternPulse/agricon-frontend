@@ -1,10 +1,42 @@
-import { aboutOffer } from "../../../assets/assets";
 import { motion } from 'framer-motion'
+import { assets } from '../../../assets/assets';
+import { MdOutlineChairAlt } from 'react-icons/md';
+import { FaCalendarAlt } from 'react-icons/fa';
+
 
 function Offer() {
+
+    const aboutOffer = [
+    {
+        id: 1,
+        image: assets.diamond,
+        name: 'Smart Infrastructure Access',
+        desc: "Farmers and cooperatives can browse verified listings for storage, drying floors, transport, and processing units available by location, etc."
+    },
+    {
+        id: 2,
+        image: assets.calendar,
+        name: 'Easy Booking & Coordination',
+        desc: "No more manual calls or paperwork. Agricon lets users view availability, set reminders, and book      instantly—all in one dashboard."
+    },
+    {
+        id: 3,
+        image: assets.chair, 
+        name: 'Market Intelligence & Planning Tools',
+        desc: "Users get access to real-time market prices, infrastructure demand data, and simple reports that help them make informed decisions."
+    },
+    {   
+        id: 4,
+        image: assets.packer,
+        name:'Harvest Protection Made Simple',
+        desc:"Reduce spoilage with access to drying, storage, and transport Preserve your crops and sell when prices are right."
+                    
+    }
+]
+
     return (
         <div className="flex items-center justify-center py-15 px-5">
-            <div className="space-y-6">
+            <div className="space-y-10">
                 <motion.h1
                      initial={{ opacity: 0, y: 20 }}
                      whileInView={{ opacity: 1, y: 0 }}
@@ -22,12 +54,12 @@ function Offer() {
                             initial={{ opacity: 0, y: 50 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{duration: 1.4, delay: about.id * 0.3}}
-                            className="bg-[#F9FAFB] drop-shadow-lg rounded-md  px-3 py-5">
-                            <div className="flex items-center justify-center space-x-3">
-                                <p>{about.image}</p>
+                            className="bg-[#F9FAFB] drop-shadow-lg rounded-md  px-3 py-3">
+                            <div className="flex items-center  space-x-3">
+                                <img src={about.image} alt={about.name} className="w-12 h-12 object-contain bg-[#02402D] px-3 rounded-full" /> 
                                 <h2 className="font-bold text-xl">{about.name}</h2>
                             </div>
-                            <div className="font-semibold px-2 pt-5">{about.desc}</div>
+                            <div className="font-semibold px-1 pt-3">{about.desc}</div>
                         </motion.div>
                     ))}     
                 </div>    

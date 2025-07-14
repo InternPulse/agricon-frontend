@@ -1,7 +1,7 @@
 import React from "react";
 import Hero from "../../components/home/home/Hero";
 import OurService from "../../components/home/home/OurService";
-import WhyAgricon from "../../components/home/home/WhyAgricon";
+// import WhyAgricon from "../../components/home/home/WhyAgricon";
 import HowAgriconWorks from "../../components/home/home/HowAgriconWorks";
 import Testimonials from "../../components/home/home/Testimonials";
 import Faq from "../../components/home/home/Faq";
@@ -12,7 +12,7 @@ function Home() {
         <>
             <Hero />
             <OurService />
-            <WhyAgricon />
+            {/* <WhyAgricon /> */}
             <HowAgriconWorks />
             <Testimonials />
             <Faq />

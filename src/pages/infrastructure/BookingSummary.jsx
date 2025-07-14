@@ -1,80 +1,79 @@
-import { useEffect, useState } from "react";
 import Button from "../../components/infrastructure/ui/Button";
-import { format } from "date-fns";
+import { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
+import { format, differenceInDays } from "date-fns";
 
 import agriconLogo from "../../assets/agriconLogo.png";
 import coldRoom from "../../assets/coldRoom.png";
-import logistics from "../../assets/logistics.png";
 import pendingStamp from "../../assets/pendingStamp.png";
 
 export default function BookingSummary() {
-  const [booking, setBooking] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [name, setName] = useState("User");
+  const [orderDate, setOrderDate] = useState("N/A");
+  const [orderNumber, setOrderNumber] = useState("N/A");
+  const [duration, setDuration] = useState(0);
+  const [coldStoragePrice, setColdStoragePrice] = useState(0);
+  const [subTotal, setSubTotal] = useState(0);
+  const [shipping, setShipping] = useState(2000);
+  const [vat, setVat] = useState(0);
+  const [total, setTotal] = useState(0);
 
-  //   useEffect(() => {
-  //     async function fetchBooking() {
-  //       try {
-  //         const response = await fetch("http://localhost:4000/bookings");
-  //         const data = await response.json();
-
-  //         if (Array.isArray(data) && data.length > 0) {
-  //           const latestBooking = data[data.length - 1];
-  //           setBooking(latestBooking);
-  //         }
-  //       } catch (err) {
-  //         console.error("Failed to fetch booking data", err);
-  //       } finally {
-  //         setLoading(false);
-  //       }
-  //     }
-
-  //     fetchBooking();
-  //   }, []);
+  const location = useLocation();
 
   useEffect(() => {
-    const defaultBooking = {
-      name: "John Doe",
-      date: new Date().toISOString(),
-      duration: 3,
-      requirement: "Requires 24/7 temperature monitoring.",
-    };
-
-    setTimeout(() => {
-      setBooking(defaultBooking);
-      setLoading(false);
-    }, 500); // Simulated loading delay
-  }, []);
-
-  if (loading) {
-    return <div className="p-8 text-center">Loading booking summary...</div>;
-  }
-
-  if (!booking) {
-    return (
-      <div className="p-8 text-center text-red-500">No booking data found.</div>
-    );
-  }
-
-  let orderDate = "N/A";
-  try {
-    if (booking.date) {
-      const parsedDate = new Date(booking.date);
-      if (!isNaN(parsedDate)) {
-        orderDate = format(parsedDate, "do MMMM, yyyy");
+    const farmerProfileString = localStorage.getItem("farmerProfile");
+    if (farmerProfileString) {
+      try {
+        const farmerProfile = JSON.parse(farmerProfileString);
+        setName(farmerProfile.name || "Farmer");
+      } catch (e) {
+        console.error("Error parsing farmerProfile from localStorage:", e);
       }
     }
-  } catch (error) {
-    console.error("Invalid booking date:", booking.date, error);
-  }
-  const duration = booking.duration || "N/A";
-  const name = booking.name || "User";
 
-  const coldStoragePrice = 1500;
-  const logisticsPrice = 3000;
-  const subTotal = coldStoragePrice * duration + logisticsPrice;
-  const shipping = 750;
-  const vat = 7.5;
-  const total = subTotal + shipping + vat;
+    const bookingDetailsString = localStorage.getItem("currentBookingDetails");
+    if (bookingDetailsString) {
+      try {
+        const bookingDetails = JSON.parse(bookingDetailsString);
+        console.log("Retrieved bookingDetails from localStorage:", bookingDetails);
+
+        setOrderNumber(bookingDetails.bookingId || "N/A");
+
+        const startDate = bookingDetails.startDate ? new Date(bookingDetails.startDate) : null;
+        const endDate = bookingDetails.endDate ? new Date(bookingDetails.endDate) : null;
+
+        if (startDate) {
+          setOrderDate(format(startDate, "dd/MM/yyyy"));
+        }
+
+        let calculatedDuration = 0;
+        if (startDate && endDate) {
+          calculatedDuration = differenceInDays(endDate, startDate);
+          if (calculatedDuration < 1) {
+            calculatedDuration = 1;
+          }
+          setDuration(calculatedDuration);
+        }
+
+        const pricePerDay = bookingDetails.amount ? Number(bookingDetails.amount) : 0;
+        setColdStoragePrice(pricePerDay);
+
+        const calculatedSubTotal = pricePerDay * calculatedDuration; // Removed logisticsPrice
+        setSubTotal(calculatedSubTotal);
+
+        const calculatedVat = calculatedSubTotal * 0.075;
+        setVat(calculatedVat);
+
+        const calculatedTotal = calculatedSubTotal + shipping + calculatedVat;
+        setTotal(calculatedTotal);
+
+      } catch (e) {
+        console.error("Error parsing currentBookingDetails from localStorage:", e);
+      }
+    } else {
+      console.warn("No 'currentBookingDetails' found in localStorage. User might not have completed a booking yet.");
+    }
+  }, [shipping]); // Removed logisticsPrice from dependencies
 
   return (
     <div className="w-full bg-white p-6 rounded-2xl shadow-md mt-10">
@@ -97,7 +96,7 @@ export default function BookingSummary() {
         </div>
         <div className="border-r border-gray-300 max-lg:border-none">
           <p className="text-sm text-gray-700">Order number</p>
-          <p className="text-gray-800 font-medium">N/A</p>
+          <p className="text-gray-800 font-medium">{orderNumber}</p>
         </div>
         <div className="border-r border-gray-300">
           <p className="text-sm text-gray-700">Payment method</p>
@@ -130,22 +129,7 @@ export default function BookingSummary() {
 
       <hr className="border-t border-gray-300 my-12" />
 
-      <div className="flex items-start justify-between mb-8">
-        <div className="flex gap-4">
-          <img
-            src={logistics}
-            alt="Logistics"
-            className="max-w-[80px] w-full object-cover rounded-md"
-          />
-          <div className="flex flex-col gap-4">
-            <p className="font-medium text-lg">Logistics Support</p>
-            <p className="text-sm text-gray-500">Quantity: 1 trip</p>
-          </div>
-        </div>
-        <p className="font-medium text-sm">
-          ₦{logisticsPrice.toLocaleString()}/day
-        </p>
-      </div>
+      {/* Logistics section removed */}
 
       <div className="flex flex-wrap justify-between mb-8 ">
         <img
