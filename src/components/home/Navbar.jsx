@@ -25,7 +25,7 @@ const Navbar = () => {
       <div className='absolute top-0 left-0 w-full z-40'>
         <div className='bg-[#02402D] w-full flex justify-between fixed items-center py-4 px-8 md:px-10 lg:px-32 font-bold md:bg-gray-100'>
           <Link to="/">
-            <img src={assets.agriconLogo} alt="" className="w-20 hidden sm:inline-block"/>
+            <img src={assets.agriconLogo} alt="" className="w-20 hidden md:inline-block"/>
             <img src={assets.agriconLogoWhite} alt="" className="w-20 md:hidden"/>
           </Link>
           <ul className='hidden first md:flex gap-7 lg:gap-7 text-gray-500 text-md px-4'>
