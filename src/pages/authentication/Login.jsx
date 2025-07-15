@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
 import LeftSide from './LeftSide';
 import { useAuth } from '../../context/AuthContext';
@@ -100,9 +100,9 @@ const Login = () => {
           </form>
           <p className="text-sm text-center text-gray-700">
             Don’t have an account?{' '}
-            <a href="/roles" className="font-semibold text-black hover:underline">
+            <Link to="/roles" className="font-semibold text-black">
               Sign Up
-            </a>
+            </Link>
           </p>
         </div>
       </div>

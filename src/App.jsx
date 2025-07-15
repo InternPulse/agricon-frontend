@@ -29,7 +29,6 @@ import FacilityOwnerDashboard from './pages/Dashboard/FacilityOwnerDashboard';
 import { AuthProvider } from './context/AuthContext.jsx';
 import MyFacilityLayout from './layout/MyFacilityLayout.jsx';
 import MyFacilityPage from './pages/my-facility/MyFacilityPage.jsx';
-import AllNotification from './pages/NotificationPage/AllNotification.jsx'
 import Bookings from './pages/Bookings/Bookings.jsx';
 import BookingHistoryLayout from './layout/BookingHistoryLayout.jsx';
 import BookingList from './components/Bookings/BookingList.jsx';
@@ -37,6 +36,7 @@ import FarmerDetails from './components/Bookings/FarmerDetails.jsx';
 import FacilityOwnerProfileLayout from './pages/facilityOwnerProfile/FacilityOwnerProfileLayout.jsx';
 import SubHeader from './pages/facilityOwnerProfile/SubHeader.jsx';
 import BookingSummary from './pages/infrastructure/BookingSummary.jsx';
+import Notification from './pages/NotificationPage/Notification.jsx'
 
 
 function App() {
@@ -61,7 +61,7 @@ function App() {
           {/* Routes for farmer Dashboard */}
           <Route path='farmer' element={<FarmerLayout />}>
               <Route index element={< FarmerDashboard />} />
-              <Route path='notification' element={<AllNotification />}/>
+              <Route path='notification' element={<Notification />}/>
               <Route path="facility" element={<FacilityLayout />}>
                   <Route index element={<Facility />}/>
                   <Route path=":facilityId" element={<FacilityDetails />} />
@@ -78,7 +78,7 @@ function App() {
             {/* Route for facility owner/operator */}
           <Route path="operator" element={<FacilityOwnerLayout />}>
                 <Route index element={<FacilityOwnerDashboard />}/>
-                <Route path='notification' element={<AllNotification />} />
+                <Route path='notification' element={<Notification />} />
                 <Route path="bookings" element={<BookingHistoryLayout />} >
                   <Route index element={<BookingList />} />
                   <Route path=":id" element={<FarmerDetails />} />

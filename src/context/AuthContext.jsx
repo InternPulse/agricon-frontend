@@ -10,7 +10,7 @@ export const AuthProvider = ({ children }) => {
     // get roles from localStorage
     const storedRole = localStorage.getItem('userRole');
     if (storedRole) {
-      setUserRole(storedRole); // Store it in another string variable
+      setUserRole(storedRole); 
     }
     setLoading(false); 
   }, []);
@@ -18,7 +18,7 @@ export const AuthProvider = ({ children }) => {
   //get roles from login
   const login = (role) => {
     setUserRole(role);
-    localStorage.setItem('userRole', role); // Store the role string
+    localStorage.setItem('userRole', role);
   };
 
 
