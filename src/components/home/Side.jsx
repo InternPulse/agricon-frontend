@@ -79,7 +79,7 @@ function Side({ picture, userName}) {
     return (
         <>
             {/* Mobile Menu Toggle Button */}
-            <div className="lg:hidden fixed top-4 right-3 z-50">
+            <div className="lg:hidden absolute top-4 right-3 z-50">
                 <FaBars
                     onClick={() => setShowMobileMenu(true)}
                     className="w-8 h-8 cursor-pointer text-[#FFAC00]"
