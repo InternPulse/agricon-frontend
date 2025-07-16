@@ -54,6 +54,9 @@ import diamond from './diamond.png'
 import packer from './packer.png'
 import calendar from './calendar.png'
 import chair from './chair.png'
+import dryingFacilities from './FacilityDashboard/DryingImg.png'
+import store from './FacilityDashboard/StorageImg.png'
+import cold from './FacilityDashboard/cold.png'
 
 
 
@@ -71,6 +74,9 @@ export const assets = {
     frame1,
     frame2,
     otp,
+    dryingFacilities,
+    store,
+    cold,
     intern,
     kingsley,
     stanley,

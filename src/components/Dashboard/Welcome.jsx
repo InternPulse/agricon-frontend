@@ -3,7 +3,7 @@ import { PiHandWavingFill } from "react-icons/pi";
 
 const Welcome = () => {
   return (
-    <div className="welcome">
+    <div className="welcome sm:mb-5">
       <h1 className="text-md sm:text-lg xl:text-[24px] font-semibold text-gray-900 mb-1 sm:mb-2 flex items-center gap-1">
         Welcome back,
         <PiHandWavingFill fill="#e49c00" />

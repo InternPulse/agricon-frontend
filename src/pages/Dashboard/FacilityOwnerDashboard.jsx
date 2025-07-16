@@ -19,7 +19,7 @@ export default function FacilityOwnerDashboard() {
         <section className="flex flex-wrap">
           <div className="p-5 md:border-r border-[#D0D5DD] w-full">
             <div className="flex-col gap-6">
-              <div className="w-full mb-5 sm:mb-0 flex justify-between items-center">
+              <div className="w-full mb-5 flex justify-between items-center">
                 <Welcome />
                 <Date />
               </div>
