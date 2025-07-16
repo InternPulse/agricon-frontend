@@ -11,7 +11,7 @@ export default function FacilityProvider({ children }) {
      const accessToken  = localStorage.getItem('access_token')
       try {
         const response = await fetch(
-          "https://agricon-express-backend.onrender.com/api/v1/facilities?limit=10&page=2&available=true",
+          "https://agricon-express-backend.onrender.com/api/v1/facilities?limit=10&page=1&available=true",
           {
             headers: {
               "Content-Type": "application/json",
