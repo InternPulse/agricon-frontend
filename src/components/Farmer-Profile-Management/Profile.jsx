@@ -36,7 +36,7 @@ const Profile = () => {
 
     // Define a constant for the localStorage key to avoid typos
     const FARMER_PROFILE_STORAGE_KEY = "farmerProfile";
-    const EMAIL_STORAGE_KEY = "email"; // Assuming email is stored separately and consistently
+    const EMAIL_STORAGE_KEY = "email"; 
 
     // Load initial data from localStorage when the component mounts
     useEffect(() => {
@@ -48,7 +48,7 @@ const Profile = () => {
             setProfileData({
                 firstName: parsedData.firstName || '',
                 lastName: parsedData.lastName || '',
-                email: farmerEmail || '', // Email is separate but included in profileData state
+                email: farmerEmail || '', 
                 phone: parsedData.phone || '',
                 address: parsedData.address || '',
             });
@@ -56,7 +56,7 @@ const Profile = () => {
             // If no farmerProfile data, at least set the email if available
             setProfileData(prev => ({ ...prev, email: farmerEmail || '' }));
         }
-    }, []); // Empty dependency array means this runs only once on mount
+    }, []); 
 
     // Handler for input changes in edit mode
     const handleChange = (e) => {
@@ -87,10 +87,9 @@ const Profile = () => {
             localStorage.setItem(EMAIL_STORAGE_KEY, profileData.email);
 
             setSuccessMessage("Profile updated successfully!");
-            setIsEditing(false); // Exit editing mode
+            setIsEditing(false); 
         } catch (err) {
             console.error("Error updating profile:", err);
-            // Accessing error message from response, or fallback to generic
             setError(err.response?.data?.message || err.message || "Failed to update profile.");
         } finally {
             setLoading(false);
@@ -107,7 +106,7 @@ const Profile = () => {
             setProfileData({
                 firstName: parsedData.firstName || '',
                 lastName: parsedData.lastName || '',
-                email: farmerEmail || '', // Make sure email reverts correctly
+                email: farmerEmail || '', 
                 phone: parsedData.phone || '',
                 address: parsedData.address || '',
             });
@@ -181,7 +180,7 @@ const Profile = () => {
                             type='tel'
                         />
                         <DetailRow
-                            label='Facility Address'
+                            label='Address'
                             name='address'
                             value={profileData.address}
                             onChange={handleChange}

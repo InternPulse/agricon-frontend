@@ -1,62 +1,61 @@
-import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom';
-import { FaBars, FaCog, FaSignOutAlt, FaTimes } from 'react-icons/fa';
+import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
+import { FaBars, FaCog, FaSignOutAlt, FaTimes } from "react-icons/fa";
 import { MdOutlineDashboard } from "react-icons/md";
 import { AiFillNotification, AiOutlineFileSearch } from "react-icons/ai";
 import { FaCubes } from "react-icons/fa";
-import { useEffect, useState } from 'react';
-import { assets } from '../../assets/assets';
-import Donut from '../Dashboard/Donut';
-import { logout } from '../../api/logout';
+import { useEffect, useState } from "react";
+import { assets } from "../../assets/assets";
+import Donut from "../Dashboard/Donut";
+import { logout } from "../../api/logout";
 import { IoNotifications } from "react-icons/io5";
+import { ClipLoader } from 'react-spinners';
 
-
-
-function Side({ picture, userName}) {
+function Side({ picture, userName }) {
     const location = useLocation();
     const [showMobileMenu, setShowMobileMenu] = useState(false);
+    const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
-    const userRole = localStorage.getItem("userRole")?.toUpperCase() || ''; 
+    const userRole = localStorage.getItem("userRole")?.toUpperCase() || '';
 
-    //get the user roles for displaying of notifications
     const role = localStorage.getItem('userRole');
 
-    //logout handler 
+    //logout handler
     const handleLogout = async () => {
+        setLoading(true);
         try {
-            //call the api
-            await logout(); 
-            navigate('/login'); // Use navigate instead of Navigate
+            await logout();
+            navigate('/login');
         } catch (error) {
             console.error('Logout failed:', error);
             navigate('/login');
+        } finally {
+            setLoading(false);
         }
     };
-        
 
     // Prevent body and html scrolling when the mobile navbar is opened
     useEffect(() => {
-        if (showMobileMenu) {
+        if (showMobileMenu || loading) { 
             document.body.style.overflow = "hidden";
-            document.documentElement.style.overflow = "hidden"; 
+            document.documentElement.style.overflow = "hidden";
         } else {
             document.body.style.overflow = "auto";
-            document.documentElement.style.overflow = "auto"; 
+            document.documentElement.style.overflow = "auto";
         }
         return () => {
             document.body.style.overflow = "auto";
-            document.documentElement.style.overflow = "auto"; 
+            document.documentElement.style.overflow = "auto";
         };
-    }, [showMobileMenu]);
+    }, [showMobileMenu, loading]); 
 
-    const isActive = (path) => {
-        return location.pathname === path;
-    };
+  const isActive = (path) => {
+    return location.pathname === path;
+  };
 
-    
     const activeClass = "bg-[#FFAC00] text-white";
     const inactiveClass = "hover:border hover:border-[#FFAC00]";
 
-    // Define navigation items based on role
+    // sidebar navigation items based on role
     const navItems = {
         FARMER: [
             { path: '/farmer', icon: MdOutlineDashboard, text: 'Dashboard' },
@@ -70,14 +69,19 @@ function Side({ picture, userName}) {
             { path: '/operator/bookings', icon: AiOutlineFileSearch, text: 'Bookings' },
             { path: '/operator/settings', icon: FaCog, text: 'Settings' },
         ],
-        
     };
 
-    
-    const currentNavItems = navItems[userRole] || []; 
+    const currentNavItems = navItems[userRole] || [];
 
     return (
         <>
+            {/* Full-page loading overlay */}
+            {loading && (
+                <div className='fixed inset-0 bg-white flex justify-center items-center z-[9999]'> 
+                    <ClipLoader color='#02402D' size={50} /> 
+                </div>
+            )}
+
             {/* Mobile Menu Toggle Button */}
             <div className="lg:hidden fixed top-4 right-3 z-50">
                 <FaBars
@@ -104,9 +108,9 @@ function Side({ picture, userName}) {
                         </Link>
                     ))}
                 </ul>
-                <div className="profile py-5 px-3">
+                <div className="profile py-5 px-5">
                     <div className="bg-white flex flex-col gap-5 p-2 rounded-xl shadow-inner mb-4">
-                        <div className="flex  ">
+                        <div className="flex">
                             <div className="top flex">
                                 <div className="w-full">
                                     <Donut completionPercentage={62} />
@@ -121,37 +125,39 @@ function Side({ picture, userName}) {
                                 </div>
                             </div>
                         </div>
-                        <button className="w-full text-left flex items-center justify-center px-3 py-2 bg-[#02402D] text-white rounded-lg shadow-sm hover:bg-green-600 transition mb-2 text-sm font-medium">
+                        <Link
+                            to={`/${role}/settings`}
+                            onClick={() => setShowMobileMenu(false)}
+                            className="w-full text-left flex items-center justify-center px-3 py-2 bg-[#02402D] text-white rounded-lg shadow-sm hover:bg-green-600 transition mb-2 text-sm font-medium">
                             Update Profile
-                        </button>
+                        </Link>
                     </div>
                 </div>
-                
+
             </div>
 
             {/* Mobile Sidebar */}
             <div
                 className={`fixed inset-0 z-50 transition-opacity duration-300 ease-in-out
                             ${showMobileMenu ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}
-                onClick={() => setShowMobileMenu(false)} 
+                onClick={() => setShowMobileMenu(false)}
             >
                 <div
-                    // Prevent propagation so clicking inside the sidebar doesn't close it
-                    onClick={(e) => e.stopPropagation()} 
-                    className={`fixed top-0 bottom-0 left-0 w-full bg-[#02402D] text-gray-800 dark:text-white
-                                 shadow-lg transform transition-transform duration-300 ease-in-out z-50
+                    onClick={(e) => e.stopPropagation()}
+                    className={`fixed top-0 bottom-0 left-0 w-[99%] bg-[#02402D] text-gray-800 dark:text-white
+                                shadow-lg transform transition-transform duration-300 ease-in-out z-50
                                 ${showMobileMenu ? 'translate-x-0' : '-translate-x-full'}`}
                 >
                     <div className='flex justify-between items-center px-6 py-4.5 border-b border-[#FFAC00] z-40'>
-                        <Link to={`/${role}/notification`} 
+                        <Link to={`/${role}/notification`}
                             onClick={() => setShowMobileMenu(false)}
                             className='font-bold text-[#FFAC00]'
                         >
-                            <IoNotifications size={24}/>
+                            <IoNotifications size={24} />
                         </Link>
                         <FaTimes
                             onClick={() => setShowMobileMenu(false)}
-                            className='w-8 h-8 cursor-pointer  text-[#FFAC00]'
+                            className='w-8 h-8 cursor-pointer text-[#FFAC00]'
                         />
                     </div>
                     <ul className='flex flex-col gap-2 mt-3 px-5 font-bold'>
@@ -166,7 +172,7 @@ function Side({ picture, userName}) {
                             </Link>
                         ))}
                     </ul>
-                    <div className="profile py-5 px-3">
+                    <div className="profile py-5 px-5">
                         <div className="bg-white flex flex-col gap-5 p-4 rounded-xl shadow-inner mb-4">
                             <div className="flex items-center ">
                                 <div className="top flex gap-1">
@@ -183,24 +189,29 @@ function Side({ picture, userName}) {
                                     </div>
                                 </div>
                             </div>
-                            <button className="w-full text-left flex items-center justify-center px-3 py-2 bg-[#02402D] text-white rounded-lg shadow-sm hover:bg-green-600 transition mb-2 text-sm font-medium">
+                            <Link
+                                to={`/${role}/settings`}
+                                onClick={() => setShowMobileMenu(false)}
+                                className="w-full text-left flex items-center justify-center px-3 py-2 bg-[#02402D] text-white rounded-lg shadow-sm hover:bg-green-600 transition mb-2 text-sm font-medium">
                                 Update Profile
-                            </button>
+                            </Link>
                         </div>
                     </div>
-                    {/* Added user profile and logout for mobile sidebar */}
-                    <div className='sm:hidden mt-auto'> 
-                        <div className='text-center space-y-4 px-5'> 
-                            <div className='flex items-center gap-4 px-8'>
-                                <p>{picture}</p> 
-                                <h6 className='font-bold text-black dark:text-white'>{userName}</h6> 
+                    {/* user profile and logout */}
+                    <div className='sm:hidden mt-auto'>
+                        <div className='text-center space-y-4 px-5'>
+                            <div className='flex items-center gap-4 px-4'>
+                                <p>{picture}</p>
+                                <h6 className='font-bold text-black dark:text-white'>{userName}</h6>
                             </div>
-                            <div className=" mt-2 bg-white rounded-md shadow-lg py-1 text-center">
+                            <div className=" mt-2 bg-white rounded-md shadow-lg py-1 ">
                                 <button
-                                    onClick={handleLogout}
-                                    className="flex items-center justify-center w-full px-4 py-2 text-red-600 hover:bg-red-50 text-sm"
+                                    onClick={handleLogout} 
+                                    className="flex items-center w-full px-4 py-2 text-red-600 hover:bg-red-50"
+                                    disabled={loading} 
                                 >
-                                    <FaSignOutAlt className="mr-2" /> Logout
+                                        <FaSignOutAlt className="mr-2" />
+                                        Logout
                                 </button>
                             </div>
                         </div>
@@ -209,6 +220,6 @@ function Side({ picture, userName}) {
             </div>
         </>
     );
-};
+}
 
 export default Side;

@@ -6,7 +6,7 @@ const Modal = ({ isOpen, onClose, children, title }) => {
 
   return ReactDOM.createPortal(
     <div
-      className="fixed inset-0  flex items-center justify-center z-50 p-4 backdrop-blur-lg  "
+      className="fixed inset-0  flex items-center justify-center z-50 py-4 px-2 backdrop-blur-lg  "
       onClick={onClose}
     >
       <div

@@ -1,5 +1,4 @@
 import Welcome from "../../components/Dashboard/Welcome";
-import Header from "../../components/Dashboard/Header";
 import Date from "../../components/Dashboard/Date";
 import Stats from "../../components/Dashboard/Stats";
 import FacilityTransaction from "../../components/Dashboard/FacilityTransaction";
@@ -10,7 +9,7 @@ import RecentFacilities from "../../components/Dashboard/RecentFacilities";
 export default function FacilityOwnerDashboard() {
   return (
     <div
-      className="min-h-screen bg-gray-100 font-sans w-full"
+      className="min-h-screen bg-gray-100 font-sans w-full mt-20"
     >
       
       <main
@@ -20,7 +19,7 @@ export default function FacilityOwnerDashboard() {
         <section className="flex flex-wrap">
           <div className="p-5 md:border-r border-[#D0D5DD] w-full">
             <div className="flex-col gap-6">
-              <div className="w-full flex justify-between items-center">
+              <div className="w-full flex justify-between items-center mb-5">
                 <Welcome />
                 <Date />
               </div>
@@ -28,7 +27,7 @@ export default function FacilityOwnerDashboard() {
                 <Stats />
                 <div className="flex flex-wrap xl:flex-nowrap gap-[27px] ">
                   <div className="h-full w-full flex flex-col gap-8">
-                    <RecentFacilities/>
+                    <RecentFacilities />
                     <FacilityTransaction />
                   </div>
                   <div className="w-full xl:w-[354px] flex flex-wrap sm:flex-nowrap xl:flex-col gap-4">

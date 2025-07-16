@@ -24,7 +24,7 @@ function FarmerLayout() {
                 return JSON.parse(savedProfile);
             } catch (e) {
                 console.error("Failed to parse farmerProfile from localStorage:", e);
-                localStorage.removeItem("farmerProfile"); // Clear corrupt data
+                localStorage.removeItem("farmerProfile"); 
                 return DEFAULT_PROFILE_DETAILS;
             }
         }
@@ -56,13 +56,13 @@ function FarmerLayout() {
         getProfile();
     }, [getProfile]);
 
-    // Determine the user name to display
+    // get user name to display
     const displayUserName = farmerData?.firstName || farmerData?.name || DEFAULT_PROFILE_DETAILS.name;
 
-    // Determine the first letter for the picture display
+    //  first letter for the picture display
     const displayInitial = displayUserName.charAt(0).toUpperCase() || DEFAULT_INITIAL_DISPLAY;
 
-    // Create the JSX element for the picture prop
+    //  the picture prop
     const displayPictureElement = (
         <span
             className="bg-[#044b1c] text-2xl text-green-50 font-bold px-2 rounded-full"

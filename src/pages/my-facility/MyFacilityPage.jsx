@@ -12,6 +12,8 @@ function MyFacilityPage() {
     const [loading, setLoading] = useState(true);
     const [isAddModalOpen, setIsAddModalOpen] = useState(false);
 
+    console.log("All facilities by operator", facilities)
+    
     const handleOpenAddModal = () => {
         setIsAddModalOpen(true);
     };
@@ -25,6 +27,7 @@ function MyFacilityPage() {
         try {
             const data = await getAllFacilities();
             setFacilities(data.facilities); 
+
         } catch (error) {
             console.error("Error getting facility", error); 
             setFacilities([]); 
@@ -51,7 +54,7 @@ function MyFacilityPage() {
     }
 
     return (
-        <div className="py-10">
+        <div className="py-10 mt-15">
             <div className="px-10 flex items-center justify-end">
                 <button
                     className="bg-[#02402D] text-green-50 px-5 py-4 rounded-md flex items-center gap-2"

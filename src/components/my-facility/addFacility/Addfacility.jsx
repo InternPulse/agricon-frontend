@@ -2,8 +2,8 @@ import React, { useState, useRef } from 'react';
 import axios from 'axios';
 import { ClipLoader } from 'react-spinners';
 import { FaUpload } from 'react-icons/fa';
-import Modal from '../modal/Modal'; 
-import SuccessState from './AddSuccess'; 
+import Modal from '../modal/Modal';
+import SuccessState from './AddSuccess';
 import { useNavigate } from 'react-router-dom';
 
 
@@ -22,13 +22,13 @@ const AddFacility = () => {
         capacity: '',
         contact: '',
         description: '',
-        facilityImage: null,
+        facilityImage: null, 
     });
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
-    const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false); 
+    const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false);
     const fileInputRef = useRef(null);
-    const navigate = useNavigate()
+    const navigate = useNavigate();
 
     const handleChange = e => {
         const { name, value, type, files } = e.target;
@@ -46,7 +46,39 @@ const AddFacility = () => {
         setError(null);
 
         try {
-            // STEP 1: Create facility record
+            let uploadedImageUrls = [];
+
+            //Upload image first if provided
+            if (formData.facilityImage) {
+                const imageForm = new FormData();
+                imageForm.append('images', formData.facilityImage); 
+
+                console.log('Uploading image...');
+
+                const { data: imageUploadRes } = await axios.post(
+                    'https://agricon-express-backend.onrender.com/api/v1/facilities/images',
+                    imageForm,
+                    {
+                        headers: {
+                            Authorization: `Bearer ${accessToken}`,
+                        },
+                    }
+                );
+
+
+                // imageUrls from imageUploadRes.data
+                if (imageUploadRes.data && Array.isArray(imageUploadRes.data.imageUrls)) {
+                    uploadedImageUrls = imageUploadRes.data.imageUrls;
+                } else if (imageUploadRes.data && typeof imageUploadRes.data.imageUrls === 'string') {
+                    //if backend returns and array
+                    uploadedImageUrls = [imageUploadRes.data.imageUrls];
+                } else {
+                    console.warn('Unexpected image URLs format within response data:', imageUploadRes.data);
+                }
+
+            }
+
+            // Create facility 
             const corePayload = {
                 operatorId,
                 name: formData.name.trim(),
@@ -57,7 +89,7 @@ const AddFacility = () => {
                 capacity: parseInt(formData.capacity, 10),
                 contact: formData.contact.trim(),
                 description: formData.description.trim(),
-                facilityImage: [],
+                facilityImage: uploadedImageUrls, 
             };
 
             const { data: coreRes } = await axios.post(
@@ -70,41 +102,28 @@ const AddFacility = () => {
                     },
                 }
             );
+
             const facilityId = coreRes.data.id;
+            console.log('Facility created successfully. Facility ID:', facilityId);
 
-            // STEP 2: Upload image only if provided
-            if (formData.facilityImage) {
-                const imageForm = new FormData();
-                imageForm.append('images', formData.facilityImage); 
-
-                await axios.post(
-                    `https://agricon-express-backend.onrender.com/api/v1/facilities/${facilityId}/image`,
-                    imageForm,
-                    {
-                        headers: {
-                            Authorization: `Bearer ${accessToken}`,
-                        },
-                    }
-                );
-            }
             setIsSuccessModalOpen(true);
 
-            // Automatically close the success modal and navigate after 2 seconds
+            // Automatically close the success modal and navigate after 3 seconds
             setTimeout(() => {
-                setIsSuccessModalOpen(false); 
+                setIsSuccessModalOpen(false);
                 navigate('/operator/my-facility');
-            }, 3000); 
+            }, 3000);
 
         } catch (err) {
-            console.error('Error submitting form:', err);
-            setError(err.response?.data?.message || err.message || 'An error occurred');
+            console.error('Error creating facility:', err);
+            setError('An error occurred, try again');
         } finally {
             setLoading(false);
         }
     };
 
     return (
-        <form onSubmit={handleSubmit} className="p-6 bg-white shadow-md rounded-lg">
+        <form onSubmit={handleSubmit} className="bg-white">
             <div className="mb-4">
                 <label htmlFor="name" className="block mb-1 font-medium">Facility Name *</label>
                 <input
@@ -260,8 +279,8 @@ const AddFacility = () => {
             {/* Success Modal */}
             <Modal
                 isOpen={isSuccessModalOpen}
-                onClose={() => setIsSuccessModalOpen(false)} 
-                title="Facility Added" 
+                onClose={() => setIsSuccessModalOpen(false)}
+                title="Facility Added"
             >
                 <SuccessState message="Facility created successfully!" />
             </Modal>

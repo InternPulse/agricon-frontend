@@ -3,7 +3,7 @@ import { assets } from "../../../assets/assets";
 
 export default function NoNotification() {
   return (
-    <div className="flex flex-col items-center justify-center h-screen px-6 text-center space-y-6">
+    <div className="flex flex-col items-center justify-center h-screen px-6 text-center space-y-6 mt-20">
       {/* Image */}
       <img src={assets.image} alt="No notifications" className="w-[220px] md:w-auto" />
 
