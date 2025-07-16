@@ -1,7 +1,5 @@
-import React, { useEffect, useState } from "react";
-import SearchBar from "../../components/navbar/SearchBar";
+import { useEffect, useState } from "react";
 import NoNotification from "../../components/NotificationComponents/noNotification/NoNotification";
-import AllNotification from "../../components/NotificationComponents/IsNotification/IsNotification";
 import IsNotification from "../../components/NotificationComponents/IsNotification/IsNotification";
 
 export default function Notification() {
@@ -34,7 +32,11 @@ export default function Notification() {
       {
         id: 2,
         userId: "",
-        title: "Welcome to AgriCon, {First Name}!",
+        title: `Welcome to AgriCon, ${
+          (JSON.parse(localStorage.getItem("operatorProfile")) &&
+            JSON.parse(localStorage.getItem("operatorProfile")).firstName) ||
+          "Firstname"
+        }!`,
         message:
           "Start by exploring nearby dryers, cold rooms, or processing units and make your first booking!",
         type: "welcome",

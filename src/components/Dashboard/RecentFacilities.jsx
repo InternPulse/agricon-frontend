@@ -3,6 +3,7 @@ import React, { useCallback, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { getAllFacilities } from "../../actions/getFacilities";
 import { assets } from "../../assets/assets";
+import { useMediaQuery } from "react-responsive";
 
 const AssetIcon = () => (
   <svg
@@ -20,6 +21,18 @@ const AssetIcon = () => (
 );
 
 const RecentFacilities = () => {
+  const [recentNo, setRecent] = useState(window.innerWidth > 450 ? 3 : 2);
+  const mediaQuery = () => {
+    setRecent(window.innerWidth > 768 ? 3 : 2);
+  };
+  useEffect(() => {
+    window.addEventListener("resize", mediaQuery);
+
+    return () => {
+      window.removeEventListener("resize", mediaQuery);
+    };
+  });
+
   const [facilities, setFacilities] = useState([]);
 
   const fetchFacilities = useCallback(async () => {
@@ -81,10 +94,10 @@ const RecentFacilities = () => {
           {facilitiesToRender.map(
             (facility, i) =>
               facility &&
-              i < 2 && (
+              i < recentNo && (
                 <div
                   key={facility.id}
-                  className="flex-none w-full bg-white rounded-sm hover:shadow-xl transition duration-200 transform hover:-translate-y-1 overflow-hidden flex flex-col"
+                  className="border-[0.5px] border-[#E4E7EC] border-t-none rounded sm:rounded-none  sm:border-none flex-none w-full bg-white rounded-sm hover:shadow-xl transition duration-200 transform hover:-translate-y-1 overflow-hidden flex flex-col"
                 >
                   <div>
                     <div className="h-25 w-full overflow-hidden flex items-center justify-center bg-gray-100">
@@ -100,7 +113,7 @@ const RecentFacilities = () => {
                       />
                     </div>
 
-                    <div className="border-[0.5px] border-[#E4E7EC] border-t-none w-full h-20 py-1.5 px-3 flex justify-between">
+                    <div className="border-non sm:border-[0.5px] border-[#E4E7EC] border-t-none w-full h-20 py-1.5 px-3 flex justify-between">
                       <div className="mb-4">
                         <h3 className="text-[12px] font-[600] text-[#1D2739] mb-2">
                           {facility.name || facility.title || "N/A"}
@@ -121,15 +134,15 @@ const RecentFacilities = () => {
 
                   <Link
                     to={facility.link}
-                    className=" text-center w-full h-7 mt-4 px-6 py-3
-                           bg-[#02402D] hover:bg-green-800 text-[14px] text-white font-[600]
-                           rounded-[8px] transition-all
+                    className=" text-center w-7/10 mx-auto mb-2 sm:w-full h-5 sm:h-7 mt-1 sm:mt-4 px-6 py-3
+                           bg-[#02402D] hover:bg-green-800 text-xs sm:text-[14px] text-white font-[600]
+                           rounded-[6px] transition-all
                            duration-300 flex items-center justify-center gap-2"
                   >
                     View
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      className="h-4.5 w-4.5 rotate-315"
+                      className="size-3.5 sm:h-4.5 sm:w-4.5 rotate-315"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"

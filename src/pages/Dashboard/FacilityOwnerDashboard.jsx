@@ -8,14 +8,8 @@ import RecentFacilities from "../../components/Dashboard/RecentFacilities";
 
 export default function FacilityOwnerDashboard() {
   return (
-    <div
-      className="min-h-screen bg-gray-100 font-sans w-full"
-    >
-      
-      <main
-        className='flex flex-col bg-white overflow-auto'
-      >
-        
+    <div className="min-h-screen bg-gray-100 font-sans w-full">
+      <main className="flex flex-col bg-white overflow-auto">
         <section className="flex flex-wrap">
           <div className="p-5 md:border-r border-[#D0D5DD] w-full">
             <div className="flex-col gap-6">
@@ -27,7 +21,7 @@ export default function FacilityOwnerDashboard() {
                 <Stats />
                 <div className="flex flex-wrap xl:flex-nowrap gap-[27px] ">
                   <div className="h-full w-full flex flex-col gap-8">
-                    <RecentFacilities/>
+                    <RecentFacilities />
                     <FacilityTransaction />
                   </div>
                   <div className="w-full xl:w-[354px] flex flex-wrap sm:flex-nowrap xl:flex-col gap-4">
