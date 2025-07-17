@@ -17,7 +17,7 @@ export default function FarmerDashboard() {
 
   return (
     <div
-      className="flex min-h-screen bg-gray-100 font-sans"
+      className="flex min-h-screen bg-gray-100 font-sans mt-18"
     >
       <main
         className={`${open ? 'flex' : 'flex'} flex-1 flex-col bg-white overflow-x-hidden`}

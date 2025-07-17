@@ -8,7 +8,7 @@ const Bookings = () => {
 
   return (
     <section
-      className="flex min-h-screen bg-gray-100 font-sans"
+      className="flex min-h-screen bg-gray-100 font-sans mt-15"
       style={{ scrollbarWidth: "none" }}
     >
       <main

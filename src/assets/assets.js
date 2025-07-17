@@ -140,23 +140,23 @@ export const offerData = [
 export const howWeWorkData = [
     {
         id: 1,
+        title: "Sign Up",
+        description: "Create a free account as a farmer or facility owner. Get started in less than two minutes."
+    },
+    {
+        id: 2,
         title: "Find What You Need",
         description: "Browse available dryers, cold rooms, and processing facilities near you. See real-time availability, capacity, and rates for each facility."
     },
     {
-        id: 2,
-        title: "Book Together, Pay Less",
-        description: "Join other farmers to book the same facility and split the costs. Our system automatically matches you with nearby farmers who need similar services."
-    },
-    {
         id: 3,
-        title: "Coordinate Everthing",
-        description: "Once booked, we help coordinate transport, timing, and logistics between you and other farmers. Everyone knows when to arrive and what to bring."
+        title: "Book a Slot",
+        description: "Choose your preferred time and confirm your booking. Pay securely right from the platform."
     },
     {
         id: 4,
-        title: "Get Smart Market Data",
-        description: "Before you sell, check our AI-powered price insights. Know which crops are in demand, current market rates, and the best timing for your sales."
+        title: "Store & Earn More",
+        description: "Preserve your harvest and reduce losses. Sell when prices are better — boost your income."
     }
 ]
 
@@ -210,3 +210,30 @@ export const FaqData = [
      },
 ]
 
+ export const aboutOffer = [
+    {
+        id: 1,
+        image: assets.diamond,
+        name: 'Smart Infrastructure Access',
+        desc: "Farmers can browse verified listings for storage, drying floors, transport, and processing units available by location, etc."
+    },
+    {
+        id: 2,
+        image: assets.calendar,
+        name: 'Easy Booking & Coordination',
+        desc: "No more manual calls or paperwork. Agricon lets users view availability, set reminders, and book      instantly—all in one dashboard."
+    },
+    {
+        id: 3,
+        image: assets.chair, 
+        name: 'Market Intelligence & Planning Tools',
+        desc: "Users get access to real-time market prices, infrastructure demand data, and simple reports that help them make informed decisions."
+    },
+    {   
+        id: 4,
+        image: assets.packer,
+        name:'Harvest Protection Made Simple',
+        desc:"Reduce spoilage with access to drying, storage, and transport Preserve your crops and sell when prices are right."
+                    
+    }
+]

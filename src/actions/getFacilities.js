@@ -18,7 +18,8 @@ export const getAllFacilities = async () => {
                 },
             }
         );
-      return response.data;
+        console.log(response.data)
+        return response.data;
     } catch (error) {
         console.error('Error getting your facility:', error);
 

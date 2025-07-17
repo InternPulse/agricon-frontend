@@ -10,7 +10,7 @@ import RecentFacilities from "../../components/Dashboard/RecentFacilities";
 export default function FacilityOwnerDashboard() {
   return (
     <div
-      className="min-h-screen bg-gray-100 font-sans w-full"
+      className="min-h-screen bg-gray-100 font-sans w-full mt-20"
     >
       
       <main
@@ -20,7 +20,7 @@ export default function FacilityOwnerDashboard() {
         <section className="flex flex-wrap">
           <div className="p-5 md:border-r border-[#D0D5DD] w-full">
             <div className="flex-col gap-6">
-              <div className="w-full flex justify-between items-center">
+              <div className="w-full flex justify-between items-center mb-5">
                 <Welcome />
                 <Date />
               </div>

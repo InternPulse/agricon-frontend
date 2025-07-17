@@ -5,7 +5,7 @@ import { useCallback, useEffect, useState } from "react";
 import { getOperatorProfile } from "../api/getOperatorProfile";
 import { ClipLoader } from "react-spinners";
 
-const DEFAULT_USER_NAME = "Operator"; // Default name for the user
+const DEFAULT_USER_NAME = "Operator"; 
 const DEFAULT_INITIAL_DISPLAY = "?"; 
 
 function FacilityOwnerLayout() {

@@ -1,38 +1,11 @@
 import { motion } from 'framer-motion'
-import { assets } from '../../../assets/assets';
-import { MdOutlineChairAlt } from 'react-icons/md';
-import { FaCalendarAlt } from 'react-icons/fa';
+import { aboutOffer } from '../../../assets/assets';
+
 
 
 function Offer() {
 
-    const aboutOffer = [
-    {
-        id: 1,
-        image: assets.diamond,
-        name: 'Smart Infrastructure Access',
-        desc: "Farmers and cooperatives can browse verified listings for storage, drying floors, transport, and processing units available by location, etc."
-    },
-    {
-        id: 2,
-        image: assets.calendar,
-        name: 'Easy Booking & Coordination',
-        desc: "No more manual calls or paperwork. Agricon lets users view availability, set reminders, and book      instantly—all in one dashboard."
-    },
-    {
-        id: 3,
-        image: assets.chair, 
-        name: 'Market Intelligence & Planning Tools',
-        desc: "Users get access to real-time market prices, infrastructure demand data, and simple reports that help them make informed decisions."
-    },
-    {   
-        id: 4,
-        image: assets.packer,
-        name:'Harvest Protection Made Simple',
-        desc:"Reduce spoilage with access to drying, storage, and transport Preserve your crops and sell when prices are right."
-                    
-    }
-]
+   
 
     return (
         <div className="flex items-center justify-center py-15 px-5">

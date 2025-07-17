@@ -4,7 +4,7 @@ import History from '../../components/BookingHistory/BookingHistory'
 
 export default function BookingHistory() {
   return (
-    <div style={{ display: 'flex', background: '#F7F9FC', minHeight: '100vh' }}>
+    <div style={{ display: 'flex', background: '#F7F9FC', minHeight: '100vh' }} className='mt-20'>
       <main style={{ flex: 1,  }}>
         <div style={{ padding: '24px' }}>
           <History />

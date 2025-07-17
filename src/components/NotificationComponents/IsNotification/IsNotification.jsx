@@ -15,7 +15,7 @@ export default function IsNotification({ read, unRead, data }) {
 
   return (
     <FilterContext.Provider value={[filter, setFilter]}>
-      <div className="px-4 md:px-6 lg:px-10 py-6 addFont">
+      <div className="px-4 md:px-6 lg:px-10 py-6 addFont mt-20">
         <Navbar read={read} unRead={unRead} />
         <Cards
           data={data}
