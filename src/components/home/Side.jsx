@@ -1,12 +1,12 @@
-import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom';
-import { FaBars, FaCog, FaSignOutAlt, FaTimes } from 'react-icons/fa';
+import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
+import { FaBars, FaCog, FaSignOutAlt, FaTimes } from "react-icons/fa";
 import { MdOutlineDashboard } from "react-icons/md";
 import { AiFillNotification, AiOutlineFileSearch } from "react-icons/ai";
 import { FaCubes } from "react-icons/fa";
-import { useEffect, useState } from 'react';
-import { assets } from '../../assets/assets';
-import Donut from '../Dashboard/Donut';
-import { logout } from '../../api/logout';
+import { useEffect, useState } from "react";
+import { assets } from "../../assets/assets";
+import Donut from "../Dashboard/Donut";
+import { logout } from "../../api/logout";
 import { IoNotifications } from "react-icons/io5";
 import { ClipLoader } from 'react-spinners';
 
@@ -48,9 +48,9 @@ function Side({ picture, userName }) {
         };
     }, [showMobileMenu, loading]); 
 
-    const isActive = (path) => {
-        return location.pathname === path;
-    };
+  const isActive = (path) => {
+    return location.pathname === path;
+  };
 
     const activeClass = "bg-[#FFAC00] text-white";
     const inactiveClass = "hover:border hover:border-[#FFAC00]";
