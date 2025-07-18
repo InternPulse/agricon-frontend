@@ -8,15 +8,14 @@ export default function FacilityProvider({ children }) {
 
   useEffect(() => {
     async function fetchFacility() {
-      const token =
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzUyMzY2MDY4LCJpYXQiOjE3NTIzMzAwNjgsImp0aSI6ImNiNTE0MzlhNTczYjQ5OGY5OWJjZjUwOWMyNDI2YTU5IiwidXNlcl9pZCI6IjcxNjQ2YmFkLTg1ZGMtNGY4Yi1iMjYyLTIyMDFjYWUyZGVmNyIsImVtYWlsIjoiZ29nb21hcm9zaTYwQGdtYWlsLmNvbSIsInJvbGUiOiJGQVJNRVIifQ.yUJegBgMPskzGJdQniOp_jvSSCEhIWODbWszM6ou_cY"; // Replace with your actual token retrieval logic
+      const accessToken  = localStorage.getItem('access_token') || "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzUyODgwMjM4LCJpYXQiOjE3NTI4NDQyMzgsImp0aSI6ImM4OWMwM2M2YzRhNjQxOTQ4MTQ0MzUyZmI2ZGNhNzQ1IiwidXNlcl9pZCI6ImMwYTY1YTYzLWRmZjQtNDhhNi1hYWFjLTVjMGNmNjQzYzc0MyIsImVtYWlsIjoianlwZW50ZXJ0YWlubWVudDA0MUBnbWFpbC5jb20iLCJyb2xlIjoiRkFSTUVSIn0.JxQizSimSPrvEyxFA46GuIvWdWNluQKn8ALaL_zJFqY"
       try {
         const response = await fetch(
-          "https://agricon-express-backend.onrender.com/api/v1/facilities?limit=10&page=2&available=true",
+          "https://agricon-express-backend.onrender.com/api/v1/facilities?limit=10&page=1&available=true",
           {
             headers: {
               "Content-Type": "application/json",
-              Authorization: `Bearer ${token}`,
+              Authorization: `Bearer ${accessToken}`,
             },
           }
         );

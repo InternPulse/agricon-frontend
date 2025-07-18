@@ -1,0 +1,186 @@
+
+.bookingSummaryBackdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 40;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 0.3s ease;
+  }
+  
+  .bookingSummary {
+    max-height: 90vh;
+    overflow-y: auto;
+    background: #ffffff;
+    width: 90%;
+    max-width: 600px;
+    padding: 2rem;
+    border-radius: 20px;
+    z-index: 50;
+    animation: scaleIn 0.3s ease;
+  }
+  
+  .bookingSummaryHeading {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-top: 2rem;
+  }
+
+  .bookingSummaryHeadingText {
+    color: rgb(82, 82, 82);
+    margin-bottom: 2rem;
+    /* box-shadow: 0 1px 0 rgba(1, 2, 3, 0.2); */
+  }
+  .bookingSummaryBodyHeading {
+    font-weight: 500;
+    margin-top: 1.5rem;
+    margin-bottom: .5rem;
+  }
+
+  .bookingSummaryHeader img {
+    height: 40px;
+    margin-top: 1rem;
+  }
+
+  .bookingSummaryTable {
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    padding: .6rem 0;
+    margin-bottom: 2rem;
+  }
+  
+  .tableContent p {
+    margin-top: 1rem;
+    color: #666666;
+  }
+
+  .tableContent:not(:last-child) {
+    border-right: 1px solid #ccc;
+    padding-right: 1rem;
+  }
+
+  .bold {
+    font: bold 1rem 'Inter', sans-serif;
+  }
+
+  .accent  {
+    color: #40B869;
+    font-size: small;
+    margin-bottom: 1rem;
+  }
+
+  .bookingWrapper {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .booking__facility-details {
+    display: flex;
+    width: 100%;
+    
+  }
+
+  .booking__facility-details > div {
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+  }
+  
+  .bookingWrapper img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    background: #eee;
+    border-radius: 4px;
+  }
+
+  .total {
+    border-top: 1px solid #ccc;
+    padding-top: .5rem;
+  }
+  
+  .bookingSummaryTotal {
+    display: flex;
+    align-items: center;
+    gap: 10rem;
+  }
+  
+  .bookingSummaryTotal img {
+    width: 30%;
+    margin-top: 2rem;
+  }
+  
+  .bookingSummaryTotalWrapper {
+    flex-grow: 1;
+    margin-top: 4rem;
+  }
+  
+  .bookingSummaryTotalWrapper div {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+
+    & p {
+      margin: 0;
+      color: #666666;
+    }
+  }
+  
+  .buttonContainer {
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end;
+    /* margin-top: 2rem; */
+
+    /* height: 3rem; */
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes scaleIn {
+    from {
+      transform: scale(0.95);
+      opacity: 0;
+    }
+    to {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+
+  .btn {
+    padding: 0.5rem 2.4rem;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+  }
+
+  .btn--green {
+    background-color: #02402D; /* Primary color */
+    color: #fff;
+  }
+
+  .btn--white {
+    background-color: #fff; /* White background */
+    color: #02402D; /* Primary color for text */
+    border: 1px solid #02402D; /* Border to match primary color */
+  }

@@ -1,7 +1,14 @@
 import { Link } from "react-router-dom";
 import { facilityDetails } from "../../data.jsx";
+import { useBookingForm } from "../../hooks/useBookingForm.js";
 
 export default function Facility({ facility }) {
+  const { dispatch } = useBookingForm()
+
+  
+  dispatch({type: "SET_FIELD", field: "amount", value: facility.pricePerDay })
+  dispatch({type: "SET_FIELD", field: "facilityId", value: facility.id })
+  
   return (
     <>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 px-2 mb-[4.5rem]">

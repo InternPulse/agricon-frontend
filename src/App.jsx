@@ -1,13 +1,14 @@
 
-import BookingForm from "./pages/infrastructure/BookingFormEdited";
+import BookingFormEdited from "./pages/infrastructure/BookingFormEdited";
 import ComingSoon from "./pages/infrastructure/ComingSoon";
 import FacilityDetails from "./pages/infrastructure/FacilityDetails";
 import Facility from "./pages/infrastructure/Facility";
 import RootLayout from "./pages/infrastructure/Root";
 // import SignUp from "./pages/signUp/SignUp";
-import BookingSummary from "./pages/infrastructure/BookingSummary";
+// import BookingSummary from "./pages/infrastructure/Summary_New";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import ErrorPage from "./pages/infrastructure/Error";
+import { BookingFormProvider } from "./context/BookingFormContext";
 
 const router = createBrowserRouter([
   // { path: "/", element: <SignUp /> },
@@ -21,15 +22,15 @@ const router = createBrowserRouter([
         element: <FacilityDetails />,
         errorElement: <ErrorPage />,
       },
-      { path: "booking", element: <BookingForm /> },
-      { path: "booking-summary", element: <BookingSummary /> },
+      { path: "booking", element: <BookingFormEdited /> },
+      // { path: "booking-summary", element: <BookingSummary /> },
       { path: ":id", element: <ComingSoon /> },
     ],
   },
 ]);
 
 function App() {
-  return <RouterProvider router={router} />;
+  return (<BookingFormProvider><RouterProvider router={router}/></BookingFormProvider>)
 }
 
 export default App;
