@@ -2,9 +2,9 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { assets } from '../../assets/assets';
 import LeftSide from './LeftSide';
 
+const base_url = import.meta.env.VITE_BASE_URL1;
 const ResetPasswordOTP = () => {
   const [formData, setFormData] = useState({ email: '', code: '' });
   const [error, setError] = useState(null);
@@ -24,7 +24,7 @@ const ResetPasswordOTP = () => {
 
     try {
       const response = await axios.post(
-        'https://agricon-django-backend.onrender.com/api/v1/auth/password/reset/verify-otp/',
+        `${base_url}/api/v1/auth/password/reset/verify-otp/`,
         { email: formData.email, code: formData.code },
         { headers: { 'Content-Type': 'application/json' } }
       );
@@ -43,7 +43,7 @@ const ResetPasswordOTP = () => {
     setLoading(true);
     try {
       const response = await axios.post(
-        'https://agricon-django-backend.onrender.com/api/v1/auth/otp/resend/',
+        `${base_url}/api/v1/auth/otp/resend/`,
         { email: formData.email },
         { headers: { 'Content-Type': 'application/json' } }
       );

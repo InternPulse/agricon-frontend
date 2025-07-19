@@ -5,6 +5,9 @@ import axios from 'axios';
 import LeftSide from './LeftSide';
 import { ClipLoader } from 'react-spinners';
 
+
+const base_url = import.meta.env.VITE_BASE_URL1; 
+
 const VerifyEmailOTP = () => {
   const location = useLocation();
   const navigate = useNavigate();
@@ -42,7 +45,7 @@ const VerifyEmailOTP = () => {
     
     try {
       const response = await axios.post(
-        'https://agricon-django-backend.onrender.com/api/v1/auth/verify-email-otp/',
+        `${base_url}/api/v1/auth/verify-email-otp/`,
         { email: formData.email, code: formData.code },
         {
           headers: {
@@ -67,7 +70,7 @@ const VerifyEmailOTP = () => {
     setLoading(true);
     try {
       const response = await axios.post(
-        'https://agricon-django-backend.onrender.com/api/v1/auth/otp/resend/',
+        `${base_url}/api/v1/auth/otp/resend/`,
         { email: formData.email },
         { headers: { 'Content-Type': 'application/json' } }
       );

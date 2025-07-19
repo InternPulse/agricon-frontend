@@ -1,5 +1,8 @@
 import axios from 'axios';
 
+
+const base_url = import.meta.env.VITE_BASE_URL2
+
 export const getOperatortransaction = async () => {
     const accessToken = localStorage.getItem("access_token");
     const operatorDetails = localStorage.getItem("operatorProfile")
@@ -8,7 +11,7 @@ export const getOperatortransaction = async () => {
 
     try {
         const response = await axios.get(
-            `https://agricon-dotnet-backend.onrender.com/api/v1/transaction/usertransactions/${id}`, 
+            `${base_url}/api/v1/transaction/usertransactions/${id}`, 
             {
                 headers: {
                     'Authorization': `Bearer ${accessToken}`,

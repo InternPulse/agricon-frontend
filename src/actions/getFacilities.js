@@ -1,5 +1,7 @@
 import axios from 'axios';
 
+const base_url = import.meta.env.VITE_BASE_URL2;
+
 
 //get operators facility
 export const getAllFacilities = async () => {
@@ -11,7 +13,7 @@ export const getAllFacilities = async () => {
 
     try {
         const response = await axios.get(
-            `https://agricon-express-backend.onrender.com/api/v1/facilities/${operatorId}/all`,
+            `${base_url}/api/v1/facilities/${operatorId}/all`,
             {
                 headers: {
                     'Authorization': `Bearer ${accessToken}`,

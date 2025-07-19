@@ -32,13 +32,15 @@ export default function FarmerDashboard() {
                 <Date />
               </div>
 
-              <div className="flex items-center justify-between flex-wrap w-full gap-5 mb-8 px-5 sm:px-0">
+              <FacilityProvider>
+              <div className="grid grid-cols-1 gap-5 lg:grid-cols-3 space-y-2">
                 <Discover />
-                <FacilityProvider>
+                <div className="flex items-center justify-between space-x-5 w-full lg:col-span-2">
                   <Bookings />
                   <TotalFacilities />
-                </FacilityProvider>
+                </div>
               </div>
+              </FacilityProvider>
 
               <FarmerBookings />
               <Transaction />

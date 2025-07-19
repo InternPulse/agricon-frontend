@@ -6,6 +6,8 @@ import axios from 'axios';
 import { ClipLoader } from 'react-spinners';
 import LeftSide from '../../pages/authentication/LeftSide';
 
+
+const base_url = import.meta.env.VITE_BASE_URL1
 const VerifyEmailOTP = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({ email: '' });
@@ -33,7 +35,7 @@ const VerifyEmailOTP = () => {
 
     try {
       const response = await axios.post(
-        'https://agricon-django-backend.onrender.com/api/v1/auth/password-reset/request/',
+        `${base_url}/api/v1/auth/password-reset/request/`,
         { email: formData.email },
         { headers: { 'Content-Type': 'application/json' } }
       );
@@ -64,7 +66,7 @@ const VerifyEmailOTP = () => {
 
   return (
     <div className=" lg:flex  items-center justify-center bg-gray-50 p-2 md:p-6">
-      <div className="py-32 md:py-38 lg:py-0 bg-white rounded-xl shadow-md w-full max-w-6xl grid lg:grid-cols-2 md:gap-2">
+      <div className="py-18 md:py-38 lg:py-0 bg-white rounded-xl shadow-md w-full max-w-6xl grid lg:grid-cols-2 md:gap-2">
         {/* Left Side (Image & Info) */}
         <LeftSide />
 

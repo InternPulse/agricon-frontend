@@ -14,7 +14,7 @@ function Faq() {
 
     
     return (
-        <div className="bg-[#F7F7F7] w-full py-15 px-5 flex items-center justify-center sm:px-15">
+        <div className="bg-[#F7F7F7] w-full py-15  flex items-center justify-center sm:px-15">
             <div className="space-y-4">
                 <div className="text-center space-y-4 mb-10">
                     <motion.p className="font-bold text-[#02402D]"

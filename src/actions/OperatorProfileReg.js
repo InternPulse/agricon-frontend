@@ -1,5 +1,6 @@
 import axios from 'axios';
 
+const base_url = import.meta.env.VITE_BASE_URL1
 
 export const operatorProfileReg = async (profileData) => {
     const accessToken = localStorage.getItem("access_token");
@@ -11,7 +12,7 @@ export const operatorProfileReg = async (profileData) => {
     }
     try {
         const response = await axios.post(
-            `https://agricon-django-backend.onrender.com/api/v1/auth/profile/operator/`,
+            `${base_url}/api/v1/auth/profile/operator/`,
             profileData, 
             {
                 headers: {

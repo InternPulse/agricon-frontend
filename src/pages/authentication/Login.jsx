@@ -1,10 +1,13 @@
-import React, { use, useState } from "react";
+import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import LeftSide from "./LeftSide";
 import { useAuth } from "../../context/AuthContext";
 import { ClipLoader } from "react-spinners";
 import { FaEye, FaEyeSlash } from "react-icons/fa6";
+
+
+const base_url = import.meta.env.VITE_BASE_URL1; 
 
 const Login = () => {
   const [reveal, setReveal] = useState("password");
@@ -28,7 +31,7 @@ const Login = () => {
 
     try {
       const response = await axios.post(
-        "https://agricon-django-backend.onrender.com/api/v1/auth/login/",
+        `${base_url}/api/v1/auth/login/`,
         formData,
         { headers: { "Content-Type": "application/json" } }
       );
@@ -52,7 +55,7 @@ const Login = () => {
 
   return (
     <div className="min-h-screen lg:flex items-center justify-center bg-gray-50 p-2 md:p-6">
-      <div className="py-16 lg:py-0 bg-white rounded-xl shadow-md w-full max-w-6xl grid lg:grid-cols-2 md:gap-2">
+      <div className="py-20 lg:py-0 bg-white rounded-xl shadow-md w-full max-w-6xl grid lg:grid-cols-2 md:gap-2">
         {/* Left Side (Image & Info) */}
         <LeftSide />
 
@@ -109,12 +112,12 @@ const Login = () => {
                 required
               />
               <div className="text-right mt-1">
-                <a
-                  href="/forgot-password"
+                <Link
+                  to="/forgot-password"
                   className="text-sm text-green-900 hover:underline"
                 >
                   Forgot password?
-                </a>
+                </Link>
               </div>
             </div>
             <button

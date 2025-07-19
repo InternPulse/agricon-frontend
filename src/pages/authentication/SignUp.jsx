@@ -4,6 +4,8 @@ import axios from 'axios';
 import LeftSide from './LeftSide';
 import { ClipLoader } from 'react-spinners';
 
+
+const base_url = import.meta.env.VITE_BASE_URL1
 const SignUp = () => {
   const navigate = useNavigate();
   const initialRole = localStorage.getItem("userRole")
@@ -17,7 +19,7 @@ const SignUp = () => {
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [otp, setOtp] = useState(''); // To store and display the OTP or handle input
+  const [otp, setOtp] = useState(''); 
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.id]: e.target.value });
@@ -27,7 +29,7 @@ const SignUp = () => {
     e.preventDefault();
     setError(null);
     setSuccess(null);
-    setOtp(''); // Reset OTP on new submission
+    setOtp(''); 
 
     // Enhanced client-side validation
     if (!formData.email || !/^\S+@\S+\.\S+$/.test(formData.email)) {
@@ -56,7 +58,7 @@ const SignUp = () => {
         role: formData.role,
       });
       const response = await axios.post(
-        'https://agricon-django-backend.onrender.com/api/v1/auth/register/',
+        `${base_url}/api/v1/auth/register/`,
         {
           email: formData.email,
           password: formData.password,
@@ -65,10 +67,10 @@ const SignUp = () => {
         },
         { headers: { 'Content-Type': 'application/json' } }
       );
-      console.log('Registration response:', response.data); // Log full response
+      console.log('Registration response:', response.data); 
       localStorage.setItem('access_token', response.data.access);
       localStorage.setItem('refresh_token', response.data.refresh);
-      const receivedOtp = response.data.otp; // Assuming backend returns otp
+      const receivedOtp = response.data.otp; 
       if (receivedOtp) {
         setOtp(receivedOtp);
         setSuccess(`Registration successful! Your OTP is: ${receivedOtp}. Please copy it for verification.`);
@@ -80,7 +82,7 @@ const SignUp = () => {
     } catch (err) {
       console.error('Registration error details:', err.response?.data); // Log full error
       if (err.response?.data?.email?.[0]?.includes('A user with that email already exists.')) {
-        setError('This email is already registered. <a href="/login" className="text-green-700 underline">Log in</a> or <a href="/reset-password" className="text-green-700 underline">reset password</a>.');
+        setError('This email is already registered. <Link to="/login" className="text-green-700 underline">Log in</Link> or <Link to="/reset-password" className="text-green-700 underline">reset password</Link>.');
       } else {
         setError(
           err.response?.data?.email?.[0] ||
@@ -105,7 +107,7 @@ const SignUp = () => {
         return;
       }
       const response = await axios.post(
-        'https://agricon-django-backend.onrender.com/api/v1/auth/verify-email-otp/',
+        `${base_url}/api/v1/auth/verify-email-otp/`,
         { email: formData.email, code: otp },
         { headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' } }
       );
@@ -120,7 +122,7 @@ const SignUp = () => {
 
   return (
     <div className="min-h-screen lg:flex items-center justify-center bg-gray-50 p-2 md:p-6">
-      <div className="py-16 lg:py-0 bg-white rounded-xl shadow-md w-full max-w-6xl grid lg:grid-cols-2 md:gap-2">
+      <div className="py-20 lg:py-0 bg-white rounded-xl shadow-md w-full max-w-6xl grid lg:grid-cols-2 md:gap-2">
         {/* Left Side (Image & Info) */}
         <LeftSide />
 
@@ -174,7 +176,7 @@ const SignUp = () => {
                 Email
               </label>
               <input
-                className="w-full px-4 py-2 border-zinc-500 shadow rounded-md bg-gray-100 text-sm focus:outline-none focus:ring-2 focus:ring-green-700 text-gray-700"
+                className="w-full px-4 py-2 border rounded-md bg-gray-100 text-sm focus:outline-none focus:ring-2 focus:ring-green-700 text-gray-700"
                 id="email"
                 type="email"
                 placeholder="johndoe@gmail.com"
@@ -185,7 +187,7 @@ const SignUp = () => {
             </div>
             <div className='hidden'>
               <input
-                className="w-full px-4 py-2 border-zinc-500 shadow rounded-md bg-gray-100 text-sm text-gray-700 cursor-not-allowed"
+                className="w-full px-4 py-2 border rounded-md bg-gray-100 text-sm focus:outline-none focus:ring-2 focus:ring-green-700 text-gray-700 cursor-not-allowed"
                 id="role"
                 type="text"
                 value={formData.role}
@@ -198,7 +200,7 @@ const SignUp = () => {
                 Password
               </label>
               <input
-                className="w-full px-4 py-2 border-zinc-500 shadow rounded-md bg-gray-100 text-sm focus:outline-none focus:ring-2 focus:ring-green-700 text-gray-700"
+                className="w-full px-4 py-2 border rounded-md bg-gray-100 text-sm focus:outline-none focus:ring-2 focus:ring-green-700 text-gray-700"
                 id="password"
                 type="password"
                 placeholder="Enter password"
@@ -212,7 +214,7 @@ const SignUp = () => {
                 Confirm Password
               </label>
               <input
-                className="w-full px-4 py-2 border-zinc-500 shadow rounded-md bg-gray-100 text-sm focus:outline-none focus:ring-2 focus:ring-green-700 text-gray-700"
+                className="w-full px-4 py-2 border rounded-md bg-gray-100 text-sm focus:outline-none focus:ring-2 focus:ring-green-700 text-gray-700"
                 id="password2"
                 type="password"
                 placeholder="Confirm password"

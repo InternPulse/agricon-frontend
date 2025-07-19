@@ -1,12 +1,14 @@
 
 import axios from 'axios';
 
+const base_url = import.meta.env.VITE_BASE_URL2
+
 export const getOperatorBookings = async () => {
     const accessToken = localStorage.getItem("access_token");
 
     try {
         const response = await axios.get(
-            `https://agricon-express-backend.onrender.com/api/v1/bookings/operator/me`, 
+            `${base_url}/api/v1/bookings/operator/me`, 
             {
                 headers: {
                     'Authorization': `Bearer ${accessToken}`,

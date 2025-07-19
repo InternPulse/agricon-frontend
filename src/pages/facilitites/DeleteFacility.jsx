@@ -7,10 +7,7 @@ const DeleteFacility = () => {
   return (
     <div >
       <Modal >
-       
           <DeleteFacilityComponent />
-       
-       
       </Modal>
     </div>
   )

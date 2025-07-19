@@ -134,7 +134,7 @@ export default function Facility() {
               </div>
               </div>
             ))
-          )};
+          )}
         </div>
         {/* Pagination Component */}
         <Pagination

@@ -3,6 +3,7 @@ import axios from 'axios';
 
 export const OperatorContext = createContext();
 
+const base_url = import.meta.env.VITE_BASE_URL1
 const OperatorProvider = ({ children }) => {
   //  I am using this for my token gotten from 
   // const access = import.meta.env.VITE_ACCESS_TOKEN;
@@ -50,7 +51,7 @@ const OperatorProvider = ({ children }) => {
   // const refreshAccessToken = async () => {
   //   try {
   //     const response = await axios.post(
-  //       'https://agricon-django-backend.onrender.com/api/v1/auth/token/refresh/',
+  //       `${base_url}/api/v1/auth/token/refresh/`,
   //       { refresh: refreshToken }
   //     );
   //     setAccessToken(response.data.access);
@@ -82,7 +83,7 @@ const OperatorProvider = ({ children }) => {
   // const fetchOperator = async () => {
   //   try {
   //     const response = await apiRequest({
-  //       url: 'https://agricon-django-backend.onrender.com/api/v1/auth/profile/operator/',
+  //       url:  `${base_url}/api/v1/auth/profile/operator/`,
   //       method: 'GET',
   //     });
   //     setOperator(response.data);
@@ -102,7 +103,7 @@ const OperatorProvider = ({ children }) => {
   const changePassword = async (oldPassword, newPassword1, newPassword2) => {
     try {
       const response = await apiRequest({
-        url: 'https://agricon-django-backend.onrender.com/api/v1/auth/change-password/',
+        url: `${base_url}/api/v1/auth/change-password/`,
         method: 'POST',
         data: {
           old_password: oldPassword,
@@ -128,7 +129,7 @@ const OperatorProvider = ({ children }) => {
   //   formData.append('upload_preset', uploadPreset);
 
   //   try {
-  //     const response = await axios.post(`https://api.cloudinary.com/v1_1/${cloudName}/upload`, formData);
+  //     const response = await axios.post(`/v1_1/${cloudName}/upload`, formData);
   //     return response.data.secure_url;
   //   } catch (error) {
   //     console.error('Error uploading to Cloudinary:', error);
@@ -140,7 +141,7 @@ const OperatorProvider = ({ children }) => {
   // const addFacility = async (facilityData) => {
   //   try {
   //     const response = await apiRequest({
-  //       url: 'https://agricon-express-backend.onrender.com/api/v1/facilities/',
+  //       url: '/api/v1/facilities/',
   //       method: 'POST',
   //       data: {
   //         operatorId: operator.id,

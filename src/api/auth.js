@@ -1,13 +1,13 @@
 // src/api/auth.js
 import axios from 'axios';
 
-const API_URL = 'https://agricon-django-backend.onrender.com/api/v1/auth/';
+const base_url = import.meta.env.VITE_BASE_URL1;
 
 // Register user
 export const register = async (email, password, password2, role) => {
   try {
     const response = await axios.post(
-      `${API_URL}register/`,
+      `${base_url}register/`,
       { email, password, password2, role },
       { headers: { 'Content-Type': 'application/json' } }
     );
@@ -23,7 +23,7 @@ export const register = async (email, password, password2, role) => {
 export const verifyOTP = async (email, code) => {
   try {
     const response = await axios.post(
-      `${API_URL}verify-email-otp/`,
+      `${base_url}verify-email-otp/`,
       { email, code },
       {
         headers: {
@@ -42,7 +42,7 @@ export const verifyOTP = async (email, code) => {
 export const resendOTP = async (email) => {
   try {
     const response = await axios.post(
-      `${API_URL}otp/resend/`,
+      `${base_url}otp/resend/`,
       { email },
       { headers: { 'Content-Type': 'application/json' } }
     );
@@ -56,7 +56,7 @@ export const resendOTP = async (email) => {
 export const login = async (email, password) => {
   try {
     const response = await axios.post(
-      `${API_URL}login/`,
+      `${base_url}login/`,
       { email, password },
       { headers: { 'Content-Type': 'application/json' } }
     );
@@ -72,7 +72,7 @@ export const login = async (email, password) => {
 export const forgotPassword = async (email) => {
   try {
     const response = await axios.post(
-      `${API_URL}password/reset/`,
+      `${base_url}password/reset/`,
       { email },
       { headers: { 'Content-Type': 'application/json' } }
     );
@@ -86,7 +86,7 @@ export const forgotPassword = async (email) => {
 export const verifyResetOTP = async (email, code) => {
   try {
     const response = await axios.post(
-      `${API_URL}password/reset/verify-otp/`,
+      `${base_url}password/reset/verify-otp/`,
       { email, code },
       { headers: { 'Content-Type': 'application/json' } }
     );
@@ -100,7 +100,7 @@ export const verifyResetOTP = async (email, code) => {
 export const resetPassword = async (email, password) => {
   try {
     const response = await axios.post(
-      `${API_URL}password/reset/confirm/`,
+      `${base_url}password/reset/confirm/`,
       { email, password },
       { headers: { 'Content-Type': 'application/json' } }
     );
@@ -114,7 +114,7 @@ export const resetPassword = async (email, password) => {
 export const refreshToken = async () => {
   try {
     const response = await axios.post(
-      `${API_URL}token/refresh/`,
+      `${base_url}token/refresh/`,
       { refresh: localStorage.getItem('refresh_token') },
       { headers: { 'Content-Type': 'application/json' } }
     );
