@@ -47,7 +47,7 @@ function Footer() {
                     <div>
                         <ul className="space-y-3">
                             <li className="font-bold text-gray-900">Contact Us</li>
-                            <li>Info@Agricon.ng</li>
+                            <li>Info@agricon.com.ng</li>
                             <li>(+234) 8138294545</li>
                             <li>37, Internpulse Av, Lagos state</li>
                         </ul>

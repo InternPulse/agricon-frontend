@@ -35,13 +35,13 @@ const Header = ({ title, userName, picture }) => {
     }
 
     return (
-        <div className='w-full fixed border-b bg-[#02402D] border-[#FFAC00] md:border-gray-700 md:bg-white space-x-10 py-5 px-5  backdrop-blur-3xl z-30'>
-            <div className='flex items-center md:gap-[20%] lg:gap-[36%]'> 
-                <div className='font-bold text-xl text-white md:text-gray-950'>
+        <div className='w-[100%] fixed border-b bg-[#02402D] border-[#FFAC00] md:border-gray-700 md:bg-white py-5 px-5  backdrop-blur-3xl z-30'>
+            <div className='w-full flex items-center justify-between'> 
+                <div className='w-1/2 font-bold text-xl text-white md:text-gray-950'>
                     {title}
                 </div>
 
-                <div className='flex items-center gap-5'>
+                <div className='w-2/3 flex items-center gap-5 pr-10 lg:pr-70'>
                     <div className='hidden md:inline-block'>
                         <input
                             type="text"
