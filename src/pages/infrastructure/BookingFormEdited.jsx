@@ -13,13 +13,14 @@ const labelCn =
 const inputCn =
   "border border-gray-400 rounded-lg text-gray-700 w-full max-w-[529px] p-4 py-3.5 focus:border-2 focus:border-[#02402D]";
 
+const base_url = import.meta.env.VITE_BASE_URL2
 export default function BookingFormEdited() {
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
   // facilityId and amount states are kept for consistency with form data,
   // even if they are readOnly and populated from localStorage
   const [facilityId, setFacilityId] = useState("");
-  const [farmerId, setFarmerId] = useState(""); // This state is technically controlled, but value comes from localStorage and is readOnly
+  const [farmerId, setFarmerId] = useState(""); 
   const [amount, setAmount] = useState("");
 
   const navigate = useNavigate();
@@ -74,7 +75,7 @@ export default function BookingFormEdited() {
     };
 
     const token = localStorage.getItem('access_token');
-    const url = "https://agricon-express-backend.onrender.com/api/v1/bookings/";
+    const url = `${base_url}/api/v1/bookings/`;
 
     let retries = 3;
 
@@ -153,7 +154,7 @@ export default function BookingFormEdited() {
   return (
     <div className="grid xl:grid-cols-2 gap-12">
       <form action={formAction} className="flex flex-col gap-4 mb-16">
-        <h1 className="mb-12 font-semibold text-[2rem]">New Booking Edited</h1>
+        <h1 className="mb-12 font-semibold text-[2rem]">New Booking</h1>
 
         <div className="flex flex-col gap-4">
           <label htmlFor="facilityId" className={labelCn}>

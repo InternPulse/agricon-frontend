@@ -4,6 +4,8 @@ import { LiaTimesSolid } from "react-icons/lia";
 import { FaCheckCircle } from "react-icons/fa";
 import { ClipLoader } from 'react-spinners'
 
+
+const base_url = import.meta.env.VITE_BASE_URL1;
 const ChangePassword = () => {
   const navigate = useNavigate();
   const [params] = useSearchParams();
@@ -31,7 +33,7 @@ const handleSubmit = async (e) => {
 
   try {
     setLoading(true);
-    const endpoint = 'https://agricon-django-backend.onrender.com/api/v1/auth/change-password/';
+    const endpoint = `${base_url}/api/v1/auth/change-password/`;
 
     const payload = {
       current_password: currentPassword,

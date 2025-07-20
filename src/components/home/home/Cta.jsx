@@ -7,7 +7,7 @@ function Cta() {
         <section
             className="
                 relative flex items-center justify-center
-                bg-[url(/cta.png)] bg-cover bg-center bg-no-repeat h-auto
+                bg-[url(/cta.webp)] bg-cover bg-center bg-no-repeat h-auto py-15
             "
         >
             <div className="absolute inset-0 bg-black opacity-50"></div>
@@ -15,15 +15,15 @@ function Cta() {
             <div className="relative  text-center text-white lg:px-80">
                 <div className="pt-20 pb-15">
                     <motion.h1
-                        className="text-2xl md:text-3xl font-bold leading-tight mb-6 animate-fade-in-up"
+                        className="text-2xl md:text-3xl font-bold leading-tight mb-2 animate-fade-in-up text-center"
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{duration: 1, delay: 0.3}}
                     >
-                        Ready to Stop Losing Harvest <br className=" sm:hidden"/> to Spoilage?
+                        Ready to Stop Losing Harvest  to Spoilage?
                     </motion.h1>
                     <motion.p
-                        className="text-lg px-5 md:text-xl mb-15 animate-fade-in-up delay-200 "
+                        className="text-lg px-5 md:text-xl mb-5 animate-fade-in-up delay-200 "
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{duration: 0.5, delay: 0.5}}

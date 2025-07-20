@@ -1,5 +1,6 @@
 import axios from 'axios';
 
+const base_url = import.meta.env.VITE_BASE_URL2
 export const addFacilities = async (facilityData) => { 
   const accessToken = localStorage.getItem("access_token");
 
@@ -11,7 +12,7 @@ export const addFacilities = async (facilityData) => {
     };
 
     const response = await axios.post(
-      'https://agricon-express-backend.onrender.com/api/v1/facilities/',
+      `${base_url}/api/v1/facilities/`,
       payload,
       { 
         headers: {

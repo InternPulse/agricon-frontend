@@ -20,16 +20,16 @@ const Bookings = () => {
             <h3 className="text-[14px] font-medium text-gray-700 mb-2">
               Total Bookings
             </h3>
-            <div className="pr-3 pb-1">
+            <div className="pr-3 pb-1 hidden md:inline-block">
               <TbDots />
             </div>
           </div>
           <div className="flex justify-between items-center mb-4 h-[34px]">
             <div className="gap-[2px] flex items-baseline">
-              <PiCalendarCheckBold className="self-start mt-1" />
+              <PiCalendarCheckBold className="self-start mt-1 hidden md:inline-block" />
               <span className="text-[28px] font-bold text-gray-900">{notAvailableCount}</span>
-              <i className="text-[14px] font-normal text-[#667185]">
-                booked facilities
+              <i className="text-[14px] font-normal text-[#667185] hidden md:inline-block">
+                Booked facilities
               </i>
             </div>
           </div>
@@ -42,7 +42,7 @@ const Bookings = () => {
             <span className="flex text-[12px] items-center gap-1 font-semibold text-[#0F973D] mr-1">
               Up 42%
             </span>
-            <span>Month-over-month</span>
+            <span className="hidden md:inline-block">Month-over-month</span>
           </div>
         </div>
       </div>

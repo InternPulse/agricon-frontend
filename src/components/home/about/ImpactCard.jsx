@@ -7,9 +7,9 @@ function ImpactCard({icon, name, desc}) {
             <div className="">
                 <div className="flex items-center justify-center space-x-3">
                     <p>{icon}</p>
-                    <div>
-                        <h2 className="font-bold">{name}</h2>
-                        <p className="font-semibold text-sm">{desc}</p>
+                    <div className="text-left md:pr">
+                        <h2 className="font-bold text-lg">{name}</h2>
+                        <p className="font-semibold text-md">{desc}</p>
                     </div>
                 </div>
             </div>

@@ -4,7 +4,7 @@ import { FaBuilding, FaChevronRight } from "react-icons/fa6";
 
 const Discover = () => {
   return (
-    <div className="w-full flex-1 bg-[#02402D]  h-[182px] text-white rounded-[12px] flex justify-center items-center">
+    <div className="w-full bg-[#02402D] h-[182px] text-white rounded-lg flex justify-center items-center">
       <div className="container p-5">
         <div className="top space-y-5">
           <div className="flex gap-8 items-center">
@@ -15,7 +15,7 @@ const Discover = () => {
               Infrastructures
             </h2>
           </div>
-          <p className="second text-[12px] text-[#E4E7EC] mb-4">
+          <p className="text-[12px] text-[#E4E7EC] mb-4">
             Find trusted cold rooms, dryers, and processors near you
           </p>
         </div>

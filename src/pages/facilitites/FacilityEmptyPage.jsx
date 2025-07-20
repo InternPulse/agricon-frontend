@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import Image from '../../assets/FacilityEmpty.png'
 import { CgSortAz } from "react-icons/cg";
 import { IoMdAdd } from "react-icons/io";
-import { Link, useNavigate } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 // import Modal from '../../components/Modal';
 import Modal from '../../components/facilities/Modal';
 import AddFacilityComponent from '../../components/facilities/AddFacilityComponent';

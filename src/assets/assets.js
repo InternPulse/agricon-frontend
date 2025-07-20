@@ -1,6 +1,6 @@
 import agriconLogo from "./agriconLogo.png";
 import agriconlog from "./agriconlog.png";
-import authImage from "./authImage.png";
+import authImage from "./authImage.webp";
 import intern from "./intern.png";
 import otp from "./otp.png";
 import logistics from './logistics.png'

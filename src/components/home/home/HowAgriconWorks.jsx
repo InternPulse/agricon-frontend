@@ -52,7 +52,7 @@ function HowAgriconWorks() {
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ duration: 1.0, delay: 0.9}}
                     >
-                        <Link to='/signup'
+                        <Link to='/roles'
                             className='hover:cursor-pointer text-green-100 bg-[#02402D] border border-[#FFAC00]      rounded-full pl-5 py-3 font-bold'
                         >
                             Find Your Facility <FaAngleRight className="inline-block bg-[#FFAC00] rounded-full text-black mb-1 ml-2 mr-1" size={38}/>

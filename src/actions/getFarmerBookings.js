@@ -1,6 +1,7 @@
 
 import axios from 'axios';
 
+const base_url = import.meta.env.VITE_BASE_URL2
 
 //get Farmer personal bookings
 export const getFarmerBookings = async () => {
@@ -9,7 +10,7 @@ export const getFarmerBookings = async () => {
 
   try {
     const { data } = await axios.get(
-      "https://agricon-express-backend.onrender.com/api/v1/bookings/farmer/me",
+      `${base_url}/api/v1/bookings/farmer/me`,
       {
         headers: {
           Authorization: `Bearer ${accessToken}`

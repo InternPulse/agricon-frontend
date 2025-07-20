@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import heroImage from '/heroImage.jpg'; 
+import heroImage from '/heroImage.webp'; 
 
 function ServiceHero() {
     return (

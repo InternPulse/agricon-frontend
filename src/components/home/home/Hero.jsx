@@ -1,7 +1,7 @@
 import { FaAngleRight } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { motion } from 'framer-motion';
-import heroImage from '/heroImage.jpg'; 
+import heroImage from '/heroImage.webp'; 
 
 function Hero() {
     return (
@@ -33,7 +33,7 @@ function Hero() {
                         Modern Infrastructure <br className=""/> for Smart Farming.
                     </motion.h1>
                     <motion.h6
-                        className="text-lg px-5 md:text-xl mb-8 animate-fade-in-up delay-200 "
+                        className="text-lg px-5 md:text-xl mb-5 animate-fade-in-up delay-200"
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.3, delay: 0.5 }}

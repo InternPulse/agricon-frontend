@@ -6,7 +6,7 @@ import Modal from '../modal/Modal';
 import SuccessState from './AddSuccess';
 import { useNavigate } from 'react-router-dom';
 
-
+const base_url = import.meta.env.VITE_BASE_URL2
 const AddFacility = () => {
     const operatorDetails = JSON.parse(localStorage.getItem('operatorProfile') || 'null');
     const accessToken = localStorage.getItem('access_token');
@@ -56,7 +56,7 @@ const AddFacility = () => {
                 console.log('Uploading image...');
 
                 const { data: imageUploadRes } = await axios.post(
-                    'https://agricon-express-backend.onrender.com/api/v1/facilities/images',
+                    `${base_url}/api/v1/facilities/images`,
                     imageForm,
                     {
                         headers: {
@@ -93,7 +93,7 @@ const AddFacility = () => {
             };
 
             const { data: coreRes } = await axios.post(
-                'https://agricon-express-backend.onrender.com/api/v1/facilities/',
+                `${base_url}/api/v1/facilities/`,
                 corePayload,
                 {
                     headers: {

@@ -2,11 +2,12 @@
 
 import axios from 'axios';
 
+const base_url = import.meta.env.VITE_BASE_URL1
 export const getFarmerProfile = async () => { 
     const accessToken = localStorage.getItem("access_token")
   try {
     const response = await axios.get(
-      'https://agricon-django-backend.onrender.com/api/v1/auth/profile/farmer/', 
+      `${base_url}/api/v1/auth/profile/farmer/`, 
       { 
         headers: {
           'Authorization': `Bearer ${accessToken}`, 

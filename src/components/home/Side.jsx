@@ -198,7 +198,7 @@ function Side({ picture, userName }) {
                         </div>
                     </div>
                     {/* user profile and logout */}
-                    <div className='sm:hidden mt-auto'>
+                    <div className='md:hidden mt-auto'>
                         <div className='text-center space-y-4 px-5'>
                             <div className='flex items-center gap-4 px-4'>
                                 <p>{picture}</p>

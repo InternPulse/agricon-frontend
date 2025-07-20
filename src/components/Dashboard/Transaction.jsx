@@ -29,7 +29,7 @@ const Transaction = ({ userId }) => {
   ];
 
   return (
-    <div className="w-full border border-[#D0D5DD] rounded-[12px] lg:col-span-2 bg-white overflow-x-auto">
+    <div className="w-full border border-[#D0D5DD] rounded-md bg-white">
       {transaction.length > 0 ? (
         <table className="w-full divide-y divide-gray-200">
           <thead className="h-16">
